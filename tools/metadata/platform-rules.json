@@ -1,0 +1,29 @@
+{
+  "youtube_shorts": {
+    "titleMax": 100,
+    "descriptionMax": 5000,
+    "hashtags": ["#UselessApps", "#FunnyApps", "#Coding", "#WebDev", "#Shorts", "#PointlessApps"],
+    "categoryId": "28"
+  },
+  "tiktok": {
+    "captionMax": 2200,
+    "hashtags": ["#uselessapps", "#funnyapps", "#codingtok", "#pointless", "#techcomedy"]
+  },
+  "instagram_reels": {
+    "captionMax": 2200,
+    "hashtags": ["#UselessApps", "#FunnyReels", "#CodingHumor", "#TechComedy"]
+  },
+  "facebook_reels": {
+    "captionMax": 2200,
+    "hashtags": ["#UselessApps", "#FunnyVideos", "#TechComedy"]
+  },
+  "rumble": {
+    "titleMax": 100,
+    "descriptionMax": 5000,
+    "hashtags": ["UselessApps", "FunnyApps", "TechComedy"]
+  },
+  "x": {
+    "captionMax": 280,
+    "hashtags": ["#UselessApps", "#TechComedy"]
+  }
+}
