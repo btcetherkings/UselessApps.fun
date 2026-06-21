@@ -35,7 +35,22 @@ function renderErrorPanel(err) {
 'use strict';
 
 function el(id) {
-  return document.getElementById(id);
+  const node = document.getElementById(id);
+
+  if (node) return node;
+
+  // Null-safe fallback: prevents one missing dashboard panel from crashing the whole UI.
+  // Missing IDs are logged once and rendered into a detached element.
+  if (!window.__missingDashboardEls) window.__missingDashboardEls = new Set();
+
+  if (!window.__missingDashboardEls.has(id)) {
+    console.warn(`Dashboard element missing: #${id}`);
+    window.__missingDashboardEls.add(id);
+  }
+
+  const fallback = document.createElement('div');
+  fallback.dataset.missingDashboardElement = id;
+  return fallback;
 }
 
 function kv(data) {

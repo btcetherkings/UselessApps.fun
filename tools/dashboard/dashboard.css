@@ -556,3 +556,11 @@ body.theme-colourful {
   color: #ff6b6b;
   font-weight: 700;
 }
+
+.auto-panel-slot {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px dashed var(--stroke);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.03);
+}
