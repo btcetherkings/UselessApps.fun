@@ -1,44 +1,26 @@
 # UselessApps.fun MASTER ROADMAP
 
-## Current Position
+## Current Reality Check
 
-Latest pushed build:
+The technical foundation is strong, but the product is not finished.
+
+Current weaknesses:
 
 ```text
-27514a6 Add review cards export packs and typed publish confirmation
+dashboard is still mostly read-only
+API connections cannot be managed properly from dashboard
+social channels cannot be managed properly from dashboard
+business management suite is too basic
+review desk is not enough as a business control centre
+old/generated videos need safe cleanup and reset workflow
+delete video workflow is missing
 ```
 
-Current issue:
+Decision:
 
 ```text
-Review Desk V2 loads in the browser, but shows:
-"No review cards found."
-```
-
-Meaning:
-
-```text
-Dashboard UI is working.
-Review API is working enough to return an empty state.
-The review-card data source is too narrow.
-```
-
-Root likely cause:
-
-```text
-tools/publish/review-db.json may be empty/untracked/not synced
-or its shape differs from what review-summary.js expects
-or private uploaded videos exist in processed-v3.json but not review-db.json
-```
-
-Fix:
-
-```text
-Review cards must read from BOTH:
-1. tools/publish/review-db.json
-2. tools/video-generator/processed-v3.json
-
-Then deduplicate by videoId.
+Next build is not another small feature.
+Next build is a real management-suite build.
 ```
 
 ---
@@ -49,7 +31,7 @@ UselessApps.fun is a safe, absurd, viral AI media factory.
 
 ```text
 Content = safely ridiculous
-Dashboard = powerful command centre
+Dashboard = real business command centre
 Backend = automated media factory
 Data layer = durable and testable
 Publishing = private-first and approval-gated
@@ -57,228 +39,383 @@ Publishing = private-first and approval-gated
 
 ---
 
-# Finish Line Status
+# New Finish Line
 
-We are approximately:
+MVP foundation is not enough.
 
-```text
-75% to MVP control-centre finish line
-```
-
-## Already built
+The real working product needs:
 
 ```text
-app/video generation
-private YouTube upload
-audio engine
-production-safe audio assets
-brand safety policy
-safety report
-action queue
-safe worker
-nightly runner
-browser command centre
-review/export CLI tools
-typed publish confirmation
-platform registry
-publishing calendar
-SQLite/audit/finance foundation
-full-system tests
-GitHub push workflow
-```
-
-## Still needed for MVP finish
-
-```text
-Review Desk must always show real cards
-dashboard buttons must create queue/export/calendar items reliably
-publish preflight panel must be visible
-review sync must be robust
-final test must cover review cards from processed-v3 fallback
-final operator runbook
-```
-
-## Future, after MVP
-
-```text
-SQLite primary migration
-multi-platform API integrations
-finance ROI v2
-React dashboard rewrite if needed
-deployment packaging
+1. Manage API connections
+2. Manage social channels
+3. Manage business metrics
+4. Manage video lifecycle
+5. Clean/reset videos safely
+6. Delete YouTube videos safely
+7. Start fresh with clean state
+8. Dashboard actions must actually do useful work
 ```
 
 ---
 
-# Active Build: Finish Review Desk + Preflight Wiring + Final Test Coverage
+# Active Build: Management Suite + API/Social Manager + Clean Video Reset
 
 Status: NEXT BUILD
 
 Goal:
 
-Complete the dashboard operator workflow.
+Turn the dashboard from a basic monitor into an actual control centre.
 
-The dashboard must show review cards even when review DB is empty by falling back to processed video records.
-
----
-
-## This Build Fixes
+This build adds:
 
 ```text
-No review cards found
-review-db empty/mismatch
-processed-v3 fallback missing
-dashboard review API too narrow
-review card test missing
-export pack test missing
-calendar endpoint test missing
+API connection manager
+social channel manager
+business settings manager
+safe YouTube delete workflow
+local video archive/cleanup workflow
+dashboard management APIs
+dashboard management panels
+clean-start workflow
+full-system tests
 ```
 
 ---
 
-# Required Behaviour
+# Core Safety Rule
 
-Review Desk should show cards from:
+Deleting videos is destructive.
 
-```text
-private uploaded videos
-approved videos
-unlisted videos
-processed dry-run videos if useful
-failed/blocked videos as rerender candidates
-```
-
-Each card should show:
+Therefore:
 
 ```text
-videoId or local key
-title/name
-status
-YouTube URL if available
-public safe badge
-audio readiness
-safety status
-learning score
-recommended action
-queue approve/reject/rerender buttons
-export pack button
-calendar button
-typed publish command
+No bulk delete without typed confirmation.
+No dashboard one-click public delete.
+No worker delete.
+No social/API credential display in dashboard.
+No secret values stored in JSON.
 ```
 
-No direct public publishing from browser.
+Delete must require exact terminal confirmation:
+
+```text
+DELETE VIDEO_ID FROM YOUTUBE
+```
+
+Bulk cleanup must archive local state first.
 
 ---
 
-# Files To Update
+# Files To Add
+
+```text
+tools/connections/manage-connection.js
+tools/social/manage-channel.js
+tools/business/manage-business.js
+
+tools/publish/delete-youtube.js
+tools/publish/archive-video-state.js
+tools/publish/cleanup-videos.js
+
+scripts/connection-list.sh
+scripts/connection-set.sh
+scripts/channel-list.sh
+scripts/channel-set.sh
+scripts/business-report.sh
+scripts/business-set.sh
+
+scripts/delete-video.sh
+scripts/archive-video-state.sh
+scripts/cleanup-videos.sh
+scripts/clean-start.sh
+```
+
+Updated:
 
 ```text
 ROADMAP.md
-tools/review/review-summary.js
-tools/review/review-cards.js
-tools/dashboard/dashboard.js
 tools/dashboard/web-dashboard.js
+tools/dashboard/dashboard.html
+tools/dashboard/dashboard.js
+tools/dashboard/dashboard.css
 tools/testing/full-system-test.js
-```
-
-Optional:
-
-```text
-tools/publish/lib.js
-scripts/sync-review.sh
+.gitignore
 ```
 
 ---
 
-# Review Card Source Strategy
+# API Connection Manager
 
-## Source 1: review DB
+Store only non-secret metadata:
 
 ```text
-tools/publish/review-db.json
+provider
+enabled
+connected
+status
+authType
+requiredEnvVars
+lastCheckedAt
+notes
 ```
 
-Use when available.
+Secret values remain in `.env`.
 
-## Source 2: processed DB fallback
+Examples:
 
-```text
-tools/video-generator/processed-v3.json
+```bash
+./scripts/connection-list.sh
+./scripts/connection-set.sh youtube enabled true
+./scripts/connection-set.sh youtube status working
+./scripts/connection-set.sh tiktok status future
 ```
 
-Use records with:
+Dashboard should show:
 
 ```text
-youtube.videoId
-youtube.url
-videoId
+provider
+enabled
+connected
+status
+required env vars
+last checked
+notes
+```
+
+---
+
+# Social Channel Manager
+
+Store:
+
+```text
+platform
+enabled
+connected
+mode
+handle
 url
-videoPath
-name
+status
+supportsUpload
+supportsAnalytics
+notes
 ```
 
-## Source 3: dry run/local preview fallback
+Examples:
 
-Use records without YouTube ID only as local preview cards.
+```bash
+./scripts/channel-list.sh
+./scripts/channel-set.sh youtube enabled true
+./scripts/channel-set.sh youtube handle "@uselessapps"
+./scripts/channel-set.sh website url "https://uselessapps.fun"
+```
 
-These cannot be approved/published until uploaded, but can still show:
+Dashboard should show editable channel management.
+
+---
+
+# Business Management Suite v1.5
+
+Add editable settings:
 
 ```text
-export local data
-rerender recommendation
-safety/audio status
+brandName
+siteUrl
+currency
+monthlyBudget
+targetVideosPerDay
+targetPrivateUploadsPerDay
+targetPublicPostsPerWeek
+notes
+```
+
+Commands:
+
+```bash
+./scripts/business-report.sh
+./scripts/business-set.sh monthlyBudget 100
+./scripts/business-set.sh targetVideosPerDay 3
+```
+
+Dashboard should show:
+
+```text
+business settings
+finance totals
+revenue
+cost
+profit
+production targets
 ```
 
 ---
 
-# Review Card Recommended Action Logic
+# Video Lifecycle Manager
+
+Statuses:
 
 ```text
-safety block -> needs_rerender
-audio not public safe -> needs_rerender
-failed/error -> needs_rerender
-private uploaded + public safe -> approve or reject
-approved -> publish preflight
-published_unlisted -> monitor
-published_public -> monitor
-dry run -> upload private first
-no video id -> upload/private review not ready
+local_preview
+private_uploaded
+approved
+rejected
+needs_rerender
+published_unlisted
+published_public
+archived_local
+deleted_youtube
+cleanup_candidate
 ```
 
 ---
 
-# Test Expansion
+# Safe Delete Workflow
+
+Command:
+
+```bash
+./scripts/delete-video.sh VIDEO_ID
+```
+
+Requires exact typed confirmation:
+
+```text
+DELETE VIDEO_ID FROM YOUTUBE
+```
+
+Then:
+
+```text
+calls YouTube API videos.delete
+updates review DB
+updates processed DB
+writes audit event
+does not delete local files unless cleanup requested
+```
+
+Required OAuth scope:
+
+```text
+https://www.googleapis.com/auth/youtube
+```
+
+---
+
+# Local Archive Workflow
+
+Command:
+
+```bash
+./scripts/archive-video-state.sh VIDEO_ID
+```
+
+Should:
+
+```text
+mark review status archived_local
+mark processed status archived_local
+write audit event
+not touch YouTube
+```
+
+---
+
+# Clean Start Workflow
+
+Command:
+
+```bash
+./scripts/clean-start.sh
+```
+
+Should:
+
+```text
+archive existing review state
+archive existing processed state
+archive existing generated local videos
+reset review DB to empty
+reset action queue optional
+keep apps/templates unless CLEAN_APPS=true
+keep audit logs
+keep finance
+keep platform/social/API settings
+```
+
+Requires typed confirmation:
+
+```text
+CLEAN START USELESSAPPS
+```
+
+No YouTube deletion in clean-start.
+
+YouTube deletion remains per-video typed command.
+
+---
+
+# Dashboard Management APIs
+
+Add:
+
+```text
+GET  /api/connections
+POST /api/connections
+
+GET  /api/channels
+POST /api/channels
+
+GET  /api/business
+POST /api/business
+
+POST /api/archive-video
+```
+
+No dashboard YouTube delete endpoint in this build.
+
+Dashboard can show delete command only.
+
+---
+
+# Dashboard Panels
+
+Add/strengthen:
+
+```text
+API Connection Manager
+Social Channel Manager
+Business Suite
+Video Lifecycle Manager
+Clean Start / Reset Panel
+```
+
+Each panel should show:
+
+```text
+current config
+copyable commands
+safe action buttons where allowed
+terminal-only commands where destructive
+```
+
+---
+
+# Tests
 
 Full test must check:
 
 ```text
-review-summary module exists
-review cards function returns object with cards array
-review cards can fallback from processed-v3
-dashboard has reviewDeskCards
-web dashboard has /api/review-cards
-export-pack tool exists
-confirm-publish tool exists
-calendar endpoint exists
-```
-
----
-
-# Commands
-
-```bash
-./scripts/review-cards.sh
-./scripts/dashboard.sh
-./scripts/full-test.sh
-./scripts/dashboard-web.sh
-./scripts/open-dashboard.sh
-```
-
-If review cards still empty:
-
-```bash
-node -e "const {getReviewCards}=require('./tools/review/review-summary'); console.log(JSON.stringify(getReviewCards(), null, 2))"
-node -e "const fs=require('fs'); const p='tools/video-generator/processed-v3.json'; const j=JSON.parse(fs.readFileSync(p)); console.log(Object.keys(j).length, Object.values(j).slice(0,2))"
+connection manager exists
+channel manager exists
+business manager exists
+delete-youtube exists
+archive-video-state exists
+cleanup-videos exists
+clean-start exists
+dashboard APIs exist
+delete command requires confirmation
+node --check passes
+scripts executable
 ```
 
 ---
@@ -288,57 +425,46 @@ node -e "const fs=require('fs'); const p='tools/video-generator/processed-v3.jso
 This build is complete when:
 
 ```text
-Review Desk V2 shows cards
-review-cards.sh shows cards
-dashboard API returns cards
-export pack works for a card
-calendar item can be added
+connection-list works
+connection-set works
+channel-list works
+channel-set works
+business-report works
+business-set works
+archive-video-state works
+clean-start confirmation works
+delete-video confirmation blocks wrong phrase
+dashboard shows API/social/business manager panels
 full-test passes
 commit and push succeeds
 ```
 
 ---
 
-# Remaining Big Builds After This
+# After This Build
 
-## 1. Final Operator Runbook + MVP Freeze
+We will have a usable command centre.
 
-```text
-README
-operator runbook
-daily workflow
-safe publish workflow
-troubleshooting guide
-env example
-```
-
-## 2. SQLite Primary Migration
+Next builds become:
 
 ```text
-move action/review/video state into SQLite
-JSON becomes backup/export only
-```
-
-## 3. Production Deployment Polish
-
-```text
-systemd services
-cron hardening
-health check endpoint
-backup policy
-dashboard auth later
+1. Dashboard auth + roles
+2. SQLite primary migration
+3. Export pack v2
+4. Finance ROI v2
+5. Production deployment
 ```
 
 ---
 
-# Current Finish Line
+# Operating Principle
 
-To finish MVP:
+The system must never hide destructive actions.
+
+For destructive operations:
 
 ```text
-1. Fix Review Desk fallback
-2. Add final test coverage
-3. Build runbook
-4. Freeze current architecture
-5. Continue content generation safely
+show command
+require typed terminal confirmation
+audit everything
 ```

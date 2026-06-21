@@ -168,6 +168,18 @@ function testDashboardServerStatic() {
   else add('FAIL', 'web dashboard missing /api/export-pack');
 
   if (text.includes('/api/calendar-item')) add('PASS', 'web dashboard has /api/calendar-item');
+
+  if (text.includes('/api/archive-video')) add('PASS', 'web dashboard has /api/archive-video');
+  else add('FAIL', 'web dashboard missing /api/archive-video');
+
+  if (text.includes('/api/business')) add('PASS', 'web dashboard has /api/business');
+  else add('FAIL', 'web dashboard missing /api/business');
+
+  if (text.includes('/api/channels')) add('PASS', 'web dashboard has /api/channels');
+  else add('FAIL', 'web dashboard missing /api/channels');
+
+  if (text.includes('/api/connections')) add('PASS', 'web dashboard has /api/connections');
+  else add('FAIL', 'web dashboard missing /api/connections');
   else add('FAIL', 'web dashboard missing /api/calendar-item');
 }
 
@@ -223,6 +235,12 @@ function main() {
     'tools/dashboard/web-dashboard.js',
     'tools/dashboard/dashboard.js',
     'tools/testing/full-system-test.js',
+    'tools/publish/cleanup-videos.js',
+    'tools/publish/archive-video-state.js',
+    'tools/publish/delete-youtube.js',
+    'tools/business/manage-business.js',
+    'tools/social/manage-channel.js',
+    'tools/connections/manage-connection.js',
     'tools/review/review-summary.js',
     'tools/review/review-cards.js',
     'tools/publish/confirm-publish.js',
@@ -251,6 +269,16 @@ function main() {
     'scripts/queue-action.sh',
     'scripts/list-actions.sh',
     'scripts/run-action.sh',
+    'scripts/clean-start.sh',
+    'scripts/cleanup-videos.sh',
+    'scripts/archive-video-state.sh',
+    'scripts/delete-video.sh',
+    'scripts/business-set.sh',
+    'scripts/business-report.sh',
+    'scripts/channel-set.sh',
+    'scripts/channel-list.sh',
+    'scripts/connection-set.sh',
+    'scripts/connection-list.sh',
     'scripts/review-cards.sh',
     'scripts/review-api-test.sh',
     'scripts/confirm-publish.sh',
