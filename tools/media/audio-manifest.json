@@ -1,6 +1,47 @@
 {
-  "version": 1,
-  "generatedAt": "2026-06-21T11:19:31.982Z",
-  "music": [],
-  "sfx": []
+  "version": 2,
+  "generatedAt": "2026-06-21T12:03:05.276Z",
+  "assets": [
+    {
+      "id": "assets_music_default_test_bed",
+      "kind": "music",
+      "file": "assets/music/default-test-bed.wav",
+      "mood": "default",
+      "tags": [
+        "default"
+      ],
+      "license": "test-generated",
+      "source": "generated-test-tone",
+      "safeForPublic": false,
+      "notes": "Generated test tone. Not for public publishing."
+    },
+    {
+      "id": "assets_sfx_fail_beep_test",
+      "kind": "sfx",
+      "file": "assets/sfx/fail-beep-test.wav",
+      "mood": "default",
+      "tags": [
+        "fail",
+        "beep"
+      ],
+      "license": "test-generated",
+      "source": "generated-test-tone",
+      "safeForPublic": false,
+      "notes": "Generated test tone. Not for public publishing."
+    },
+    {
+      "id": "assets_sfx_intro_ding_test",
+      "kind": "sfx",
+      "file": "assets/sfx/intro-ding-test.wav",
+      "mood": "default",
+      "tags": [
+        "intro",
+        "ding"
+      ],
+      "license": "test-generated",
+      "source": "generated-test-tone",
+      "safeForPublic": false,
+      "notes": "Generated test tone. Not for public publishing."
+    }
+  ]
 }

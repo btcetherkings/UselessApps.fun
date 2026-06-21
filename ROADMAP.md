@@ -12,120 +12,106 @@ It creates tiny useless apps, records them, turns them into ridiculous fake-TV v
 
 ## Current Working Milestone
 
-The automation engine, media intelligence layer, and safe-zone/audio foundation are working.
+The automation engine, media intelligence layer, safe-zone foundation, private review workflow, FFmpeg audio mixing, and audio validation gate are now working or in progress.
 
 Confirmed:
 
 - [x] Static app gallery exists
 - [x] `apps.json` exists
-- [x] First useless apps exist
 - [x] Local video generation works
-- [x] YouTube OAuth works
+- [x] YouTube OAuth upload works
 - [x] YouTube private upload works
-- [x] YouTube Studio verification works
-- [x] `processed-v3.json` tracks uploaded/private videos
-- [x] Autopilot selects unpublished apps
-- [x] Autopilot creates new apps when the queue is empty
-- [x] Autopilot can generate and upload new generated apps
+- [x] Private uploaded videos are tracked
+- [x] Autopilot creates apps when queue is empty
 - [x] Autopilot report works
 - [x] Story engine exists
 - [x] Metadata engine exists
 - [x] Quality engine exists
-- [x] Learning engine placeholder exists
-- [x] Media intelligence report works
 - [x] Safe-zone report works
-- [x] Music/SFX folders exist
-- [x] Final-preview script exists
-- [x] Quality/safe-zone/audio foundation committed
+- [x] Safe playback helper works
+- [x] Safe-mode text clutter reduction works
+- [x] YouTube stats pull script exists
+- [x] Analytics report script exists
+- [x] Recommendations generator exists or is being integrated
+- [x] Private review DB exists or is being integrated
+- [x] Approve/reject/needs-rerender commands exist or are being integrated
+- [x] Audio engine exists
+- [x] Audio report exists
+- [x] Audio manifest exists
+- [x] `audioPlan` can be generated and stored
+- [x] FFmpeg audio mix works
+- [x] `audioMix.mode = full_mix` confirmed
+- [x] Audio validation can flag test audio
+- [x] Publish safety can block public release when audio is not public-safe
 
-Latest status:
+---
+
+## Current State
+
+The project can technically mix audio, but the current working audio files are generated test tones.
+
+Current problem:
 
 ```text
-Total apps: 10
-Uploaded/private: 9
-Preview only: 1
-Failed: 0
-Pending: 0
-Autopilot runs: 16
-
-Recent types: rock, button, spinner
-Created by autopilot: 3
-
-Next likely action:
-There is a preview-only item. Upload it privately before generating another app.
+The audio system works, but we need a safe production asset pipeline:
+real royalty-free music/SFX, license notes, metadata, validation, and import commands.
 ```
 
-Important rule:
+Next build:
 
 ```text
-If preview-only exists, upload it privately or mark it skipped before creating the next app.
+real audio files
+→ production manifest
+→ validation
+→ safe public-ready audio mix
 ```
 
 ---
 
-## Current Problem
-
-The system now reads safe-zone flags and reports safe zones, but `generate-v3.js` still needs to actually enforce them in the scene layout.
-
-Current safe-zone flags:
-
-```text
-SAFE_MODE=true
-TEXT_DENSITY=low
-TICKER_ENABLED=false
-FOOTER_ENABLED=false
-QUALITY_MODE=preview/final
-RENDER_TARGET=shorts
-```
-
-Current safe-zone report for 720x1280:
-
-```text
-Avoid top: y 0-120
-Avoid bottom: y 1000-1280
-Avoid right UI area: x 613-720
-
-Main text zone:
-x 53-600
-y 147-967
-```
-
-Next build must make the video renderer obey those zones.
-
----
-
-# Active Build: Safe-Mode Layout Enforcement
+# Active Build: Production Audio Asset Pack Support
 
 Status: Next build
 
 Goal:
 
-Make `generate-v3.js` obey safe-zone and low-text-density settings.
+Create a controlled asset system for real background music and SFX.
 
 This build should:
 
-- disable ticker/footer when safe mode is enabled
-- reduce stacked text
-- keep important captions in safe areas
-- make each scene use one main joke/caption
-- improve readability on mobile
-- keep current upload flow working
-- keep dry-run and private upload working
+- define production audio asset naming rules
+- create production asset manifest structure
+- add manifest builder/updater
+- add license metadata fields
+- separate test audio from production audio
+- validate public-safe audio assets
+- make audio engine prefer public-safe production assets
+- keep test tones usable for development only
+- add scripts to register new music/SFX
+- update audio reports with license/public-safety info
 
-Files to update:
+Files to create/update:
 
 ```text
-tools/video-generator/generate-v3.js
-tools/media/safe-zone-report.js
-scripts/final-preview-once.sh
+tools/media/audio-assets.js
+tools/media/audio-engine.js
+tools/media/audio-report.js
+tools/media/audio-validate.js
+tools/media/audio-manifest.json
+assets/music/LICENSES.md
+assets/sfx/LICENSES.md
+assets/test-audio/README.md
+scripts/audio-assets-refresh.sh
+scripts/register-music.sh
+scripts/register-sfx.sh
 ROADMAP.md
 ```
 
-New optional files:
+Folders:
 
 ```text
-scripts/upload-preview-only-private.sh
-scripts/open-latest-video.sh
+assets/music/
+assets/sfx/
+assets/test-audio/
 ```
 
 ---
@@ -136,7 +122,7 @@ Status: Completed
 
 - [x] Static gallery
 - [x] App pages
-- [x] `apps.json` data source
+- [x] `apps.json`
 - [x] GitHub Pages deployment
 - [x] Basic styling
 - [x] Uselessness scores
@@ -159,23 +145,25 @@ Status: Completed
 
 ---
 
-# Phase 3: YouTube Upload System
+# Phase 3: YouTube Upload + Publish Workflow
 
-Status: Completed for private testing
+Status: Private upload working, publish approval in progress
 
-- [x] Google Cloud OAuth app created
-- [x] Refresh token generated
-- [x] YouTube upload scope works
-- [x] Channel auth confirmed
-- [x] Private upload from generator successful
-- [x] YouTube Studio verification complete
+Working:
+
+- [x] OAuth upload works
+- [x] Private upload works
+- [x] Review approval command works
+- [x] Publish script exists
+- [x] Audio validation can block unsafe public publishing
 
 Next:
 
-- [ ] Keep uploads private until layout and quality are fixed
-- [ ] Add metadata review
-- [ ] Add approval command to publish private videos later
-- [ ] Add YouTube Analytics integration
+- [ ] Refresh OAuth token with `https://www.googleapis.com/auth/youtube`
+- [ ] Confirm `videos.update` can change privacy to unlisted
+- [ ] Confirm review DB status becomes `published_unlisted`
+- [ ] Public publishing only with `ALLOW_PUBLIC_PUBLISH=true`
+- [ ] Block public publish if test-tone audio is detected
 
 ---
 
@@ -187,21 +175,19 @@ Working:
 
 - [x] Read `apps.json`
 - [x] Read `processed-v3.json`
-- [x] Select next unpublished app
+- [x] Select unpublished apps
 - [x] Skip uploaded apps
-- [x] Create new useless app if queue is empty
-- [x] Add new app to `apps.json`
-- [x] Start local recording server
-- [x] Run `generate-v3.js`
+- [x] Create new useless apps when queue is empty
 - [x] Upload privately or dry-run depending on env
-- [x] Write `autopilot-state.json`
 - [x] Autopilot report works
-
-Current queue issue:
-
 - [x] Preview-only detection works
-- [ ] Upload current preview-only item privately
-- [ ] Then resume queue-empty generation
+
+Next:
+
+- [ ] Store audio asset IDs in content ledger
+- [ ] Track production audio use against performance
+- [ ] Preserve learning-aware selection
+- [ ] Preserve anti-repeat rules
 
 ---
 
@@ -214,187 +200,213 @@ Working:
 - [x] Story engine exists
 - [x] Metadata engine exists
 - [x] Quality engine exists
-- [x] Generator flags exist:
-  - `USE_STORY_ENGINE`
-  - `USE_METADATA_ENGINE`
-  - `USE_QUALITY_ENGINE`
-- [x] `storyPackage is not defined` scope bug fixed
-- [x] Failed processed entry cleanup works
+- [x] Audio engine exists
+- [x] Generator flags exist
+- [x] Safe-mode text clutter reduction works
+- [x] `audioPlan` exists
+- [x] `audioMix` exists
+- [x] Full mix confirmed
 
 Next:
 
-- [ ] Confirm every new result stores `storyPackage`
-- [ ] Confirm every new result stores `metadataPackage`
-- [ ] Confirm every new result stores `qualityPlan`
-- [ ] Confirm YouTube title/description uses metadata package
-- [ ] Add script-hash repetition checks
+- [ ] Use production manifest metadata in audio plan
+- [ ] Store audio asset IDs in processed records
+- [ ] Store audio license/public-safety metadata in processed records
 
 ---
 
-# Phase 6: Quality Engine
+# Phase 6: Audio Engine
 
-Status: Foundation complete, enforcement in progress
+Status: Full technical mix working
 
 Working:
 
-- [x] Quality profiles exist
-- [x] Preview mode exists
-- [x] Final mode exists
-- [x] Web mode exists
-- [x] Square mode exists
-- [x] Music/SFX directory scan works
-- [x] Media intelligence report shows music/SFX counts
-- [x] Safe-zone report works
-- [x] Final preview script exists
+- [x] `tools/media/audio-engine.js`
+- [x] `tools/media/audio-report.js`
+- [x] `tools/media/audio-manifest.json`
+- [x] `scripts/audio-report.sh`
+- [x] Audio file scan
+- [x] Story-mode mood mapping
+- [x] SFX tag mapping
+- [x] Graceful fallback when no audio assets exist
+- [x] `audioPlan` generation
+- [x] FFmpeg music mix
+- [x] FFmpeg SFX mix
+- [x] `audioMix.mode = full_mix` confirmed
 
 Next:
 
-- [ ] Use quality profile for actual output size/FPS/encoding
-- [ ] Add final render command that forces 1080x1920
-- [ ] Add optional 16:9 web render
-- [ ] Add optional square render
-- [ ] Add real music files
-- [ ] Add real SFX files
-- [ ] Add audio normalization
-- [ ] Add music ducking
+- [ ] Replace generated test tones with proper royalty-free assets
+- [ ] Move test tones to `assets/test-audio/`
+- [ ] Add production asset manifest metadata
+- [ ] Add public-safe asset validation
+- [ ] Prefer production assets over test assets
 
 ---
 
-# Phase 7: Safe-Zone Layout Enforcement
+# Phase 7: Audio Review + Asset Validation
 
-Status: Next active technical fix
+Status: In progress
 
-Design rule:
+Working:
+
+- [x] Test audio can be detected
+- [x] Audio readiness can be reported
+- [x] Public-safe flag exists
+- [x] Publish flow can block public publishing if audio is unsafe
+
+Next:
+
+- [ ] Validate production manifest entries
+- [ ] Validate missing license fields
+- [ ] Validate assets not marked safe by accident
+- [ ] Show audio asset IDs in review report
+- [ ] Mark videos with test assets as not public-safe
+
+---
+
+# Phase 8: Production Audio Asset Pack
+
+Status: Next active build
+
+## Asset types
+
+Music:
 
 ```text
-One scene = one main joke.
-No scene should have ticker + footer + lower caption + CTA competing.
+background loop
+fake-news bed
+documentary bed
+corporate bed
+mystery bed
+emergency bed
+chaotic comedy bed
+```
+
+SFX:
+
+```text
+intro sting
+outro sting
+alert beep
+whoosh
+fail buzzer
+ding
+glitch
+gavel
+typing
+static
+loading hum
+applause
+record scratch
+```
+
+## Naming rules
+
+Music:
+
+```text
+assets/music/<mood>-<description>-<number>.<ext>
+```
+
+Examples:
+
+```text
+assets/music/fake-news-bed-01.mp3
+assets/music/documentary-bed-01.mp3
+assets/music/chaotic-comedy-bed-01.mp3
+```
+
+SFX:
+
+```text
+assets/sfx/<tag>-<description>-<number>.<ext>
+```
+
+Examples:
+
+```text
+assets/sfx/alert-beep-01.wav
+assets/sfx/whoosh-fast-01.wav
+assets/sfx/gavel-hit-01.wav
+```
+
+Test assets:
+
+```text
+assets/test-audio/default-test-bed.wav
+assets/test-audio/intro-ding-test.wav
+assets/test-audio/fail-beep-test.wav
+```
+
+## Manifest item shape
+
+```json
+{
+  "id": "music_fake_news_bed_01",
+  "kind": "music",
+  "file": "assets/music/fake-news-bed-01.mp3",
+  "mood": "fake-news",
+  "tags": ["fake-news", "background", "loop"],
+  "license": "royalty-free",
+  "source": "manual",
+  "safeForPublic": true,
+  "notes": "Owned or royalty-free asset."
+}
+```
+
+## Validation rules
+
+Production asset is public-safe only if:
+
+```text
+safeForPublic = true
+license is not empty
+source is not empty
+file exists
+file is not test audio
+file is inside assets/music or assets/sfx
 ```
 
 Tasks:
 
-- [ ] Add layout helper functions inside `generate-v3.js`
-- [ ] Add `safeY()` helper
-- [ ] Add `safeX()` helper
-- [ ] Add safe headline zone
-- [ ] Add safe punchline zone
-- [ ] Add safe CTA zone
-- [ ] Disable ticker if `TICKER_ENABLED=false`
-- [ ] Disable footer if `FOOTER_ENABLED=false`
-- [ ] Disable lowerLine2/lowerLine3 if `TEXT_DENSITY=low`
-- [ ] Keep evidence clip app footage clear
-- [ ] Keep CTA above YouTube bottom UI
-- [ ] Test with 720x1280 preview
-- [ ] Test with 1080x1920 final preview
-- [ ] Upload one private safe-mode final test
-
-Safe placements for 720x1280:
-
-```text
-Headline y: 147
-App frame y: 260
-Punchline y: 813
-CTA y: 933
-Max bottom text y: 967
-```
-
-Safe placements for 1080x1920:
-
-```text
-Headline y: 220
-App frame y: 390
-Punchline y: 1220
-CTA y: 1400
-Max bottom text y: 1450
-```
+- [ ] Create `tools/media/audio-assets.js`
+- [ ] Create manifest refresh command
+- [ ] Create register music command
+- [ ] Create register SFX command
+- [ ] Update audio engine to read manifest metadata
+- [ ] Update audio validation to check manifest public safety
+- [ ] Update audio report to show production readiness
+- [ ] Move or ignore test assets separately
+- [ ] Add license docs
+- [ ] Add example manifest entries
 
 ---
 
-# Phase 8: Audio and Music Foundation
+# Phase 9: Review + Publish Approval
 
-Status: Folder foundation complete
-
-Folders:
-
-```text
-assets/music/
-assets/sfx/
-```
-
-Working:
-
-- [x] `assets/music/README.md`
-- [x] `assets/sfx/README.md`
+Status: In progress
 
 Next:
 
-- [ ] Add real background music
-- [ ] Add real SFX
-- [ ] Add music manifest
-- [ ] Add SFX manifest
-- [ ] Add music rotation
-- [ ] Add SFX by scene type
-- [ ] Add music ducking
-- [ ] Add audio normalization
-- [ ] Add final loudness target
-
-Suggested env defaults:
-
-```text
-USE_SYNTH_MUSIC=true
-MUSIC_VOLUME=0.035
-CHAOS_SFX_VOLUME=0.09
-NARRATION_VOLUME=1.25
-```
+- [ ] Show audio asset IDs in review report
+- [ ] Show license/public-safety status
+- [ ] Reject public publish if production asset validation fails
+- [ ] Mark bad audio as `needs_rerender`
+- [ ] Publish unlisted first
 
 ---
 
-# Phase 9: SEO / GEO / Algorithm Packaging Engine
+# Phase 10: YouTube Analytics + Learning Engine
 
-Status: Created, partially integrated
-
-Working:
-
-- [x] YouTube metadata package exists
-- [x] TikTok caption package exists
-- [x] Instagram/Facebook Reels caption package exists
-- [x] Rumble package exists
-- [x] X/Twitter post exists
-- [x] AI-readable summary exists
-- [x] Pinned comment exists
+Status: In progress
 
 Next:
 
-- [ ] Confirm metadata package is used in real YouTube upload
-- [ ] Store metadata package in `processed-v3.json`
-- [ ] Add metadata ledger
-- [ ] Add title repetition detection
-- [ ] Add hashtag rotation
-- [ ] Add platform metadata export files
-
----
-
-# Phase 10: Analytics and Learning Engine
-
-Status: Placeholder created
-
-Working:
-
-- [x] Performance DB exists
-- [x] Learning report reads uploaded videos
-- [x] Scoring function exists
-- [x] Media intelligence report shows uploaded count
-
-Next:
-
-- [ ] Add YouTube Analytics API pull
-- [ ] Import YouTube video stats
-- [ ] Store stats by video ID
-- [ ] Score videos
-- [ ] Recommend best app types
-- [ ] Recommend best story modes
-- [ ] Recommend best title patterns
-- [ ] Feed recommendations into autopilot
+- [ ] Track audio mood performance
+- [ ] Track SFX tag performance
+- [ ] Learn which music/SFX styles perform best
+- [ ] Recommend audio mood by story mode
 
 ---
 
@@ -402,124 +414,87 @@ Next:
 
 Status: Planned
 
-Do not upload the exact same video twice to the same platform as mobile/web.
-
-Instead generate proper platform variants:
+Variants:
 
 ```text
 9:16 vertical short
-16:9 horizontal web/standard video
+16:9 horizontal web video
 1:1 square social feed
 thumbnail frame
 preview GIF
 ```
 
-Tasks:
+Next:
 
-- [ ] Add `RENDER_TARGET=shorts/web/square/all`
-- [ ] Add `platform-renders/`
 - [ ] Store render variants in ledger
 - [ ] Upload correct variant to each platform
+- [ ] Keep audio mix consistent across variants
 - [ ] Avoid duplicate same-platform uploads unless meaningfully different
-
----
-
-# Phase 12: Publish Approval System
-
-Status: Required before public publishing
-
-Files to add:
-
-```text
-tools/publish/list-private.js
-tools/publish/approve.js
-tools/publish/publish-youtube.js
-```
-
-Workflow:
-
-```text
-autopilot uploads private
-→ review quality/story/metadata
-→ approve
-→ publish script changes privacy to public/unlisted
-→ ledger records publishedAt
-```
-
-Tasks:
-
-- [ ] List private uploaded videos
-- [ ] Show metadata
-- [ ] Show local file
-- [ ] Show YouTube URL
-- [ ] Mark approved
-- [ ] Publish to public
-- [ ] Mark rejected
-- [ ] Mark needs re-render
-- [ ] Keep audit log
 
 ---
 
 # Immediate Next Build Tasks
 
-1. Upload current preview-only item privately.
-2. Add helper script for uploading preview-only queue item.
-3. Patch safe-mode layout flags in `generate-v3.js`.
-4. Add low-density text rules.
-5. Disable ticker/footer in scene generation when env says false.
-6. Add latest-video opener script.
-7. Run fast safe preview.
-8. Run final safe preview.
-9. Upload one final safe private test.
-10. Update report and commit.
+1. Create `tools/media/audio-assets.js`.
+2. Create `scripts/audio-assets-refresh.sh`.
+3. Create `scripts/register-music.sh`.
+4. Create `scripts/register-sfx.sh`.
+5. Add `assets/test-audio/README.md`.
+6. Add/expand `assets/music/LICENSES.md`.
+7. Add/expand `assets/sfx/LICENSES.md`.
+8. Update `audio-engine.js` to include manifest metadata.
+9. Update `audio-report.js` to show public-safe status.
+10. Update `audio-validate.js` to use manifest public-safety.
+11. Run audio asset refresh.
+12. Run audio report and validation.
+13. Commit production audio asset support.
 
 ---
 
 # Current Command Set
 
-Upload preview-only item privately:
+Refresh audio asset manifest:
 
 ```bash
-AUTO_DRY_RUN=false ./scripts/autopilot-upload-once-private.sh
+./scripts/audio-assets-refresh.sh
 ```
 
-Autopilot report:
+Register music:
 
 ```bash
-./scripts/autopilot-report.sh
+./scripts/register-music.sh assets/music/fake-news-bed-01.mp3 fake-news "royalty-free" "manual" true
 ```
 
-Media intelligence report:
+Register SFX:
 
 ```bash
-./scripts/media-intelligence-report.sh
+./scripts/register-sfx.sh assets/sfx/alert-beep-01.wav alert "royalty-free" "manual" true
 ```
 
-Safe-zone report:
+Audio report:
 
 ```bash
-./scripts/safe-zone-report.sh
+./scripts/audio-report.sh
 ```
 
-Fast safe preview:
+Audio validation:
 
 ```bash
-USE_STORY_ENGINE=true USE_METADATA_ENGINE=true USE_QUALITY_ENGINE=true SAFE_MODE=true TEXT_DENSITY=low TICKER_ENABLED=false FOOTER_ENABLED=false ./scripts/autopilot-preview-once.sh
+./scripts/audio-validate.sh
 ```
 
-Final safe preview:
+Preview full mix:
 
 ```bash
-./scripts/final-preview-once.sh
+USE_AUDIO_ENGINE=true USE_BACKGROUND_MUSIC=true USE_SFX=true AUTO_DRY_RUN=true ./scripts/autopilot-preview-once.sh
 ```
 
 ---
 
 # Current Priority
 
-1. Upload preview-only item privately.
-2. Enforce safe-mode layout in generator.
-3. Verify readable 720x1280 preview.
-4. Verify readable 1080x1920 final preview.
-5. Upload one private final-quality test.
-6. Then start YouTube analytics pull.
+1. Add production audio asset manifest tooling.
+2. Keep test audio separate and public-blocked.
+3. Prepare real royalty-free music/SFX import.
+4. Make audio reports show public safety.
+5. Use production-safe audio before public publishing.

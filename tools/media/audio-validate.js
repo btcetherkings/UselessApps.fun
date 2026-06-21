@@ -6,6 +6,7 @@ const path = require('path');
 const ROOT_DIR = path.join(__dirname, '..', '..');
 const PROCESSED_FILE = path.join(ROOT_DIR, 'tools', 'video-generator', 'processed-v3.json');
 const REVIEW_FILE = path.join(ROOT_DIR, 'tools', 'publish', 'review-db.json');
+const { loadManifest } = require('./audio-assets');
 
 function readJson(file, fallback) {
   try {
@@ -35,6 +36,20 @@ function isTestAudio(file) {
     'fail-beep-test'
   ].some(token => name.includes(token));
 }
+
+
+function manifestAssetByFile(file) {
+  const manifest = loadManifest();
+  const normalised = String(file || '').replace(/^\.?\//, '');
+  return (manifest.assets || []).find(item => item.file === normalised) || null;
+}
+
+function isManifestPublicSafe(file) {
+  const asset = manifestAssetByFile(file);
+  if (!asset) return false;
+  return Boolean(asset.safeForPublic && asset.license && asset.source && !isTestAudio(asset.file));
+}
+
 
 function validateAudioRecord(record) {
   const warnings = [];
@@ -68,11 +83,19 @@ function validateAudioRecord(record) {
     warnings.push('test_audio_used');
   }
 
+  if (musicUsed && !isManifestPublicSafe(musicUsed)) {
+    warnings.push('music_not_public_safe');
+  }
+
   for (const sfx of sfxUsed || []) {
     const file = typeof sfx === 'string' ? sfx : sfx.file;
     if (isTestAudio(file)) {
       warnings.push('test_audio_used');
       break;
+    }
+
+    if (file && !isManifestPublicSafe(file)) {
+      warnings.push('sfx_not_public_safe');
     }
   }
 
@@ -106,7 +129,9 @@ function validateAudioRecord(record) {
   const publicSafe = ![
     'test_audio_used',
     'audio_missing',
-    'audio_plan_exists_but_no_mix'
+    'audio_plan_exists_but_no_mix',
+    'music_not_public_safe',
+    'sfx_not_public_safe'
   ].some(w => uniqueWarnings.includes(w));
 
   return {

@@ -9,21 +9,35 @@ const plan = createAudioPlan({
   }
 });
 
+function printAsset(item) {
+  console.log(`- ${item.relativePath || item.file}`);
+  console.log(`  id: ${item.id || 'missing'}`);
+  console.log(`  mood: ${item.mood || 'unknown'}`);
+  console.log(`  tags: ${(item.tags || []).join(',') || 'none'}`);
+  console.log(`  license: ${item.license || 'missing'}`);
+  console.log(`  source: ${item.source || 'missing'}`);
+  console.log(`  safeForPublic: ${item.safeForPublic === true}`);
+}
+
 console.log('');
 console.log('UselessApps.fun Audio Report');
 console.log('============================');
 console.log('');
 
+console.log(`Manifest version: ${manifest.version}`);
+console.log(`Generated: ${manifest.generatedAt}`);
+console.log('');
+
 console.log(`Music files: ${manifest.music.length}`);
 for (const item of manifest.music) {
-  console.log(`- ${item.relativePath} | mood=${item.mood} | tags=${item.tags.join(',')}`);
+  printAsset(item);
 }
 
 console.log('');
 
 console.log(`SFX files: ${manifest.sfx.length}`);
 for (const item of manifest.sfx) {
-  console.log(`- ${item.relativePath} | mood=${item.mood} | tags=${item.tags.join(',')}`);
+  printAsset(item);
 }
 
 console.log('');

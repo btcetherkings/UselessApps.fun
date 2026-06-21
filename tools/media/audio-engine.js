@@ -7,6 +7,7 @@ const ROOT_DIR = path.join(__dirname, '..', '..');
 const MUSIC_DIR = path.join(ROOT_DIR, 'assets', 'music');
 const SFX_DIR = path.join(ROOT_DIR, 'assets', 'sfx');
 const MANIFEST_FILE = path.join(ROOT_DIR, 'tools', 'media', 'audio-manifest.json');
+const { refreshManifest, loadManifest } = require('./audio-assets');
 
 const AUDIO_EXTENSIONS = /\.(mp3|wav|m4a|aac|ogg)$/i;
 
@@ -105,17 +106,29 @@ function inferMoodFromFilename(name) {
 }
 
 function buildManifest() {
-  const manifest = {
-    version: 1,
-    generatedAt: new Date().toISOString(),
-    music: listAudioFiles(MUSIC_DIR),
-    sfx: listAudioFiles(SFX_DIR)
+  const manifest = refreshManifest();
+
+  const music = (manifest.assets || [])
+    .filter(item => item.kind === 'music')
+    .map(item => ({
+      ...item,
+      path: path.join(ROOT_DIR, item.file),
+      relativePath: item.file
+    }));
+
+  const sfx = (manifest.assets || [])
+    .filter(item => item.kind === 'sfx')
+    .map(item => ({
+      ...item,
+      path: path.join(ROOT_DIR, item.file),
+      relativePath: item.file
+    }));
+
+  return {
+    ...manifest,
+    music,
+    sfx
   };
-
-  fs.mkdirSync(path.dirname(MANIFEST_FILE), { recursive: true });
-  fs.writeFileSync(MANIFEST_FILE, JSON.stringify(manifest, null, 2) + '\n');
-
-  return manifest;
 }
 
 function pick(items) {
@@ -124,9 +137,16 @@ function pick(items) {
 }
 
 function chooseMusic(manifest, mood) {
-  const music = manifest.music || [];
+  let music = manifest.music || [];
 
   if (!music.length) return null;
+
+  const preferPublicSafe = String(process.env.AUDIO_REQUIRE_PUBLIC_SAFE || 'false').toLowerCase() === 'true';
+
+  if (preferPublicSafe) {
+    const safe = music.filter(item => item.safeForPublic === true);
+    if (safe.length) music = safe;
+  }
 
   const exact = music.filter(item => item.mood === mood);
   if (exact.length) return pick(exact);
@@ -138,9 +158,16 @@ function chooseMusic(manifest, mood) {
 }
 
 function chooseSfx(manifest, desiredTags) {
-  const sfx = manifest.sfx || [];
+  let sfx = manifest.sfx || [];
 
   if (!sfx.length) return [];
+
+  const preferPublicSafe = String(process.env.AUDIO_REQUIRE_PUBLIC_SAFE || 'false').toLowerCase() === 'true';
+
+  if (preferPublicSafe) {
+    const safe = sfx.filter(item => item.safeForPublic === true);
+    if (safe.length) sfx = safe;
+  }
 
   const chosen = [];
 
