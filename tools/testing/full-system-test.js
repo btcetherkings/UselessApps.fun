@@ -148,39 +148,50 @@ function testDashboardReport() {
 }
 
 function testDashboardServerStatic() {
-  const serverFile = path.join(ROOT_DIR, 'tools/dashboard/web-dashboard.js');
-  if (!fs.existsSync(serverFile)) {
+  const file = path.join(ROOT_DIR, 'tools', 'dashboard', 'web-dashboard.js');
+
+  if (!fs.existsSync(file)) {
     add('FAIL', 'web dashboard server missing');
     return;
   }
 
-  const text = fs.readFileSync(serverFile, 'utf8');
-  if (text.includes('/api/report')) add('PASS', 'web dashboard has /api/report');
-  else add('FAIL', 'web dashboard missing /api/report');
+  const text = fs.readFileSync(file, 'utf8');
 
-  if (text.includes('/api/actions')) add('PASS', 'web dashboard has /api/actions');
-  else add('WARN', 'web dashboard missing /api/actions');
+  const requiredEndpoints = [
+    '/api/health',
+    '/api/report',
+    '/api/report-md',
+    '/api/actions',
+    '/api/review-cards',
+    '/api/export-pack',
+    '/api/calendar-item',
+    '/api/connections',
+    '/api/channels',
+    '/api/business',
+    '/api/archive-video'
+  ];
 
-  if (text.includes('/api/review-cards')) add('PASS', 'web dashboard has /api/review-cards');
-  else add('FAIL', 'web dashboard missing /api/review-cards');
+  for (const endpoint of requiredEndpoints) {
+    if (text.includes(endpoint)) {
+      add('PASS', `web dashboard has ${endpoint}`);
+    } else {
+      add('FAIL', `web dashboard missing ${endpoint}`);
+    }
+  }
 
-  if (text.includes('/api/export-pack')) add('PASS', 'web dashboard has /api/export-pack');
-  else add('FAIL', 'web dashboard missing /api/export-pack');
+  const requiredStaticFiles = [
+    'dashboard.html',
+    'dashboard.css',
+    'dashboard.js'
+  ];
 
-  if (text.includes('/api/calendar-item')) add('PASS', 'web dashboard has /api/calendar-item');
-
-  if (text.includes('/api/archive-video')) add('PASS', 'web dashboard has /api/archive-video');
-  else add('FAIL', 'web dashboard missing /api/archive-video');
-
-  if (text.includes('/api/business')) add('PASS', 'web dashboard has /api/business');
-  else add('FAIL', 'web dashboard missing /api/business');
-
-  if (text.includes('/api/channels')) add('PASS', 'web dashboard has /api/channels');
-  else add('FAIL', 'web dashboard missing /api/channels');
-
-  if (text.includes('/api/connections')) add('PASS', 'web dashboard has /api/connections');
-  else add('FAIL', 'web dashboard missing /api/connections');
-  else add('FAIL', 'web dashboard missing /api/calendar-item');
+  for (const staticFile of requiredStaticFiles) {
+    if (text.includes(staticFile)) {
+      add('PASS', `web dashboard serves ${staticFile}`);
+    } else {
+      add('WARN', `web dashboard may not serve ${staticFile}`);
+    }
+  }
 }
 
 function main() {

@@ -58,6 +58,7 @@ const TEXT_DENSITY = String(process.env.TEXT_DENSITY || 'low').toLowerCase();
 const TICKER_ENABLED = String(process.env.TICKER_ENABLED || 'false').toLowerCase() === 'true';
 const FOOTER_ENABLED = String(process.env.FOOTER_ENABLED || 'false').toLowerCase() === 'true';
 const USE_AUDIO_ENGINE = String(process.env.USE_AUDIO_ENGINE || 'true').toLowerCase() !== 'false';
+const AUDIO_REQUIRE_PUBLIC_SAFE = String(process.env.AUDIO_REQUIRE_PUBLIC_SAFE || 'false').toLowerCase() === 'true';
 const VERBOSE = String(process.env.VERBOSE || '').toLowerCase() === 'true';
 const KEEP_TMP = String(process.env.KEEP_TMP || '').toLowerCase() === 'true';
 
@@ -2008,6 +2009,11 @@ async function processOneApp(app) {
       result.reason = 'missing_youtube_secrets';
       return result;
     }
+
+
+  if (AUDIO_REQUIRE_PUBLIC_SAFE && audioValidation && audioValidation.publicSafe === false) {
+    throw new Error(`AUDIO_REQUIRE_PUBLIC_SAFE=true blocked upload because audio is not public safe: ${(audioValidation.blockers || audioValidation.warnings || []).join(', ') || 'unknown reason'}`);
+  }
 
     const upload = await uploadToYouTube({
       videoPath: finalVideo,
