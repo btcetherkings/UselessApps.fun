@@ -511,3 +511,72 @@ if (document.readyState === 'loading') {
 } else {
   loadManagementSuite();
 }
+
+function isBannedStoryModeForDisplay(value) {
+  const text = JSON.stringify(value || {}).toLowerCase();
+  return [
+    'fake_government_warning',
+    'fake_police_chase',
+    'fake_conspiracy_investigation',
+    'government',
+    'police',
+    'politics',
+    'election',
+    'real emergency',
+    'public authority'
+  ].some(term => text.includes(term));
+}
+
+function renderSafeOperatorCentre() {
+  const possibleTargets = [
+    'currentApp',
+    'current-app',
+    'heroApp',
+    'hero-app',
+    'previewStage',
+    'preview-stage',
+    'contentLabPreview',
+    'appPreview'
+  ];
+
+  let target = null;
+
+  for (const id of possibleTargets) {
+    const elx = document.getElementById(id);
+    if (elx) {
+      target = elx;
+      break;
+    }
+  }
+
+  if (!target) return;
+
+  const text = target.innerText || target.textContent || '';
+
+  if (!isBannedStoryModeForDisplay(text)) return;
+
+  target.innerHTML = `
+    <div class="safe-operator-centre">
+      <div class="label">SAFE OPERATOR ACTION CENTRE</div>
+      <h3>Blocked unsafe/generated hero item</h3>
+      <p class="muted">The previous centre item used a banned story mode and has been removed from active display.</p>
+
+      <div class="command-grid">
+        <div class="copy-command">./scripts/health-check.sh</div>
+        <div class="copy-command">USE_LEARNING_ENGINE=true SAFE_CONTENT_ONLY=true AUTO_DRY_RUN=true AUTO_MAX_PER_RUN=1 ./scripts/autopilot-preview-once.sh</div>
+        <div class="copy-command">USE_LEARNING_ENGINE=true SAFE_CONTENT_ONLY=true AUDIO_REQUIRE_PUBLIC_SAFE=true AUTO_DRY_RUN=false AUTO_MAX_PER_RUN=1 ./scripts/autopilot-upload-once-private.sh</div>
+        <div class="copy-command">./scripts/review-cards.sh</div>
+        <div class="copy-command">./scripts/safety-cleanup.sh</div>
+        <div class="copy-command">./scripts/clean-start.sh</div>
+      </div>
+
+      <p class="danger">YouTube delete remains terminal-only with typed confirmation.</p>
+    </div>
+  `;
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', renderSafeOperatorCentre);
+} else {
+  renderSafeOperatorCentre();
+}

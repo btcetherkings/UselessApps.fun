@@ -520,3 +520,21 @@ body.theme-colourful {
   --accent: #00f5d4;
   --accent-2: #ff4ecd;
 }
+
+.safe-operator-centre {
+  border: 1px solid var(--stroke);
+  border-radius: 16px;
+  padding: 18px;
+  background: var(--panel-2);
+}
+
+.command-grid {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.danger {
+  color: #ff6b6b;
+  font-weight: 700;
+}

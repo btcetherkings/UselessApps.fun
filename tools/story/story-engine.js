@@ -15,14 +15,14 @@ const STORY_MODES = [
   'fake_documentary',
   'fake_courtroom_trial',
   'fake_investor_pitch',
-  'fake_government_warning',
+  'fake_office_memo',
   'fake_nature_documentary',
   'fake_product_launch_disaster',
-  'fake_police_chase',
+  'fake_bug_investigation',
   'fake_scientific_experiment',
   'fake_therapy_session',
   'fake_corporate_audit',
-  'fake_conspiracy_investigation'
+  'fake_customer_support_ticket'
 ];
 
 const HOOKS = [
