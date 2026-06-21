@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-21T16:09:33.977Z",
+  "generatedAt": "2026-06-21T16:19:47.631Z",
   "business": {
     "currency": "GBP",
     "revenueTotal": 0,
@@ -217,12 +217,36 @@
     ]
   },
   "actionQueue": {
-    "total": 8,
+    "total": 9,
     "counts": {
-      "pending": 7,
+      "pending": 8,
       "completed": 1
     },
     "actions": [
+      {
+        "id": "act_1782058247991_a09d6b",
+        "type": "refresh_dashboard",
+        "status": "pending",
+        "createdAt": "2026-06-21T16:10:47.991Z",
+        "updatedAt": "2026-06-21T16:10:47.992Z",
+        "source": "dashboard",
+        "payload": {},
+        "safety": {
+          "level": "safe",
+          "requiresTerminal": false,
+          "publicPublishing": false
+        },
+        "terminalCommand": "./scripts/run-action.sh act_1782058247991_a09d6b",
+        "history": [
+          {
+            "at": "2026-06-21T16:10:47.992Z",
+            "status": "pending",
+            "note": "Action queued"
+          }
+        ],
+        "result": null,
+        "error": null
+      },
       {
         "id": "act_1782055352107_588480",
         "type": "pull_advanced_analytics",
@@ -441,6 +465,30 @@
       "+10 learning v2 exists",
       "+10 learning reason exists",
       "-10 many blocked videos"
+    ]
+  },
+  "safety": {
+    "total": 14,
+    "passed": 13,
+    "warned": 0,
+    "blocked": 1,
+    "blockedItems": [
+      {
+        "name": "The Government Calculator",
+        "file": "apps/auto-the-government-calculator.html",
+        "storyMode": "unknown",
+        "result": {
+          "status": "block",
+          "riskScore": 50,
+          "blocked": true,
+          "warnings": [],
+          "blockers": [
+            "blocked_term:government"
+          ],
+          "safeCategory": "harmless_absurd_useless_app",
+          "checkedAt": "2026-06-21T16:19:47.620Z"
+        }
+      }
     ]
   },
   "totals": {
@@ -1323,7 +1371,7 @@
       "status": "preview_only",
       "decision": "none",
       "appType": "object",
-      "storyMode": "fake_police_chase",
+      "storyMode": "fake_scientific_experiment",
       "audioMode": "full_mix",
       "audioReadiness": "not_validated",
       "publicSafe": false,
@@ -1337,32 +1385,32 @@
         "note": "No videos tracked yet. Run youtube-stats-pull first."
       },
       "learningScore": 0,
-      "generatedAt": "2026-06-21T13:21:01.036Z",
+      "generatedAt": "2026-06-21T16:19:43.236Z",
       "record": {
         "name": "Staring Pebble Supreme",
         "file": "apps/auto-staring-pebble-supreme.html",
         "appUrl": "https://btcetherkings.github.io/useless-apps-fun/apps/auto-staring-pebble-supreme.html",
-        "startedAt": "2026-06-21T13:20:45.947Z",
-        "generatedAt": "2026-06-21T13:21:01.036Z",
+        "startedAt": "2026-06-21T16:19:27.818Z",
+        "generatedAt": "2026-06-21T16:19:43.236Z",
         "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/staring-pebble-supreme-v3.mp4",
-        "finalDuration": 9.174,
+        "finalDuration": 9.131,
         "storyPackage": {
           "appName": "Staring Pebble Supreme",
           "appType": "object",
-          "storyMode": "fake_police_chase",
-          "hook": "This is what happens when productivity leaves the building.",
-          "escalation": "At first, it looked harmless. Then it became administratively confusing.",
-          "twist": "The results were inconclusive, mainly because there were no results.",
+          "storyMode": "fake_scientific_experiment",
+          "hook": "We tested the most pointless app on the internet.",
+          "escalation": "The investigation was paused while everyone questioned their career choices.",
+          "twist": "Then the app achieved absolutely nothing with suspicious confidence.",
           "cta": "Like and subscribe before the app becomes self-aware.",
-          "narration": "This is what happens when productivity leaves the building. Today we investigate Staring Pebble Supreme. A pet rock that stares at you and refuses to elaborate. At first, it looked harmless. Then it became administratively confusing. Official story mode: fake police chase. The results were inconclusive, mainly because there were no results. Like and subscribe before the app becomes self-aware.",
-          "storyHash": "5dd9e4cdc2f5"
+          "narration": "We tested the most pointless app on the internet. Today we investigate Staring Pebble Supreme. A pet rock that stares at you and refuses to elaborate. The investigation was paused while everyone questioned their career choices. Official story mode: fake scientific experiment. Then the app achieved absolutely nothing with suspicious confidence. Like and subscribe before the app becomes self-aware.",
+          "storyHash": "d5a0d849e39d"
         },
         "metadataPackage": {
           "appName": "Staring Pebble Supreme",
-          "aiSummary": "This video features Staring Pebble Supreme. A pet rock that stares at you and refuses to elaborate. It is part of UselessApps.fun, a comedy project about deliberately pointless web apps. The video format is fake police chase. The target audience is viewers interested in tech comedy, coding humour, absurd apps, and internet culture.",
+          "aiSummary": "This video features Staring Pebble Supreme. A pet rock that stares at you and refuses to elaborate. It is part of UselessApps.fun, a comedy project about deliberately pointless web apps. The video format is fake scientific experiment. The target audience is viewers interested in tech comedy, coding humour, absurd apps, and internet culture.",
           "youtube_shorts": {
-            "title": "Staring Pebble Supreme should not exist",
-            "description": "Staring Pebble Supreme A pet rock that stares at you and refuses to elaborate. Hook: This is what happens when productivity leaves the building. Story mode: fake police chase Uselessness score: 93% Fake category: Emotional Support Mineral Try it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-staring-pebble-supreme.html UselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology. Comment your most useless app idea and we might build it next. #UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps",
+            "title": "I built Staring Pebble Supreme and productivity collapsed",
+            "description": "Staring Pebble Supreme A pet rock that stares at you and refuses to elaborate. Hook: We tested the most pointless app on the internet. Story mode: fake scientific experiment Uselessness score: 93% Fake category: Emotional Support Mineral Try it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-staring-pebble-supreme.html UselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology. Comment your most useless app idea and we might build it next. #UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps",
             "tags": [
               "useless apps",
               "funny apps",
@@ -1383,7 +1431,7 @@
             ]
           },
           "tiktok": {
-            "caption": "Staring Pebble Supreme should not exist. #uselessapps #funnyapps #codingtok #pointless #techcomedy",
+            "caption": "I built Staring Pebble Supreme and productivity collapsed. #uselessapps #funnyapps #codingtok #pointless #techcomedy",
             "hashtags": [
               "#uselessapps",
               "#funnyapps",
@@ -1393,7 +1441,7 @@
             ]
           },
           "instagram_reels": {
-            "caption": "Staring Pebble Supreme should not exist #UselessApps #FunnyReels #CodingHumor #TechComedy",
+            "caption": "I built Staring Pebble Supreme and productivity collapsed #UselessApps #FunnyReels #CodingHumor #TechComedy",
             "hashtags": [
               "#UselessApps",
               "#FunnyReels",
@@ -1402,7 +1450,7 @@
             ]
           },
           "facebook_reels": {
-            "caption": "Staring Pebble Supreme should not exist #UselessApps #FunnyVideos #TechComedy",
+            "caption": "I built Staring Pebble Supreme and productivity collapsed #UselessApps #FunnyVideos #TechComedy",
             "hashtags": [
               "#UselessApps",
               "#FunnyVideos",
@@ -1410,8 +1458,8 @@
             ]
           },
           "rumble": {
-            "title": "Staring Pebble Supreme should not exist",
-            "description": "Staring Pebble Supreme A pet rock that stares at you and refuses to elaborate. Hook: This is what happens when productivity leaves the building. Story mode: fake police chase Uselessness score: 93% Fake category: Emotional Support Mineral Try it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-staring-pebble-supreme.html UselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology. Comment your most useless app idea and we might build it next. #UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps",
+            "title": "I built Staring Pebble Supreme and productivity collapsed",
+            "description": "Staring Pebble Supreme A pet rock that stares at you and refuses to elaborate. Hook: We tested the most pointless app on the internet. Story mode: fake scientific experiment Uselessness score: 93% Fake category: Emotional Support Mineral Try it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-staring-pebble-supreme.html UselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology. Comment your most useless app idea and we might build it next. #UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps",
             "tags": [
               "UselessApps",
               "FunnyApps",
@@ -1419,7 +1467,7 @@
             ]
           },
           "x": {
-            "post": "Staring Pebble Supreme should not exist https://btcetherkings.github.io/useless-apps-fun/apps/auto-staring-pebble-supreme.html #UselessApps #TechComedy"
+            "post": "I built Staring Pebble Supreme and productivity collapsed https://btcetherkings.github.io/useless-apps-fun/apps/auto-staring-pebble-supreme.html #UselessApps #TechComedy"
           }
         },
         "qualityPlan": {
@@ -1463,8 +1511,8 @@
         },
         "audioPlan": {
           "enabled": true,
-          "storyMode": "fake_police_chase",
-          "mood": "chaotic",
+          "storyMode": "fake_scientific_experiment",
+          "mood": "scientific",
           "music": {
             "file": "assets/music/default-test-bed.wav",
             "mood": "default",
@@ -1481,10 +1529,9 @@
               "volume": 0.09
             },
             {
-              "file": "assets/sfx/alert-beep-01.wav",
+              "file": "assets/sfx/ding-confirm-01.wav",
               "tags": [
-                "alert",
-                "beep"
+                "ding"
               ],
               "at": 3.2,
               "volume": 0.09
@@ -1509,7 +1556,7 @@
               "volume": 0.09
             },
             {
-              "file": "assets/sfx/alert-beep-01.wav",
+              "file": "assets/sfx/ding-confirm-01.wav",
               "at": 3.2,
               "delayMs": 3200,
               "volume": 0.09
@@ -1526,12 +1573,12 @@
           "avoidedTypes": [],
           "note": "No videos tracked yet. Run youtube-stats-pull first."
         },
-        "narration": "Today, we investigate a technological breakthrough in absolute nonsense. This is Staring Pebble Supreme, a cutting edge example of Emotional Support Mineral. A pet rock that stares at you and refuses to elaborate. Our model, UselessNet-v7.3 (peer-rejected), rated it 93 percent useless, grade A (Aggressively Pointless). Head of Applied Pointlessness Dr. Penelope Voidwater had this to say: This is a genuine step backward for humanity, technically speaking. The plot thickened. The app did not. Official classification: Academically indefensible. This product contains traces of nonsense. Today's fabricated statistic: 12 productivity experts fainted during testing. And there it was: peak uselessness, achieved live. Proudly solving a problem that does not exist. Would you use it? No? Perfect. Submit your own useless idea next. Emergency producers have confirmed that the following footage may contain trace amounts of productivity, but only by accident. The app is now being monitored by the Department of Bad Ideas under case number DBI-677340. Official app thought detected: \"I have seen the source code. I have notes.\" A panel of imaginary experts has advised viewers to remain seated, hydrated, and unimpressed.",
+        "narration": "Today, we investigate a technological breakthrough in absolute nonsense. This is Staring Pebble Supreme, a cutting edge example of Emotional Support Mineral. A pet rock that stares at you and refuses to elaborate. Our model, UselessNet-v7.3 (peer-rejected), rated it 93 percent useless, grade A (Aggressively Pointless). Lead Researcher, Centre for Wasted Clicks Chief Scientist B. Larry Mistake had this to say: This is a genuine step backward for humanity, technically speaking. Experts leaned in. They immediately regretted leaning in. Official classification: Academically indefensible. No useful features were harmed during development. Today's fabricated statistic: 96% of users immediately questioned their life choices. We pushed the button. The button pushed back, emotionally. Banned from productivity meetings. If this helped you, something has gone terribly wrong. Emergency producers have confirmed that the following footage may contain trace amounts of productivity, but only by accident. The app is now being monitored by the Department of Bad Ideas under case number DBI-441286. Official app thought detected: \"I have seen the source code. I have notes.\" A panel of imaginary experts has advised viewers to remain seated, hydrated, and unimpressed.",
         "narrationMeta": {
-          "duration": 98.712,
+          "duration": 100.896,
           "synthetic": false,
           "warning": null,
-          "chunks": 8
+          "chunks": 9
         },
         "uploaded": false,
         "dryRun": true
@@ -2537,7 +2584,7 @@
     "status": "preview_only",
     "decision": "none",
     "appType": "object",
-    "storyMode": "fake_police_chase",
+    "storyMode": "fake_scientific_experiment",
     "audioMode": "full_mix",
     "audioReadiness": "not_validated",
     "publicSafe": false,
@@ -2551,32 +2598,32 @@
       "note": "No videos tracked yet. Run youtube-stats-pull first."
     },
     "learningScore": 0,
-    "generatedAt": "2026-06-21T13:21:01.036Z",
+    "generatedAt": "2026-06-21T16:19:43.236Z",
     "record": {
       "name": "Staring Pebble Supreme",
       "file": "apps/auto-staring-pebble-supreme.html",
       "appUrl": "https://btcetherkings.github.io/useless-apps-fun/apps/auto-staring-pebble-supreme.html",
-      "startedAt": "2026-06-21T13:20:45.947Z",
-      "generatedAt": "2026-06-21T13:21:01.036Z",
+      "startedAt": "2026-06-21T16:19:27.818Z",
+      "generatedAt": "2026-06-21T16:19:43.236Z",
       "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/staring-pebble-supreme-v3.mp4",
-      "finalDuration": 9.174,
+      "finalDuration": 9.131,
       "storyPackage": {
         "appName": "Staring Pebble Supreme",
         "appType": "object",
-        "storyMode": "fake_police_chase",
-        "hook": "This is what happens when productivity leaves the building.",
-        "escalation": "At first, it looked harmless. Then it became administratively confusing.",
-        "twist": "The results were inconclusive, mainly because there were no results.",
+        "storyMode": "fake_scientific_experiment",
+        "hook": "We tested the most pointless app on the internet.",
+        "escalation": "The investigation was paused while everyone questioned their career choices.",
+        "twist": "Then the app achieved absolutely nothing with suspicious confidence.",
         "cta": "Like and subscribe before the app becomes self-aware.",
-        "narration": "This is what happens when productivity leaves the building. Today we investigate Staring Pebble Supreme. A pet rock that stares at you and refuses to elaborate. At first, it looked harmless. Then it became administratively confusing. Official story mode: fake police chase. The results were inconclusive, mainly because there were no results. Like and subscribe before the app becomes self-aware.",
-        "storyHash": "5dd9e4cdc2f5"
+        "narration": "We tested the most pointless app on the internet. Today we investigate Staring Pebble Supreme. A pet rock that stares at you and refuses to elaborate. The investigation was paused while everyone questioned their career choices. Official story mode: fake scientific experiment. Then the app achieved absolutely nothing with suspicious confidence. Like and subscribe before the app becomes self-aware.",
+        "storyHash": "d5a0d849e39d"
       },
       "metadataPackage": {
         "appName": "Staring Pebble Supreme",
-        "aiSummary": "This video features Staring Pebble Supreme. A pet rock that stares at you and refuses to elaborate. It is part of UselessApps.fun, a comedy project about deliberately pointless web apps. The video format is fake police chase. The target audience is viewers interested in tech comedy, coding humour, absurd apps, and internet culture.",
+        "aiSummary": "This video features Staring Pebble Supreme. A pet rock that stares at you and refuses to elaborate. It is part of UselessApps.fun, a comedy project about deliberately pointless web apps. The video format is fake scientific experiment. The target audience is viewers interested in tech comedy, coding humour, absurd apps, and internet culture.",
         "youtube_shorts": {
-          "title": "Staring Pebble Supreme should not exist",
-          "description": "Staring Pebble Supreme A pet rock that stares at you and refuses to elaborate. Hook: This is what happens when productivity leaves the building. Story mode: fake police chase Uselessness score: 93% Fake category: Emotional Support Mineral Try it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-staring-pebble-supreme.html UselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology. Comment your most useless app idea and we might build it next. #UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps",
+          "title": "I built Staring Pebble Supreme and productivity collapsed",
+          "description": "Staring Pebble Supreme A pet rock that stares at you and refuses to elaborate. Hook: We tested the most pointless app on the internet. Story mode: fake scientific experiment Uselessness score: 93% Fake category: Emotional Support Mineral Try it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-staring-pebble-supreme.html UselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology. Comment your most useless app idea and we might build it next. #UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps",
           "tags": [
             "useless apps",
             "funny apps",
@@ -2597,7 +2644,7 @@
           ]
         },
         "tiktok": {
-          "caption": "Staring Pebble Supreme should not exist. #uselessapps #funnyapps #codingtok #pointless #techcomedy",
+          "caption": "I built Staring Pebble Supreme and productivity collapsed. #uselessapps #funnyapps #codingtok #pointless #techcomedy",
           "hashtags": [
             "#uselessapps",
             "#funnyapps",
@@ -2607,7 +2654,7 @@
           ]
         },
         "instagram_reels": {
-          "caption": "Staring Pebble Supreme should not exist #UselessApps #FunnyReels #CodingHumor #TechComedy",
+          "caption": "I built Staring Pebble Supreme and productivity collapsed #UselessApps #FunnyReels #CodingHumor #TechComedy",
           "hashtags": [
             "#UselessApps",
             "#FunnyReels",
@@ -2616,7 +2663,7 @@
           ]
         },
         "facebook_reels": {
-          "caption": "Staring Pebble Supreme should not exist #UselessApps #FunnyVideos #TechComedy",
+          "caption": "I built Staring Pebble Supreme and productivity collapsed #UselessApps #FunnyVideos #TechComedy",
           "hashtags": [
             "#UselessApps",
             "#FunnyVideos",
@@ -2624,8 +2671,8 @@
           ]
         },
         "rumble": {
-          "title": "Staring Pebble Supreme should not exist",
-          "description": "Staring Pebble Supreme A pet rock that stares at you and refuses to elaborate. Hook: This is what happens when productivity leaves the building. Story mode: fake police chase Uselessness score: 93% Fake category: Emotional Support Mineral Try it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-staring-pebble-supreme.html UselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology. Comment your most useless app idea and we might build it next. #UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps",
+          "title": "I built Staring Pebble Supreme and productivity collapsed",
+          "description": "Staring Pebble Supreme A pet rock that stares at you and refuses to elaborate. Hook: We tested the most pointless app on the internet. Story mode: fake scientific experiment Uselessness score: 93% Fake category: Emotional Support Mineral Try it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-staring-pebble-supreme.html UselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology. Comment your most useless app idea and we might build it next. #UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps",
           "tags": [
             "UselessApps",
             "FunnyApps",
@@ -2633,7 +2680,7 @@
           ]
         },
         "x": {
-          "post": "Staring Pebble Supreme should not exist https://btcetherkings.github.io/useless-apps-fun/apps/auto-staring-pebble-supreme.html #UselessApps #TechComedy"
+          "post": "I built Staring Pebble Supreme and productivity collapsed https://btcetherkings.github.io/useless-apps-fun/apps/auto-staring-pebble-supreme.html #UselessApps #TechComedy"
         }
       },
       "qualityPlan": {
@@ -2677,8 +2724,8 @@
       },
       "audioPlan": {
         "enabled": true,
-        "storyMode": "fake_police_chase",
-        "mood": "chaotic",
+        "storyMode": "fake_scientific_experiment",
+        "mood": "scientific",
         "music": {
           "file": "assets/music/default-test-bed.wav",
           "mood": "default",
@@ -2695,10 +2742,9 @@
             "volume": 0.09
           },
           {
-            "file": "assets/sfx/alert-beep-01.wav",
+            "file": "assets/sfx/ding-confirm-01.wav",
             "tags": [
-              "alert",
-              "beep"
+              "ding"
             ],
             "at": 3.2,
             "volume": 0.09
@@ -2723,7 +2769,7 @@
             "volume": 0.09
           },
           {
-            "file": "assets/sfx/alert-beep-01.wav",
+            "file": "assets/sfx/ding-confirm-01.wav",
             "at": 3.2,
             "delayMs": 3200,
             "volume": 0.09
@@ -2740,12 +2786,12 @@
         "avoidedTypes": [],
         "note": "No videos tracked yet. Run youtube-stats-pull first."
       },
-      "narration": "Today, we investigate a technological breakthrough in absolute nonsense. This is Staring Pebble Supreme, a cutting edge example of Emotional Support Mineral. A pet rock that stares at you and refuses to elaborate. Our model, UselessNet-v7.3 (peer-rejected), rated it 93 percent useless, grade A (Aggressively Pointless). Head of Applied Pointlessness Dr. Penelope Voidwater had this to say: This is a genuine step backward for humanity, technically speaking. The plot thickened. The app did not. Official classification: Academically indefensible. This product contains traces of nonsense. Today's fabricated statistic: 12 productivity experts fainted during testing. And there it was: peak uselessness, achieved live. Proudly solving a problem that does not exist. Would you use it? No? Perfect. Submit your own useless idea next. Emergency producers have confirmed that the following footage may contain trace amounts of productivity, but only by accident. The app is now being monitored by the Department of Bad Ideas under case number DBI-677340. Official app thought detected: \"I have seen the source code. I have notes.\" A panel of imaginary experts has advised viewers to remain seated, hydrated, and unimpressed.",
+      "narration": "Today, we investigate a technological breakthrough in absolute nonsense. This is Staring Pebble Supreme, a cutting edge example of Emotional Support Mineral. A pet rock that stares at you and refuses to elaborate. Our model, UselessNet-v7.3 (peer-rejected), rated it 93 percent useless, grade A (Aggressively Pointless). Lead Researcher, Centre for Wasted Clicks Chief Scientist B. Larry Mistake had this to say: This is a genuine step backward for humanity, technically speaking. Experts leaned in. They immediately regretted leaning in. Official classification: Academically indefensible. No useful features were harmed during development. Today's fabricated statistic: 96% of users immediately questioned their life choices. We pushed the button. The button pushed back, emotionally. Banned from productivity meetings. If this helped you, something has gone terribly wrong. Emergency producers have confirmed that the following footage may contain trace amounts of productivity, but only by accident. The app is now being monitored by the Department of Bad Ideas under case number DBI-441286. Official app thought detected: \"I have seen the source code. I have notes.\" A panel of imaginary experts has advised viewers to remain seated, hydrated, and unimpressed.",
       "narrationMeta": {
-        "duration": 98.712,
+        "duration": 100.896,
         "synthetic": false,
         "warning": null,
-        "chunks": 8
+        "chunks": 9
       },
       "uploaded": false,
       "dryRun": true
@@ -2769,7 +2815,7 @@
   },
   "learning": {
     "exists": true,
-    "generatedAt": "2026-06-21T16:09:33.920Z",
+    "generatedAt": "2026-06-21T16:18:01.565Z",
     "confidence": {
       "level": "low",
       "withStats": 0

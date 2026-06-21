@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { checkContentSafety } = require('../safety/content-policy');
 
 const ROOT_DIR = path.join(__dirname, '..', '..');
 const REVIEW_FILE = path.join(ROOT_DIR, 'tools', 'publish', 'review-db.json');

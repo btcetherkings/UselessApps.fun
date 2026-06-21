@@ -71,6 +71,7 @@ function main() {
         console.log(`  ${blocker}`);
       }
     }
+
     console.log('');
   } else {
     console.log('No blocked items detected.');

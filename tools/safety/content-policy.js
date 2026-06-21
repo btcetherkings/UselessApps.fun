@@ -49,7 +49,11 @@ const SAFE_REPLACEMENT_STORY_MODES = [
   'fake_product_launch_disaster',
   'fake_scientific_experiment',
   'fake_therapy_session',
-  'fake_corporate_audit'
+  'fake_corporate_audit',
+  'fake_startup_demo_day',
+  'fake_office_memo',
+  'fake_software_bug_report',
+  'fake_customer_support_ticket'
 ];
 
 function normalise(value) {
@@ -76,7 +80,9 @@ function collectText(input) {
     input.cta,
     input.storyPackage?.storyMode,
     input.metadataPackage?.youtube_shorts?.title,
-    input.metadataPackage?.youtube_shorts?.description
+    input.metadataPackage?.youtube_shorts?.description,
+    input.metadataPackage?.youtube?.title,
+    input.metadataPackage?.youtube?.description
   ].filter(Boolean).join(' ');
 }
 

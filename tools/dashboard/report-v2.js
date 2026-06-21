@@ -21,6 +21,7 @@ const { getSocialSummary } = require('../social/social-summary');
 const { getConnectionSummary } = require('../connections/connection-summary');
 const { getJobSummary } = require('../jobs/job-summary');
 const { loadQueue } = require('../actions/action-lib');
+const { checkContentSafety } = require('../safety/content-policy');
 
 
 function readJson(file, fallback) {
@@ -168,6 +169,21 @@ function buildReport() {
   const data = buildRows();
   const { apps, rows, review, recs, advanced } = data;
 
+  const safetyRows = rows.map(row => ({
+    name: row.name,
+    file: row.file,
+    storyMode: row.storyMode,
+    result: checkContentSafety(row.record || row)
+  }));
+
+  const safetySummary = {
+    total: safetyRows.length,
+    passed: safetyRows.filter(x => x.result.status === 'pass').length,
+    warned: safetyRows.filter(x => x.result.status === 'warn').length,
+    blocked: safetyRows.filter(x => x.result.status === 'block').length,
+    blockedItems: safetyRows.filter(x => x.result.status === 'block').slice(0, 25)
+  };
+
   const health = calculateHealth({ rows, review, recs });
   const actions = buildActionCards(rows);
   const rerenderCandidates = buildRerenderCandidates(rows);
@@ -203,6 +219,7 @@ function buildReport() {
       actions: (actionQueue.actions || []).slice(-25).reverse()
     },
     health,
+    safety: safetySummary,
     totals: {
       apps: Array.isArray(apps) ? apps.length : 0,
       records: rows.length,
@@ -293,6 +310,15 @@ Generated: ${report.generatedAt}
 ## Health Score Notes
 
 ${asList(report.health.notes)}
+
+## Brand Safety
+
+- Checked: ${report.safety.total}
+- Passed: ${report.safety.passed}
+- Warnings: ${report.safety.warned}
+- Blocked: ${report.safety.blocked}
+
+${report.safety.blockedItems.length ? table(['Item', 'Story Mode', 'Blockers'], report.safety.blockedItems.map(x => [x.name || x.file, x.storyMode || '', x.result.blockers.join(', ')])) : 'No blocked items detected.'}
 
 ## Upload / Publish Funnel
 

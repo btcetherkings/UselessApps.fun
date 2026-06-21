@@ -1,531 +1,336 @@
 # UselessApps.fun Roadmap
 
-## Mission
+## Current Priority
 
-UselessApps.fun is a safe viral AI media factory for absurd, harmless, ridiculous useless-app entertainment.
+We need to finish the foundation quickly without drifting.
 
-The product is:
+The dashboard design is good enough for now. The next priority is wiring the backend properly and adding a full test system.
 
-```text
-funny useless apps
-fake tech/product drama
-absurd corporate nonsense
-fake startup/product launches
-fake documentaries about pointless apps
-safe platform-friendly viral shorts
-```
-
-The product is not:
+This build combines smaller roadmap items into one go:
 
 ```text
-politics
-government/police content
-adult/porn content
-hate/extremism
-weapons/violence
-drugs
-medical/legal/financial scam content
-real emergency/public authority-style deception
+Backend Safety Integration
+Publish Preflight Safety
+Dashboard Safety Wiring
+Action Queue Hardening
+Full System Test Runner
+Bug Finder / Self Check
 ```
 
 ---
 
-# Design Inspiration Reviewed
-
-Uploaded package:
-
-```text
-command_centre.zip
-├── code.html
-├── screen.png
-└── DESIGN.md
-```
-
-Useful ideas extracted:
-
-```text
-dark mission-control aesthetic
-left sidebar navigation
-top app bar with AI status
-glassmorphism panels
-Content Lab workspace
-prompt/config panel
-preview stage
-generation progress overlay
-previous generations strip
-operator buttons
-dense analytics/control-room layout
-```
-
-What we should take:
-
-```text
-serious command centre visual system
-left navigation
-control-room information hierarchy
-large preview/approval area
-pipeline/action/analytics sections
-clear status pips
-better typography/spacing
-```
-
-What we should not take directly:
-
-```text
-generic cinematic prompt generator
-stock image placeholders
-external image dependencies
-unsafe broad content categories
-anything that drifts from useless-app comedy
-```
-
----
-
-# Active Build: Command Centre UI v2 + Core Product Safety Baseline
+# Active Build: Foundation Lockdown + Full System Test Suite
 
 Status: Next build
 
 Goal:
 
-Turn the browser dashboard into a serious control centre while locking the product back onto safe useless-app entertainment.
+Make the system safer, testable, and wired end-to-end.
 
-This build combines:
-
-```text
-dashboard visual upgrade
-content lab layout
-safety policy baseline
-core product focus
-preview/approval panels
-pipeline sections
-```
+This build is about functionality, not dashboard design.
 
 ---
 
-# Dashboard Direction
+# Product Focus
 
-The dashboard should feel like:
-
-```text
-a social media command centre
-a content factory control room
-an approval desk
-an analytics operations console
-a business cockpit
-```
-
-Not like:
+UselessApps.fun must stay focused on:
 
 ```text
-a basic JSON report viewer
-a toy dashboard
-a random video generator
+safe absurd useless apps
+harmless viral comedy
+fake product/corporate/startup nonsense
+platform-friendly content
+private-first publishing
+approval-before-public workflow
 ```
 
----
-
-# Main Navigation
-
-Left sidebar sections:
-
-```text
-Command Center
-Content Lab
-Review Queue
-Analytics
-Learning Brain
-Channels
-API Management
-Automations
-Finance
-Safety
-Logs
-Settings
-```
-
-For now the sections can be same-page anchors/views.
-
-Later we can split into proper routes.
-
----
-
-# Core Dashboard Areas
-
-## 1. Command Center
-
-Purpose:
-
-```text
-overall health
-backend status
-action queue
-next recommended actions
-system warnings
-```
-
-## 2. Content Lab
-
-Purpose:
-
-```text
-latest generated useless app
-video preview area
-narration/story mode
-audio mode
-render status
-generate preview action queue
-private upload action queue
-previous generations
-```
-
-## 3. Review Queue
-
-Purpose:
-
-```text
-private uploads
-public-safe status
-approve/reject/rerender queue actions
-publish-preflight reminder
-```
-
-## 4. Analytics
-
-Purpose:
-
-```text
-YouTube stats
-advanced analytics
-retention/watch-time/subscriber data
-top videos
-weak videos
-data gaps
-```
-
-## 5. Learning Brain
-
-Purpose:
-
-```text
-recommendations v2
-preferred app types
-preferred story modes
-preferred audio moods
-latest learning reason
-why bot chose next idea
-```
-
-## 6. Channels
-
-Purpose:
-
-```text
-YouTube
-TikTok future
-Instagram future
-Facebook future
-X future
-Rumble future
-website
-connection status
-```
-
-## 7. Finance
-
-Purpose:
-
-```text
-revenue
-costs
-profit
-cost per video
-ROI per video
-platform ROI
-```
-
-## 8. Safety
-
-Purpose:
-
-```text
-brand safety status
-blocked content categories
-blocked story modes
-publish safety
-public-safe videos
-```
-
----
-
-# Safety Baseline
-
-Create a content safety engine before scaling.
-
-## Blocked story modes
-
-```text
-fake_government_warning
-fake_police_chase
-fake_conspiracy_investigation
-```
-
-## Blocked terms/categories
+It must avoid:
 
 ```text
 government
 police
 politics
-politician
-election
-campaign
-porn
-adult
-sexual
-nudity
-hate
-extremism
-terrorism
-weapon
-gun
-knife
-bomb
-drug
+porn/adult
+hate/extremism
+weapons
+drugs
 self-harm
-suicide
-medical advice
-legal advice
-financial advice
-real emergency
-public authority
-```
-
-## Safe story direction
-
-Allowed:
-
-```text
-fake corporate audit
-fake startup demo
-fake product launch disaster
-fake nature documentary about objects
-fake scientific experiment about harmless software
-fake therapy session for silly apps
-fake investor pitch for nonsense
-fake office memo
-fake bug report
-fake customer support ticket
+medical/legal/financial advice/scams
+real emergency or public authority impersonation
 ```
 
 ---
 
-# Files To Create / Update
+# Combined Build Scope
+
+## 1. Backend safety enforcement
+
+Add safety checks to:
+
+```text
+autopilot
+story selection
+video generator
+metadata/reporting
+publish preflight
+```
+
+Minimum for this build:
+
+```text
+safety engine exists
+unsafe content blocks generation
+unsafe content appears in reports
+publish preflight blocks unsafe videos
+dashboard shows safety count
+```
+
+## 2. Full system test runner
+
+Create:
+
+```text
+tools/testing/full-system-test.js
+scripts/full-test.sh
+```
+
+The test should check:
+
+```text
+required files exist
+JSON files parse correctly
+JS files pass node --check
+safety engine blocks banned content
+safety engine allows safe useless-app content
+action queue can queue/update safely
+dashboard report can generate
+browser dashboard files exist
+scripts are executable
+publish preflight module exists
+audio validation module exists
+learning output exists or warns
+```
+
+## 3. Dashboard wiring
+
+Do not redesign UI now.
+
+Just make sure it receives:
+
+```text
+safety
+actionQueue
+business
+social
+connections
+jobs
+advancedAnalytics
+learning
+```
+
+## 4. Safety report
+
+Command:
+
+```bash
+./scripts/safety-report.sh
+```
+
+## 5. Full test command
+
+Command:
+
+```bash
+./scripts/full-test.sh
+```
+
+Output should show:
+
+```text
+PASS / WARN / FAIL
+summary
+bug list
+next fixes
+```
+
+---
+
+# New / Updated Files
 
 ```text
 tools/safety/content-policy.js
 tools/safety/safety-report.js
 scripts/safety-report.sh
 
-tools/dashboard/dashboard.html
-tools/dashboard/dashboard.css
-tools/dashboard/dashboard.js
-tools/dashboard/report-v2.js
+tools/testing/full-system-test.js
+scripts/full-test.sh
 
-tools/story/story-engine.js
+tools/dashboard/report-v2.js
+tools/dashboard/dashboard.js
+tools/dashboard/web-dashboard.js
+
 tools/video-generator/generate-v3.js
 tools/autopilot/useless-autopilot.js
+tools/publish/preflight.js
 
 ROADMAP.md
-reports/daily-autopilot-report.md
-reports/daily-autopilot-report.json
 ```
 
 ---
 
-# Build A: Safety Engine
+# Full Test Categories
 
-Create:
+## Static checks
 
 ```text
-tools/safety/content-policy.js
+node --check key JS files
+JSON parse key data files
+required scripts executable
+required directories exist
 ```
 
-Exports:
+## Safety checks
 
 ```text
-checkContentSafety()
-filterSafeTemplates()
-isStoryModeAllowed()
-safeReplacementStoryMode()
+government content must block
+police content must block
+politics content must block
+porn/adult content must block
+safe useless calculator must pass
+fake corporate nonsense must pass
+blocked story modes must block
 ```
 
-Safety result:
-
-```json
-{
-  "status": "pass",
-  "riskScore": 0,
-  "blocked": false,
-  "warnings": [],
-  "blockers": [],
-  "safeCategory": "harmless_absurd_useless_app"
-}
-```
-
----
-
-# Build B: Dashboard UI v2
-
-Replace the current dashboard layout with a more serious control centre:
+## Queue checks
 
 ```text
-fixed left sidebar
-sticky top bar
-glass panels
-mission-control colours
-large preview stage
-content lab controls
-pipeline cards
-action queue table
-safety card
-business/finance card
-analytics card
-learning card
-channels card
+queue action created
+queue action has terminal command
+queue action can be updated
+queue snapshot restored after test
 ```
 
-Design system from uploaded file:
+## Dashboard checks
 
 ```text
-background: #0a1325
-panels: rgba(15, 23, 42, 0.6)
-primary: #2563eb
-tertiary: #38bdf8 / #7bd0ff
-text: #dae2fc
-muted: #94a3b8
-font: Inter style
-mono labels: JetBrains Mono style
+report-v2 generates JSON
+dashboard HTML/CSS/JS exist
+web-dashboard has /api/report
+web-dashboard has /api/actions
 ```
 
-No external dependencies needed for now.
-
----
-
-# Build C: Preview/Approval Area
-
-Dashboard should include:
+## Backend checks
 
 ```text
-latest video preview metadata
-local video path
-YouTube link
-app name
-story mode
-audio mode
-safety status
-learning reason
-queue approve/reject/rerender buttons
+generator file exists
+autopilot file exists
+processed-v3.json parseable
+review-db.json parseable
+recommendations-v2.json parseable if present
+advanced-warehouse.json parseable if present
 ```
 
-No one-click public publish yet.
-
----
-
-# Build D: Pipeline Overview
-
-Content pipeline should show:
+## Publish safety
 
 ```text
-apps total
-processed records
-preview only
-uploaded private
-approved
-unlisted
-public
-blocked
-rerender candidates
+preflight file exists
+public publishing remains protected
+unsafe content should not pass preflight once wired
 ```
 
 ---
 
-# Build E: Previous Generations Strip
+# Completion Definition
 
-Use current processed records to render:
+This build is done when:
 
 ```text
-latest 10 generated videos
-name
-status
-audio mode
-safety
-open link if YouTube URL exists
+./scripts/full-test.sh runs
+tests show pass/warn/fail summary
+safety-report runs
+dashboard report runs
+unsafe categories are blocked by policy
+dashboard receives safety/action/job/business data
+```
+
+Warnings are acceptable for missing optional APIs or analytics data.
+
+Fails are not acceptable for syntax, JSON parse, missing core files, or safety blocking.
+
+---
+
+# Immediate Build Commands
+
+1. Copy roadmap.
+2. Create safety engine if missing.
+3. Create safety report if missing.
+4. Create full system tester.
+5. Patch dashboard report safely.
+6. Patch publish preflight safety check.
+7. Run tests.
+8. Fix failures.
+9. Commit.
+
+---
+
+# Next Build After This
+
+## Nightly Scheduler + Safe Backend Worker
+
+After the foundation passes tests:
+
+```text
+nightly analytics
+nightly learning
+daily report refresh
+safe action worker
+systemd/cron setup
+```
+
+This will make the system start operating like a real media factory.
+
+---
+
+# Later Builds
+
+## Database migration
+
+```text
+SQLite for content/jobs/actions/analytics/finance/audit
+```
+
+## Multi-platform connectors
+
+```text
+TikTok
+Instagram
+Facebook
+X
+Rumble
+```
+
+## Finance engine v2
+
+```text
+real cost/revenue entries
+ROI per video/platform
+profit forecasts
+```
+
+## Dashboard approval panels
+
+```text
+preview cards
+approve/reject/rerender actions
+public publish typed confirmation
 ```
 
 ---
 
-# Immediate Next Build Tasks
+# Important Reminder
 
-1. Add safety engine.
-2. Add safety report command.
-3. Remove/disable risky story modes.
-4. Add safety check into generator/autopilot where safe.
-5. Replace dashboard HTML structure with control-centre layout.
-6. Replace dashboard CSS with command-centre style.
-7. Patch dashboard JS to render sections from existing report JSON.
-8. Add safety summary into report-v2 JSON.
-9. Run safety report.
-10. Run dashboard.
-11. Open browser dashboard.
-12. Commit.
+The dashboard can become powerful.
 
----
+The backend can become clever.
 
-# Command Set
-
-Safety report:
-
-```bash
-./scripts/safety-report.sh
-```
-
-Dashboard report:
-
-```bash
-./scripts/dashboard.sh
-```
-
-Browser dashboard:
-
-```bash
-./scripts/stop-dashboard.sh || true
-./scripts/dashboard-web.sh
-./scripts/open-dashboard.sh
-```
-
-Safe preview:
-
-```bash
-USE_LEARNING_ENGINE=true SAFE_CONTENT_ONLY=true AUTO_DRY_RUN=true AUTO_MAX_PER_RUN=1 ./scripts/autopilot-preview-once.sh
-```
-
-Safe private upload:
-
-```bash
-USE_LEARNING_ENGINE=true SAFE_CONTENT_ONLY=true AUDIO_REQUIRE_PUBLIC_SAFE=true AUTO_DRY_RUN=false AUTO_MAX_PER_RUN=1 ./scripts/autopilot-upload-once-private.sh
-```
-
----
-
-# Product Focus Reminder
-
-The dashboard must be powerful.
-
-The videos must remain ridiculous and harmless.
-
-The business must become serious.
-
-The content must stay safe.
-
-The backend must become stronger.
-
-The product must not drift.
+The content must remain safely stupid.

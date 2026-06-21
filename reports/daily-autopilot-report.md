@@ -1,6 +1,6 @@
 # UselessApps.fun Operator Report v2
 
-Generated: 2026-06-21T16:09:33.977Z
+Generated: 2026-06-21T16:19:47.631Z
 
 ## Executive Summary
 
@@ -24,6 +24,17 @@ Generated: 2026-06-21T16:09:33.977Z
 - +10 learning v2 exists
 - +10 learning reason exists
 - -10 many blocked videos
+
+## Brand Safety
+
+- Checked: 14
+- Passed: 13
+- Warnings: 0
+- Blocked: 1
+
+| Item                      | Story Mode | Blockers                |
+| ------------------------- | ---------- | ----------------------- |
+| The Government Calculator | unknown    | blocked_term:government |
 
 ## Upload / Publish Funnel
 
@@ -142,8 +153,8 @@ Generated: 2026-06-21T16:09:33.977Z
 
 ## Action Queue
 
-- Total: 8
-- Pending: 7
+- Total: 9
+- Pending: 8
 - Approved: 0
 - Running: 0
 - Completed: 1
@@ -152,6 +163,7 @@ Generated: 2026-06-21T16:09:33.977Z
 
 | ID                       | Type                    | Status    | Safety |
 | ------------------------ | ----------------------- | --------- | ------ |
+| act_1782058247991_a09d6b | refresh_dashboard       | pending   | safe   |
 | act_1782055352107_588480 | pull_advanced_analytics | pending   | safe   |
 | act_1782055342686_b561aa | sync_review             | pending   | safe   |
 | act_1782055303921_4df070 | refresh_dashboard       | completed | safe   |
@@ -183,7 +195,7 @@ Generated: 2026-06-21T16:09:33.977Z
 ## Learning v2
 
 - Exists: true
-- Generated: 2026-06-21T16:09:33.920Z
+- Generated: 2026-06-21T16:18:01.565Z
 - Confidence: low
 - Videos with meaningful stats: 0
 
@@ -234,7 +246,7 @@ Generated: 2026-06-21T16:09:33.977Z
 - App: Staring Pebble Supreme
 - File: apps/auto-staring-pebble-supreme.html
 - App type: object
-- Story mode: fake_police_chase
+- Story mode: fake_scientific_experiment
 - Audio mode: full_mix
 - Uploaded: false
 - Dry run: true
