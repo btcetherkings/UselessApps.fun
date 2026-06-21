@@ -14,6 +14,7 @@ const uselessBrain = require('./useless-brain');
 const { createStoryPackage } = require('../story/story-engine');
 const { createMetadataPackage } = require('../metadata/metadata-engine');
 const { createQualityPlan } = require('../media/quality-engine');
+const { createAudioPlan } = require('../media/audio-engine');
 
 /**
  * generate-v3.js
@@ -55,6 +56,7 @@ const SAFE_MODE = String(process.env.SAFE_MODE || 'true').toLowerCase() !== 'fal
 const TEXT_DENSITY = String(process.env.TEXT_DENSITY || 'low').toLowerCase();
 const TICKER_ENABLED = String(process.env.TICKER_ENABLED || 'false').toLowerCase() === 'true';
 const FOOTER_ENABLED = String(process.env.FOOTER_ENABLED || 'false').toLowerCase() === 'true';
+const USE_AUDIO_ENGINE = String(process.env.USE_AUDIO_ENGINE || 'true').toLowerCase() !== 'false';
 const VERBOSE = String(process.env.VERBOSE || '').toLowerCase() === 'true';
 const KEEP_TMP = String(process.env.KEEP_TMP || '').toLowerCase() === 'true';
 
@@ -1870,6 +1872,15 @@ async function processOneApp(app) {
         })
       : null;
 
+    const audioPlan = USE_AUDIO_ENGINE
+      ? createAudioPlan({
+          app,
+          storyPackage,
+          metadataPackage,
+          qualityPlan
+        })
+      : null;
+
     const narration = await generateNarration(app, slug, workDir);
 
     const finalVideo = stitchFinalVideo({
@@ -1898,6 +1909,7 @@ async function processOneApp(app) {
     storyPackage,
     metadataPackage,
     qualityPlan,
+      audioPlan,
       narration: narration.text,
       narrationMeta: {
         duration: narration.duration,
@@ -2001,6 +2013,7 @@ function printStartupInfo() {
   log(`TEXT_DENSITY: ${TEXT_DENSITY}`);
   log(`TICKER_ENABLED: ${TICKER_ENABLED}`);
   log(`FOOTER_ENABLED: ${FOOTER_ENABLED}`);
+  log(`USE_AUDIO_ENGINE: ${USE_AUDIO_ENGINE}`);
   log(`KEEP_TMP: ${KEEP_TMP}`);
   log(`CHAOS_MODE: ${CHAOS_MODE}`);
   log(`USE_SYNTH_MUSIC: ${USE_SYNTH_MUSIC}`);
