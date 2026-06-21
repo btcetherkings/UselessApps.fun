@@ -45,3 +45,22 @@ generated-videos/
 !data/.gitkeep
 !exports/.gitkeep
 !backups/.gitkeep
+
+# Generated app/runtime state
+apps/auto-*.html
+tools/video-generator/processed*.json
+tools/publish/review-db.json
+tools/autopilot/autopilot-state.json
+tools/autopilot/content-ledger.json
+
+# Analytics/runtime state
+tools/analytics/advanced-warehouse.json
+tools/analytics/performance-db.json
+tools/analytics/recommendations-v2.json
+tools/jobs/job-status.json
+
+# Local audio/generated assets
+assets/music/*.wav
+assets/sfx/*.wav
+assets/intro_audio.mp4
+assets/outro_audio.mp4
