@@ -1812,6 +1812,106 @@ function getAppKey(app) {
   return app.file || app.url;
 }
 
+
+function buildYouTubeUploadMetadata({ app, appUrl }) {
+  const title = String(
+    app.youtubeTitle ||
+    app.title ||
+    app.name ||
+    'Useless App'
+  ).slice(0, 95);
+
+  const description = [
+    app.name || 'Useless App',
+    '',
+    app.description || app.summary || 'A tiny useless app from UselessApps.fun.',
+    '',
+    app.uselessness ? `Uselessness score: ${app.uselessness}%` : null,
+    app.fakeCategory ? `Fake category: ${app.fakeCategory}` : null,
+    '',
+    appUrl ? `Try it here: ${appUrl}` : null,
+    '',
+    'UselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology.',
+    '',
+    'Comment your most useless app idea and we might build it next.',
+    '',
+    '#UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps #TechComedy'
+  ].filter(Boolean).join('\n');
+
+  return {
+    title,
+    description,
+    tags: [
+      'useless apps',
+      'funny apps',
+      'coding',
+      'webdev',
+      'tech comedy',
+      'pointless app'
+    ],
+    categoryId: '28'
+  };
+}
+
+async function uploadToYouTube({ videoPath, app, appUrl }) {
+  if (!fs.existsSync(videoPath)) {
+    throw new Error(`Video file not found for upload: ${videoPath}`);
+  }
+
+  const oauth2Client = new google.auth.OAuth2(
+    YOUTUBE_CLIENT_ID,
+    YOUTUBE_CLIENT_SECRET
+  );
+
+  oauth2Client.setCredentials({
+    refresh_token: YOUTUBE_REFRESH_TOKEN
+  });
+
+  const youtube = google.youtube({
+    version: 'v3',
+    auth: oauth2Client
+  });
+
+  const metadata = buildYouTubeUploadMetadata({ app, appUrl });
+  const privacyStatus = process.env.AUTO_VIDEO_PRIVACY || VIDEO_PRIVACY || 'private';
+
+  log(`Uploading to YouTube as ${privacyStatus}: ${metadata.title}`);
+
+  const response = await youtube.videos.insert({
+    part: ['snippet', 'status'],
+    requestBody: {
+      snippet: {
+        title: metadata.title,
+        description: metadata.description,
+        tags: metadata.tags,
+        categoryId: metadata.categoryId
+      },
+      status: {
+        privacyStatus,
+        selfDeclaredMadeForKids: false
+      }
+    },
+    media: {
+      body: fs.createReadStream(videoPath)
+    }
+  });
+
+  const videoId = response.data.id;
+
+  if (!videoId) {
+    throw new Error(`YouTube upload did not return a video ID: ${JSON.stringify(response.data)}`);
+  }
+
+  return {
+    videoId,
+    title: metadata.title,
+    description: metadata.description,
+    privacyStatus,
+    url: `https://youtu.be/${videoId}`
+  };
+}
+
+
 async function processOneApp(app) {
   const key = getAppKey(app);
   const slug = slugify(app.name || key);

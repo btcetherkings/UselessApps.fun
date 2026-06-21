@@ -12,7 +12,7 @@ It creates tiny useless apps, records them, turns them into ridiculous fake-TV v
 
 ## Current Working Milestone
 
-The automation engine, media intelligence layer, safe-zone foundation, private review workflow, FFmpeg audio mixing, and audio validation gate are now working or in progress.
+The automation engine, media intelligence layer, safe-zone foundation, private review workflow, FFmpeg audio mixing, audio validation gate, and production audio asset manifest are working or in progress.
 
 Confirmed:
 
@@ -43,51 +43,52 @@ Confirmed:
 - [x] `audioMix.mode = full_mix` confirmed
 - [x] Audio validation can flag test audio
 - [x] Publish safety can block public release when audio is not public-safe
+- [x] Production audio manifest tooling exists or is being integrated
 
 ---
 
 ## Current State
 
-The project can technically mix audio, but the current working audio files are generated test tones.
+The audio system can mix music and SFX, and validation can block test audio from public release.
 
 Current problem:
 
 ```text
-The audio system works, but we need a safe production asset pipeline:
-real royalty-free music/SFX, license notes, metadata, validation, and import commands.
+We still need real production-safe assets and a repeatable way to test that a video using them becomes public-safe.
 ```
 
 Next build:
 
 ```text
-real audio files
-→ production manifest
-→ validation
-→ safe public-ready audio mix
+production audio asset
+→ register metadata
+→ require public-safe audio
+→ generate private test
+→ validate public-safe audio
+→ review report shows ready_for_review
 ```
 
 ---
 
-# Active Build: Production Audio Asset Pack Support
+# Active Build: Production Audio Pack Import + Public-Safe Audio Test
 
 Status: Next build
 
 Goal:
 
-Create a controlled asset system for real background music and SFX.
+Add a production-safe audio test workflow and prepare the project to accept real royalty-free music/SFX assets.
 
 This build should:
 
-- define production audio asset naming rules
-- create production asset manifest structure
-- add manifest builder/updater
-- add license metadata fields
-- separate test audio from production audio
-- validate public-safe audio assets
-- make audio engine prefer public-safe production assets
-- keep test tones usable for development only
-- add scripts to register new music/SFX
-- update audio reports with license/public-safety info
+- create placeholder production asset folders and docs
+- create a production audio import checklist
+- add scripts to copy/import music and SFX safely
+- add a generated non-test placeholder option for private testing
+- force audio engine to prefer only public-safe assets
+- run a private preview using public-safe registered assets
+- validate audio as public-safe
+- show readiness in review reports
+- keep test tones blocked for public publishing
 
 Files to create/update:
 
@@ -96,22 +97,15 @@ tools/media/audio-assets.js
 tools/media/audio-engine.js
 tools/media/audio-report.js
 tools/media/audio-validate.js
-tools/media/audio-manifest.json
-assets/music/LICENSES.md
-assets/sfx/LICENSES.md
-assets/test-audio/README.md
 scripts/audio-assets-refresh.sh
 scripts/register-music.sh
 scripts/register-sfx.sh
+scripts/create-demo-production-audio.sh
+scripts/public-safe-audio-preview.sh
+assets/music/LICENSES.md
+assets/sfx/LICENSES.md
+assets/audio-import-checklist.md
 ROADMAP.md
-```
-
-Folders:
-
-```text
-assets/music/
-assets/sfx/
-assets/test-audio/
 ```
 
 ---
@@ -164,6 +158,7 @@ Next:
 - [ ] Confirm review DB status becomes `published_unlisted`
 - [ ] Public publishing only with `ALLOW_PUBLIC_PUBLISH=true`
 - [ ] Block public publish if test-tone audio is detected
+- [ ] Confirm public-safe production audio allows public publishing
 
 ---
 
@@ -209,9 +204,9 @@ Working:
 
 Next:
 
-- [ ] Use production manifest metadata in audio plan
-- [ ] Store audio asset IDs in processed records
-- [ ] Store audio license/public-safety metadata in processed records
+- [ ] Store production audio asset IDs in `audioPlan`
+- [ ] Store license/public-safety status in processed records
+- [ ] Use public-safe assets for final/private review renders
 
 ---
 
@@ -233,14 +228,15 @@ Working:
 - [x] FFmpeg music mix
 - [x] FFmpeg SFX mix
 - [x] `audioMix.mode = full_mix` confirmed
+- [x] Production manifest system exists or is being integrated
 
 Next:
 
-- [ ] Replace generated test tones with proper royalty-free assets
-- [ ] Move test tones to `assets/test-audio/`
-- [ ] Add production asset manifest metadata
-- [ ] Add public-safe asset validation
-- [ ] Prefer production assets over test assets
+- [ ] Generate/import production-safe demo assets
+- [ ] Register assets with safeForPublic=true
+- [ ] Force `AUDIO_REQUIRE_PUBLIC_SAFE=true`
+- [ ] Confirm selected assets are public-safe
+- [ ] Confirm validation returns `publicSafe=true`
 
 ---
 
@@ -262,124 +258,68 @@ Next:
 - [ ] Validate assets not marked safe by accident
 - [ ] Show audio asset IDs in review report
 - [ ] Mark videos with test assets as not public-safe
+- [ ] Mark videos with registered production assets as public-safe
 
 ---
 
 # Phase 8: Production Audio Asset Pack
 
-Status: Next active build
+Status: Active
 
-## Asset types
+## Production asset rule
 
-Music:
-
-```text
-background loop
-fake-news bed
-documentary bed
-corporate bed
-mystery bed
-emergency bed
-chaotic comedy bed
-```
-
-SFX:
+A production asset must have:
 
 ```text
-intro sting
-outro sting
-alert beep
-whoosh
-fail buzzer
-ding
-glitch
-gavel
-typing
-static
-loading hum
-applause
-record scratch
-```
-
-## Naming rules
-
-Music:
-
-```text
-assets/music/<mood>-<description>-<number>.<ext>
-```
-
-Examples:
-
-```text
-assets/music/fake-news-bed-01.mp3
-assets/music/documentary-bed-01.mp3
-assets/music/chaotic-comedy-bed-01.mp3
-```
-
-SFX:
-
-```text
-assets/sfx/<tag>-<description>-<number>.<ext>
-```
-
-Examples:
-
-```text
-assets/sfx/alert-beep-01.wav
-assets/sfx/whoosh-fast-01.wav
-assets/sfx/gavel-hit-01.wav
-```
-
-Test assets:
-
-```text
-assets/test-audio/default-test-bed.wav
-assets/test-audio/intro-ding-test.wav
-assets/test-audio/fail-beep-test.wav
-```
-
-## Manifest item shape
-
-```json
-{
-  "id": "music_fake_news_bed_01",
-  "kind": "music",
-  "file": "assets/music/fake-news-bed-01.mp3",
-  "mood": "fake-news",
-  "tags": ["fake-news", "background", "loop"],
-  "license": "royalty-free",
-  "source": "manual",
-  "safeForPublic": true,
-  "notes": "Owned or royalty-free asset."
-}
-```
-
-## Validation rules
-
-Production asset is public-safe only if:
-
-```text
-safeForPublic = true
-license is not empty
-source is not empty
 file exists
-file is not test audio
-file is inside assets/music or assets/sfx
+license is present
+source is present
+safeForPublic=true
+not detected as test audio
+inside assets/music or assets/sfx
+```
+
+## Test asset rule
+
+Test assets are allowed for development but must remain public-blocked:
+
+```text
+default-test-bed.wav
+intro-ding-test.wav
+fail-beep-test.wav
+test-tone
+sine
+beep-test
+```
+
+## Public-safe preview requirement
+
+Run generation with:
+
+```text
+AUDIO_REQUIRE_PUBLIC_SAFE=true
+USE_AUDIO_ENGINE=true
+USE_BACKGROUND_MUSIC=true
+USE_SFX=true
+```
+
+Expected result:
+
+```text
+audioMix.mode = full_mix
+publicSafe = true
+warnings = none or non-blocking only
 ```
 
 Tasks:
 
-- [ ] Create `tools/media/audio-assets.js`
-- [ ] Create manifest refresh command
-- [ ] Create register music command
-- [ ] Create register SFX command
-- [ ] Update audio engine to read manifest metadata
-- [ ] Update audio validation to check manifest public safety
-- [ ] Update audio report to show production readiness
-- [ ] Move or ignore test assets separately
-- [ ] Add license docs
-- [ ] Add example manifest entries
+- [ ] Add demo production audio generation script
+- [ ] Register demo production audio as public-safe
+- [ ] Run public-safe audio report
+- [ ] Run public-safe preview
+- [ ] Validate processed record
+- [ ] Upload one private public-safe audio video
+- [ ] Confirm review report shows publicSafe=true
 
 ---
 
@@ -435,23 +375,28 @@ Next:
 
 # Immediate Next Build Tasks
 
-1. Create `tools/media/audio-assets.js`.
-2. Create `scripts/audio-assets-refresh.sh`.
-3. Create `scripts/register-music.sh`.
-4. Create `scripts/register-sfx.sh`.
-5. Add `assets/test-audio/README.md`.
-6. Add/expand `assets/music/LICENSES.md`.
-7. Add/expand `assets/sfx/LICENSES.md`.
-8. Update `audio-engine.js` to include manifest metadata.
-9. Update `audio-report.js` to show public-safe status.
-10. Update `audio-validate.js` to use manifest public-safety.
-11. Run audio asset refresh.
-12. Run audio report and validation.
-13. Commit production audio asset support.
+1. Add `assets/audio-import-checklist.md`.
+2. Expand `assets/music/LICENSES.md`.
+3. Expand `assets/sfx/LICENSES.md`.
+4. Create `scripts/create-demo-production-audio.sh`.
+5. Generate demo production-safe music/SFX files.
+6. Register them as `safeForPublic=true`.
+7. Run `AUDIO_REQUIRE_PUBLIC_SAFE=true ./scripts/audio-report.sh`.
+8. Run public-safe audio preview.
+9. Run audio validation.
+10. Confirm publicSafe=true.
+11. Upload one private production-audio test.
+12. Commit docs/scripts, decide whether to commit demo audio.
 
 ---
 
 # Current Command Set
+
+Create demo production audio:
+
+```bash
+./scripts/create-demo-production-audio.sh
+```
 
 Refresh audio asset manifest:
 
@@ -462,19 +407,25 @@ Refresh audio asset manifest:
 Register music:
 
 ```bash
-./scripts/register-music.sh assets/music/fake-news-bed-01.mp3 fake-news "royalty-free" "manual" true
+./scripts/register-music.sh assets/music/fake-news-bed-01.wav fake-news "self-generated" "ffmpeg-generated-original" true "Generated original simple production demo bed."
 ```
 
 Register SFX:
 
 ```bash
-./scripts/register-sfx.sh assets/sfx/alert-beep-01.wav alert "royalty-free" "manual" true
+./scripts/register-sfx.sh assets/sfx/alert-beep-01.wav alert "self-generated" "ffmpeg-generated-original" true "Generated original simple production demo SFX."
 ```
 
-Audio report:
+Public-safe audio report:
 
 ```bash
-./scripts/audio-report.sh
+AUDIO_REQUIRE_PUBLIC_SAFE=true ./scripts/audio-report.sh
+```
+
+Public-safe preview:
+
+```bash
+./scripts/public-safe-audio-preview.sh
 ```
 
 Audio validation:
@@ -483,18 +434,17 @@ Audio validation:
 ./scripts/audio-validate.sh
 ```
 
-Preview full mix:
+Review private uploads:
 
 ```bash
-USE_AUDIO_ENGINE=true USE_BACKGROUND_MUSIC=true USE_SFX=true AUTO_DRY_RUN=true ./scripts/autopilot-preview-once.sh
+./scripts/review-private.sh
 ```
 
 ---
 
 # Current Priority
 
-1. Add production audio asset manifest tooling.
-2. Keep test audio separate and public-blocked.
-3. Prepare real royalty-free music/SFX import.
-4. Make audio reports show public safety.
-5. Use production-safe audio before public publishing.
+1. Add public-safe demo audio workflow.
+2. Prove validation can pass with production-safe registered audio.
+3. Upload one private public-safe audio test.
+4. Then move to review report polish and public publish retest.
