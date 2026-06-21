@@ -9,6 +9,7 @@ const APPS_FILE = path.join(ROOT_DIR, 'apps.json');
 const PROCESSED_FILE = path.join(ROOT_DIR, 'tools', 'video-generator', 'processed-v3.json');
 const REVIEW_FILE = path.join(ROOT_DIR, 'tools', 'publish', 'review-db.json');
 const RECS_FILE = path.join(ROOT_DIR, 'tools', 'analytics', 'recommendations-v2.json');
+const ADVANCED_FILE = path.join(ROOT_DIR, 'tools', 'analytics', 'advanced-warehouse.json');
 
 const REPORT_MD = path.join(ROOT_DIR, 'reports', 'daily-autopilot-report.md');
 const REPORT_JSON = path.join(ROOT_DIR, 'reports', 'daily-autopilot-report.json');
@@ -63,6 +64,7 @@ function buildRows() {
   const processed = readJson(PROCESSED_FILE, {});
   const review = readJson(REVIEW_FILE, { items: {}, audit: [] });
   const recs = readJson(RECS_FILE, null);
+  const advanced = readJson(ADVANCED_FILE, null);
 
   const records = Object.values(processed || {});
 
@@ -191,6 +193,13 @@ function buildReport() {
     actions,
     rerenderCandidates,
     latest,
+    advancedAnalytics: {
+      exists: Boolean(advanced),
+      generatedAt: advanced?.generatedAt || null,
+      channel: advanced?.channel || null,
+      videosPulled: advanced ? Object.keys(advanced.videos || {}).length : 0,
+      errors: advanced?.errors || []
+    },
     learning: {
       exists: recs?.version === 2,
       generatedAt: recs?.generatedAt || null,
@@ -285,6 +294,16 @@ ${actionRows.length ? table(['Action', 'Video', 'Video ID', 'Public Safe', 'Warn
 
 ${rerenderRows.length ? table(['Video', 'Video ID', 'Readiness', 'Warnings'], rerenderRows) : '- none'}
 
+## Advanced YouTube Analytics
+
+- Exists: ${report.advancedAnalytics.exists}
+- Generated: ${report.advancedAnalytics.generatedAt || 'not generated'}
+- Videos pulled: ${report.advancedAnalytics.videosPulled}
+- Channel title: ${report.advancedAnalytics.channel?.title || 'unknown'}
+- Subscribers: ${report.advancedAnalytics.channel?.subscriberCount ?? 'unknown'}
+- Channel total views: ${report.advancedAnalytics.channel?.viewCount ?? 'unknown'}
+- Public videos: ${report.advancedAnalytics.channel?.videoCount ?? 'unknown'}
+
 ## Learning v2
 
 - Exists: ${report.learning.exists}
@@ -378,6 +397,10 @@ function printConsole(report) {
   console.log(`Apps: ${report.totals.apps} | Uploaded: ${report.totals.uploaded} | Failed: ${report.totals.failed}`);
   console.log(`Public-safe: ${report.totals.publicSafe} | Blocked: ${report.totals.blockedForPublic}`);
   console.log(`Learning reason records: ${report.totals.withLearningReason}`);
+  console.log(`Advanced analytics videos: ${report.advancedAnalytics.videosPulled}`);
+  if (report.advancedAnalytics.channel) {
+    console.log(`Subscribers: ${report.advancedAnalytics.channel.subscriberCount ?? 'unknown'}`);
+  }
   console.log('');
   console.log('Top actions');
   console.log('-----------');

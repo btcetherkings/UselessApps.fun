@@ -7,6 +7,7 @@ const ROOT_DIR = path.join(__dirname, '..', '..');
 const PROCESSED_FILE = path.join(ROOT_DIR, 'tools', 'video-generator', 'processed-v3.json');
 const REVIEW_FILE = path.join(ROOT_DIR, 'tools', 'publish', 'review-db.json');
 const PERFORMANCE_FILE = path.join(ROOT_DIR, 'tools', 'analytics', 'performance-db.json');
+const ADVANCED_WAREHOUSE_FILE = path.join(ROOT_DIR, 'tools', 'analytics', 'advanced-warehouse.json');
 const OUT_FILE = path.join(ROOT_DIR, 'tools', 'analytics', 'recommendations-v2.json');
 
 function readJson(file, fallback) {
@@ -60,6 +61,12 @@ function scoreVideo(row) {
   score += Number(row.views || 0) * 1;
   score += Number(row.likes || 0) * 8;
   score += Number(row.comments || 0) * 15;
+  score += Number(row.shares || 0) * 20;
+  score += Number(row.subscribersGained || 0) * 50;
+  score -= Number(row.subscribersLost || 0) * 40;
+  score += Number(row.estimatedMinutesWatched || 0) * 1.5;
+  score += Number(row.averageViewPercentage || 0) * 2;
+  score += Number(row.impressionsCtr || 0) * 25;
 
   if (row.decision === 'approved') score += 20;
   if (row.publishStatus === 'published_unlisted') score += 35;
@@ -113,6 +120,7 @@ function buildDataset() {
   const processed = readJson(PROCESSED_FILE, {});
   const review = readJson(REVIEW_FILE, { items: {} });
   const performance = readJson(PERFORMANCE_FILE, {});
+  const advancedWarehouse = readJson(ADVANCED_WAREHOUSE_FILE, { videos: {} });
   const perfByVideoId = getPerformanceByVideoId(performance);
 
   const rows = [];
@@ -123,15 +131,17 @@ function buildDataset() {
     const videoId = record.youtube?.videoId || null;
     const reviewItem = videoId ? review.items?.[videoId] : null;
     const perf = videoId ? perfByVideoId.get(videoId) || {} : {};
+    const advanced = videoId ? advancedWarehouse.videos?.[videoId] || {} : {};
+    const advancedCore = advanced.core || {};
 
     const audioValidation = reviewItem?.audioValidation || null;
     const audioPlan = record.audioPlan || {};
     const audioMix = record.audioMix || {};
     const storyPackage = record.storyPackage || {};
 
-    const views = Number(perf.views || perf.statistics?.viewCount || 0);
-    const likes = Number(perf.likes || perf.statistics?.likeCount || 0);
-    const comments = Number(perf.comments || perf.statistics?.commentCount || 0);
+    const views = Number(advancedCore.views ?? perf.views ?? perf.statistics?.viewCount ?? 0);
+    const likes = Number(advancedCore.likes ?? perf.likes ?? perf.statistics?.likeCount ?? 0);
+    const comments = Number(advancedCore.comments ?? perf.comments ?? perf.statistics?.commentCount ?? 0);
 
     const row = {
       key,
@@ -154,6 +164,15 @@ function buildDataset() {
       views,
       likes,
       comments,
+      shares: Number(advancedCore.shares || 0),
+      subscribersGained: Number(advancedCore.subscribersGained || 0),
+      subscribersLost: Number(advancedCore.subscribersLost || 0),
+      estimatedMinutesWatched: Number(advancedCore.estimatedMinutesWatched || 0),
+      averageViewDuration: Number(advancedCore.averageViewDuration || 0),
+      averageViewPercentage: Number(advancedCore.averageViewPercentage || 0),
+      impressions: Number(advancedCore.impressions || 0),
+      impressionsCtr: Number(advancedCore.impressionsCtr || 0),
+      analyticsErrors: advanced.errors || [],
       url: record.youtube?.url || reviewItem?.url || null,
       generatedAt: record.generatedAt || record.startedAt || null
     };

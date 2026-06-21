@@ -10,376 +10,447 @@ It creates tiny useless apps, records them, turns them into ridiculous fake-TV v
 
 ---
 
-## Current Working Milestone
+## Critical Realisation
 
-The generation, audio, private upload, review, sync, approval, preflight, publish workflow, learning recommendations v2, learning reason persistence, and basic dashboard are working.
+The system cannot learn properly unless it has real analytics data.
 
-Confirmed:
+Current learning is limited because it mostly sees:
 
-- [x] Local video generation works
-- [x] YouTube private upload works
-- [x] YouTube unlisted publish flow works or is ready for controlled retest
-- [x] Audio engine exists
-- [x] FFmpeg audio mix works
-- [x] Production-safe demo audio assets exist
-- [x] `AUDIO_REQUIRE_PUBLIC_SAFE=true` can select production-safe assets
-- [x] Review queue imports private uploaded videos
-- [x] Audio validation blocks unsafe public publishing
-- [x] Review sync order is fixed
-- [x] Publish preflight exists
-- [x] Learning v2 recommendations exist
-- [x] Autopilot can use v2 recommendations
-- [x] `learningReason` persists
-- [x] Basic daily dashboard exists
+```text
+views
+likes
+comments
+review status
+audio status
+publish status
+```
+
+That is not enough.
+
+For proper learning, the platform needs:
+
+```text
+watch time
+average view duration
+average view percentage
+audience retention
+subscribers gained/lost
+impressions
+click-through rate
+shares
+playlist starts
+traffic source
+device type
+country
+new vs returning viewers
+channel subscriber totals
+```
+
+Important:
+
+```text
+The bot is not learning this in the background unless we explicitly run an analytics collector or schedule one.
+```
+
+This build creates that collector.
 
 ---
 
-## Current State
-
-The dashboard/reporting is working, but it is still too basic.
-
-Current problem:
-
-```text
-The report tells us totals, but not enough operational detail.
-It needs ranked tables, action cards, blockers, per-video recommendations, scoring, and richer learning insight.
-```
-
-Next build:
-
-```text
-basic dashboard
-→ detailed executive report
-→ per-video action plan
-→ learning decision analysis
-→ health scoring
-→ markdown + JSON report
-```
-
----
-
-# Active Build: Detailed Reporting v2
+# Active Build: YouTube Advanced Analytics Collector + Learning Data Warehouse
 
 Status: Next build
 
 Goal:
 
-Upgrade the dashboard into a proper operator report.
+Build a serious analytics data layer so the tool can actually learn.
 
-This build should answer:
+This build should:
 
-```text
-What happened?
-What is safe?
-What is blocked?
-What should be approved?
-What should be rerendered?
-What is the bot learning?
-Which story/audio/app patterns are winning?
-Which videos are wasting space?
-What is the next best action?
-```
+- call YouTube Data API for channel-level statistics
+- call YouTube Analytics API for video-level metrics
+- collect retention/watch-time/subscriber metrics where available
+- collect impressions and CTR where available
+- collect traffic source/device/country breakdowns
+- store data in a structured warehouse JSON
+- create a detailed analytics report
+- feed advanced metrics into Learning v2
+- show data gaps clearly
+- prepare for scheduled collection later
 
 Files to create/update:
 
 ```text
+tools/analytics/youtube-advanced.js
+tools/analytics/advanced-warehouse.json
+tools/analytics/advanced-report.js
+tools/analytics/learning-v2.js
 tools/dashboard/report-v2.js
-tools/dashboard/report-utils.js
-tools/dashboard/daily-report.js
-scripts/daily-report-v2.sh
-scripts/dashboard.sh
-reports/daily-autopilot-report.md
-reports/daily-autopilot-report.json
+scripts/youtube-advanced-pull.sh
+scripts/advanced-analytics-report.sh
+scripts/learning-v2.sh
 ROADMAP.md
 ```
 
 ---
 
-# Phase 1: Core Site
+# Why This Matters
 
-Status: Completed
-
-- [x] Static gallery
-- [x] App pages
-- [x] `apps.json`
-- [x] GitHub Pages deployment
-- [x] Basic styling
-- [x] Uselessness scores
-
----
-
-# Phase 2: Generation + Upload
-
-Status: Working
-
-- [x] App generation
-- [x] Recording
-- [x] FFmpeg render
-- [x] Narration
-- [x] Audio mix
-- [x] Private upload
-- [x] Dry-run preview
-- [x] Public-safe audio mode
-
----
-
-# Phase 3: Review + Publish
-
-Status: Working
-
-- [x] Review DB
-- [x] Review sync
-- [x] Audio validation
-- [x] Approval flow
-- [x] Publish preflight
-- [x] Unlisted/public gate
-
-Next:
-
-- [ ] Show approval queue as detailed cards
-- [ ] Show publish queue as detailed cards
-- [ ] Show blocked videos with exact fix
-- [ ] Show old videos needing rerender with audio
-
----
-
-# Phase 4: Analytics + Learning
-
-Status: Working
-
-- [x] YouTube stats pull exists
-- [x] Learning v2 exists
-- [x] Recommendations v2 exists
-- [x] Learning reason persists
-
-Next:
-
-- [ ] Show ranked app types
-- [ ] Show ranked story modes
-- [ ] Show ranked audio moods
-- [ ] Show top/worst videos
-- [ ] Show score formula explanation
-- [ ] Show latest autopilot decision and why
-- [ ] Show confidence level based on data quality
-
----
-
-# Phase 5: Detailed Reporting v2
-
-Status: Next active build
-
-## Report outputs
-
-Console:
-
-```text
-UselessApps.fun Operator Report v2
-```
-
-Markdown:
-
-```text
-reports/daily-autopilot-report.md
-```
-
-JSON:
-
-```text
-reports/daily-autopilot-report.json
-```
-
-## New sections
-
-The detailed report should include:
-
-```text
-1. Executive summary
-2. System health score
-3. Content inventory
-4. Upload/publish funnel
-5. Review queue action cards
-6. Audio safety breakdown
-7. Public publishing blockers
-8. Learning recommendations v2
-9. Top/worst videos
-10. Latest autopilot decision
-11. Next 10 actions
-12. Rerender candidates
-13. Data quality warnings
-```
-
-## Health score
+A viral content engine cannot learn only from views.
 
 Example:
 
 ```text
-System health: 78/100
+Video A: 100 views, 95% retention, +3 subscribers
+Video B: 500 views, 5% retention, 0 subscribers
 ```
 
-Score components:
+Views alone says Video B is better.
+
+Real analytics says Video A is stronger.
+
+The learning engine needs to understand:
 
 ```text
-+20 if generation works
-+15 if uploads exist
-+15 if review sync works
-+15 if audio validation exists
-+15 if public-safe video exists
-+10 if learning v2 exists
-+10 if latest app has learningReason
--20 if failed records exist
--10 if no public-safe videos exist
--10 if many videos blocked
-```
-
-## Action cards
-
-Each action card should show:
-
-```text
-ACTION: APPROVE_FOR_UNLISTED
-Video: Corporate Regret Board
-Why: publicSafe=true, private_uploaded, production music
-Command: ./scripts/approve-video.sh Nx2Ek9u165c "Approved for unlisted test"
-Next: ./scripts/publish-approved.sh Nx2Ek9u165c unlisted
-```
-
-## Blocker cards
-
-Each blocker card should show:
-
-```text
-BLOCKED: Runaway Button
-Reason: audio_missing
-Fix: rerender with AUDIO_REQUIRE_PUBLIC_SAFE=true
-Command: FORCE=true TARGET_APP="apps/runaway-button.html" ...
-```
-
-## Learning confidence
-
-Confidence levels:
-
-```text
-low: fewer than 5 videos with stats
-medium: 5-25 videos
-high: 25+ videos with meaningful views
-```
-
-For now, likely confidence is low because most stats are zero.
-
-Tasks:
-
-- [ ] Create `tools/dashboard/report-utils.js`
-- [ ] Create `tools/dashboard/report-v2.js`
-- [ ] Add JSON report output
-- [ ] Add markdown table helpers
-- [ ] Add health score
-- [ ] Add action cards
-- [ ] Add blocker cards
-- [ ] Add learning confidence
-- [ ] Add rerender candidates
-- [ ] Patch dashboard script to use v2
-- [ ] Commit
-
----
-
-# Phase 6: Rerender Candidates
-
-Status: Planned inside report v2
-
-Rerender candidate conditions:
-
-```text
-audio_missing
-not public-safe
-old uploaded video without audioMix
-strong idea but weak technical quality
-published_private but blocked_for_public
-```
-
-The report should suggest:
-
-```text
-rerender with production-safe audio
-private upload only
-then review again
+Did viewers stay?
+Did they subscribe?
+Did they click?
+Did they share?
+Where did they come from?
+Which app type creates retention?
+Which story mode keeps attention?
+Which audio mood helps completion?
 ```
 
 ---
 
-# Phase 7: Operator Commands
+# Data Sources
 
-Status: Planned inside report v2
+## YouTube Data API
 
-The report should print commands for:
+Used for:
 
 ```text
-sync review
-run learning
-preview next idea
-upload next private
-approve video
-publish unlisted
-rerender old video
+channel subscriber count
+channel video count
+channel view count
+video public stats
+video title/status metadata
+```
+
+## YouTube Analytics API
+
+Used for:
+
+```text
+views
+likes
+comments
+shares
+subscribersGained
+subscribersLost
+estimatedMinutesWatched
+averageViewDuration
+averageViewPercentage
+audienceWatchRatio
+relativeRetentionPerformance
+impressions
+impressionsCtr
+traffic source
+device type
+country
+```
+
+---
+
+# Phase 1: Existing Platform
+
+Status: Working
+
+- [x] Generate apps
+- [x] Render videos
+- [x] Upload private videos
+- [x] Review queue
+- [x] Audio validation
+- [x] Publish preflight
+- [x] Learning v2
+- [x] Detailed operator report
+
+---
+
+# Phase 2: Basic Analytics
+
+Status: Working but limited
+
+Current data:
+
+```text
+views
+likes
+comments
+possibly status/review/audio data
+```
+
+Limitation:
+
+```text
+No retention, no watch-time, no subscriber conversion, no impressions, no CTR.
+```
+
+---
+
+# Phase 3: Advanced Analytics Collector
+
+Status: Next active build
+
+## Required metrics
+
+Core video metrics:
+
+```text
+views
+likes
+comments
+shares
+estimatedMinutesWatched
+averageViewDuration
+averageViewPercentage
+subscribersGained
+subscribersLost
+```
+
+Discovery metrics where available:
+
+```text
+impressions
+impressionsCtr
+```
+
+Retention metrics where available:
+
+```text
+audienceWatchRatio
+relativeRetentionPerformance
+```
+
+Breakdowns:
+
+```text
+trafficSourceType
+deviceType
+country
+```
+
+Channel stats:
+
+```text
+subscriberCount
+hiddenSubscriberCount
+viewCount
+videoCount
+```
+
+## Warehouse shape
+
+```json
+{
+  "version": 1,
+  "generatedAt": "...",
+  "channel": {
+    "id": "...",
+    "title": "...",
+    "subscriberCount": 0,
+    "viewCount": 0,
+    "videoCount": 0
+  },
+  "videos": {
+    "Nx2Ek9u165c": {
+      "videoId": "Nx2Ek9u165c",
+      "core": {
+        "views": 0,
+        "likes": 0,
+        "comments": 0,
+        "shares": 0,
+        "estimatedMinutesWatched": 0,
+        "averageViewDuration": 0,
+        "averageViewPercentage": 0,
+        "subscribersGained": 0,
+        "subscribersLost": 0,
+        "impressions": 0,
+        "impressionsCtr": 0
+      },
+      "retention": [],
+      "trafficSources": [],
+      "devices": [],
+      "countries": [],
+      "errors": []
+    }
+  },
+  "errors": []
+}
+```
+
+---
+
+# Phase 4: Advanced Report
+
+Status: Planned in this build
+
+Report should show:
+
+```text
+channel subscriber count
+subscriber gain/loss by video
+best retention videos
+worst retention videos
+best watch time videos
+best CTR videos
+traffic source breakdown
+country breakdown
+device breakdown
+videos with no analytics yet
+API errors / unavailable metrics
+```
+
+---
+
+# Phase 5: Learning v2 Upgrade
+
+Status: Planned in this build
+
+Learning score should include:
+
+```text
+views
+likes
+comments
+shares
+subscribersGained
+subscribersLost
+estimatedMinutesWatched
+averageViewDuration
+averageViewPercentage
+impressionsCtr
+publicSafe
+review decision
+publish status
+```
+
+New formula direction:
+
+```text
+views * 1
+likes * 8
+comments * 15
+shares * 20
+subscribersGained * 50
+subscribersLost * -40
+estimatedMinutesWatched * 1.5
+averageViewPercentage * 2
+impressionsCtr * 25
+approved +20
+published_unlisted +35
+published_public +75
+publicSafe +10
+audio blockers negative
+```
+
+---
+
+# Phase 6: Dashboard Upgrade
+
+Status: Planned in this build
+
+Detailed report should now include:
+
+```text
+Channel subscribers
+Channel total views
+Channel public video count
+Best subscriber-converting video
+Best retention video
+Best watch-time video
+Best CTR video
+Worst retention video
+Analytics data coverage percentage
+```
+
+---
+
+# Phase 7: Scheduling
+
+Status: Next build after this
+
+Once the collector works manually, create:
+
+```text
+scripts/analytics-nightly.sh
+systemd timer or cron example
+```
+
+Important:
+
+```text
+The system only learns in the background if scheduled.
 ```
 
 ---
 
 # Immediate Next Build Tasks
 
-1. Create `tools/dashboard/report-utils.js`.
-2. Create `tools/dashboard/report-v2.js`.
-3. Add markdown + JSON output.
-4. Add health scoring.
-5. Add action cards.
-6. Add blocker/rerender cards.
-7. Add learning insight section.
-8. Add data quality warnings.
-9. Create `scripts/daily-report-v2.sh`.
-10. Patch `scripts/dashboard.sh` to call v2.
-11. Run report.
-12. Commit.
+1. Create `tools/analytics/youtube-advanced.js`.
+2. Create `scripts/youtube-advanced-pull.sh`.
+3. Create `tools/analytics/advanced-report.js`.
+4. Create `scripts/advanced-analytics-report.sh`.
+5. Pull channel stats using YouTube Data API.
+6. Pull per-video analytics using YouTube Analytics API.
+7. Store results in `advanced-warehouse.json`.
+8. Patch `learning-v2.js` to read advanced warehouse.
+9. Patch dashboard report to show advanced analytics summary.
+10. Run collector.
+11. Run learning v2.
+12. Run dashboard.
+13. Commit.
 
 ---
 
-# Current Command Set
+# Command Set
 
-Detailed dashboard:
+Pull advanced analytics:
 
 ```bash
-./scripts/daily-report-v2.sh
+./scripts/youtube-advanced-pull.sh
 ```
 
-Alias:
+Show advanced report:
+
+```bash
+./scripts/advanced-analytics-report.sh
+```
+
+Run learning after advanced analytics:
+
+```bash
+./scripts/learning-v2.sh
+```
+
+Run dashboard:
 
 ```bash
 ./scripts/dashboard.sh
 ```
 
-Refresh learning and dashboard:
+Future scheduled collector:
 
 ```bash
-./scripts/youtube-stats-pull.sh || true
-./scripts/learning-v2.sh
-./scripts/daily-report-v2.sh
-```
-
-Open markdown report:
-
-```bash
-cat reports/daily-autopilot-report.md
-```
-
-Open JSON report:
-
-```bash
-cat reports/daily-autopilot-report.json
+./scripts/analytics-nightly.sh
 ```
 
 ---
 
 # Current Priority
 
-1. Make reports operationally useful.
-2. Show exactly what to approve/rerender/publish.
-3. Show why the bot is choosing ideas.
-4. Then build an autopilot decision ledger.
+1. Stop relying on shallow stats only.
+2. Build a real analytics warehouse.
+3. Learn from retention/watch-time/subscriber conversion.
+4. Expose data gaps clearly.
+5. Then schedule the analytics collector.
