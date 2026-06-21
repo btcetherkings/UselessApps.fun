@@ -405,10 +405,10 @@ async function loadReviewCards() {
       <p>${card.url ? `<a href="${card.url}" target="_blank" rel="noopener">Open YouTube</a>` : ''}</p>
 
       <div class="button-row">
-        <button onclick="queueDashboardAction('approve_video', { videoId: '${card.videoId}', note: 'Approved from Review Desk V2' })">Queue Approve</button>
-        <button onclick="queueDashboardAction('reject_video', { videoId: '${card.videoId}', note: 'Rejected from Review Desk V2' })" class="ghost">Queue Reject</button>
-        <button onclick="queueDashboardAction('needs_rerender', { videoId: '${card.videoId}', note: 'Needs rerender from Review Desk V2' })" class="ghost">Queue Rerender</button>
-        <button onclick="createExportPack('${card.videoId}')">Export Pack</button>
+        ${card.videoId ? `<button onclick="queueDashboardAction('approve_video', { videoId: '${card.videoId}', note: 'Approved from Review Desk V2' })">Queue Approve</button>` : ''}
+        ${card.videoId ? `<button onclick="queueDashboardAction('reject_video', { videoId: '${card.videoId}', note: 'Rejected from Review Desk V2' })" class="ghost">Queue Reject</button>` : ''}
+        ${card.videoId ? `<button onclick="queueDashboardAction('needs_rerender', { videoId: '${card.videoId}', note: 'Needs rerender from Review Desk V2' })" class="ghost">Queue Rerender</button>` : ''}
+        ${card.videoId ? `<button onclick="createExportPack('${card.videoId}')">Export Pack</button>` : '<button class="ghost" onclick="copyText(\'./scripts/autopilot-upload-once-private.sh\')">Copy Upload Command</button>'}
         <button onclick='addReviewCalendarItem(${JSON.stringify(card).replace(/'/g, '&apos;')})' class="ghost">Add Calendar</button>
       </div>
 

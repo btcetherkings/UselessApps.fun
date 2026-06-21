@@ -7,6 +7,7 @@ const ROOT_DIR = path.join(__dirname, '..', '..');
 const REVIEW_DB = path.join(ROOT_DIR, 'tools', 'publish', 'review-db.json');
 const PROCESSED_DB = path.join(ROOT_DIR, 'tools', 'video-generator', 'processed-v3.json');
 const EXPORT_ROOT = path.join(ROOT_DIR, 'exports', 'manual-packs');
+const { getReviewCards } = require('../review/review-summary');
 
 function readJson(file, fallback) {
   try {
@@ -61,7 +62,13 @@ if (!videoId) {
   process.exit(1);
 }
 
-const video = findVideo(videoId);
+let video = findVideo(videoId);
+
+if (!video || Object.keys(video).length === 0) {
+  const summary = getReviewCards();
+  const card = (summary.cards || []).find(c => c.videoId === videoId || c.id === videoId);
+  if (card) video = card;
+}
 
 if (!video || Object.keys(video).length === 0) {
   console.error(`Video not found: ${videoId}`);

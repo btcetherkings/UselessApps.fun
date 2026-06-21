@@ -252,6 +252,7 @@ function main() {
     'scripts/list-actions.sh',
     'scripts/run-action.sh',
     'scripts/review-cards.sh',
+    'scripts/review-api-test.sh',
     'scripts/confirm-publish.sh',
     'scripts/export-report.sh',
     'scripts/export-pack.sh',
@@ -275,6 +276,20 @@ function main() {
   testSafetyEngine();
   testActionQueueSnapshot();
   testDashboardReport();
+
+  try {
+    const { getReviewCards } = require(path.join(ROOT_DIR, 'tools', 'review', 'review-summary'));
+    const summary = getReviewCards();
+
+    if (summary && Array.isArray(summary.cards)) {
+      add('PASS', 'review summary returns cards array', `cards=${summary.cards.length}`);
+    } else {
+      add('FAIL', 'review summary did not return cards array');
+    }
+  } catch (err) {
+    add('FAIL', 'review summary crashed', err.message);
+  }
+
   testDashboardServerStatic();
 
   const dashboardJs = fs.existsSync(path.join(ROOT_DIR, 'tools/dashboard/dashboard.js'))
