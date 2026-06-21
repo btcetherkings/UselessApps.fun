@@ -12,7 +12,7 @@ It creates tiny useless apps, records them, turns them into ridiculous fake-TV v
 
 ## Current Working Milestone
 
-The generation, audio, private upload, review, sync, approval, preflight, publish workflow, learning recommendations v2, and learning reason persistence are now working.
+The generation, audio, private upload, review, sync, approval, preflight, publish workflow, learning recommendations v2, learning reason persistence, and basic dashboard are working.
 
 Confirmed:
 
@@ -29,70 +29,68 @@ Confirmed:
 - [x] Publish preflight exists
 - [x] Learning v2 recommendations exist
 - [x] Autopilot can use v2 recommendations
-- [x] `learningReason` is now persisted in generated app records
+- [x] `learningReason` persists
+- [x] Basic daily dashboard exists
 
 ---
 
 ## Current State
 
-The system can now create, upload, review, preflight, and learn.
+The dashboard/reporting is working, but it is still too basic.
 
 Current problem:
 
 ```text
-The learning output is still spread across multiple commands and JSON files.
-We need a single daily command that tells us:
-what happened, what learned, what is blocked, what should be made next, and why.
+The report tells us totals, but not enough operational detail.
+It needs ranked tables, action cards, blockers, per-video recommendations, scoring, and richer learning insight.
 ```
 
 Next build:
 
 ```text
-stats + review + validation + recommendations + latest app
-→ daily autopilot report
-→ human-readable dashboard output
-→ optional markdown report file
+basic dashboard
+→ detailed executive report
+→ per-video action plan
+→ learning decision analysis
+→ health scoring
+→ markdown + JSON report
 ```
 
 ---
 
-# Active Build: Learning Dashboard + Daily Autopilot Report
+# Active Build: Detailed Reporting v2
 
 Status: Next build
 
 Goal:
 
-Create a single reporting layer that summarises the whole machine.
+Upgrade the dashboard into a proper operator report.
 
 This build should answer:
 
 ```text
-How many apps exist?
-How many videos uploaded?
-How many are private/unlisted/public?
-Which videos are blocked?
-Which videos are public-safe?
-What did learning v2 recommend?
-What did the autopilot pick and why?
-What should we approve, rerender, or publish next?
+What happened?
+What is safe?
+What is blocked?
+What should be approved?
+What should be rerendered?
+What is the bot learning?
+Which story/audio/app patterns are winning?
+Which videos are wasting space?
+What is the next best action?
 ```
 
 Files to create/update:
 
 ```text
+tools/dashboard/report-v2.js
+tools/dashboard/report-utils.js
 tools/dashboard/daily-report.js
-tools/dashboard/learning-summary.js
-tools/dashboard/review-summary.js
-tools/dashboard/content-summary.js
-scripts/daily-report.sh
+scripts/daily-report-v2.sh
 scripts/dashboard.sh
-ROADMAP.md
-```
-
-Optional output file:
-
-```text
 reports/daily-autopilot-report.md
+reports/daily-autopilot-report.json
+ROADMAP.md
 ```
 
 ---
@@ -110,213 +108,245 @@ Status: Completed
 
 ---
 
-# Phase 2: Basic Video Automation
-
-Status: Completed
-
-- [x] Playwright recording
-- [x] FFmpeg Shorts formatting
-- [x] Intro/outro cards
-- [x] Google TTS narration
-- [x] Dry-run generation
-- [x] processed tracking
-- [x] Retry failed apps
-- [x] `MAX_PER_RUN` support
-- [x] `FORCE` support
-
----
-
-# Phase 3: Audio + Production Safety
+# Phase 2: Generation + Upload
 
 Status: Working
 
-Working:
+- [x] App generation
+- [x] Recording
+- [x] FFmpeg render
+- [x] Narration
+- [x] Audio mix
+- [x] Private upload
+- [x] Dry-run preview
+- [x] Public-safe audio mode
 
-- [x] Audio plan exists
-- [x] Audio mix exists
-- [x] Production-safe asset manifest exists
-- [x] Test audio blocked from public
-- [x] Public-safe production music works
-- [x] Full audio mix works
+---
+
+# Phase 3: Review + Publish
+
+Status: Working
+
+- [x] Review DB
+- [x] Review sync
+- [x] Audio validation
+- [x] Approval flow
+- [x] Publish preflight
+- [x] Unlisted/public gate
 
 Next:
 
-- [ ] Dashboard summary of audio health
-- [ ] Count test-audio videos
-- [ ] Count public-safe videos
-- [ ] Count blocked videos
-- [ ] Show recommended audio improvements
+- [ ] Show approval queue as detailed cards
+- [ ] Show publish queue as detailed cards
+- [ ] Show blocked videos with exact fix
+- [ ] Show old videos needing rerender with audio
 
 ---
 
-# Phase 4: Review + Publish Workflow
+# Phase 4: Analytics + Learning
 
 Status: Working
 
-Working:
-
-- [x] Review DB imports private uploads
-- [x] Audio validation updates review DB
-- [x] Review reports are synced
-- [x] Publish preflight exists
-- [x] Public publishing is gated
-
-Next:
-
-- [ ] Dashboard summary of review status
-- [ ] Show videos needing approval
-- [ ] Show videos ready for unlisted
-- [ ] Show blocked videos
-- [ ] Show recommended action per video
-
----
-
-# Phase 5: YouTube Analytics + Learning v2
-
-Status: Working
-
-Working:
-
-- [x] YouTube stats pull script exists
-- [x] Performance DB exists
+- [x] YouTube stats pull exists
 - [x] Learning v2 exists
-- [x] Recommendations v2 file exists
-- [x] Autopilot can prefer v2
-- [x] `learningReason` persists
+- [x] Recommendations v2 exists
+- [x] Learning reason persists
 
 Next:
 
-- [ ] Dashboard summary of learning v2
+- [ ] Show ranked app types
+- [ ] Show ranked story modes
+- [ ] Show ranked audio moods
 - [ ] Show top/worst videos
-- [ ] Show preferred app types
-- [ ] Show preferred story modes
-- [ ] Show preferred audio moods
-- [ ] Show next ideas
-- [ ] Show latest learning reason
+- [ ] Show score formula explanation
+- [ ] Show latest autopilot decision and why
+- [ ] Show confidence level based on data quality
 
 ---
 
-# Phase 6: Daily Autopilot Report
+# Phase 5: Detailed Reporting v2
 
 Status: Next active build
 
-## Report sections
+## Report outputs
 
-The report should include:
-
-```text
-1. System status
-2. Content totals
-3. Upload/publish status
-4. Review queue status
-5. Audio safety status
-6. Learning recommendations v2
-7. Latest generated app and learning reason
-8. Next recommended actions
-```
-
-## Console report example
+Console:
 
 ```text
-UselessApps.fun Daily Autopilot Report
-=====================================
-
-Content:
-- Apps: 15
-- Uploaded: 13
-- Preview only: 2
-- Failed: 0
-
-Publishing:
-- Private: 12
-- Unlisted: 1
-- Public: 0
-
-Audio:
-- Public-safe: 2
-- Blocked: 11
-- Needs audio review: 1
-
-Learning:
-- Prefer app types: productivity, object
-- Prefer story modes: fake_corporate_audit, fake_nature_documentary
-- Prefer audio moods: documentary, fake-news
-
-Latest autopilot decision:
-- App: Staring Pebble Supreme
-- Type: object
-- Learning reason: selected by recommendations v2
+UselessApps.fun Operator Report v2
 ```
 
-## Markdown output
-
-The dashboard should optionally write:
+Markdown:
 
 ```text
 reports/daily-autopilot-report.md
 ```
 
+JSON:
+
+```text
+reports/daily-autopilot-report.json
+```
+
+## New sections
+
+The detailed report should include:
+
+```text
+1. Executive summary
+2. System health score
+3. Content inventory
+4. Upload/publish funnel
+5. Review queue action cards
+6. Audio safety breakdown
+7. Public publishing blockers
+8. Learning recommendations v2
+9. Top/worst videos
+10. Latest autopilot decision
+11. Next 10 actions
+12. Rerender candidates
+13. Data quality warnings
+```
+
+## Health score
+
+Example:
+
+```text
+System health: 78/100
+```
+
+Score components:
+
+```text
++20 if generation works
++15 if uploads exist
++15 if review sync works
++15 if audio validation exists
++15 if public-safe video exists
++10 if learning v2 exists
++10 if latest app has learningReason
+-20 if failed records exist
+-10 if no public-safe videos exist
+-10 if many videos blocked
+```
+
+## Action cards
+
+Each action card should show:
+
+```text
+ACTION: APPROVE_FOR_UNLISTED
+Video: Corporate Regret Board
+Why: publicSafe=true, private_uploaded, production music
+Command: ./scripts/approve-video.sh Nx2Ek9u165c "Approved for unlisted test"
+Next: ./scripts/publish-approved.sh Nx2Ek9u165c unlisted
+```
+
+## Blocker cards
+
+Each blocker card should show:
+
+```text
+BLOCKED: Runaway Button
+Reason: audio_missing
+Fix: rerender with AUDIO_REQUIRE_PUBLIC_SAFE=true
+Command: FORCE=true TARGET_APP="apps/runaway-button.html" ...
+```
+
+## Learning confidence
+
+Confidence levels:
+
+```text
+low: fewer than 5 videos with stats
+medium: 5-25 videos
+high: 25+ videos with meaningful views
+```
+
+For now, likely confidence is low because most stats are zero.
+
 Tasks:
 
-- [ ] Create dashboard folder
-- [ ] Create content summary helper
-- [ ] Create review summary helper
-- [ ] Create learning summary helper
-- [ ] Create daily report command
-- [ ] Add script aliases
-- [ ] Run report after learning v2
+- [ ] Create `tools/dashboard/report-utils.js`
+- [ ] Create `tools/dashboard/report-v2.js`
+- [ ] Add JSON report output
+- [ ] Add markdown table helpers
+- [ ] Add health score
+- [ ] Add action cards
+- [ ] Add blocker cards
+- [ ] Add learning confidence
+- [ ] Add rerender candidates
+- [ ] Patch dashboard script to use v2
 - [ ] Commit
 
 ---
 
-# Phase 7: Autopilot Decision Logging
+# Phase 6: Rerender Candidates
 
-Status: Planned after dashboard
+Status: Planned inside report v2
 
-Next:
+Rerender candidate conditions:
 
-- [ ] Log every autopilot decision to a decision ledger
-- [ ] Store why a type/story mode was selected
-- [ ] Store rejected candidate templates
-- [ ] Store anti-repeat decisions
-- [ ] Store learning score used
+```text
+audio_missing
+not public-safe
+old uploaded video without audioMix
+strong idea but weak technical quality
+published_private but blocked_for_public
+```
+
+The report should suggest:
+
+```text
+rerender with production-safe audio
+private upload only
+then review again
+```
 
 ---
 
-# Phase 8: Real Production Audio Pack
+# Phase 7: Operator Commands
 
-Status: Planned
+Status: Planned inside report v2
 
-Next:
+The report should print commands for:
 
-- [ ] Replace generated sine tones with better royalty-free music/SFX
-- [ ] Register license/source/public safety
-- [ ] Add more story-mode-specific stings
-- [ ] Rerender promising old videos with production audio
+```text
+sync review
+run learning
+preview next idea
+upload next private
+approve video
+publish unlisted
+rerender old video
+```
 
 ---
 
 # Immediate Next Build Tasks
 
-1. Create `tools/dashboard/content-summary.js`.
-2. Create `tools/dashboard/review-summary.js`.
-3. Create `tools/dashboard/learning-summary.js`.
-4. Create `tools/dashboard/daily-report.js`.
-5. Create `scripts/daily-report.sh`.
-6. Create `scripts/dashboard.sh`.
-7. Run sync-review and learning-v2 before reporting.
-8. Output console report.
-9. Output `reports/daily-autopilot-report.md`.
-10. Commit.
+1. Create `tools/dashboard/report-utils.js`.
+2. Create `tools/dashboard/report-v2.js`.
+3. Add markdown + JSON output.
+4. Add health scoring.
+5. Add action cards.
+6. Add blocker/rerender cards.
+7. Add learning insight section.
+8. Add data quality warnings.
+9. Create `scripts/daily-report-v2.sh`.
+10. Patch `scripts/dashboard.sh` to call v2.
+11. Run report.
+12. Commit.
 
 ---
 
 # Current Command Set
 
-Run daily dashboard:
+Detailed dashboard:
 
 ```bash
-./scripts/daily-report.sh
+./scripts/daily-report-v2.sh
 ```
 
 Alias:
@@ -325,31 +355,31 @@ Alias:
 ./scripts/dashboard.sh
 ```
 
-Run full learning refresh first:
+Refresh learning and dashboard:
 
 ```bash
 ./scripts/youtube-stats-pull.sh || true
 ./scripts/learning-v2.sh
-./scripts/daily-report.sh
+./scripts/daily-report-v2.sh
 ```
 
-Autopilot preview with learning:
+Open markdown report:
 
 ```bash
-USE_LEARNING_ENGINE=true AUTO_DRY_RUN=true ./scripts/autopilot-preview-once.sh
+cat reports/daily-autopilot-report.md
 ```
 
-Private upload with learning and public-safe audio:
+Open JSON report:
 
 ```bash
-USE_LEARNING_ENGINE=true AUDIO_REQUIRE_PUBLIC_SAFE=true AUTO_DRY_RUN=false ./scripts/autopilot-upload-once-private.sh
+cat reports/daily-autopilot-report.json
 ```
 
 ---
 
 # Current Priority
 
-1. Create a single daily report.
-2. Make learning/review/audio status easy to understand.
-3. Show the latest autopilot decision and learning reason.
-4. Then build a decision ledger and richer dashboard.
+1. Make reports operationally useful.
+2. Show exactly what to approve/rerender/publish.
+3. Show why the bot is choosing ideas.
+4. Then build an autopilot decision ledger.

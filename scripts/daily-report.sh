@@ -2,6 +2,4 @@
 set -euo pipefail
 
 cd "$(dirname "$0")/.."
-
-./scripts/sync-review.sh >/tmp/uselessapps-sync-review.log
-node tools/dashboard/daily-report.js
+./scripts/daily-report-v2.sh

@@ -1,0 +1,3030 @@
+{
+  "generatedAt": "2026-06-21T13:42:55.030Z",
+  "health": {
+    "score": 90,
+    "label": "excellent",
+    "notes": [
+      "+20 processed records exist",
+      "+15 uploads exist",
+      "+15 review DB has items",
+      "+15 audio mix exists",
+      "+15 public-safe item exists",
+      "+10 learning v2 exists",
+      "+10 learning reason exists",
+      "-10 many blocked videos"
+    ]
+  },
+  "totals": {
+    "apps": 14,
+    "records": 14,
+    "uploaded": 13,
+    "dryRun": 1,
+    "failed": 0,
+    "publicSafe": 1,
+    "blockedForPublic": 12,
+    "withLearningReason": 1
+  },
+  "statusCounts": {
+    "private_uploaded": 11,
+    "published_unlisted": 2,
+    "preview_only": 1
+  },
+  "audioCounts": {
+    "blocked_for_public": 12,
+    "needs_audio_review": 1,
+    "not_validated": 1
+  },
+  "actionCounts": {
+    "RERENDER_WITH_AUDIO": 11,
+    "PRIVATE_UPLOAD_IF_GOOD": 1
+  },
+  "actions": [
+    {
+      "name": "Runaway Button",
+      "file": "apps/runaway-button.html",
+      "videoId": "zx5y4y-2CpY",
+      "url": "https://youtu.be/zx5y4y-2CpY",
+      "uploaded": true,
+      "dryRun": false,
+      "failed": false,
+      "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/runaway-button-v3.mp4",
+      "status": "private_uploaded",
+      "decision": "none",
+      "appType": "unknown",
+      "storyMode": "unknown",
+      "audioMode": "unknown",
+      "audioReadiness": "blocked_for_public",
+      "publicSafe": false,
+      "audioWarnings": [
+        "audio_missing"
+      ],
+      "learningReason": null,
+      "learningScore": null,
+      "generatedAt": "2026-06-20T21:35:07.882Z",
+      "record": {
+        "name": "Runaway Button",
+        "file": "apps/runaway-button.html",
+        "appUrl": "https://btcetherkings.github.io/useless-apps-fun/apps/runaway-button.html",
+        "startedAt": "2026-06-20T21:34:41.580Z",
+        "generatedAt": "2026-06-20T21:35:07.882Z",
+        "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/runaway-button-v3.mp4",
+        "finalDuration": 47.71,
+        "narration": "Scientists said it could not be useful. They were correct. This is Runaway Button, a cutting edge example of Button Avoidance Technology. A button that literally runs away from your cursor. Our model, UselessNet-v7.3 (peer-rejected), rated it 98 percent useless, grade S (Sublimely Useless). Distinguished Professor of Almost Nothing Dr. Penelope Voidwater had this to say: My peer review consisted entirely of sighing. The plot thickened. The app did not. Official classification: Mildly inconvenient. Warning: do not use this app while operating heavy expectations. Today's fabricated statistic: Time saved: negative 45 minutes. And there it was: peak uselessness, achieved live. Certified 0% Useful by nobody official. Remember: productivity is temporary, but uselessness is forever. Emergency producers have confirmed that the following footage may contain trace amounts of productivity, but only by accident. The app is now being monitored by the Department of Bad Ideas under case number DBI-630933. Official app thought detected: \"Loading my feelings... please wait forever.\" A panel of imaginary experts has advised viewers to remain seated, hydrated, and unimpressed.",
+        "narrationMeta": {
+          "duration": 96.624,
+          "synthetic": false,
+          "warning": null,
+          "chunks": 8
+        },
+        "uploaded": true,
+        "youtube": {
+          "videoId": "zx5y4y-2CpY",
+          "title": "I made software with negative productivity",
+          "description": "Runaway Button\n\nA button that literally runs away from your cursor.\n\nUselessness score: 98% (grade S (Sublimely Useless))\nScored by: UselessNet-v7.3 (peer-rejected)\nSentience level: 40% - suspiciously responsive\nFake category: Button Avoidance Technology\nOfficial danger level: Mildly inconvenient\nOfficial warning: Warning: do not use this app while operating heavy expectations.\nFake review: \"My laptop sighed.\"\nFake award: Certified 0% Useful by nobody official\nCertificate: DBI-637279 (issued by The Department of Bad Ideas)\n\nTry it here: https://btcetherkings.github.io/useless-apps-fun/apps/runaway-button.html\n\nUselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology.\n\nComment your most useless app idea and we might build it next.\n\n#UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps #UselessTechnology",
+          "privacyStatus": "private",
+          "url": "https://youtu.be/zx5y4y-2CpY"
+        }
+      },
+      "action": "RERENDER_WITH_AUDIO"
+    },
+    {
+      "name": "Staring Pet Rock",
+      "file": "apps/pet-rock.html",
+      "videoId": "nT6qA1pNWmU",
+      "url": "https://youtu.be/nT6qA1pNWmU",
+      "uploaded": true,
+      "dryRun": false,
+      "failed": false,
+      "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/staring-pet-rock-v3.mp4",
+      "status": "private_uploaded",
+      "decision": "none",
+      "appType": "unknown",
+      "storyMode": "unknown",
+      "audioMode": "unknown",
+      "audioReadiness": "blocked_for_public",
+      "publicSafe": false,
+      "audioWarnings": [
+        "audio_missing"
+      ],
+      "learningReason": null,
+      "learningScore": null,
+      "generatedAt": "2026-06-20T21:35:45.726Z",
+      "record": {
+        "name": "Staring Pet Rock",
+        "file": "apps/pet-rock.html",
+        "appUrl": "https://btcetherkings.github.io/useless-apps-fun/apps/pet-rock.html",
+        "startedAt": "2026-06-20T21:35:09.930Z",
+        "generatedAt": "2026-06-20T21:35:45.726Z",
+        "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/staring-pet-rock-v3.mp4",
+        "finalDuration": 47.71,
+        "narration": "We built another app, and society has not yet recovered. This is Staring Pet Rock, a cutting edge example of Emotional Support Mineral. A pet that does nothing but stare at you. Our model, UselessNet-v7.3 (peer-rejected), rated it 93 percent useless, grade A (Aggressively Pointless). Senior Fellow, Department of Bad Ideas Doctor-ish Marcus Maybe had this to say: My peer review consisted entirely of sighing. But then, something happened. Specifically, nothing. Official classification: Spiritually unnecessary. No useful features were harmed during development. Today's fabricated statistic: 93% of users immediately questioned their life choices. The screen flickered. So did our hope. Proudly solving a problem that does not exist. Remember: productivity is temporary, but uselessness is forever. Emergency producers have confirmed that the following footage may contain trace amounts of productivity, but only by accident. The app is now being monitored by the Department of Bad Ideas under case number DBI-642053. Official app thought detected: \"Loading my feelings... please wait forever.\" A panel of imaginary experts has advised viewers to remain seated, hydrated, and unimpressed.",
+        "narrationMeta": {
+          "duration": 96.336,
+          "synthetic": false,
+          "warning": null,
+          "chunks": 9
+        },
+        "uploaded": true,
+        "youtube": {
+          "videoId": "nT6qA1pNWmU",
+          "title": "The internet was a mistake, so I built this",
+          "description": "Staring Pet Rock\n\nA pet that does nothing but stare at you.\n\nUselessness score: 93% (grade A (Aggressively Pointless))\nScored by: UselessNet-v7.3 (peer-rejected)\nSentience level: 11% - inert (probably)\nFake category: Emotional Support Mineral\nOfficial danger level: Spiritually unnecessary\nOfficial warning: No useful features were harmed during development.\nFake review: \"My therapist asked me to stop. I sent her the link.\"\nFake award: Proudly solving a problem that does not exist\nCertificate: DBI-439853 (issued by The Department of Bad Ideas)\n\nTry it here: https://btcetherkings.github.io/useless-apps-fun/apps/pet-rock.html\n\nUselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology.\n\nComment your most useless app idea and we might build it next.\n\n#UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps #UselessTechnology",
+          "privacyStatus": "private",
+          "url": "https://youtu.be/nT6qA1pNWmU"
+        }
+      },
+      "action": "RERENDER_WITH_AUDIO"
+    },
+    {
+      "name": "Useless To-Do List",
+      "file": "apps/useless-todo.html",
+      "videoId": "LgOrHXpLt8E",
+      "url": "https://youtu.be/LgOrHXpLt8E",
+      "uploaded": true,
+      "dryRun": false,
+      "failed": false,
+      "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/useless-to-do-list-v3.mp4",
+      "status": "private_uploaded",
+      "decision": "none",
+      "appType": "unknown",
+      "storyMode": "unknown",
+      "audioMode": "unknown",
+      "audioReadiness": "blocked_for_public",
+      "publicSafe": false,
+      "audioWarnings": [
+        "audio_missing"
+      ],
+      "learningReason": null,
+      "learningScore": null,
+      "generatedAt": "2026-06-20T21:36:10.791Z",
+      "record": {
+        "name": "Useless To-Do List",
+        "file": "apps/useless-todo.html",
+        "appUrl": "https://btcetherkings.github.io/useless-apps-fun/apps/useless-todo.html",
+        "startedAt": "2026-06-20T21:35:47.768Z",
+        "generatedAt": "2026-06-20T21:36:10.791Z",
+        "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/useless-to-do-list-v3.mp4",
+        "finalDuration": 47.71,
+        "narration": "Today, we investigate a technological breakthrough in absolute nonsense. This is Useless To-Do List, a cutting edge example of Anti-Productivity Software. A to-do list that deletes your tasks before you can do them. Our model, UselessNet-v7.3 (peer-rejected), rated it 99 percent useless, grade S (Sublimely Useless). Director of the Institute for Things That Load Professor Reginald Nopetersen had this to say: I would call it a breakthrough, but nothing broke through. Experts leaned in. They immediately regretted leaning in. Official classification: Load-bearing nonsense. If symptoms of usefulness appear, restart immediately. Today's fabricated statistic: 28 tabs were opened and none became useful. For one shining moment it almost worked. It did not, but it almost did. Banned from productivity meetings. Follow for more apps that do nothing, professionally. Emergency producers have confirmed that the following footage may contain trace amounts of productivity, but only by accident. The app is now being monitored by the Department of Bad Ideas under case number DBI-184374. Official app thought detected: \"I have seen the source code. I have notes.\" A panel of imaginary experts has advised viewers to remain seated, hydrated, and unimpressed.",
+        "narrationMeta": {
+          "duration": 99.48,
+          "synthetic": false,
+          "warning": null,
+          "chunks": 9
+        },
+        "uploaded": true,
+        "youtube": {
+          "videoId": "LgOrHXpLt8E",
+          "title": "The internet was a mistake, so I built this",
+          "description": "Useless To-Do List\n\nA to-do list that deletes your tasks before you can do them.\n\nUselessness score: 99% (grade S (Sublimely Useless))\nScored by: UselessNet-v7.3 (peer-rejected)\nSentience level: 29% - suspiciously responsive\nFake category: Anti-Productivity Software\nOfficial danger level: Load-bearing nonsense\nOfficial warning: If symptoms of usefulness appear, restart immediately.\nFake review: \"This app changed my life by changing absolutely nothing.\"\nFake award: Banned from productivity meetings\nCertificate: DBI-946406 (issued by The Department of Bad Ideas)\n\nTry it here: https://btcetherkings.github.io/useless-apps-fun/apps/useless-todo.html\n\nUselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology.\n\nComment your most useless app idea and we might build it next.\n\n#UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps #UselessTechnology",
+          "privacyStatus": "private",
+          "url": "https://youtu.be/LgOrHXpLt8E"
+        }
+      },
+      "action": "RERENDER_WITH_AUDIO"
+    },
+    {
+      "name": "Unhelpful Calculator",
+      "file": "apps/unhelpful-calculator.html",
+      "videoId": "9ev-3qhQkSs",
+      "url": "https://youtu.be/9ev-3qhQkSs",
+      "uploaded": true,
+      "dryRun": false,
+      "failed": false,
+      "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/unhelpful-calculator-v3.mp4",
+      "status": "private_uploaded",
+      "decision": "none",
+      "appType": "unknown",
+      "storyMode": "unknown",
+      "audioMode": "unknown",
+      "audioReadiness": "blocked_for_public",
+      "publicSafe": false,
+      "audioWarnings": [
+        "audio_missing"
+      ],
+      "learningReason": null,
+      "learningScore": null,
+      "generatedAt": "2026-06-20T21:36:36.020Z",
+      "record": {
+        "name": "Unhelpful Calculator",
+        "file": "apps/unhelpful-calculator.html",
+        "appUrl": "https://btcetherkings.github.io/useless-apps-fun/apps/unhelpful-calculator.html",
+        "startedAt": "2026-06-20T21:36:12.408Z",
+        "generatedAt": "2026-06-20T21:36:36.020Z",
+        "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/unhelpful-calculator-v3.mp4",
+        "finalDuration": 47.71,
+        "narration": "Some apps solve problems. This app creates emotional paperwork. This is Unhelpful Calculator, a cutting edge example of Mathematical Sabotage. A calculator that refuses to give a straightforward result. Our model, UselessNet-v7.3 (peer-rejected), rated it 95 percent useless, grade A (Aggressively Pointless). Chair of Recreational Inconvenience Studies Sir Edmund Fumblesworth III had this to say: This is a genuine step backward for humanity, technically speaking. But then, something happened. Specifically, nothing. Official classification: Productivity negative. Consult your developer if pointlessness lasts longer than four hours. Today's fabricated statistic: 96% chance of achieving absolutely nothing. For one shining moment it almost worked. It did not, but it almost did. Winner of the Golden Nothing Award. If this helped you, something has gone terribly wrong. Emergency producers have confirmed that the following footage may contain trace amounts of productivity, but only by accident. The app is now being monitored by the Department of Bad Ideas under case number DBI-770913. Official app thought detected: \"Click me. No. Wait. No.\" A panel of imaginary experts has advised viewers to remain seated, hydrated, and unimpressed.",
+        "narrationMeta": {
+          "duration": 100.992,
+          "synthetic": false,
+          "warning": null,
+          "chunks": 9
+        },
+        "uploaded": true,
+        "youtube": {
+          "videoId": "9ev-3qhQkSs",
+          "title": "The internet was a mistake, so I built this",
+          "description": "Unhelpful Calculator\n\nA calculator that refuses to give a straightforward result.\n\nUselessness score: 95% (grade A (Aggressively Pointless))\nScored by: UselessNet-v7.3 (peer-rejected)\nSentience level: 5% - inert (probably)\nFake category: Mathematical Sabotage\nOfficial danger level: Productivity negative\nOfficial warning: Consult your developer if pointlessness lasts longer than four hours.\nFake review: \"Finally, software that respects my desire to fail slowly.\"\nFake award: Winner of the Golden Nothing Award\nCertificate: DBI-571956 (issued by The Department of Bad Ideas)\n\nTry it here: https://btcetherkings.github.io/useless-apps-fun/apps/unhelpful-calculator.html\n\nUselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology.\n\nComment your most useless app idea and we might build it next.\n\n#UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps #UselessTechnology",
+          "privacyStatus": "private",
+          "url": "https://youtu.be/9ev-3qhQkSs"
+        }
+      },
+      "action": "RERENDER_WITH_AUDIO"
+    },
+    {
+      "name": "Endless Loading Spinner",
+      "file": "apps/endless-spinner.html",
+      "videoId": "MsadFVnCvIs",
+      "url": "https://youtu.be/MsadFVnCvIs",
+      "uploaded": true,
+      "dryRun": false,
+      "failed": false,
+      "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/endless-loading-spinner-v3.mp4",
+      "status": "private_uploaded",
+      "decision": "none",
+      "appType": "unknown",
+      "storyMode": "unknown",
+      "audioMode": "unknown",
+      "audioReadiness": "blocked_for_public",
+      "publicSafe": false,
+      "audioWarnings": [
+        "audio_missing"
+      ],
+      "learningReason": null,
+      "learningScore": null,
+      "generatedAt": "2026-06-20T21:37:13.145Z",
+      "record": {
+        "name": "Endless Loading Spinner",
+        "file": "apps/endless-spinner.html",
+        "appUrl": "https://btcetherkings.github.io/useless-apps-fun/apps/endless-spinner.html",
+        "startedAt": "2026-06-20T21:36:37.967Z",
+        "generatedAt": "2026-06-20T21:37:13.145Z",
+        "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/endless-loading-spinner-v3.mp4",
+        "finalDuration": 47.71,
+        "narration": "Today, we investigate a technological breakthrough in absolute nonsense. This is Endless Loading Spinner, a cutting edge example of Infinite Waiting Technology. A loading bar that never finishes. Our model, UselessNet-v7.3 (peer-rejected), rated it 97 percent useless, grade S (Sublimely Useless). Head of Applied Pointlessness Analyst Greta Shrugfield had this to say: My peer review consisted entirely of sighing. But then, something happened. Specifically, nothing. Official classification: Emotionally confusing. No useful features were harmed during development. Today's fabricated statistic: 8 tabs were opened and none became useful. The screen flickered. So did our hope. Winner of the Golden Nothing Award. Would you use it? No? Perfect. Submit your own useless idea next. Emergency producers have confirmed that the following footage may contain trace amounts of productivity, but only by accident. The app is now being monitored by the Department of Bad Ideas under case number DBI-741750. Official app thought detected: \"I have seen the source code. I have notes.\" A panel of imaginary experts has advised viewers to remain seated, hydrated, and unimpressed.",
+        "narrationMeta": {
+          "duration": 94.992,
+          "synthetic": false,
+          "warning": null,
+          "chunks": 8
+        },
+        "uploaded": true,
+        "youtube": {
+          "videoId": "MsadFVnCvIs",
+          "title": "This app became 46% sentient and I'm scared",
+          "description": "Endless Loading Spinner\n\nA loading bar that never finishes.\n\nUselessness score: 97% (grade S (Sublimely Useless))\nScored by: UselessNet-v7.3 (peer-rejected)\nSentience level: 46% - forming opinions\nFake category: Infinite Waiting Technology\nOfficial danger level: Emotionally confusing\nOfficial warning: No useful features were harmed during development.\nFake review: \"I opened it and immediately became less efficient.\"\nFake award: Winner of the Golden Nothing Award\nCertificate: DBI-439041 (issued by The Department of Bad Ideas)\n\nTry it here: https://btcetherkings.github.io/useless-apps-fun/apps/endless-spinner.html\n\nUselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology.\n\nComment your most useless app idea and we might build it next.\n\n#UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps #UselessTechnology",
+          "privacyStatus": "private",
+          "url": "https://youtu.be/MsadFVnCvIs"
+        }
+      },
+      "action": "RERENDER_WITH_AUDIO"
+    },
+    {
+      "name": "The Government Calculator",
+      "file": "apps/auto-the-government-calculator.html",
+      "videoId": "roo3gALgBDA",
+      "url": "https://youtu.be/roo3gALgBDA",
+      "uploaded": true,
+      "dryRun": false,
+      "failed": false,
+      "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/the-government-calculator-v3.mp4",
+      "status": "private_uploaded",
+      "decision": "none",
+      "appType": "unknown",
+      "storyMode": "unknown",
+      "audioMode": "unknown",
+      "audioReadiness": "blocked_for_public",
+      "publicSafe": false,
+      "audioWarnings": [
+        "audio_missing"
+      ],
+      "learningReason": null,
+      "learningScore": null,
+      "generatedAt": "2026-06-20T22:04:14.787Z",
+      "record": {
+        "name": "The Government Calculator",
+        "file": "apps/auto-the-government-calculator.html",
+        "appUrl": "https://btcetherkings.github.io/useless-apps-fun/apps/auto-the-government-calculator.html",
+        "startedAt": "2026-06-20T22:03:52.665Z",
+        "generatedAt": "2026-06-20T22:04:14.787Z",
+        "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/the-government-calculator-v3.mp4",
+        "finalDuration": 47.71,
+        "narration": "Breaking news from the internet nobody asked for. This is The Government Calculator, a cutting edge example of Mathematical Sabotage. A calculator that refuses to give a straightforward answer. Our model, UselessNet-v7.3 (peer-rejected), rated it 96 percent useless, grade A (Aggressively Pointless). Senior Fellow, Department of Bad Ideas Dame Cassandra Underwhelm had this to say: We ran the numbers. The numbers ran away. The plot thickened. The app did not. Official classification: Algorithmically cursed. May cause sudden onset of free time. Today's fabricated statistic: Time saved: negative 20 minutes. For one shining moment it almost worked. It did not, but it almost did. Rejected by common sense, twice. This has been another public service announcement from UselessApps dot fun. Emergency producers have confirmed that the following footage may contain trace amounts of productivity, but only by accident. The app is now being monitored by the Department of Bad Ideas under case number DBI-138796. Official app thought detected: \"Why am I like this?\" A panel of imaginary experts has advised viewers to remain seated, hydrated, and unimpressed.",
+        "narrationMeta": {
+          "duration": 93.072,
+          "synthetic": false,
+          "warning": null,
+          "chunks": 9
+        },
+        "uploaded": true,
+        "youtube": {
+          "videoId": "roo3gALgBDA",
+          "title": "I made software with negative productivity",
+          "description": "The Government Calculator\n\nA calculator that refuses to give a straightforward answer.\n\nUselessness score: 96% (grade A (Aggressively Pointless))\nScored by: UselessNet-v7.3 (peer-rejected)\nSentience level: 37% - suspiciously responsive\nFake category: Mathematical Sabotage\nOfficial danger level: Algorithmically cursed\nOfficial warning: May cause sudden onset of free time.\nFake review: \"Finally, software that respects my desire to fail slowly.\"\nFake award: Rejected by common sense, twice\nCertificate: DBI-736989 (issued by The Department of Bad Ideas)\n\nTry it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-the-government-calculator.html\n\nUselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology.\n\nComment your most useless app idea and we might build it next.\n\n#UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps #UselessTechnology",
+          "privacyStatus": "private",
+          "url": "https://youtu.be/roo3gALgBDA"
+        }
+      },
+      "action": "RERENDER_WITH_AUDIO"
+    },
+    {
+      "name": "Emotionally Unhelpful Calculator",
+      "file": "apps/auto-emotionally-unhelpful-calculator.html",
+      "videoId": "gYpcgNaw5W0",
+      "url": "https://youtu.be/gYpcgNaw5W0",
+      "uploaded": true,
+      "dryRun": false,
+      "failed": false,
+      "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/emotionally-unhelpful-calculator-v3.mp4",
+      "status": "private_uploaded",
+      "decision": "none",
+      "appType": "unknown",
+      "storyMode": "unknown",
+      "audioMode": "unknown",
+      "audioReadiness": "blocked_for_public",
+      "publicSafe": false,
+      "audioWarnings": [
+        "audio_missing"
+      ],
+      "learningReason": null,
+      "learningScore": null,
+      "generatedAt": "2026-06-20T22:14:01.362Z",
+      "record": {
+        "name": "Emotionally Unhelpful Calculator",
+        "file": "apps/auto-emotionally-unhelpful-calculator.html",
+        "appUrl": "https://btcetherkings.github.io/useless-apps-fun/apps/auto-emotionally-unhelpful-calculator.html",
+        "startedAt": "2026-06-20T22:13:38.866Z",
+        "generatedAt": "2026-06-20T22:14:01.362Z",
+        "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/emotionally-unhelpful-calculator-v3.mp4",
+        "finalDuration": 47.71,
+        "narration": "We built another app, and society has not yet recovered. This is Emotionally Unhelpful Calculator, a cutting edge example of Mathematical Sabotage. A calculator that refuses to give a straightforward answer. Our model, UselessNet-v7.3 (peer-rejected), rated it 96 percent useless, grade A (Aggressively Pointless). Distinguished Professor of Almost Nothing Sir Edmund Fumblesworth III had this to say: It should not work. It does not work. And yet here we are. But then, something happened. Specifically, nothing. Official classification: Emotionally confusing. Warning: do not use this app while operating heavy expectations. Today's fabricated statistic: Investor confidence: 1%. And there it was: peak uselessness, achieved live. Rejected by common sense, twice. Remember: productivity is temporary, but uselessness is forever. Emergency producers have confirmed that the following footage may contain trace amounts of productivity, but only by accident. The app is now being monitored by the Department of Bad Ideas under case number DBI-159449. Official app thought detected: \"I refuse.\" A panel of imaginary experts has advised viewers to remain seated, hydrated, and unimpressed.",
+        "narrationMeta": {
+          "duration": 97.8,
+          "synthetic": false,
+          "warning": null,
+          "chunks": 9
+        },
+        "uploaded": true,
+        "youtube": {
+          "videoId": "gYpcgNaw5W0",
+          "title": "This app became 34% sentient and I'm scared",
+          "description": "Emotionally Unhelpful Calculator\n\nA calculator that refuses to give a straightforward answer.\n\nUselessness score: 96% (grade A (Aggressively Pointless))\nScored by: UselessNet-v7.3 (peer-rejected)\nSentience level: 34% - suspiciously responsive\nFake category: Mathematical Sabotage\nOfficial danger level: Emotionally confusing\nOfficial warning: Warning: do not use this app while operating heavy expectations.\nFake review: \"I asked for productivity. It gave me character development.\"\nFake award: Rejected by common sense, twice\nCertificate: DBI-906447 (issued by The Department of Bad Ideas)\n\nTry it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-emotionally-unhelpful-calculator.html\n\nUselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology.\n\nComment your most useless app idea and we might build it next.\n\n#UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps #UselessTechnology",
+          "privacyStatus": "private",
+          "url": "https://youtu.be/gYpcgNaw5W0"
+        }
+      },
+      "action": "RERENDER_WITH_AUDIO"
+    },
+    {
+      "name": "Infinite Loading Ceremony",
+      "file": "apps/auto-infinite-loading-ceremony.html",
+      "videoId": "-YoBkyPZlAE",
+      "url": "https://youtu.be/-YoBkyPZlAE",
+      "uploaded": true,
+      "dryRun": false,
+      "failed": false,
+      "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/infinite-loading-ceremony-v3.mp4",
+      "status": "private_uploaded",
+      "decision": "none",
+      "appType": "unknown",
+      "storyMode": "unknown",
+      "audioMode": "unknown",
+      "audioReadiness": "blocked_for_public",
+      "publicSafe": false,
+      "audioWarnings": [
+        "audio_missing"
+      ],
+      "learningReason": null,
+      "learningScore": null,
+      "generatedAt": "2026-06-21T08:05:47.914Z",
+      "record": {
+        "name": "Infinite Loading Ceremony",
+        "file": "apps/auto-infinite-loading-ceremony.html",
+        "appUrl": "https://btcetherkings.github.io/useless-apps-fun/apps/auto-infinite-loading-ceremony.html",
+        "startedAt": "2026-06-21T08:05:13.627Z",
+        "generatedAt": "2026-06-21T08:05:47.914Z",
+        "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/infinite-loading-ceremony-v3.mp4",
+        "finalDuration": 47.71,
+        "narration": "We built another app, and society has not yet recovered. This is Infinite Loading Ceremony, a cutting edge example of Infinite Waiting Technology. A loading screen that has made peace with never finishing. Our model, UselessNet-v7.3 (peer-rejected), rated it 97 percent useless, grade S (Sublimely Useless). Senior Fellow, Department of Bad Ideas Professor Reginald Nopetersen had this to say: I would call it a breakthrough, but nothing broke through. And just when you thought it could not get more pointless, it did. Official classification: Recreationally hostile. May cause sudden onset of free time. Today's fabricated statistic: 93% chance of achieving absolutely nothing. For one shining moment it almost worked. It did not, but it almost did. Ranked number one by three confused interns. If this helped you, something has gone terribly wrong. Emergency producers have confirmed that the following footage may contain trace amounts of productivity, but only by accident. The app is now being monitored by the Department of Bad Ideas under case number DBI-796501. Official app thought detected: \"Loading my feelings... please wait forever.\" A panel of imaginary experts has advised viewers to remain seated, hydrated, and unimpressed.",
+        "narrationMeta": {
+          "duration": 97.656,
+          "synthetic": false,
+          "warning": null,
+          "chunks": 9
+        },
+        "uploaded": true,
+        "youtube": {
+          "videoId": "-YoBkyPZlAE",
+          "title": "Infinite Loading Ceremony: peak useless technology",
+          "description": "Infinite Loading Ceremony\n\nA loading screen that has made peace with never finishing.\n\nUselessness score: 97% (grade S (Sublimely Useless))\nScored by: UselessNet-v7.3 (peer-rejected)\nSentience level: 95% - please do not anger it\nFake category: Infinite Waiting Technology\nOfficial danger level: Recreationally hostile\nOfficial warning: May cause sudden onset of free time.\nFake review: \"I opened it and immediately became less efficient.\"\nFake award: Ranked number one by three confused interns\nCertificate: DBI-405042 (issued by The Department of Bad Ideas)\n\nTry it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-infinite-loading-ceremony.html\n\nUselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology.\n\nComment your most useless app idea and we might build it next.\n\n#UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps #UselessTechnology",
+          "privacyStatus": "private",
+          "url": "https://youtu.be/-YoBkyPZlAE"
+        }
+      },
+      "action": "RERENDER_WITH_AUDIO"
+    },
+    {
+      "name": "Emotionally Unavailable Button",
+      "file": "apps/auto-emotionally-unavailable-button.html",
+      "videoId": "9wbRVRevKX0",
+      "url": "https://youtu.be/9wbRVRevKX0",
+      "uploaded": true,
+      "dryRun": false,
+      "failed": false,
+      "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/emotionally-unavailable-button-v3.mp4",
+      "status": "private_uploaded",
+      "decision": "none",
+      "appType": "button",
+      "storyMode": "fake_nature_documentary",
+      "audioMode": "unknown",
+      "audioReadiness": "blocked_for_public",
+      "publicSafe": false,
+      "audioWarnings": [
+        "audio_missing"
+      ],
+      "learningReason": null,
+      "learningScore": null,
+      "generatedAt": "2026-06-21T09:12:56.565Z",
+      "record": {
+        "name": "Emotionally Unavailable Button",
+        "file": "apps/auto-emotionally-unavailable-button.html",
+        "appUrl": "https://btcetherkings.github.io/useless-apps-fun/apps/auto-emotionally-unavailable-button.html",
+        "startedAt": "2026-06-21T09:12:30.748Z",
+        "generatedAt": "2026-06-21T09:12:56.565Z",
+        "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/emotionally-unavailable-button-v3.mp4",
+        "finalDuration": 47.71,
+        "storyPackage": {
+          "appName": "Emotionally Unavailable Button",
+          "appType": "button",
+          "storyMode": "fake_nature_documentary",
+          "hook": "The internet made a mistake, and we filmed it.",
+          "escalation": "The app refused to explain itself, which experts described as bold.",
+          "twist": "A fake committee was formed. It also did nothing.",
+          "cta": "Follow for more apps that do nothing professionally.",
+          "narration": "The internet made a mistake, and we filmed it. Today we investigate Emotionally Unavailable Button. A button that refuses to cooperate with society. The app refused to explain itself, which experts described as bold. Official story mode: fake nature documentary. A fake committee was formed. It also did nothing. Follow for more apps that do nothing professionally.",
+          "storyHash": "132bc3d356b0"
+        },
+        "metadataPackage": {
+          "appName": "Emotionally Unavailable Button",
+          "aiSummary": "This video features Emotionally Unavailable Button. A button that refuses to cooperate with society. It is part of UselessApps.fun, a comedy project about deliberately pointless web apps. The video format is fake nature documentary. The target audience is viewers interested in tech comedy, coding humour, absurd apps, and internet culture.",
+          "youtube_shorts": {
+            "title": "The internet was a mistake, so I built this",
+            "description": "Emotionally Unavailable Button A button that refuses to cooperate with society. Hook: The internet made a mistake, and we filmed it. Story mode: fake nature documentary Uselessness score: 98% Fake category: Button Avoidance Technology Try it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-emotionally-unavailable-button.html UselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology. Comment your most useless app idea and we might build it next. #UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps",
+            "tags": [
+              "useless apps",
+              "funny apps",
+              "coding",
+              "webdev",
+              "tech comedy",
+              "pointless app"
+            ],
+            "categoryId": "28",
+            "pinnedComment": "What useless app should we build next?",
+            "hashtags": [
+              "#UselessApps",
+              "#FunnyApps",
+              "#Coding",
+              "#WebDev",
+              "#Shorts",
+              "#PointlessApps"
+            ]
+          },
+          "tiktok": {
+            "caption": "The internet was a mistake, so I built this. #uselessapps #funnyapps #codingtok #pointless #techcomedy",
+            "hashtags": [
+              "#uselessapps",
+              "#funnyapps",
+              "#codingtok",
+              "#pointless",
+              "#techcomedy"
+            ]
+          },
+          "instagram_reels": {
+            "caption": "The internet was a mistake, so I built this #UselessApps #FunnyReels #CodingHumor #TechComedy",
+            "hashtags": [
+              "#UselessApps",
+              "#FunnyReels",
+              "#CodingHumor",
+              "#TechComedy"
+            ]
+          },
+          "facebook_reels": {
+            "caption": "The internet was a mistake, so I built this #UselessApps #FunnyVideos #TechComedy",
+            "hashtags": [
+              "#UselessApps",
+              "#FunnyVideos",
+              "#TechComedy"
+            ]
+          },
+          "rumble": {
+            "title": "The internet was a mistake, so I built this",
+            "description": "Emotionally Unavailable Button A button that refuses to cooperate with society. Hook: The internet made a mistake, and we filmed it. Story mode: fake nature documentary Uselessness score: 98% Fake category: Button Avoidance Technology Try it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-emotionally-unavailable-button.html UselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology. Comment your most useless app idea and we might build it next. #UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps",
+            "tags": [
+              "UselessApps",
+              "FunnyApps",
+              "TechComedy"
+            ]
+          },
+          "x": {
+            "post": "The internet was a mistake, so I built this https://btcetherkings.github.io/useless-apps-fun/apps/auto-emotionally-unavailable-button.html #UselessApps #TechComedy"
+          }
+        },
+        "qualityPlan": {
+          "qualityMode": "preview",
+          "renderTarget": "shorts",
+          "profile": {
+            "width": 720,
+            "height": 1280,
+            "fps": 24,
+            "crf": 28,
+            "preset": "veryfast",
+            "audioBitrate": "128k"
+          },
+          "music": {
+            "enabled": false,
+            "count": 0,
+            "files": []
+          },
+          "sfx": {
+            "enabled": false,
+            "count": 0,
+            "files": []
+          },
+          "recommendations": [
+            "Use preview mode for local testing.",
+            "Use final mode for private upload review.",
+            "Keep music low under narration.",
+            "Render 9:16 for Shorts/Reels/TikTok.",
+            "Render 16:9 separately for web/Rumble/YouTube standard."
+          ]
+        },
+        "narration": "Some apps solve problems. This app creates emotional paperwork. This is Emotionally Unavailable Button, a cutting edge example of Button Avoidance Technology. A button that refuses to cooperate with society. Our model, UselessNet-v7.3 (peer-rejected), rated it 98 percent useless, grade S (Sublimely Useless). Lead Researcher, Centre for Wasted Clicks Dame Cassandra Underwhelm had this to say: This is a genuine step backward for humanity, technically speaking. But then, something happened. Specifically, nothing. Official classification: Spiritually unnecessary. May cause sudden onset of free time. Today's fabricated statistic: 91% of users immediately questioned their life choices. And there it was: peak uselessness, achieved live. Ranked number one by three confused interns. Would you use it? No? Perfect. Submit your own useless idea next. Emergency producers have confirmed that the following footage may contain trace amounts of productivity, but only by accident. The app is now being monitored by the Department of Bad Ideas under case number DBI-383299. Official app thought detected: \"Why am I like this?\" A panel of imaginary experts has advised viewers to remain seated, hydrated, and unimpressed.",
+        "narrationMeta": {
+          "duration": 100.056,
+          "synthetic": false,
+          "warning": null,
+          "chunks": 9
+        },
+        "uploaded": true,
+        "youtube": {
+          "videoId": "9wbRVRevKX0",
+          "title": "Scientists rated this app and immediately regretted it",
+          "description": "Emotionally Unavailable Button\n\nA button that refuses to cooperate with society.\n\nUselessness score: 98% (grade S (Sublimely Useless))\nScored by: UselessNet-v7.3 (peer-rejected)\nSentience level: 51% - forming opinions\nFake category: Button Avoidance Technology\nOfficial danger level: Spiritually unnecessary\nOfficial warning: May cause sudden onset of free time.\nFake review: \"Finally, software that respects my desire to fail slowly.\"\nFake award: Ranked number one by three confused interns\nCertificate: DBI-764222 (issued by The Department of Bad Ideas)\n\nTry it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-emotionally-unavailable-button.html\n\nUselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology.\n\nComment your most useless app idea and we might build it next.\n\n#UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps #UselessTechnology",
+          "privacyStatus": "private",
+          "url": "https://youtu.be/9wbRVRevKX0"
+        }
+      },
+      "action": "RERENDER_WITH_AUDIO"
+    },
+    {
+      "name": "Emotionally Distant Mineral",
+      "file": "apps/auto-emotionally-distant-mineral.html",
+      "videoId": "q6p8OXa9DSs",
+      "url": "https://youtu.be/q6p8OXa9DSs",
+      "uploaded": true,
+      "dryRun": false,
+      "failed": false,
+      "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/emotionally-distant-mineral-v3.mp4",
+      "status": "private_uploaded",
+      "decision": "none",
+      "appType": "object",
+      "storyMode": "fake_scientific_experiment",
+      "audioMode": "unknown",
+      "audioReadiness": "blocked_for_public",
+      "publicSafe": false,
+      "audioWarnings": [
+        "audio_missing"
+      ],
+      "learningReason": null,
+      "learningScore": null,
+      "generatedAt": "2026-06-21T09:32:37.190Z",
+      "record": {
+        "name": "Emotionally Distant Mineral",
+        "file": "apps/auto-emotionally-distant-mineral.html",
+        "appUrl": "https://btcetherkings.github.io/useless-apps-fun/apps/auto-emotionally-distant-mineral.html",
+        "startedAt": "2026-06-21T09:32:11.202Z",
+        "generatedAt": "2026-06-21T09:32:37.190Z",
+        "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/emotionally-distant-mineral-v3.mp4",
+        "finalDuration": 47.71,
+        "storyPackage": {
+          "appName": "Emotionally Distant Mineral",
+          "appType": "object",
+          "storyMode": "fake_scientific_experiment",
+          "hook": "Breaking news: software has officially given up.",
+          "escalation": "The app refused to explain itself, which experts described as bold.",
+          "twist": "A fake committee was formed. It also did nothing.",
+          "cta": "Follow for more apps that do nothing professionally.",
+          "narration": "Breaking news: software has officially given up. Today we investigate Emotionally Distant Mineral. A pet rock that stares at you and refuses to elaborate. The app refused to explain itself, which experts described as bold. Official story mode: fake scientific experiment. A fake committee was formed. It also did nothing. Follow for more apps that do nothing professionally.",
+          "storyHash": "c9831472ad14"
+        },
+        "metadataPackage": {
+          "appName": "Emotionally Distant Mineral",
+          "aiSummary": "This video features Emotionally Distant Mineral. A pet rock that stares at you and refuses to elaborate. It is part of UselessApps.fun, a comedy project about deliberately pointless web apps. The video format is fake scientific experiment. The target audience is viewers interested in tech comedy, coding humour, absurd apps, and internet culture.",
+          "youtube_shorts": {
+            "title": "I built Emotionally Distant Mineral and productivity collapsed",
+            "description": "Emotionally Distant Mineral A pet rock that stares at you and refuses to elaborate. Hook: Breaking news: software has officially given up. Story mode: fake scientific experiment Uselessness score: 93% Fake category: Emotional Support Mineral Try it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-emotionally-distant-mineral.html UselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology. Comment your most useless app idea and we might build it next. #UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps",
+            "tags": [
+              "useless apps",
+              "funny apps",
+              "coding",
+              "webdev",
+              "tech comedy",
+              "pointless app"
+            ],
+            "categoryId": "28",
+            "pinnedComment": "What useless app should we build next?",
+            "hashtags": [
+              "#UselessApps",
+              "#FunnyApps",
+              "#Coding",
+              "#WebDev",
+              "#Shorts",
+              "#PointlessApps"
+            ]
+          },
+          "tiktok": {
+            "caption": "I built Emotionally Distant Mineral and productivity collapsed. #uselessapps #funnyapps #codingtok #pointless #techcomedy",
+            "hashtags": [
+              "#uselessapps",
+              "#funnyapps",
+              "#codingtok",
+              "#pointless",
+              "#techcomedy"
+            ]
+          },
+          "instagram_reels": {
+            "caption": "I built Emotionally Distant Mineral and productivity collapsed #UselessApps #FunnyReels #CodingHumor #TechComedy",
+            "hashtags": [
+              "#UselessApps",
+              "#FunnyReels",
+              "#CodingHumor",
+              "#TechComedy"
+            ]
+          },
+          "facebook_reels": {
+            "caption": "I built Emotionally Distant Mineral and productivity collapsed #UselessApps #FunnyVideos #TechComedy",
+            "hashtags": [
+              "#UselessApps",
+              "#FunnyVideos",
+              "#TechComedy"
+            ]
+          },
+          "rumble": {
+            "title": "I built Emotionally Distant Mineral and productivity collapsed",
+            "description": "Emotionally Distant Mineral A pet rock that stares at you and refuses to elaborate. Hook: Breaking news: software has officially given up. Story mode: fake scientific experiment Uselessness score: 93% Fake category: Emotional Support Mineral Try it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-emotionally-distant-mineral.html UselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology. Comment your most useless app idea and we might build it next. #UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps",
+            "tags": [
+              "UselessApps",
+              "FunnyApps",
+              "TechComedy"
+            ]
+          },
+          "x": {
+            "post": "I built Emotionally Distant Mineral and productivity collapsed https://btcetherkings.github.io/useless-apps-fun/apps/auto-emotionally-distant-mineral.html #UselessApps #TechComedy"
+          }
+        },
+        "qualityPlan": {
+          "qualityMode": "preview",
+          "renderTarget": "shorts",
+          "profile": {
+            "width": 720,
+            "height": 1280,
+            "fps": 24,
+            "crf": 28,
+            "preset": "veryfast",
+            "audioBitrate": "128k"
+          },
+          "music": {
+            "enabled": false,
+            "count": 0,
+            "files": []
+          },
+          "sfx": {
+            "enabled": false,
+            "count": 0,
+            "files": []
+          },
+          "recommendations": [
+            "Use preview mode for local testing.",
+            "Use final mode for private upload review.",
+            "Keep music low under narration.",
+            "Render 9:16 for Shorts/Reels/TikTok.",
+            "Render 16:9 separately for web/Rumble/YouTube standard."
+          ]
+        },
+        "narration": "Breaking news from the internet nobody asked for. This is Emotionally Distant Mineral, a cutting edge example of Emotional Support Mineral. A pet rock that stares at you and refuses to elaborate. Our model, UselessNet-v7.3 (peer-rejected), rated it 93 percent useless, grade A (Aggressively Pointless). Director of the Institute for Things That Load The Honourable Beatrix Wronghaver had this to say: In thirty years of research, I have never seen software try this little. The plot thickened. The app did not. Official classification: Emotionally confusing. Side effects may include confusion, laughter, and browser tab regret. Today's fabricated statistic: 18 productivity experts fainted during testing. And there it was: peak uselessness, achieved live. Ranked number one by three confused interns. This has been another public service announcement from UselessApps dot fun. Emergency producers have confirmed that the following footage may contain trace amounts of productivity, but only by accident. The app is now being monitored by the Department of Bad Ideas under case number DBI-488178. Official app thought detected: \"Click me. No. Wait. No.\" A panel of imaginary experts has advised viewers to remain seated, hydrated, and unimpressed.",
+        "narrationMeta": {
+          "duration": 98.136,
+          "synthetic": false,
+          "warning": null,
+          "chunks": 9
+        },
+        "uploaded": true,
+        "youtube": {
+          "videoId": "q6p8OXa9DSs",
+          "title": "The internet was a mistake, so I built this",
+          "description": "Emotionally Distant Mineral\n\nA pet rock that stares at you and refuses to elaborate.\n\nUselessness score: 93% (grade A (Aggressively Pointless))\nScored by: UselessNet-v7.3 (peer-rejected)\nSentience level: 81% - developing a personality we did not request\nFake category: Emotional Support Mineral\nOfficial danger level: Emotionally confusing\nOfficial warning: Side effects may include confusion, laughter, and browser tab regret.\nFake review: \"This app changed my life by changing absolutely nothing.\"\nFake award: Ranked number one by three confused interns\nCertificate: DBI-752373 (issued by The Department of Bad Ideas)\n\nTry it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-emotionally-distant-mineral.html\n\nUselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology.\n\nComment your most useless app idea and we might build it next.\n\n#UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps #UselessTechnology",
+          "privacyStatus": "private",
+          "url": "https://youtu.be/q6p8OXa9DSs"
+        }
+      },
+      "action": "RERENDER_WITH_AUDIO"
+    },
+    {
+      "name": "Emotionally Unhelpful Calculator WZZPKG",
+      "file": "apps/auto-emotionally-unhelpful-calculator-wzzpkg.html",
+      "videoId": "s-nlrJBNRiM",
+      "url": "https://youtu.be/s-nlrJBNRiM",
+      "uploaded": true,
+      "dryRun": false,
+      "failed": false,
+      "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/emotionally-unhelpful-calculator-wzzpkg-v3.mp4",
+      "status": "private_uploaded",
+      "decision": "none",
+      "appType": "calculator",
+      "storyMode": "fake_courtroom_trial",
+      "audioMode": "unknown",
+      "audioReadiness": "blocked_for_public",
+      "publicSafe": false,
+      "audioWarnings": [
+        "audio_missing"
+      ],
+      "learningReason": null,
+      "learningScore": null,
+      "generatedAt": "2026-06-21T09:35:04.202Z",
+      "record": {
+        "name": "Emotionally Unhelpful Calculator WZZPKG",
+        "file": "apps/auto-emotionally-unhelpful-calculator-wzzpkg.html",
+        "appUrl": "https://btcetherkings.github.io/useless-apps-fun/apps/auto-emotionally-unhelpful-calculator-wzzpkg.html",
+        "startedAt": "2026-06-21T09:34:40.512Z",
+        "generatedAt": "2026-06-21T09:35:04.202Z",
+        "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/emotionally-unhelpful-calculator-wzzpkg-v3.mp4",
+        "finalDuration": 47.71,
+        "storyPackage": {
+          "appName": "Emotionally Unhelpful Calculator WZZPKG",
+          "appType": "calculator",
+          "storyMode": "fake_courtroom_trial",
+          "hook": "The internet made a mistake, and we filmed it.",
+          "escalation": "At first, it looked harmless. Then it became administratively confusing.",
+          "twist": "A fake committee was formed. It also did nothing.",
+          "cta": "Like and subscribe before the app becomes self-aware.",
+          "narration": "The internet made a mistake, and we filmed it. Today we investigate Emotionally Unhelpful Calculator WZZPKG. A calculator that refuses to give a straightforward answer. At first, it looked harmless. Then it became administratively confusing. Official story mode: fake courtroom trial. A fake committee was formed. It also did nothing. Like and subscribe before the app becomes self-aware.",
+          "storyHash": "c437cd2799e5"
+        },
+        "metadataPackage": {
+          "appName": "Emotionally Unhelpful Calculator WZZPKG",
+          "aiSummary": "This video features Emotionally Unhelpful Calculator WZZPKG. A calculator that refuses to give a straightforward answer. It is part of UselessApps.fun, a comedy project about deliberately pointless web apps. The video format is fake courtroom trial. The target audience is viewers interested in tech comedy, coding humour, absurd apps, and internet culture.",
+          "youtube_shorts": {
+            "title": "The internet made a mistake, and we filmed it.",
+            "description": "Emotionally Unhelpful Calculator WZZPKG A calculator that refuses to give a straightforward answer. Hook: The internet made a mistake, and we filmed it. Story mode: fake courtroom trial Uselessness score: 96% Fake category: Mathematical Sabotage Try it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-emotionally-unhelpful-calculator-wzzpkg.html UselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology. Comment your most useless app idea and we might build it next. #UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps",
+            "tags": [
+              "useless apps",
+              "funny apps",
+              "coding",
+              "webdev",
+              "tech comedy",
+              "pointless app"
+            ],
+            "categoryId": "28",
+            "pinnedComment": "What useless app should we build next?",
+            "hashtags": [
+              "#UselessApps",
+              "#FunnyApps",
+              "#Coding",
+              "#WebDev",
+              "#Shorts",
+              "#PointlessApps"
+            ]
+          },
+          "tiktok": {
+            "caption": "The internet made a mistake, and we filmed it.. #uselessapps #funnyapps #codingtok #pointless #techcomedy",
+            "hashtags": [
+              "#uselessapps",
+              "#funnyapps",
+              "#codingtok",
+              "#pointless",
+              "#techcomedy"
+            ]
+          },
+          "instagram_reels": {
+            "caption": "The internet made a mistake, and we filmed it. #UselessApps #FunnyReels #CodingHumor #TechComedy",
+            "hashtags": [
+              "#UselessApps",
+              "#FunnyReels",
+              "#CodingHumor",
+              "#TechComedy"
+            ]
+          },
+          "facebook_reels": {
+            "caption": "The internet made a mistake, and we filmed it. #UselessApps #FunnyVideos #TechComedy",
+            "hashtags": [
+              "#UselessApps",
+              "#FunnyVideos",
+              "#TechComedy"
+            ]
+          },
+          "rumble": {
+            "title": "The internet made a mistake, and we filmed it.",
+            "description": "Emotionally Unhelpful Calculator WZZPKG A calculator that refuses to give a straightforward answer. Hook: The internet made a mistake, and we filmed it. Story mode: fake courtroom trial Uselessness score: 96% Fake category: Mathematical Sabotage Try it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-emotionally-unhelpful-calculator-wzzpkg.html UselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology. Comment your most useless app idea and we might build it next. #UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps",
+            "tags": [
+              "UselessApps",
+              "FunnyApps",
+              "TechComedy"
+            ]
+          },
+          "x": {
+            "post": "The internet made a mistake, and we filmed it. https://btcetherkings.github.io/useless-apps-fun/apps/auto-emotionally-unhelpful-calculator-wzzpkg.html #UselessApps #TechComedy"
+          }
+        },
+        "qualityPlan": {
+          "qualityMode": "preview",
+          "renderTarget": "shorts",
+          "profile": {
+            "width": 720,
+            "height": 1280,
+            "fps": 24,
+            "crf": 28,
+            "preset": "veryfast",
+            "audioBitrate": "128k"
+          },
+          "music": {
+            "enabled": false,
+            "count": 0,
+            "files": []
+          },
+          "sfx": {
+            "enabled": false,
+            "count": 0,
+            "files": []
+          },
+          "recommendations": [
+            "Use preview mode for local testing.",
+            "Use final mode for private upload review.",
+            "Keep music low under narration.",
+            "Render 9:16 for Shorts/Reels/TikTok.",
+            "Render 16:9 separately for web/Rumble/YouTube standard."
+          ]
+        },
+        "narration": "Scientists said it could not be useful. They were correct. This is Emotionally Unhelpful Calculator WZZPKG, a cutting edge example of Mathematical Sabotage. A calculator that refuses to give a straightforward answer. Our model, UselessNet-v7.3 (peer-rejected), rated it 96 percent useless, grade A (Aggressively Pointless). Head of Applied Pointlessness Sir Edmund Fumblesworth III had this to say: We ran the numbers. The numbers ran away. But then, something happened. Specifically, nothing. Official classification: Academically indefensible. Consult your developer if pointlessness lasts longer than four hours. Today's fabricated statistic: Time saved: negative 13 minutes. We pushed the button. The button pushed back, emotionally. Approved by the Department of Bad Ideas. If this helped you, something has gone terribly wrong. Emergency producers have confirmed that the following footage may contain trace amounts of productivity, but only by accident. The app is now being monitored by the Department of Bad Ideas under case number DBI-146682. Official app thought detected: \"Loading my feelings... please wait forever.\" A panel of imaginary experts has advised viewers to remain seated, hydrated, and unimpressed.",
+        "narrationMeta": {
+          "duration": 99.096,
+          "synthetic": false,
+          "warning": null,
+          "chunks": 9
+        },
+        "uploaded": true,
+        "youtube": {
+          "videoId": "s-nlrJBNRiM",
+          "title": "Scientists rated this app and immediately regretted it",
+          "description": "Emotionally Unhelpful Calculator WZZPKG\n\nA calculator that refuses to give a straightforward answer.\n\nUselessness score: 96% (grade A (Aggressively Pointless))\nScored by: UselessNet-v7.3 (peer-rejected)\nSentience level: 94% - please do not anger it\nFake category: Mathematical Sabotage\nOfficial danger level: Academically indefensible\nOfficial warning: Consult your developer if pointlessness lasts longer than four hours.\nFake review: \"This is either genius or evidence.\"\nFake award: Approved by the Department of Bad Ideas\nCertificate: DBI-498015 (issued by The Department of Bad Ideas)\n\nTry it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-emotionally-unhelpful-calculator-wzzpkg.html\n\nUselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology.\n\nComment your most useless app idea and we might build it next.\n\n#UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps #UselessTechnology",
+          "privacyStatus": "private",
+          "url": "https://youtu.be/s-nlrJBNRiM"
+        }
+      },
+      "action": "RERENDER_WITH_AUDIO"
+    },
+    {
+      "name": "Staring Pebble Supreme",
+      "file": "apps/auto-staring-pebble-supreme.html",
+      "videoId": null,
+      "url": "",
+      "uploaded": false,
+      "dryRun": true,
+      "failed": false,
+      "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/staring-pebble-supreme-v3.mp4",
+      "status": "preview_only",
+      "decision": "none",
+      "appType": "object",
+      "storyMode": "fake_police_chase",
+      "audioMode": "full_mix",
+      "audioReadiness": "not_validated",
+      "publicSafe": false,
+      "audioWarnings": [],
+      "learningReason": {
+        "useLearningEngine": true,
+        "selectedType": "rock",
+        "learningScore": 0,
+        "preferredTypes": [],
+        "avoidedTypes": [],
+        "note": "No videos tracked yet. Run youtube-stats-pull first."
+      },
+      "learningScore": 0,
+      "generatedAt": "2026-06-21T13:21:01.036Z",
+      "record": {
+        "name": "Staring Pebble Supreme",
+        "file": "apps/auto-staring-pebble-supreme.html",
+        "appUrl": "https://btcetherkings.github.io/useless-apps-fun/apps/auto-staring-pebble-supreme.html",
+        "startedAt": "2026-06-21T13:20:45.947Z",
+        "generatedAt": "2026-06-21T13:21:01.036Z",
+        "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/staring-pebble-supreme-v3.mp4",
+        "finalDuration": 9.174,
+        "storyPackage": {
+          "appName": "Staring Pebble Supreme",
+          "appType": "object",
+          "storyMode": "fake_police_chase",
+          "hook": "This is what happens when productivity leaves the building.",
+          "escalation": "At first, it looked harmless. Then it became administratively confusing.",
+          "twist": "The results were inconclusive, mainly because there were no results.",
+          "cta": "Like and subscribe before the app becomes self-aware.",
+          "narration": "This is what happens when productivity leaves the building. Today we investigate Staring Pebble Supreme. A pet rock that stares at you and refuses to elaborate. At first, it looked harmless. Then it became administratively confusing. Official story mode: fake police chase. The results were inconclusive, mainly because there were no results. Like and subscribe before the app becomes self-aware.",
+          "storyHash": "5dd9e4cdc2f5"
+        },
+        "metadataPackage": {
+          "appName": "Staring Pebble Supreme",
+          "aiSummary": "This video features Staring Pebble Supreme. A pet rock that stares at you and refuses to elaborate. It is part of UselessApps.fun, a comedy project about deliberately pointless web apps. The video format is fake police chase. The target audience is viewers interested in tech comedy, coding humour, absurd apps, and internet culture.",
+          "youtube_shorts": {
+            "title": "Staring Pebble Supreme should not exist",
+            "description": "Staring Pebble Supreme A pet rock that stares at you and refuses to elaborate. Hook: This is what happens when productivity leaves the building. Story mode: fake police chase Uselessness score: 93% Fake category: Emotional Support Mineral Try it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-staring-pebble-supreme.html UselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology. Comment your most useless app idea and we might build it next. #UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps",
+            "tags": [
+              "useless apps",
+              "funny apps",
+              "coding",
+              "webdev",
+              "tech comedy",
+              "pointless app"
+            ],
+            "categoryId": "28",
+            "pinnedComment": "What useless app should we build next?",
+            "hashtags": [
+              "#UselessApps",
+              "#FunnyApps",
+              "#Coding",
+              "#WebDev",
+              "#Shorts",
+              "#PointlessApps"
+            ]
+          },
+          "tiktok": {
+            "caption": "Staring Pebble Supreme should not exist. #uselessapps #funnyapps #codingtok #pointless #techcomedy",
+            "hashtags": [
+              "#uselessapps",
+              "#funnyapps",
+              "#codingtok",
+              "#pointless",
+              "#techcomedy"
+            ]
+          },
+          "instagram_reels": {
+            "caption": "Staring Pebble Supreme should not exist #UselessApps #FunnyReels #CodingHumor #TechComedy",
+            "hashtags": [
+              "#UselessApps",
+              "#FunnyReels",
+              "#CodingHumor",
+              "#TechComedy"
+            ]
+          },
+          "facebook_reels": {
+            "caption": "Staring Pebble Supreme should not exist #UselessApps #FunnyVideos #TechComedy",
+            "hashtags": [
+              "#UselessApps",
+              "#FunnyVideos",
+              "#TechComedy"
+            ]
+          },
+          "rumble": {
+            "title": "Staring Pebble Supreme should not exist",
+            "description": "Staring Pebble Supreme A pet rock that stares at you and refuses to elaborate. Hook: This is what happens when productivity leaves the building. Story mode: fake police chase Uselessness score: 93% Fake category: Emotional Support Mineral Try it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-staring-pebble-supreme.html UselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology. Comment your most useless app idea and we might build it next. #UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps",
+            "tags": [
+              "UselessApps",
+              "FunnyApps",
+              "TechComedy"
+            ]
+          },
+          "x": {
+            "post": "Staring Pebble Supreme should not exist https://btcetherkings.github.io/useless-apps-fun/apps/auto-staring-pebble-supreme.html #UselessApps #TechComedy"
+          }
+        },
+        "qualityPlan": {
+          "qualityMode": "preview",
+          "renderTarget": "shorts",
+          "profile": {
+            "width": 720,
+            "height": 1280,
+            "fps": 24,
+            "crf": 28,
+            "preset": "veryfast",
+            "audioBitrate": "128k"
+          },
+          "music": {
+            "enabled": true,
+            "count": 3,
+            "files": [
+              "/home/uadmin/useless-apps-fun/assets/music/default-test-bed.wav",
+              "/home/uadmin/useless-apps-fun/assets/music/documentary-bed-01.wav",
+              "/home/uadmin/useless-apps-fun/assets/music/fake-news-bed-01.wav"
+            ]
+          },
+          "sfx": {
+            "enabled": true,
+            "count": 5,
+            "files": [
+              "/home/uadmin/useless-apps-fun/assets/sfx/alert-beep-01.wav",
+              "/home/uadmin/useless-apps-fun/assets/sfx/ding-confirm-01.wav",
+              "/home/uadmin/useless-apps-fun/assets/sfx/fail-beep-test.wav",
+              "/home/uadmin/useless-apps-fun/assets/sfx/fail-buzzer-01.wav",
+              "/home/uadmin/useless-apps-fun/assets/sfx/intro-ding-test.wav"
+            ]
+          },
+          "recommendations": [
+            "Use preview mode for local testing.",
+            "Use final mode for private upload review.",
+            "Keep music low under narration.",
+            "Render 9:16 for Shorts/Reels/TikTok.",
+            "Render 16:9 separately for web/Rumble/YouTube standard."
+          ]
+        },
+        "audioPlan": {
+          "enabled": true,
+          "storyMode": "fake_police_chase",
+          "mood": "chaotic",
+          "music": {
+            "file": "assets/music/default-test-bed.wav",
+            "mood": "default",
+            "volume": 0.035
+          },
+          "sfx": [
+            {
+              "file": "assets/sfx/intro-ding-test.wav",
+              "tags": [
+                "intro",
+                "ding"
+              ],
+              "at": 0.45,
+              "volume": 0.09
+            },
+            {
+              "file": "assets/sfx/alert-beep-01.wav",
+              "tags": [
+                "alert",
+                "beep"
+              ],
+              "at": 3.2,
+              "volume": 0.09
+            }
+          ],
+          "ducking": true,
+          "narrationVolume": 1.25,
+          "fallback": {
+            "noMusicFiles": false,
+            "noSfxFiles": false
+          }
+        },
+        "audioMix": {
+          "enabled": true,
+          "mode": "full_mix",
+          "musicUsed": "assets/music/default-test-bed.wav",
+          "sfxUsed": [
+            {
+              "file": "assets/sfx/intro-ding-test.wav",
+              "at": 0.45,
+              "delayMs": 450,
+              "volume": 0.09
+            },
+            {
+              "file": "assets/sfx/alert-beep-01.wav",
+              "at": 3.2,
+              "delayMs": 3200,
+              "volume": 0.09
+            }
+          ],
+          "narrationVolume": 1.25,
+          "filterComplex": "[1:a]volume=1.25[nar];[2:a]volume=0.035,atrim=duration=9999[music];[3:a]volume=0.09,adelay=450|450[sfx3];[4:a]volume=0.09,adelay=3200|3200[sfx4];[nar][music][sfx3][sfx4]amix=inputs=4:duration=first:dropout_transition=0[aout]"
+        },
+        "learningReason": {
+          "useLearningEngine": true,
+          "selectedType": "rock",
+          "learningScore": 0,
+          "preferredTypes": [],
+          "avoidedTypes": [],
+          "note": "No videos tracked yet. Run youtube-stats-pull first."
+        },
+        "narration": "Today, we investigate a technological breakthrough in absolute nonsense. This is Staring Pebble Supreme, a cutting edge example of Emotional Support Mineral. A pet rock that stares at you and refuses to elaborate. Our model, UselessNet-v7.3 (peer-rejected), rated it 93 percent useless, grade A (Aggressively Pointless). Head of Applied Pointlessness Dr. Penelope Voidwater had this to say: This is a genuine step backward for humanity, technically speaking. The plot thickened. The app did not. Official classification: Academically indefensible. This product contains traces of nonsense. Today's fabricated statistic: 12 productivity experts fainted during testing. And there it was: peak uselessness, achieved live. Proudly solving a problem that does not exist. Would you use it? No? Perfect. Submit your own useless idea next. Emergency producers have confirmed that the following footage may contain trace amounts of productivity, but only by accident. The app is now being monitored by the Department of Bad Ideas under case number DBI-677340. Official app thought detected: \"I have seen the source code. I have notes.\" A panel of imaginary experts has advised viewers to remain seated, hydrated, and unimpressed.",
+        "narrationMeta": {
+          "duration": 98.712,
+          "synthetic": false,
+          "warning": null,
+          "chunks": 8
+        },
+        "uploaded": false,
+        "dryRun": true
+      },
+      "action": "PRIVATE_UPLOAD_IF_GOOD"
+    }
+  ],
+  "rerenderCandidates": [
+    {
+      "name": "Runaway Button",
+      "file": "apps/runaway-button.html",
+      "videoId": "zx5y4y-2CpY",
+      "url": "https://youtu.be/zx5y4y-2CpY",
+      "uploaded": true,
+      "dryRun": false,
+      "failed": false,
+      "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/runaway-button-v3.mp4",
+      "status": "private_uploaded",
+      "decision": "none",
+      "appType": "unknown",
+      "storyMode": "unknown",
+      "audioMode": "unknown",
+      "audioReadiness": "blocked_for_public",
+      "publicSafe": false,
+      "audioWarnings": [
+        "audio_missing"
+      ],
+      "learningReason": null,
+      "learningScore": null,
+      "generatedAt": "2026-06-20T21:35:07.882Z",
+      "record": {
+        "name": "Runaway Button",
+        "file": "apps/runaway-button.html",
+        "appUrl": "https://btcetherkings.github.io/useless-apps-fun/apps/runaway-button.html",
+        "startedAt": "2026-06-20T21:34:41.580Z",
+        "generatedAt": "2026-06-20T21:35:07.882Z",
+        "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/runaway-button-v3.mp4",
+        "finalDuration": 47.71,
+        "narration": "Scientists said it could not be useful. They were correct. This is Runaway Button, a cutting edge example of Button Avoidance Technology. A button that literally runs away from your cursor. Our model, UselessNet-v7.3 (peer-rejected), rated it 98 percent useless, grade S (Sublimely Useless). Distinguished Professor of Almost Nothing Dr. Penelope Voidwater had this to say: My peer review consisted entirely of sighing. The plot thickened. The app did not. Official classification: Mildly inconvenient. Warning: do not use this app while operating heavy expectations. Today's fabricated statistic: Time saved: negative 45 minutes. And there it was: peak uselessness, achieved live. Certified 0% Useful by nobody official. Remember: productivity is temporary, but uselessness is forever. Emergency producers have confirmed that the following footage may contain trace amounts of productivity, but only by accident. The app is now being monitored by the Department of Bad Ideas under case number DBI-630933. Official app thought detected: \"Loading my feelings... please wait forever.\" A panel of imaginary experts has advised viewers to remain seated, hydrated, and unimpressed.",
+        "narrationMeta": {
+          "duration": 96.624,
+          "synthetic": false,
+          "warning": null,
+          "chunks": 8
+        },
+        "uploaded": true,
+        "youtube": {
+          "videoId": "zx5y4y-2CpY",
+          "title": "I made software with negative productivity",
+          "description": "Runaway Button\n\nA button that literally runs away from your cursor.\n\nUselessness score: 98% (grade S (Sublimely Useless))\nScored by: UselessNet-v7.3 (peer-rejected)\nSentience level: 40% - suspiciously responsive\nFake category: Button Avoidance Technology\nOfficial danger level: Mildly inconvenient\nOfficial warning: Warning: do not use this app while operating heavy expectations.\nFake review: \"My laptop sighed.\"\nFake award: Certified 0% Useful by nobody official\nCertificate: DBI-637279 (issued by The Department of Bad Ideas)\n\nTry it here: https://btcetherkings.github.io/useless-apps-fun/apps/runaway-button.html\n\nUselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology.\n\nComment your most useless app idea and we might build it next.\n\n#UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps #UselessTechnology",
+          "privacyStatus": "private",
+          "url": "https://youtu.be/zx5y4y-2CpY"
+        }
+      }
+    },
+    {
+      "name": "Staring Pet Rock",
+      "file": "apps/pet-rock.html",
+      "videoId": "nT6qA1pNWmU",
+      "url": "https://youtu.be/nT6qA1pNWmU",
+      "uploaded": true,
+      "dryRun": false,
+      "failed": false,
+      "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/staring-pet-rock-v3.mp4",
+      "status": "private_uploaded",
+      "decision": "none",
+      "appType": "unknown",
+      "storyMode": "unknown",
+      "audioMode": "unknown",
+      "audioReadiness": "blocked_for_public",
+      "publicSafe": false,
+      "audioWarnings": [
+        "audio_missing"
+      ],
+      "learningReason": null,
+      "learningScore": null,
+      "generatedAt": "2026-06-20T21:35:45.726Z",
+      "record": {
+        "name": "Staring Pet Rock",
+        "file": "apps/pet-rock.html",
+        "appUrl": "https://btcetherkings.github.io/useless-apps-fun/apps/pet-rock.html",
+        "startedAt": "2026-06-20T21:35:09.930Z",
+        "generatedAt": "2026-06-20T21:35:45.726Z",
+        "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/staring-pet-rock-v3.mp4",
+        "finalDuration": 47.71,
+        "narration": "We built another app, and society has not yet recovered. This is Staring Pet Rock, a cutting edge example of Emotional Support Mineral. A pet that does nothing but stare at you. Our model, UselessNet-v7.3 (peer-rejected), rated it 93 percent useless, grade A (Aggressively Pointless). Senior Fellow, Department of Bad Ideas Doctor-ish Marcus Maybe had this to say: My peer review consisted entirely of sighing. But then, something happened. Specifically, nothing. Official classification: Spiritually unnecessary. No useful features were harmed during development. Today's fabricated statistic: 93% of users immediately questioned their life choices. The screen flickered. So did our hope. Proudly solving a problem that does not exist. Remember: productivity is temporary, but uselessness is forever. Emergency producers have confirmed that the following footage may contain trace amounts of productivity, but only by accident. The app is now being monitored by the Department of Bad Ideas under case number DBI-642053. Official app thought detected: \"Loading my feelings... please wait forever.\" A panel of imaginary experts has advised viewers to remain seated, hydrated, and unimpressed.",
+        "narrationMeta": {
+          "duration": 96.336,
+          "synthetic": false,
+          "warning": null,
+          "chunks": 9
+        },
+        "uploaded": true,
+        "youtube": {
+          "videoId": "nT6qA1pNWmU",
+          "title": "The internet was a mistake, so I built this",
+          "description": "Staring Pet Rock\n\nA pet that does nothing but stare at you.\n\nUselessness score: 93% (grade A (Aggressively Pointless))\nScored by: UselessNet-v7.3 (peer-rejected)\nSentience level: 11% - inert (probably)\nFake category: Emotional Support Mineral\nOfficial danger level: Spiritually unnecessary\nOfficial warning: No useful features were harmed during development.\nFake review: \"My therapist asked me to stop. I sent her the link.\"\nFake award: Proudly solving a problem that does not exist\nCertificate: DBI-439853 (issued by The Department of Bad Ideas)\n\nTry it here: https://btcetherkings.github.io/useless-apps-fun/apps/pet-rock.html\n\nUselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology.\n\nComment your most useless app idea and we might build it next.\n\n#UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps #UselessTechnology",
+          "privacyStatus": "private",
+          "url": "https://youtu.be/nT6qA1pNWmU"
+        }
+      }
+    },
+    {
+      "name": "Useless To-Do List",
+      "file": "apps/useless-todo.html",
+      "videoId": "LgOrHXpLt8E",
+      "url": "https://youtu.be/LgOrHXpLt8E",
+      "uploaded": true,
+      "dryRun": false,
+      "failed": false,
+      "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/useless-to-do-list-v3.mp4",
+      "status": "private_uploaded",
+      "decision": "none",
+      "appType": "unknown",
+      "storyMode": "unknown",
+      "audioMode": "unknown",
+      "audioReadiness": "blocked_for_public",
+      "publicSafe": false,
+      "audioWarnings": [
+        "audio_missing"
+      ],
+      "learningReason": null,
+      "learningScore": null,
+      "generatedAt": "2026-06-20T21:36:10.791Z",
+      "record": {
+        "name": "Useless To-Do List",
+        "file": "apps/useless-todo.html",
+        "appUrl": "https://btcetherkings.github.io/useless-apps-fun/apps/useless-todo.html",
+        "startedAt": "2026-06-20T21:35:47.768Z",
+        "generatedAt": "2026-06-20T21:36:10.791Z",
+        "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/useless-to-do-list-v3.mp4",
+        "finalDuration": 47.71,
+        "narration": "Today, we investigate a technological breakthrough in absolute nonsense. This is Useless To-Do List, a cutting edge example of Anti-Productivity Software. A to-do list that deletes your tasks before you can do them. Our model, UselessNet-v7.3 (peer-rejected), rated it 99 percent useless, grade S (Sublimely Useless). Director of the Institute for Things That Load Professor Reginald Nopetersen had this to say: I would call it a breakthrough, but nothing broke through. Experts leaned in. They immediately regretted leaning in. Official classification: Load-bearing nonsense. If symptoms of usefulness appear, restart immediately. Today's fabricated statistic: 28 tabs were opened and none became useful. For one shining moment it almost worked. It did not, but it almost did. Banned from productivity meetings. Follow for more apps that do nothing, professionally. Emergency producers have confirmed that the following footage may contain trace amounts of productivity, but only by accident. The app is now being monitored by the Department of Bad Ideas under case number DBI-184374. Official app thought detected: \"I have seen the source code. I have notes.\" A panel of imaginary experts has advised viewers to remain seated, hydrated, and unimpressed.",
+        "narrationMeta": {
+          "duration": 99.48,
+          "synthetic": false,
+          "warning": null,
+          "chunks": 9
+        },
+        "uploaded": true,
+        "youtube": {
+          "videoId": "LgOrHXpLt8E",
+          "title": "The internet was a mistake, so I built this",
+          "description": "Useless To-Do List\n\nA to-do list that deletes your tasks before you can do them.\n\nUselessness score: 99% (grade S (Sublimely Useless))\nScored by: UselessNet-v7.3 (peer-rejected)\nSentience level: 29% - suspiciously responsive\nFake category: Anti-Productivity Software\nOfficial danger level: Load-bearing nonsense\nOfficial warning: If symptoms of usefulness appear, restart immediately.\nFake review: \"This app changed my life by changing absolutely nothing.\"\nFake award: Banned from productivity meetings\nCertificate: DBI-946406 (issued by The Department of Bad Ideas)\n\nTry it here: https://btcetherkings.github.io/useless-apps-fun/apps/useless-todo.html\n\nUselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology.\n\nComment your most useless app idea and we might build it next.\n\n#UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps #UselessTechnology",
+          "privacyStatus": "private",
+          "url": "https://youtu.be/LgOrHXpLt8E"
+        }
+      }
+    },
+    {
+      "name": "Unhelpful Calculator",
+      "file": "apps/unhelpful-calculator.html",
+      "videoId": "9ev-3qhQkSs",
+      "url": "https://youtu.be/9ev-3qhQkSs",
+      "uploaded": true,
+      "dryRun": false,
+      "failed": false,
+      "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/unhelpful-calculator-v3.mp4",
+      "status": "private_uploaded",
+      "decision": "none",
+      "appType": "unknown",
+      "storyMode": "unknown",
+      "audioMode": "unknown",
+      "audioReadiness": "blocked_for_public",
+      "publicSafe": false,
+      "audioWarnings": [
+        "audio_missing"
+      ],
+      "learningReason": null,
+      "learningScore": null,
+      "generatedAt": "2026-06-20T21:36:36.020Z",
+      "record": {
+        "name": "Unhelpful Calculator",
+        "file": "apps/unhelpful-calculator.html",
+        "appUrl": "https://btcetherkings.github.io/useless-apps-fun/apps/unhelpful-calculator.html",
+        "startedAt": "2026-06-20T21:36:12.408Z",
+        "generatedAt": "2026-06-20T21:36:36.020Z",
+        "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/unhelpful-calculator-v3.mp4",
+        "finalDuration": 47.71,
+        "narration": "Some apps solve problems. This app creates emotional paperwork. This is Unhelpful Calculator, a cutting edge example of Mathematical Sabotage. A calculator that refuses to give a straightforward result. Our model, UselessNet-v7.3 (peer-rejected), rated it 95 percent useless, grade A (Aggressively Pointless). Chair of Recreational Inconvenience Studies Sir Edmund Fumblesworth III had this to say: This is a genuine step backward for humanity, technically speaking. But then, something happened. Specifically, nothing. Official classification: Productivity negative. Consult your developer if pointlessness lasts longer than four hours. Today's fabricated statistic: 96% chance of achieving absolutely nothing. For one shining moment it almost worked. It did not, but it almost did. Winner of the Golden Nothing Award. If this helped you, something has gone terribly wrong. Emergency producers have confirmed that the following footage may contain trace amounts of productivity, but only by accident. The app is now being monitored by the Department of Bad Ideas under case number DBI-770913. Official app thought detected: \"Click me. No. Wait. No.\" A panel of imaginary experts has advised viewers to remain seated, hydrated, and unimpressed.",
+        "narrationMeta": {
+          "duration": 100.992,
+          "synthetic": false,
+          "warning": null,
+          "chunks": 9
+        },
+        "uploaded": true,
+        "youtube": {
+          "videoId": "9ev-3qhQkSs",
+          "title": "The internet was a mistake, so I built this",
+          "description": "Unhelpful Calculator\n\nA calculator that refuses to give a straightforward result.\n\nUselessness score: 95% (grade A (Aggressively Pointless))\nScored by: UselessNet-v7.3 (peer-rejected)\nSentience level: 5% - inert (probably)\nFake category: Mathematical Sabotage\nOfficial danger level: Productivity negative\nOfficial warning: Consult your developer if pointlessness lasts longer than four hours.\nFake review: \"Finally, software that respects my desire to fail slowly.\"\nFake award: Winner of the Golden Nothing Award\nCertificate: DBI-571956 (issued by The Department of Bad Ideas)\n\nTry it here: https://btcetherkings.github.io/useless-apps-fun/apps/unhelpful-calculator.html\n\nUselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology.\n\nComment your most useless app idea and we might build it next.\n\n#UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps #UselessTechnology",
+          "privacyStatus": "private",
+          "url": "https://youtu.be/9ev-3qhQkSs"
+        }
+      }
+    },
+    {
+      "name": "Endless Loading Spinner",
+      "file": "apps/endless-spinner.html",
+      "videoId": "MsadFVnCvIs",
+      "url": "https://youtu.be/MsadFVnCvIs",
+      "uploaded": true,
+      "dryRun": false,
+      "failed": false,
+      "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/endless-loading-spinner-v3.mp4",
+      "status": "private_uploaded",
+      "decision": "none",
+      "appType": "unknown",
+      "storyMode": "unknown",
+      "audioMode": "unknown",
+      "audioReadiness": "blocked_for_public",
+      "publicSafe": false,
+      "audioWarnings": [
+        "audio_missing"
+      ],
+      "learningReason": null,
+      "learningScore": null,
+      "generatedAt": "2026-06-20T21:37:13.145Z",
+      "record": {
+        "name": "Endless Loading Spinner",
+        "file": "apps/endless-spinner.html",
+        "appUrl": "https://btcetherkings.github.io/useless-apps-fun/apps/endless-spinner.html",
+        "startedAt": "2026-06-20T21:36:37.967Z",
+        "generatedAt": "2026-06-20T21:37:13.145Z",
+        "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/endless-loading-spinner-v3.mp4",
+        "finalDuration": 47.71,
+        "narration": "Today, we investigate a technological breakthrough in absolute nonsense. This is Endless Loading Spinner, a cutting edge example of Infinite Waiting Technology. A loading bar that never finishes. Our model, UselessNet-v7.3 (peer-rejected), rated it 97 percent useless, grade S (Sublimely Useless). Head of Applied Pointlessness Analyst Greta Shrugfield had this to say: My peer review consisted entirely of sighing. But then, something happened. Specifically, nothing. Official classification: Emotionally confusing. No useful features were harmed during development. Today's fabricated statistic: 8 tabs were opened and none became useful. The screen flickered. So did our hope. Winner of the Golden Nothing Award. Would you use it? No? Perfect. Submit your own useless idea next. Emergency producers have confirmed that the following footage may contain trace amounts of productivity, but only by accident. The app is now being monitored by the Department of Bad Ideas under case number DBI-741750. Official app thought detected: \"I have seen the source code. I have notes.\" A panel of imaginary experts has advised viewers to remain seated, hydrated, and unimpressed.",
+        "narrationMeta": {
+          "duration": 94.992,
+          "synthetic": false,
+          "warning": null,
+          "chunks": 8
+        },
+        "uploaded": true,
+        "youtube": {
+          "videoId": "MsadFVnCvIs",
+          "title": "This app became 46% sentient and I'm scared",
+          "description": "Endless Loading Spinner\n\nA loading bar that never finishes.\n\nUselessness score: 97% (grade S (Sublimely Useless))\nScored by: UselessNet-v7.3 (peer-rejected)\nSentience level: 46% - forming opinions\nFake category: Infinite Waiting Technology\nOfficial danger level: Emotionally confusing\nOfficial warning: No useful features were harmed during development.\nFake review: \"I opened it and immediately became less efficient.\"\nFake award: Winner of the Golden Nothing Award\nCertificate: DBI-439041 (issued by The Department of Bad Ideas)\n\nTry it here: https://btcetherkings.github.io/useless-apps-fun/apps/endless-spinner.html\n\nUselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology.\n\nComment your most useless app idea and we might build it next.\n\n#UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps #UselessTechnology",
+          "privacyStatus": "private",
+          "url": "https://youtu.be/MsadFVnCvIs"
+        }
+      }
+    },
+    {
+      "name": "The Government Calculator",
+      "file": "apps/auto-the-government-calculator.html",
+      "videoId": "roo3gALgBDA",
+      "url": "https://youtu.be/roo3gALgBDA",
+      "uploaded": true,
+      "dryRun": false,
+      "failed": false,
+      "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/the-government-calculator-v3.mp4",
+      "status": "private_uploaded",
+      "decision": "none",
+      "appType": "unknown",
+      "storyMode": "unknown",
+      "audioMode": "unknown",
+      "audioReadiness": "blocked_for_public",
+      "publicSafe": false,
+      "audioWarnings": [
+        "audio_missing"
+      ],
+      "learningReason": null,
+      "learningScore": null,
+      "generatedAt": "2026-06-20T22:04:14.787Z",
+      "record": {
+        "name": "The Government Calculator",
+        "file": "apps/auto-the-government-calculator.html",
+        "appUrl": "https://btcetherkings.github.io/useless-apps-fun/apps/auto-the-government-calculator.html",
+        "startedAt": "2026-06-20T22:03:52.665Z",
+        "generatedAt": "2026-06-20T22:04:14.787Z",
+        "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/the-government-calculator-v3.mp4",
+        "finalDuration": 47.71,
+        "narration": "Breaking news from the internet nobody asked for. This is The Government Calculator, a cutting edge example of Mathematical Sabotage. A calculator that refuses to give a straightforward answer. Our model, UselessNet-v7.3 (peer-rejected), rated it 96 percent useless, grade A (Aggressively Pointless). Senior Fellow, Department of Bad Ideas Dame Cassandra Underwhelm had this to say: We ran the numbers. The numbers ran away. The plot thickened. The app did not. Official classification: Algorithmically cursed. May cause sudden onset of free time. Today's fabricated statistic: Time saved: negative 20 minutes. For one shining moment it almost worked. It did not, but it almost did. Rejected by common sense, twice. This has been another public service announcement from UselessApps dot fun. Emergency producers have confirmed that the following footage may contain trace amounts of productivity, but only by accident. The app is now being monitored by the Department of Bad Ideas under case number DBI-138796. Official app thought detected: \"Why am I like this?\" A panel of imaginary experts has advised viewers to remain seated, hydrated, and unimpressed.",
+        "narrationMeta": {
+          "duration": 93.072,
+          "synthetic": false,
+          "warning": null,
+          "chunks": 9
+        },
+        "uploaded": true,
+        "youtube": {
+          "videoId": "roo3gALgBDA",
+          "title": "I made software with negative productivity",
+          "description": "The Government Calculator\n\nA calculator that refuses to give a straightforward answer.\n\nUselessness score: 96% (grade A (Aggressively Pointless))\nScored by: UselessNet-v7.3 (peer-rejected)\nSentience level: 37% - suspiciously responsive\nFake category: Mathematical Sabotage\nOfficial danger level: Algorithmically cursed\nOfficial warning: May cause sudden onset of free time.\nFake review: \"Finally, software that respects my desire to fail slowly.\"\nFake award: Rejected by common sense, twice\nCertificate: DBI-736989 (issued by The Department of Bad Ideas)\n\nTry it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-the-government-calculator.html\n\nUselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology.\n\nComment your most useless app idea and we might build it next.\n\n#UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps #UselessTechnology",
+          "privacyStatus": "private",
+          "url": "https://youtu.be/roo3gALgBDA"
+        }
+      }
+    },
+    {
+      "name": "Emotionally Unhelpful Calculator",
+      "file": "apps/auto-emotionally-unhelpful-calculator.html",
+      "videoId": "gYpcgNaw5W0",
+      "url": "https://youtu.be/gYpcgNaw5W0",
+      "uploaded": true,
+      "dryRun": false,
+      "failed": false,
+      "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/emotionally-unhelpful-calculator-v3.mp4",
+      "status": "private_uploaded",
+      "decision": "none",
+      "appType": "unknown",
+      "storyMode": "unknown",
+      "audioMode": "unknown",
+      "audioReadiness": "blocked_for_public",
+      "publicSafe": false,
+      "audioWarnings": [
+        "audio_missing"
+      ],
+      "learningReason": null,
+      "learningScore": null,
+      "generatedAt": "2026-06-20T22:14:01.362Z",
+      "record": {
+        "name": "Emotionally Unhelpful Calculator",
+        "file": "apps/auto-emotionally-unhelpful-calculator.html",
+        "appUrl": "https://btcetherkings.github.io/useless-apps-fun/apps/auto-emotionally-unhelpful-calculator.html",
+        "startedAt": "2026-06-20T22:13:38.866Z",
+        "generatedAt": "2026-06-20T22:14:01.362Z",
+        "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/emotionally-unhelpful-calculator-v3.mp4",
+        "finalDuration": 47.71,
+        "narration": "We built another app, and society has not yet recovered. This is Emotionally Unhelpful Calculator, a cutting edge example of Mathematical Sabotage. A calculator that refuses to give a straightforward answer. Our model, UselessNet-v7.3 (peer-rejected), rated it 96 percent useless, grade A (Aggressively Pointless). Distinguished Professor of Almost Nothing Sir Edmund Fumblesworth III had this to say: It should not work. It does not work. And yet here we are. But then, something happened. Specifically, nothing. Official classification: Emotionally confusing. Warning: do not use this app while operating heavy expectations. Today's fabricated statistic: Investor confidence: 1%. And there it was: peak uselessness, achieved live. Rejected by common sense, twice. Remember: productivity is temporary, but uselessness is forever. Emergency producers have confirmed that the following footage may contain trace amounts of productivity, but only by accident. The app is now being monitored by the Department of Bad Ideas under case number DBI-159449. Official app thought detected: \"I refuse.\" A panel of imaginary experts has advised viewers to remain seated, hydrated, and unimpressed.",
+        "narrationMeta": {
+          "duration": 97.8,
+          "synthetic": false,
+          "warning": null,
+          "chunks": 9
+        },
+        "uploaded": true,
+        "youtube": {
+          "videoId": "gYpcgNaw5W0",
+          "title": "This app became 34% sentient and I'm scared",
+          "description": "Emotionally Unhelpful Calculator\n\nA calculator that refuses to give a straightforward answer.\n\nUselessness score: 96% (grade A (Aggressively Pointless))\nScored by: UselessNet-v7.3 (peer-rejected)\nSentience level: 34% - suspiciously responsive\nFake category: Mathematical Sabotage\nOfficial danger level: Emotionally confusing\nOfficial warning: Warning: do not use this app while operating heavy expectations.\nFake review: \"I asked for productivity. It gave me character development.\"\nFake award: Rejected by common sense, twice\nCertificate: DBI-906447 (issued by The Department of Bad Ideas)\n\nTry it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-emotionally-unhelpful-calculator.html\n\nUselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology.\n\nComment your most useless app idea and we might build it next.\n\n#UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps #UselessTechnology",
+          "privacyStatus": "private",
+          "url": "https://youtu.be/gYpcgNaw5W0"
+        }
+      }
+    },
+    {
+      "name": "Infinite Loading Ceremony",
+      "file": "apps/auto-infinite-loading-ceremony.html",
+      "videoId": "-YoBkyPZlAE",
+      "url": "https://youtu.be/-YoBkyPZlAE",
+      "uploaded": true,
+      "dryRun": false,
+      "failed": false,
+      "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/infinite-loading-ceremony-v3.mp4",
+      "status": "private_uploaded",
+      "decision": "none",
+      "appType": "unknown",
+      "storyMode": "unknown",
+      "audioMode": "unknown",
+      "audioReadiness": "blocked_for_public",
+      "publicSafe": false,
+      "audioWarnings": [
+        "audio_missing"
+      ],
+      "learningReason": null,
+      "learningScore": null,
+      "generatedAt": "2026-06-21T08:05:47.914Z",
+      "record": {
+        "name": "Infinite Loading Ceremony",
+        "file": "apps/auto-infinite-loading-ceremony.html",
+        "appUrl": "https://btcetherkings.github.io/useless-apps-fun/apps/auto-infinite-loading-ceremony.html",
+        "startedAt": "2026-06-21T08:05:13.627Z",
+        "generatedAt": "2026-06-21T08:05:47.914Z",
+        "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/infinite-loading-ceremony-v3.mp4",
+        "finalDuration": 47.71,
+        "narration": "We built another app, and society has not yet recovered. This is Infinite Loading Ceremony, a cutting edge example of Infinite Waiting Technology. A loading screen that has made peace with never finishing. Our model, UselessNet-v7.3 (peer-rejected), rated it 97 percent useless, grade S (Sublimely Useless). Senior Fellow, Department of Bad Ideas Professor Reginald Nopetersen had this to say: I would call it a breakthrough, but nothing broke through. And just when you thought it could not get more pointless, it did. Official classification: Recreationally hostile. May cause sudden onset of free time. Today's fabricated statistic: 93% chance of achieving absolutely nothing. For one shining moment it almost worked. It did not, but it almost did. Ranked number one by three confused interns. If this helped you, something has gone terribly wrong. Emergency producers have confirmed that the following footage may contain trace amounts of productivity, but only by accident. The app is now being monitored by the Department of Bad Ideas under case number DBI-796501. Official app thought detected: \"Loading my feelings... please wait forever.\" A panel of imaginary experts has advised viewers to remain seated, hydrated, and unimpressed.",
+        "narrationMeta": {
+          "duration": 97.656,
+          "synthetic": false,
+          "warning": null,
+          "chunks": 9
+        },
+        "uploaded": true,
+        "youtube": {
+          "videoId": "-YoBkyPZlAE",
+          "title": "Infinite Loading Ceremony: peak useless technology",
+          "description": "Infinite Loading Ceremony\n\nA loading screen that has made peace with never finishing.\n\nUselessness score: 97% (grade S (Sublimely Useless))\nScored by: UselessNet-v7.3 (peer-rejected)\nSentience level: 95% - please do not anger it\nFake category: Infinite Waiting Technology\nOfficial danger level: Recreationally hostile\nOfficial warning: May cause sudden onset of free time.\nFake review: \"I opened it and immediately became less efficient.\"\nFake award: Ranked number one by three confused interns\nCertificate: DBI-405042 (issued by The Department of Bad Ideas)\n\nTry it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-infinite-loading-ceremony.html\n\nUselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology.\n\nComment your most useless app idea and we might build it next.\n\n#UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps #UselessTechnology",
+          "privacyStatus": "private",
+          "url": "https://youtu.be/-YoBkyPZlAE"
+        }
+      }
+    },
+    {
+      "name": "Emotionally Unavailable Button",
+      "file": "apps/auto-emotionally-unavailable-button.html",
+      "videoId": "9wbRVRevKX0",
+      "url": "https://youtu.be/9wbRVRevKX0",
+      "uploaded": true,
+      "dryRun": false,
+      "failed": false,
+      "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/emotionally-unavailable-button-v3.mp4",
+      "status": "private_uploaded",
+      "decision": "none",
+      "appType": "button",
+      "storyMode": "fake_nature_documentary",
+      "audioMode": "unknown",
+      "audioReadiness": "blocked_for_public",
+      "publicSafe": false,
+      "audioWarnings": [
+        "audio_missing"
+      ],
+      "learningReason": null,
+      "learningScore": null,
+      "generatedAt": "2026-06-21T09:12:56.565Z",
+      "record": {
+        "name": "Emotionally Unavailable Button",
+        "file": "apps/auto-emotionally-unavailable-button.html",
+        "appUrl": "https://btcetherkings.github.io/useless-apps-fun/apps/auto-emotionally-unavailable-button.html",
+        "startedAt": "2026-06-21T09:12:30.748Z",
+        "generatedAt": "2026-06-21T09:12:56.565Z",
+        "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/emotionally-unavailable-button-v3.mp4",
+        "finalDuration": 47.71,
+        "storyPackage": {
+          "appName": "Emotionally Unavailable Button",
+          "appType": "button",
+          "storyMode": "fake_nature_documentary",
+          "hook": "The internet made a mistake, and we filmed it.",
+          "escalation": "The app refused to explain itself, which experts described as bold.",
+          "twist": "A fake committee was formed. It also did nothing.",
+          "cta": "Follow for more apps that do nothing professionally.",
+          "narration": "The internet made a mistake, and we filmed it. Today we investigate Emotionally Unavailable Button. A button that refuses to cooperate with society. The app refused to explain itself, which experts described as bold. Official story mode: fake nature documentary. A fake committee was formed. It also did nothing. Follow for more apps that do nothing professionally.",
+          "storyHash": "132bc3d356b0"
+        },
+        "metadataPackage": {
+          "appName": "Emotionally Unavailable Button",
+          "aiSummary": "This video features Emotionally Unavailable Button. A button that refuses to cooperate with society. It is part of UselessApps.fun, a comedy project about deliberately pointless web apps. The video format is fake nature documentary. The target audience is viewers interested in tech comedy, coding humour, absurd apps, and internet culture.",
+          "youtube_shorts": {
+            "title": "The internet was a mistake, so I built this",
+            "description": "Emotionally Unavailable Button A button that refuses to cooperate with society. Hook: The internet made a mistake, and we filmed it. Story mode: fake nature documentary Uselessness score: 98% Fake category: Button Avoidance Technology Try it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-emotionally-unavailable-button.html UselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology. Comment your most useless app idea and we might build it next. #UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps",
+            "tags": [
+              "useless apps",
+              "funny apps",
+              "coding",
+              "webdev",
+              "tech comedy",
+              "pointless app"
+            ],
+            "categoryId": "28",
+            "pinnedComment": "What useless app should we build next?",
+            "hashtags": [
+              "#UselessApps",
+              "#FunnyApps",
+              "#Coding",
+              "#WebDev",
+              "#Shorts",
+              "#PointlessApps"
+            ]
+          },
+          "tiktok": {
+            "caption": "The internet was a mistake, so I built this. #uselessapps #funnyapps #codingtok #pointless #techcomedy",
+            "hashtags": [
+              "#uselessapps",
+              "#funnyapps",
+              "#codingtok",
+              "#pointless",
+              "#techcomedy"
+            ]
+          },
+          "instagram_reels": {
+            "caption": "The internet was a mistake, so I built this #UselessApps #FunnyReels #CodingHumor #TechComedy",
+            "hashtags": [
+              "#UselessApps",
+              "#FunnyReels",
+              "#CodingHumor",
+              "#TechComedy"
+            ]
+          },
+          "facebook_reels": {
+            "caption": "The internet was a mistake, so I built this #UselessApps #FunnyVideos #TechComedy",
+            "hashtags": [
+              "#UselessApps",
+              "#FunnyVideos",
+              "#TechComedy"
+            ]
+          },
+          "rumble": {
+            "title": "The internet was a mistake, so I built this",
+            "description": "Emotionally Unavailable Button A button that refuses to cooperate with society. Hook: The internet made a mistake, and we filmed it. Story mode: fake nature documentary Uselessness score: 98% Fake category: Button Avoidance Technology Try it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-emotionally-unavailable-button.html UselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology. Comment your most useless app idea and we might build it next. #UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps",
+            "tags": [
+              "UselessApps",
+              "FunnyApps",
+              "TechComedy"
+            ]
+          },
+          "x": {
+            "post": "The internet was a mistake, so I built this https://btcetherkings.github.io/useless-apps-fun/apps/auto-emotionally-unavailable-button.html #UselessApps #TechComedy"
+          }
+        },
+        "qualityPlan": {
+          "qualityMode": "preview",
+          "renderTarget": "shorts",
+          "profile": {
+            "width": 720,
+            "height": 1280,
+            "fps": 24,
+            "crf": 28,
+            "preset": "veryfast",
+            "audioBitrate": "128k"
+          },
+          "music": {
+            "enabled": false,
+            "count": 0,
+            "files": []
+          },
+          "sfx": {
+            "enabled": false,
+            "count": 0,
+            "files": []
+          },
+          "recommendations": [
+            "Use preview mode for local testing.",
+            "Use final mode for private upload review.",
+            "Keep music low under narration.",
+            "Render 9:16 for Shorts/Reels/TikTok.",
+            "Render 16:9 separately for web/Rumble/YouTube standard."
+          ]
+        },
+        "narration": "Some apps solve problems. This app creates emotional paperwork. This is Emotionally Unavailable Button, a cutting edge example of Button Avoidance Technology. A button that refuses to cooperate with society. Our model, UselessNet-v7.3 (peer-rejected), rated it 98 percent useless, grade S (Sublimely Useless). Lead Researcher, Centre for Wasted Clicks Dame Cassandra Underwhelm had this to say: This is a genuine step backward for humanity, technically speaking. But then, something happened. Specifically, nothing. Official classification: Spiritually unnecessary. May cause sudden onset of free time. Today's fabricated statistic: 91% of users immediately questioned their life choices. And there it was: peak uselessness, achieved live. Ranked number one by three confused interns. Would you use it? No? Perfect. Submit your own useless idea next. Emergency producers have confirmed that the following footage may contain trace amounts of productivity, but only by accident. The app is now being monitored by the Department of Bad Ideas under case number DBI-383299. Official app thought detected: \"Why am I like this?\" A panel of imaginary experts has advised viewers to remain seated, hydrated, and unimpressed.",
+        "narrationMeta": {
+          "duration": 100.056,
+          "synthetic": false,
+          "warning": null,
+          "chunks": 9
+        },
+        "uploaded": true,
+        "youtube": {
+          "videoId": "9wbRVRevKX0",
+          "title": "Scientists rated this app and immediately regretted it",
+          "description": "Emotionally Unavailable Button\n\nA button that refuses to cooperate with society.\n\nUselessness score: 98% (grade S (Sublimely Useless))\nScored by: UselessNet-v7.3 (peer-rejected)\nSentience level: 51% - forming opinions\nFake category: Button Avoidance Technology\nOfficial danger level: Spiritually unnecessary\nOfficial warning: May cause sudden onset of free time.\nFake review: \"Finally, software that respects my desire to fail slowly.\"\nFake award: Ranked number one by three confused interns\nCertificate: DBI-764222 (issued by The Department of Bad Ideas)\n\nTry it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-emotionally-unavailable-button.html\n\nUselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology.\n\nComment your most useless app idea and we might build it next.\n\n#UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps #UselessTechnology",
+          "privacyStatus": "private",
+          "url": "https://youtu.be/9wbRVRevKX0"
+        }
+      }
+    },
+    {
+      "name": "Emotionally Distant Mineral",
+      "file": "apps/auto-emotionally-distant-mineral.html",
+      "videoId": "q6p8OXa9DSs",
+      "url": "https://youtu.be/q6p8OXa9DSs",
+      "uploaded": true,
+      "dryRun": false,
+      "failed": false,
+      "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/emotionally-distant-mineral-v3.mp4",
+      "status": "private_uploaded",
+      "decision": "none",
+      "appType": "object",
+      "storyMode": "fake_scientific_experiment",
+      "audioMode": "unknown",
+      "audioReadiness": "blocked_for_public",
+      "publicSafe": false,
+      "audioWarnings": [
+        "audio_missing"
+      ],
+      "learningReason": null,
+      "learningScore": null,
+      "generatedAt": "2026-06-21T09:32:37.190Z",
+      "record": {
+        "name": "Emotionally Distant Mineral",
+        "file": "apps/auto-emotionally-distant-mineral.html",
+        "appUrl": "https://btcetherkings.github.io/useless-apps-fun/apps/auto-emotionally-distant-mineral.html",
+        "startedAt": "2026-06-21T09:32:11.202Z",
+        "generatedAt": "2026-06-21T09:32:37.190Z",
+        "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/emotionally-distant-mineral-v3.mp4",
+        "finalDuration": 47.71,
+        "storyPackage": {
+          "appName": "Emotionally Distant Mineral",
+          "appType": "object",
+          "storyMode": "fake_scientific_experiment",
+          "hook": "Breaking news: software has officially given up.",
+          "escalation": "The app refused to explain itself, which experts described as bold.",
+          "twist": "A fake committee was formed. It also did nothing.",
+          "cta": "Follow for more apps that do nothing professionally.",
+          "narration": "Breaking news: software has officially given up. Today we investigate Emotionally Distant Mineral. A pet rock that stares at you and refuses to elaborate. The app refused to explain itself, which experts described as bold. Official story mode: fake scientific experiment. A fake committee was formed. It also did nothing. Follow for more apps that do nothing professionally.",
+          "storyHash": "c9831472ad14"
+        },
+        "metadataPackage": {
+          "appName": "Emotionally Distant Mineral",
+          "aiSummary": "This video features Emotionally Distant Mineral. A pet rock that stares at you and refuses to elaborate. It is part of UselessApps.fun, a comedy project about deliberately pointless web apps. The video format is fake scientific experiment. The target audience is viewers interested in tech comedy, coding humour, absurd apps, and internet culture.",
+          "youtube_shorts": {
+            "title": "I built Emotionally Distant Mineral and productivity collapsed",
+            "description": "Emotionally Distant Mineral A pet rock that stares at you and refuses to elaborate. Hook: Breaking news: software has officially given up. Story mode: fake scientific experiment Uselessness score: 93% Fake category: Emotional Support Mineral Try it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-emotionally-distant-mineral.html UselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology. Comment your most useless app idea and we might build it next. #UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps",
+            "tags": [
+              "useless apps",
+              "funny apps",
+              "coding",
+              "webdev",
+              "tech comedy",
+              "pointless app"
+            ],
+            "categoryId": "28",
+            "pinnedComment": "What useless app should we build next?",
+            "hashtags": [
+              "#UselessApps",
+              "#FunnyApps",
+              "#Coding",
+              "#WebDev",
+              "#Shorts",
+              "#PointlessApps"
+            ]
+          },
+          "tiktok": {
+            "caption": "I built Emotionally Distant Mineral and productivity collapsed. #uselessapps #funnyapps #codingtok #pointless #techcomedy",
+            "hashtags": [
+              "#uselessapps",
+              "#funnyapps",
+              "#codingtok",
+              "#pointless",
+              "#techcomedy"
+            ]
+          },
+          "instagram_reels": {
+            "caption": "I built Emotionally Distant Mineral and productivity collapsed #UselessApps #FunnyReels #CodingHumor #TechComedy",
+            "hashtags": [
+              "#UselessApps",
+              "#FunnyReels",
+              "#CodingHumor",
+              "#TechComedy"
+            ]
+          },
+          "facebook_reels": {
+            "caption": "I built Emotionally Distant Mineral and productivity collapsed #UselessApps #FunnyVideos #TechComedy",
+            "hashtags": [
+              "#UselessApps",
+              "#FunnyVideos",
+              "#TechComedy"
+            ]
+          },
+          "rumble": {
+            "title": "I built Emotionally Distant Mineral and productivity collapsed",
+            "description": "Emotionally Distant Mineral A pet rock that stares at you and refuses to elaborate. Hook: Breaking news: software has officially given up. Story mode: fake scientific experiment Uselessness score: 93% Fake category: Emotional Support Mineral Try it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-emotionally-distant-mineral.html UselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology. Comment your most useless app idea and we might build it next. #UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps",
+            "tags": [
+              "UselessApps",
+              "FunnyApps",
+              "TechComedy"
+            ]
+          },
+          "x": {
+            "post": "I built Emotionally Distant Mineral and productivity collapsed https://btcetherkings.github.io/useless-apps-fun/apps/auto-emotionally-distant-mineral.html #UselessApps #TechComedy"
+          }
+        },
+        "qualityPlan": {
+          "qualityMode": "preview",
+          "renderTarget": "shorts",
+          "profile": {
+            "width": 720,
+            "height": 1280,
+            "fps": 24,
+            "crf": 28,
+            "preset": "veryfast",
+            "audioBitrate": "128k"
+          },
+          "music": {
+            "enabled": false,
+            "count": 0,
+            "files": []
+          },
+          "sfx": {
+            "enabled": false,
+            "count": 0,
+            "files": []
+          },
+          "recommendations": [
+            "Use preview mode for local testing.",
+            "Use final mode for private upload review.",
+            "Keep music low under narration.",
+            "Render 9:16 for Shorts/Reels/TikTok.",
+            "Render 16:9 separately for web/Rumble/YouTube standard."
+          ]
+        },
+        "narration": "Breaking news from the internet nobody asked for. This is Emotionally Distant Mineral, a cutting edge example of Emotional Support Mineral. A pet rock that stares at you and refuses to elaborate. Our model, UselessNet-v7.3 (peer-rejected), rated it 93 percent useless, grade A (Aggressively Pointless). Director of the Institute for Things That Load The Honourable Beatrix Wronghaver had this to say: In thirty years of research, I have never seen software try this little. The plot thickened. The app did not. Official classification: Emotionally confusing. Side effects may include confusion, laughter, and browser tab regret. Today's fabricated statistic: 18 productivity experts fainted during testing. And there it was: peak uselessness, achieved live. Ranked number one by three confused interns. This has been another public service announcement from UselessApps dot fun. Emergency producers have confirmed that the following footage may contain trace amounts of productivity, but only by accident. The app is now being monitored by the Department of Bad Ideas under case number DBI-488178. Official app thought detected: \"Click me. No. Wait. No.\" A panel of imaginary experts has advised viewers to remain seated, hydrated, and unimpressed.",
+        "narrationMeta": {
+          "duration": 98.136,
+          "synthetic": false,
+          "warning": null,
+          "chunks": 9
+        },
+        "uploaded": true,
+        "youtube": {
+          "videoId": "q6p8OXa9DSs",
+          "title": "The internet was a mistake, so I built this",
+          "description": "Emotionally Distant Mineral\n\nA pet rock that stares at you and refuses to elaborate.\n\nUselessness score: 93% (grade A (Aggressively Pointless))\nScored by: UselessNet-v7.3 (peer-rejected)\nSentience level: 81% - developing a personality we did not request\nFake category: Emotional Support Mineral\nOfficial danger level: Emotionally confusing\nOfficial warning: Side effects may include confusion, laughter, and browser tab regret.\nFake review: \"This app changed my life by changing absolutely nothing.\"\nFake award: Ranked number one by three confused interns\nCertificate: DBI-752373 (issued by The Department of Bad Ideas)\n\nTry it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-emotionally-distant-mineral.html\n\nUselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology.\n\nComment your most useless app idea and we might build it next.\n\n#UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps #UselessTechnology",
+          "privacyStatus": "private",
+          "url": "https://youtu.be/q6p8OXa9DSs"
+        }
+      }
+    },
+    {
+      "name": "Emotionally Unhelpful Calculator WZZPKG",
+      "file": "apps/auto-emotionally-unhelpful-calculator-wzzpkg.html",
+      "videoId": "s-nlrJBNRiM",
+      "url": "https://youtu.be/s-nlrJBNRiM",
+      "uploaded": true,
+      "dryRun": false,
+      "failed": false,
+      "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/emotionally-unhelpful-calculator-wzzpkg-v3.mp4",
+      "status": "private_uploaded",
+      "decision": "none",
+      "appType": "calculator",
+      "storyMode": "fake_courtroom_trial",
+      "audioMode": "unknown",
+      "audioReadiness": "blocked_for_public",
+      "publicSafe": false,
+      "audioWarnings": [
+        "audio_missing"
+      ],
+      "learningReason": null,
+      "learningScore": null,
+      "generatedAt": "2026-06-21T09:35:04.202Z",
+      "record": {
+        "name": "Emotionally Unhelpful Calculator WZZPKG",
+        "file": "apps/auto-emotionally-unhelpful-calculator-wzzpkg.html",
+        "appUrl": "https://btcetherkings.github.io/useless-apps-fun/apps/auto-emotionally-unhelpful-calculator-wzzpkg.html",
+        "startedAt": "2026-06-21T09:34:40.512Z",
+        "generatedAt": "2026-06-21T09:35:04.202Z",
+        "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/emotionally-unhelpful-calculator-wzzpkg-v3.mp4",
+        "finalDuration": 47.71,
+        "storyPackage": {
+          "appName": "Emotionally Unhelpful Calculator WZZPKG",
+          "appType": "calculator",
+          "storyMode": "fake_courtroom_trial",
+          "hook": "The internet made a mistake, and we filmed it.",
+          "escalation": "At first, it looked harmless. Then it became administratively confusing.",
+          "twist": "A fake committee was formed. It also did nothing.",
+          "cta": "Like and subscribe before the app becomes self-aware.",
+          "narration": "The internet made a mistake, and we filmed it. Today we investigate Emotionally Unhelpful Calculator WZZPKG. A calculator that refuses to give a straightforward answer. At first, it looked harmless. Then it became administratively confusing. Official story mode: fake courtroom trial. A fake committee was formed. It also did nothing. Like and subscribe before the app becomes self-aware.",
+          "storyHash": "c437cd2799e5"
+        },
+        "metadataPackage": {
+          "appName": "Emotionally Unhelpful Calculator WZZPKG",
+          "aiSummary": "This video features Emotionally Unhelpful Calculator WZZPKG. A calculator that refuses to give a straightforward answer. It is part of UselessApps.fun, a comedy project about deliberately pointless web apps. The video format is fake courtroom trial. The target audience is viewers interested in tech comedy, coding humour, absurd apps, and internet culture.",
+          "youtube_shorts": {
+            "title": "The internet made a mistake, and we filmed it.",
+            "description": "Emotionally Unhelpful Calculator WZZPKG A calculator that refuses to give a straightforward answer. Hook: The internet made a mistake, and we filmed it. Story mode: fake courtroom trial Uselessness score: 96% Fake category: Mathematical Sabotage Try it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-emotionally-unhelpful-calculator-wzzpkg.html UselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology. Comment your most useless app idea and we might build it next. #UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps",
+            "tags": [
+              "useless apps",
+              "funny apps",
+              "coding",
+              "webdev",
+              "tech comedy",
+              "pointless app"
+            ],
+            "categoryId": "28",
+            "pinnedComment": "What useless app should we build next?",
+            "hashtags": [
+              "#UselessApps",
+              "#FunnyApps",
+              "#Coding",
+              "#WebDev",
+              "#Shorts",
+              "#PointlessApps"
+            ]
+          },
+          "tiktok": {
+            "caption": "The internet made a mistake, and we filmed it.. #uselessapps #funnyapps #codingtok #pointless #techcomedy",
+            "hashtags": [
+              "#uselessapps",
+              "#funnyapps",
+              "#codingtok",
+              "#pointless",
+              "#techcomedy"
+            ]
+          },
+          "instagram_reels": {
+            "caption": "The internet made a mistake, and we filmed it. #UselessApps #FunnyReels #CodingHumor #TechComedy",
+            "hashtags": [
+              "#UselessApps",
+              "#FunnyReels",
+              "#CodingHumor",
+              "#TechComedy"
+            ]
+          },
+          "facebook_reels": {
+            "caption": "The internet made a mistake, and we filmed it. #UselessApps #FunnyVideos #TechComedy",
+            "hashtags": [
+              "#UselessApps",
+              "#FunnyVideos",
+              "#TechComedy"
+            ]
+          },
+          "rumble": {
+            "title": "The internet made a mistake, and we filmed it.",
+            "description": "Emotionally Unhelpful Calculator WZZPKG A calculator that refuses to give a straightforward answer. Hook: The internet made a mistake, and we filmed it. Story mode: fake courtroom trial Uselessness score: 96% Fake category: Mathematical Sabotage Try it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-emotionally-unhelpful-calculator-wzzpkg.html UselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology. Comment your most useless app idea and we might build it next. #UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps",
+            "tags": [
+              "UselessApps",
+              "FunnyApps",
+              "TechComedy"
+            ]
+          },
+          "x": {
+            "post": "The internet made a mistake, and we filmed it. https://btcetherkings.github.io/useless-apps-fun/apps/auto-emotionally-unhelpful-calculator-wzzpkg.html #UselessApps #TechComedy"
+          }
+        },
+        "qualityPlan": {
+          "qualityMode": "preview",
+          "renderTarget": "shorts",
+          "profile": {
+            "width": 720,
+            "height": 1280,
+            "fps": 24,
+            "crf": 28,
+            "preset": "veryfast",
+            "audioBitrate": "128k"
+          },
+          "music": {
+            "enabled": false,
+            "count": 0,
+            "files": []
+          },
+          "sfx": {
+            "enabled": false,
+            "count": 0,
+            "files": []
+          },
+          "recommendations": [
+            "Use preview mode for local testing.",
+            "Use final mode for private upload review.",
+            "Keep music low under narration.",
+            "Render 9:16 for Shorts/Reels/TikTok.",
+            "Render 16:9 separately for web/Rumble/YouTube standard."
+          ]
+        },
+        "narration": "Scientists said it could not be useful. They were correct. This is Emotionally Unhelpful Calculator WZZPKG, a cutting edge example of Mathematical Sabotage. A calculator that refuses to give a straightforward answer. Our model, UselessNet-v7.3 (peer-rejected), rated it 96 percent useless, grade A (Aggressively Pointless). Head of Applied Pointlessness Sir Edmund Fumblesworth III had this to say: We ran the numbers. The numbers ran away. But then, something happened. Specifically, nothing. Official classification: Academically indefensible. Consult your developer if pointlessness lasts longer than four hours. Today's fabricated statistic: Time saved: negative 13 minutes. We pushed the button. The button pushed back, emotionally. Approved by the Department of Bad Ideas. If this helped you, something has gone terribly wrong. Emergency producers have confirmed that the following footage may contain trace amounts of productivity, but only by accident. The app is now being monitored by the Department of Bad Ideas under case number DBI-146682. Official app thought detected: \"Loading my feelings... please wait forever.\" A panel of imaginary experts has advised viewers to remain seated, hydrated, and unimpressed.",
+        "narrationMeta": {
+          "duration": 99.096,
+          "synthetic": false,
+          "warning": null,
+          "chunks": 9
+        },
+        "uploaded": true,
+        "youtube": {
+          "videoId": "s-nlrJBNRiM",
+          "title": "Scientists rated this app and immediately regretted it",
+          "description": "Emotionally Unhelpful Calculator WZZPKG\n\nA calculator that refuses to give a straightforward answer.\n\nUselessness score: 96% (grade A (Aggressively Pointless))\nScored by: UselessNet-v7.3 (peer-rejected)\nSentience level: 94% - please do not anger it\nFake category: Mathematical Sabotage\nOfficial danger level: Academically indefensible\nOfficial warning: Consult your developer if pointlessness lasts longer than four hours.\nFake review: \"This is either genius or evidence.\"\nFake award: Approved by the Department of Bad Ideas\nCertificate: DBI-498015 (issued by The Department of Bad Ideas)\n\nTry it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-emotionally-unhelpful-calculator-wzzpkg.html\n\nUselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology.\n\nComment your most useless app idea and we might build it next.\n\n#UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps #UselessTechnology",
+          "privacyStatus": "private",
+          "url": "https://youtu.be/s-nlrJBNRiM"
+        }
+      }
+    },
+    {
+      "name": "Loading Screen With No Exit",
+      "file": "apps/auto-loading-screen-with-no-exit.html",
+      "videoId": "FpQOm5Qa82c",
+      "url": "https://youtu.be/FpQOm5Qa82c",
+      "uploaded": true,
+      "dryRun": false,
+      "failed": false,
+      "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/loading-screen-with-no-exit-v3.mp4",
+      "status": "published_unlisted",
+      "decision": "approved",
+      "appType": "waiting",
+      "storyMode": "fake_documentary",
+      "audioMode": "unknown",
+      "audioReadiness": "blocked_for_public",
+      "publicSafe": false,
+      "audioWarnings": [
+        "audio_missing"
+      ],
+      "learningReason": null,
+      "learningScore": null,
+      "generatedAt": "2026-06-21T10:41:10.573Z",
+      "record": {
+        "name": "Loading Screen With No Exit",
+        "file": "apps/auto-loading-screen-with-no-exit.html",
+        "appUrl": "https://btcetherkings.github.io/useless-apps-fun/apps/auto-loading-screen-with-no-exit.html",
+        "startedAt": "2026-06-21T10:40:35.961Z",
+        "generatedAt": "2026-06-21T10:41:10.573Z",
+        "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/loading-screen-with-no-exit-v3.mp4",
+        "finalDuration": 47.71,
+        "storyPackage": {
+          "appName": "Loading Screen With No Exit",
+          "appType": "waiting",
+          "storyMode": "fake_documentary",
+          "hook": "A team of experts reviewed this app and immediately needed a chair.",
+          "escalation": "Within seconds, the situation had escalated to mild inconvenience.",
+          "twist": "A fake committee was formed. It also did nothing.",
+          "cta": "Comment your worst app idea and we may legally regret building it.",
+          "narration": "A team of experts reviewed this app and immediately needed a chair. Today we investigate Loading Screen With No Exit. A loading screen that has made peace with never finishing. Within seconds, the situation had escalated to mild inconvenience. Official story mode: fake documentary. A fake committee was formed. It also did nothing. Comment your worst app idea and we may legally regret building it.",
+          "storyHash": "d275c22444bf"
+        },
+        "metadataPackage": {
+          "appName": "Loading Screen With No Exit",
+          "aiSummary": "This video features Loading Screen With No Exit. A loading screen that has made peace with never finishing. It is part of UselessApps.fun, a comedy project about deliberately pointless web apps. The video format is fake documentary. The target audience is viewers interested in tech comedy, coding humour, absurd apps, and internet culture.",
+          "youtube_shorts": {
+            "title": "Loading Screen With No Exit is dangerously pointless",
+            "description": "Loading Screen With No Exit A loading screen that has made peace with never finishing. Hook: A team of experts reviewed this app and immediately needed a chair. Story mode: fake documentary Uselessness score: 97% Fake category: Infinite Waiting Technology Try it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-loading-screen-with-no-exit.html UselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology. Comment your most useless app idea and we might build it next. #UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps",
+            "tags": [
+              "useless apps",
+              "funny apps",
+              "coding",
+              "webdev",
+              "tech comedy",
+              "pointless app"
+            ],
+            "categoryId": "28",
+            "pinnedComment": "What useless app should we build next?",
+            "hashtags": [
+              "#UselessApps",
+              "#FunnyApps",
+              "#Coding",
+              "#WebDev",
+              "#Shorts",
+              "#PointlessApps"
+            ]
+          },
+          "tiktok": {
+            "caption": "Loading Screen With No Exit is dangerously pointless. #uselessapps #funnyapps #codingtok #pointless #techcomedy",
+            "hashtags": [
+              "#uselessapps",
+              "#funnyapps",
+              "#codingtok",
+              "#pointless",
+              "#techcomedy"
+            ]
+          },
+          "instagram_reels": {
+            "caption": "Loading Screen With No Exit is dangerously pointless #UselessApps #FunnyReels #CodingHumor #TechComedy",
+            "hashtags": [
+              "#UselessApps",
+              "#FunnyReels",
+              "#CodingHumor",
+              "#TechComedy"
+            ]
+          },
+          "facebook_reels": {
+            "caption": "Loading Screen With No Exit is dangerously pointless #UselessApps #FunnyVideos #TechComedy",
+            "hashtags": [
+              "#UselessApps",
+              "#FunnyVideos",
+              "#TechComedy"
+            ]
+          },
+          "rumble": {
+            "title": "Loading Screen With No Exit is dangerously pointless",
+            "description": "Loading Screen With No Exit A loading screen that has made peace with never finishing. Hook: A team of experts reviewed this app and immediately needed a chair. Story mode: fake documentary Uselessness score: 97% Fake category: Infinite Waiting Technology Try it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-loading-screen-with-no-exit.html UselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology. Comment your most useless app idea and we might build it next. #UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps",
+            "tags": [
+              "UselessApps",
+              "FunnyApps",
+              "TechComedy"
+            ]
+          },
+          "x": {
+            "post": "Loading Screen With No Exit is dangerously pointless https://btcetherkings.github.io/useless-apps-fun/apps/auto-loading-screen-with-no-exit.html #UselessApps #TechComedy"
+          }
+        },
+        "qualityPlan": {
+          "qualityMode": "preview",
+          "renderTarget": "shorts",
+          "profile": {
+            "width": 720,
+            "height": 1280,
+            "fps": 24,
+            "crf": 28,
+            "preset": "veryfast",
+            "audioBitrate": "128k"
+          },
+          "music": {
+            "enabled": false,
+            "count": 0,
+            "files": []
+          },
+          "sfx": {
+            "enabled": false,
+            "count": 0,
+            "files": []
+          },
+          "recommendations": [
+            "Use preview mode for local testing.",
+            "Use final mode for private upload review.",
+            "Keep music low under narration.",
+            "Render 9:16 for Shorts/Reels/TikTok.",
+            "Render 16:9 separately for web/Rumble/YouTube standard."
+          ]
+        },
+        "narration": "Breaking news from the internet nobody asked for. This is Loading Screen With No Exit, a cutting edge example of Infinite Waiting Technology. A loading screen that has made peace with never finishing. Our model, UselessNet-v7.3 (peer-rejected), rated it 97 percent useless, grade S (Sublimely Useless). Chair of Recreational Inconvenience Studies Professor Reginald Nopetersen had this to say: My peer review consisted entirely of sighing. But then, something happened. Specifically, nothing. Official classification: Mildly inconvenient. If symptoms of usefulness appear, restart immediately. Today's fabricated statistic: Time saved: negative 39 minutes. And there it was: peak uselessness, achieved live. Ranked number one by three confused interns. Follow for more apps that do nothing, professionally. Emergency producers have confirmed that the following footage may contain trace amounts of productivity, but only by accident. The app is now being monitored by the Department of Bad Ideas under case number DBI-795751. Official app thought detected: \"Click me. No. Wait. No.\" A panel of imaginary experts has advised viewers to remain seated, hydrated, and unimpressed.",
+        "narrationMeta": {
+          "duration": 96.984,
+          "synthetic": false,
+          "warning": null,
+          "chunks": 9
+        },
+        "uploaded": true,
+        "youtube": {
+          "videoId": "FpQOm5Qa82c",
+          "title": "I tested the most pointless app on the internet",
+          "description": "Loading Screen With No Exit\n\nA loading screen that has made peace with never finishing.\n\nUselessness score: 97% (grade S (Sublimely Useless))\nScored by: UselessNet-v7.3 (peer-rejected)\nSentience level: 17% - inert (probably)\nFake category: Infinite Waiting Technology\nOfficial danger level: Mildly inconvenient\nOfficial warning: If symptoms of usefulness appear, restart immediately.\nFake review: \"Finally, software that respects my desire to fail slowly.\"\nFake award: Ranked number one by three confused interns\nCertificate: DBI-413763 (issued by The Department of Bad Ideas)\n\nTry it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-loading-screen-with-no-exit.html\n\nUselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology.\n\nComment your most useless app idea and we might build it next.\n\n#UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps #UselessTechnology",
+          "privacyStatus": "private",
+          "url": "https://youtu.be/FpQOm5Qa82c"
+        }
+      }
+    }
+  ],
+  "latest": {
+    "name": "Staring Pebble Supreme",
+    "file": "apps/auto-staring-pebble-supreme.html",
+    "videoId": null,
+    "url": "",
+    "uploaded": false,
+    "dryRun": true,
+    "failed": false,
+    "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/staring-pebble-supreme-v3.mp4",
+    "status": "preview_only",
+    "decision": "none",
+    "appType": "object",
+    "storyMode": "fake_police_chase",
+    "audioMode": "full_mix",
+    "audioReadiness": "not_validated",
+    "publicSafe": false,
+    "audioWarnings": [],
+    "learningReason": {
+      "useLearningEngine": true,
+      "selectedType": "rock",
+      "learningScore": 0,
+      "preferredTypes": [],
+      "avoidedTypes": [],
+      "note": "No videos tracked yet. Run youtube-stats-pull first."
+    },
+    "learningScore": 0,
+    "generatedAt": "2026-06-21T13:21:01.036Z",
+    "record": {
+      "name": "Staring Pebble Supreme",
+      "file": "apps/auto-staring-pebble-supreme.html",
+      "appUrl": "https://btcetherkings.github.io/useless-apps-fun/apps/auto-staring-pebble-supreme.html",
+      "startedAt": "2026-06-21T13:20:45.947Z",
+      "generatedAt": "2026-06-21T13:21:01.036Z",
+      "localVideo": "/home/uadmin/useless-apps-fun/generated-videos/staring-pebble-supreme-v3.mp4",
+      "finalDuration": 9.174,
+      "storyPackage": {
+        "appName": "Staring Pebble Supreme",
+        "appType": "object",
+        "storyMode": "fake_police_chase",
+        "hook": "This is what happens when productivity leaves the building.",
+        "escalation": "At first, it looked harmless. Then it became administratively confusing.",
+        "twist": "The results were inconclusive, mainly because there were no results.",
+        "cta": "Like and subscribe before the app becomes self-aware.",
+        "narration": "This is what happens when productivity leaves the building. Today we investigate Staring Pebble Supreme. A pet rock that stares at you and refuses to elaborate. At first, it looked harmless. Then it became administratively confusing. Official story mode: fake police chase. The results were inconclusive, mainly because there were no results. Like and subscribe before the app becomes self-aware.",
+        "storyHash": "5dd9e4cdc2f5"
+      },
+      "metadataPackage": {
+        "appName": "Staring Pebble Supreme",
+        "aiSummary": "This video features Staring Pebble Supreme. A pet rock that stares at you and refuses to elaborate. It is part of UselessApps.fun, a comedy project about deliberately pointless web apps. The video format is fake police chase. The target audience is viewers interested in tech comedy, coding humour, absurd apps, and internet culture.",
+        "youtube_shorts": {
+          "title": "Staring Pebble Supreme should not exist",
+          "description": "Staring Pebble Supreme A pet rock that stares at you and refuses to elaborate. Hook: This is what happens when productivity leaves the building. Story mode: fake police chase Uselessness score: 93% Fake category: Emotional Support Mineral Try it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-staring-pebble-supreme.html UselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology. Comment your most useless app idea and we might build it next. #UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps",
+          "tags": [
+            "useless apps",
+            "funny apps",
+            "coding",
+            "webdev",
+            "tech comedy",
+            "pointless app"
+          ],
+          "categoryId": "28",
+          "pinnedComment": "What useless app should we build next?",
+          "hashtags": [
+            "#UselessApps",
+            "#FunnyApps",
+            "#Coding",
+            "#WebDev",
+            "#Shorts",
+            "#PointlessApps"
+          ]
+        },
+        "tiktok": {
+          "caption": "Staring Pebble Supreme should not exist. #uselessapps #funnyapps #codingtok #pointless #techcomedy",
+          "hashtags": [
+            "#uselessapps",
+            "#funnyapps",
+            "#codingtok",
+            "#pointless",
+            "#techcomedy"
+          ]
+        },
+        "instagram_reels": {
+          "caption": "Staring Pebble Supreme should not exist #UselessApps #FunnyReels #CodingHumor #TechComedy",
+          "hashtags": [
+            "#UselessApps",
+            "#FunnyReels",
+            "#CodingHumor",
+            "#TechComedy"
+          ]
+        },
+        "facebook_reels": {
+          "caption": "Staring Pebble Supreme should not exist #UselessApps #FunnyVideos #TechComedy",
+          "hashtags": [
+            "#UselessApps",
+            "#FunnyVideos",
+            "#TechComedy"
+          ]
+        },
+        "rumble": {
+          "title": "Staring Pebble Supreme should not exist",
+          "description": "Staring Pebble Supreme A pet rock that stares at you and refuses to elaborate. Hook: This is what happens when productivity leaves the building. Story mode: fake police chase Uselessness score: 93% Fake category: Emotional Support Mineral Try it here: https://btcetherkings.github.io/useless-apps-fun/apps/auto-staring-pebble-supreme.html UselessApps.fun makes tiny apps that do almost nothing, then treats them like world-changing technology. Comment your most useless app idea and we might build it next. #UselessApps #FunnyApps #Coding #WebDev #Shorts #PointlessApps",
+          "tags": [
+            "UselessApps",
+            "FunnyApps",
+            "TechComedy"
+          ]
+        },
+        "x": {
+          "post": "Staring Pebble Supreme should not exist https://btcetherkings.github.io/useless-apps-fun/apps/auto-staring-pebble-supreme.html #UselessApps #TechComedy"
+        }
+      },
+      "qualityPlan": {
+        "qualityMode": "preview",
+        "renderTarget": "shorts",
+        "profile": {
+          "width": 720,
+          "height": 1280,
+          "fps": 24,
+          "crf": 28,
+          "preset": "veryfast",
+          "audioBitrate": "128k"
+        },
+        "music": {
+          "enabled": true,
+          "count": 3,
+          "files": [
+            "/home/uadmin/useless-apps-fun/assets/music/default-test-bed.wav",
+            "/home/uadmin/useless-apps-fun/assets/music/documentary-bed-01.wav",
+            "/home/uadmin/useless-apps-fun/assets/music/fake-news-bed-01.wav"
+          ]
+        },
+        "sfx": {
+          "enabled": true,
+          "count": 5,
+          "files": [
+            "/home/uadmin/useless-apps-fun/assets/sfx/alert-beep-01.wav",
+            "/home/uadmin/useless-apps-fun/assets/sfx/ding-confirm-01.wav",
+            "/home/uadmin/useless-apps-fun/assets/sfx/fail-beep-test.wav",
+            "/home/uadmin/useless-apps-fun/assets/sfx/fail-buzzer-01.wav",
+            "/home/uadmin/useless-apps-fun/assets/sfx/intro-ding-test.wav"
+          ]
+        },
+        "recommendations": [
+          "Use preview mode for local testing.",
+          "Use final mode for private upload review.",
+          "Keep music low under narration.",
+          "Render 9:16 for Shorts/Reels/TikTok.",
+          "Render 16:9 separately for web/Rumble/YouTube standard."
+        ]
+      },
+      "audioPlan": {
+        "enabled": true,
+        "storyMode": "fake_police_chase",
+        "mood": "chaotic",
+        "music": {
+          "file": "assets/music/default-test-bed.wav",
+          "mood": "default",
+          "volume": 0.035
+        },
+        "sfx": [
+          {
+            "file": "assets/sfx/intro-ding-test.wav",
+            "tags": [
+              "intro",
+              "ding"
+            ],
+            "at": 0.45,
+            "volume": 0.09
+          },
+          {
+            "file": "assets/sfx/alert-beep-01.wav",
+            "tags": [
+              "alert",
+              "beep"
+            ],
+            "at": 3.2,
+            "volume": 0.09
+          }
+        ],
+        "ducking": true,
+        "narrationVolume": 1.25,
+        "fallback": {
+          "noMusicFiles": false,
+          "noSfxFiles": false
+        }
+      },
+      "audioMix": {
+        "enabled": true,
+        "mode": "full_mix",
+        "musicUsed": "assets/music/default-test-bed.wav",
+        "sfxUsed": [
+          {
+            "file": "assets/sfx/intro-ding-test.wav",
+            "at": 0.45,
+            "delayMs": 450,
+            "volume": 0.09
+          },
+          {
+            "file": "assets/sfx/alert-beep-01.wav",
+            "at": 3.2,
+            "delayMs": 3200,
+            "volume": 0.09
+          }
+        ],
+        "narrationVolume": 1.25,
+        "filterComplex": "[1:a]volume=1.25[nar];[2:a]volume=0.035,atrim=duration=9999[music];[3:a]volume=0.09,adelay=450|450[sfx3];[4:a]volume=0.09,adelay=3200|3200[sfx4];[nar][music][sfx3][sfx4]amix=inputs=4:duration=first:dropout_transition=0[aout]"
+      },
+      "learningReason": {
+        "useLearningEngine": true,
+        "selectedType": "rock",
+        "learningScore": 0,
+        "preferredTypes": [],
+        "avoidedTypes": [],
+        "note": "No videos tracked yet. Run youtube-stats-pull first."
+      },
+      "narration": "Today, we investigate a technological breakthrough in absolute nonsense. This is Staring Pebble Supreme, a cutting edge example of Emotional Support Mineral. A pet rock that stares at you and refuses to elaborate. Our model, UselessNet-v7.3 (peer-rejected), rated it 93 percent useless, grade A (Aggressively Pointless). Head of Applied Pointlessness Dr. Penelope Voidwater had this to say: This is a genuine step backward for humanity, technically speaking. The plot thickened. The app did not. Official classification: Academically indefensible. This product contains traces of nonsense. Today's fabricated statistic: 12 productivity experts fainted during testing. And there it was: peak uselessness, achieved live. Proudly solving a problem that does not exist. Would you use it? No? Perfect. Submit your own useless idea next. Emergency producers have confirmed that the following footage may contain trace amounts of productivity, but only by accident. The app is now being monitored by the Department of Bad Ideas under case number DBI-677340. Official app thought detected: \"I have seen the source code. I have notes.\" A panel of imaginary experts has advised viewers to remain seated, hydrated, and unimpressed.",
+      "narrationMeta": {
+        "duration": 98.712,
+        "synthetic": false,
+        "warning": null,
+        "chunks": 8
+      },
+      "uploaded": false,
+      "dryRun": true
+    }
+  },
+  "learning": {
+    "exists": true,
+    "generatedAt": "2026-06-21T13:42:54.989Z",
+    "confidence": {
+      "level": "low",
+      "withStats": 0
+    },
+    "summary": {
+      "videos": 14,
+      "uploaded": 13,
+      "approved": 2,
+      "publishedUnlisted": 2,
+      "publishedPublic": 0,
+      "publicSafe": 1,
+      "blockedForPublic": 12
+    },
+    "prefer": {
+      "appTypes": [
+        {
+          "key": "productivity",
+          "count": 1,
+          "totalScore": 70,
+          "averageScore": 70
+        }
+      ],
+      "storyModes": [
+        {
+          "key": "fake_corporate_audit",
+          "count": 1,
+          "totalScore": 70,
+          "averageScore": 70
+        }
+      ],
+      "audioMoods": [
+        {
+          "key": "corporate",
+          "count": 1,
+          "totalScore": 70,
+          "averageScore": 70
+        }
+      ],
+      "sfxTags": []
+    },
+    "avoid": {
+      "appTypes": [
+        {
+          "key": "calculator",
+          "count": 1,
+          "totalScore": -70,
+          "averageScore": -70
+        },
+        {
+          "key": "button",
+          "count": 1,
+          "totalScore": -70,
+          "averageScore": -70
+        },
+        {
+          "key": "unknown",
+          "count": 8,
+          "totalScore": -560,
+          "averageScore": -70
+        },
+        {
+          "key": "object",
+          "count": 2,
+          "totalScore": -100,
+          "averageScore": -50
+        },
+        {
+          "key": "waiting",
+          "count": 1,
+          "totalScore": -15,
+          "averageScore": -15
+        }
+      ],
+      "storyModes": [
+        {
+          "key": "fake_courtroom_trial",
+          "count": 1,
+          "totalScore": -70,
+          "averageScore": -70
+        },
+        {
+          "key": "fake_scientific_experiment",
+          "count": 1,
+          "totalScore": -70,
+          "averageScore": -70
+        },
+        {
+          "key": "fake_nature_documentary",
+          "count": 1,
+          "totalScore": -70,
+          "averageScore": -70
+        },
+        {
+          "key": "unknown",
+          "count": 8,
+          "totalScore": -560,
+          "averageScore": -70
+        },
+        {
+          "key": "fake_police_chase",
+          "count": 1,
+          "totalScore": -30,
+          "averageScore": -30
+        }
+      ],
+      "audioMoods": [
+        {
+          "key": "unknown",
+          "count": 12,
+          "totalScore": -785,
+          "averageScore": -65.41666666666667
+        },
+        {
+          "key": "chaotic",
+          "count": 1,
+          "totalScore": -30,
+          "averageScore": -30
+        }
+      ],
+      "sfxTags": [
+        {
+          "key": "beep",
+          "count": 1,
+          "totalScore": -30,
+          "averageScore": -30
+        },
+        {
+          "key": "alert",
+          "count": 1,
+          "totalScore": -30,
+          "averageScore": -30
+        },
+        {
+          "key": "ding",
+          "count": 1,
+          "totalScore": -30,
+          "averageScore": -30
+        },
+        {
+          "key": "intro",
+          "count": 1,
+          "totalScore": -30,
+          "averageScore": -30
+        }
+      ]
+    },
+    "nextIdeas": [
+      {
+        "appType": "productivity",
+        "storyMode": "fake_corporate_audit",
+        "audioMood": "corporate",
+        "reason": "High learning score: appType=70.0"
+      }
+    ],
+    "topVideos": [
+      {
+        "key": "apps/auto-corporate-regret-board.html",
+        "videoId": "Nx2Ek9u165c",
+        "name": "Corporate Regret Board",
+        "appType": "productivity",
+        "storyMode": "fake_corporate_audit",
+        "audioMode": "narration_music",
+        "audioMood": "corporate",
+        "musicUsed": "assets/music/documentary-bed-01.wav",
+        "sfxTags": [],
+        "reviewStatus": "published_unlisted",
+        "decision": "approved",
+        "publishStatus": "published_unlisted",
+        "audioReadiness": "needs_audio_review",
+        "publicSafe": true,
+        "audioWarnings": [
+          "sfx_missing"
+        ],
+        "uploaded": true,
+        "dryRun": false,
+        "views": 0,
+        "likes": 0,
+        "comments": 0,
+        "url": "https://youtu.be/Nx2Ek9u165c",
+        "generatedAt": "2026-06-21T12:54:46.382Z",
+        "learningScore": 70
+      },
+      {
+        "key": "apps/auto-loading-screen-with-no-exit.html",
+        "videoId": "FpQOm5Qa82c",
+        "name": "Loading Screen With No Exit",
+        "appType": "waiting",
+        "storyMode": "fake_documentary",
+        "audioMode": "unknown",
+        "audioMood": "unknown",
+        "musicUsed": null,
+        "sfxTags": [],
+        "reviewStatus": "published_unlisted",
+        "decision": "approved",
+        "publishStatus": "published_unlisted",
+        "audioReadiness": "blocked_for_public",
+        "publicSafe": false,
+        "audioWarnings": [
+          "audio_missing"
+        ],
+        "uploaded": true,
+        "dryRun": false,
+        "views": 0,
+        "likes": 0,
+        "comments": 0,
+        "url": "https://youtu.be/FpQOm5Qa82c",
+        "generatedAt": "2026-06-21T10:41:10.573Z",
+        "learningScore": -15
+      },
+      {
+        "key": "apps/auto-staring-pebble-supreme.html",
+        "videoId": null,
+        "name": "Staring Pebble Supreme",
+        "appType": "object",
+        "storyMode": "fake_police_chase",
+        "audioMode": "full_mix",
+        "audioMood": "chaotic",
+        "musicUsed": "assets/music/default-test-bed.wav",
+        "sfxTags": [
+          "intro",
+          "ding",
+          "alert",
+          "beep"
+        ],
+        "reviewStatus": "not_in_review",
+        "decision": "none",
+        "publishStatus": "local",
+        "audioReadiness": "not_validated",
+        "publicSafe": false,
+        "audioWarnings": [],
+        "uploaded": false,
+        "dryRun": true,
+        "views": 0,
+        "likes": 0,
+        "comments": 0,
+        "url": null,
+        "generatedAt": "2026-06-21T13:21:01.036Z",
+        "learningScore": -30
+      },
+      {
+        "key": "apps/runaway-button.html",
+        "videoId": "zx5y4y-2CpY",
+        "name": "Runaway Button",
+        "appType": "unknown",
+        "storyMode": "unknown",
+        "audioMode": "unknown",
+        "audioMood": "unknown",
+        "musicUsed": null,
+        "sfxTags": [],
+        "reviewStatus": "private_uploaded",
+        "decision": "none",
+        "publishStatus": "private_uploaded",
+        "audioReadiness": "blocked_for_public",
+        "publicSafe": false,
+        "audioWarnings": [
+          "audio_missing"
+        ],
+        "uploaded": true,
+        "dryRun": false,
+        "views": 0,
+        "likes": 0,
+        "comments": 0,
+        "url": "https://youtu.be/zx5y4y-2CpY",
+        "generatedAt": "2026-06-20T21:35:07.882Z",
+        "learningScore": -70
+      },
+      {
+        "key": "apps/pet-rock.html",
+        "videoId": "nT6qA1pNWmU",
+        "name": "Staring Pet Rock",
+        "appType": "unknown",
+        "storyMode": "unknown",
+        "audioMode": "unknown",
+        "audioMood": "unknown",
+        "musicUsed": null,
+        "sfxTags": [],
+        "reviewStatus": "private_uploaded",
+        "decision": "none",
+        "publishStatus": "private_uploaded",
+        "audioReadiness": "blocked_for_public",
+        "publicSafe": false,
+        "audioWarnings": [
+          "audio_missing"
+        ],
+        "uploaded": true,
+        "dryRun": false,
+        "views": 0,
+        "likes": 0,
+        "comments": 0,
+        "url": "https://youtu.be/nT6qA1pNWmU",
+        "generatedAt": "2026-06-20T21:35:45.726Z",
+        "learningScore": -70
+      },
+      {
+        "key": "apps/useless-todo.html",
+        "videoId": "LgOrHXpLt8E",
+        "name": "Useless To-Do List",
+        "appType": "unknown",
+        "storyMode": "unknown",
+        "audioMode": "unknown",
+        "audioMood": "unknown",
+        "musicUsed": null,
+        "sfxTags": [],
+        "reviewStatus": "private_uploaded",
+        "decision": "none",
+        "publishStatus": "private_uploaded",
+        "audioReadiness": "blocked_for_public",
+        "publicSafe": false,
+        "audioWarnings": [
+          "audio_missing"
+        ],
+        "uploaded": true,
+        "dryRun": false,
+        "views": 0,
+        "likes": 0,
+        "comments": 0,
+        "url": "https://youtu.be/LgOrHXpLt8E",
+        "generatedAt": "2026-06-20T21:36:10.791Z",
+        "learningScore": -70
+      },
+      {
+        "key": "apps/unhelpful-calculator.html",
+        "videoId": "9ev-3qhQkSs",
+        "name": "Unhelpful Calculator",
+        "appType": "unknown",
+        "storyMode": "unknown",
+        "audioMode": "unknown",
+        "audioMood": "unknown",
+        "musicUsed": null,
+        "sfxTags": [],
+        "reviewStatus": "private_uploaded",
+        "decision": "none",
+        "publishStatus": "private_uploaded",
+        "audioReadiness": "blocked_for_public",
+        "publicSafe": false,
+        "audioWarnings": [
+          "audio_missing"
+        ],
+        "uploaded": true,
+        "dryRun": false,
+        "views": 0,
+        "likes": 0,
+        "comments": 0,
+        "url": "https://youtu.be/9ev-3qhQkSs",
+        "generatedAt": "2026-06-20T21:36:36.020Z",
+        "learningScore": -70
+      },
+      {
+        "key": "apps/endless-spinner.html",
+        "videoId": "MsadFVnCvIs",
+        "name": "Endless Loading Spinner",
+        "appType": "unknown",
+        "storyMode": "unknown",
+        "audioMode": "unknown",
+        "audioMood": "unknown",
+        "musicUsed": null,
+        "sfxTags": [],
+        "reviewStatus": "private_uploaded",
+        "decision": "none",
+        "publishStatus": "private_uploaded",
+        "audioReadiness": "blocked_for_public",
+        "publicSafe": false,
+        "audioWarnings": [
+          "audio_missing"
+        ],
+        "uploaded": true,
+        "dryRun": false,
+        "views": 0,
+        "likes": 0,
+        "comments": 0,
+        "url": "https://youtu.be/MsadFVnCvIs",
+        "generatedAt": "2026-06-20T21:37:13.145Z",
+        "learningScore": -70
+      },
+      {
+        "key": "apps/auto-the-government-calculator.html",
+        "videoId": "roo3gALgBDA",
+        "name": "The Government Calculator",
+        "appType": "unknown",
+        "storyMode": "unknown",
+        "audioMode": "unknown",
+        "audioMood": "unknown",
+        "musicUsed": null,
+        "sfxTags": [],
+        "reviewStatus": "private_uploaded",
+        "decision": "none",
+        "publishStatus": "private_uploaded",
+        "audioReadiness": "blocked_for_public",
+        "publicSafe": false,
+        "audioWarnings": [
+          "audio_missing"
+        ],
+        "uploaded": true,
+        "dryRun": false,
+        "views": 0,
+        "likes": 0,
+        "comments": 0,
+        "url": "https://youtu.be/roo3gALgBDA",
+        "generatedAt": "2026-06-20T22:04:14.787Z",
+        "learningScore": -70
+      },
+      {
+        "key": "apps/auto-emotionally-unhelpful-calculator.html",
+        "videoId": "gYpcgNaw5W0",
+        "name": "Emotionally Unhelpful Calculator",
+        "appType": "unknown",
+        "storyMode": "unknown",
+        "audioMode": "unknown",
+        "audioMood": "unknown",
+        "musicUsed": null,
+        "sfxTags": [],
+        "reviewStatus": "private_uploaded",
+        "decision": "none",
+        "publishStatus": "private_uploaded",
+        "audioReadiness": "blocked_for_public",
+        "publicSafe": false,
+        "audioWarnings": [
+          "audio_missing"
+        ],
+        "uploaded": true,
+        "dryRun": false,
+        "views": 0,
+        "likes": 0,
+        "comments": 0,
+        "url": "https://youtu.be/gYpcgNaw5W0",
+        "generatedAt": "2026-06-20T22:14:01.362Z",
+        "learningScore": -70
+      }
+    ],
+    "weakVideos": [
+      {
+        "key": "apps/runaway-button.html",
+        "videoId": "zx5y4y-2CpY",
+        "name": "Runaway Button",
+        "appType": "unknown",
+        "storyMode": "unknown",
+        "audioMode": "unknown",
+        "audioMood": "unknown",
+        "musicUsed": null,
+        "sfxTags": [],
+        "reviewStatus": "private_uploaded",
+        "decision": "none",
+        "publishStatus": "private_uploaded",
+        "audioReadiness": "blocked_for_public",
+        "publicSafe": false,
+        "audioWarnings": [
+          "audio_missing"
+        ],
+        "uploaded": true,
+        "dryRun": false,
+        "views": 0,
+        "likes": 0,
+        "comments": 0,
+        "url": "https://youtu.be/zx5y4y-2CpY",
+        "generatedAt": "2026-06-20T21:35:07.882Z",
+        "learningScore": -70
+      },
+      {
+        "key": "apps/pet-rock.html",
+        "videoId": "nT6qA1pNWmU",
+        "name": "Staring Pet Rock",
+        "appType": "unknown",
+        "storyMode": "unknown",
+        "audioMode": "unknown",
+        "audioMood": "unknown",
+        "musicUsed": null,
+        "sfxTags": [],
+        "reviewStatus": "private_uploaded",
+        "decision": "none",
+        "publishStatus": "private_uploaded",
+        "audioReadiness": "blocked_for_public",
+        "publicSafe": false,
+        "audioWarnings": [
+          "audio_missing"
+        ],
+        "uploaded": true,
+        "dryRun": false,
+        "views": 0,
+        "likes": 0,
+        "comments": 0,
+        "url": "https://youtu.be/nT6qA1pNWmU",
+        "generatedAt": "2026-06-20T21:35:45.726Z",
+        "learningScore": -70
+      },
+      {
+        "key": "apps/useless-todo.html",
+        "videoId": "LgOrHXpLt8E",
+        "name": "Useless To-Do List",
+        "appType": "unknown",
+        "storyMode": "unknown",
+        "audioMode": "unknown",
+        "audioMood": "unknown",
+        "musicUsed": null,
+        "sfxTags": [],
+        "reviewStatus": "private_uploaded",
+        "decision": "none",
+        "publishStatus": "private_uploaded",
+        "audioReadiness": "blocked_for_public",
+        "publicSafe": false,
+        "audioWarnings": [
+          "audio_missing"
+        ],
+        "uploaded": true,
+        "dryRun": false,
+        "views": 0,
+        "likes": 0,
+        "comments": 0,
+        "url": "https://youtu.be/LgOrHXpLt8E",
+        "generatedAt": "2026-06-20T21:36:10.791Z",
+        "learningScore": -70
+      },
+      {
+        "key": "apps/unhelpful-calculator.html",
+        "videoId": "9ev-3qhQkSs",
+        "name": "Unhelpful Calculator",
+        "appType": "unknown",
+        "storyMode": "unknown",
+        "audioMode": "unknown",
+        "audioMood": "unknown",
+        "musicUsed": null,
+        "sfxTags": [],
+        "reviewStatus": "private_uploaded",
+        "decision": "none",
+        "publishStatus": "private_uploaded",
+        "audioReadiness": "blocked_for_public",
+        "publicSafe": false,
+        "audioWarnings": [
+          "audio_missing"
+        ],
+        "uploaded": true,
+        "dryRun": false,
+        "views": 0,
+        "likes": 0,
+        "comments": 0,
+        "url": "https://youtu.be/9ev-3qhQkSs",
+        "generatedAt": "2026-06-20T21:36:36.020Z",
+        "learningScore": -70
+      },
+      {
+        "key": "apps/endless-spinner.html",
+        "videoId": "MsadFVnCvIs",
+        "name": "Endless Loading Spinner",
+        "appType": "unknown",
+        "storyMode": "unknown",
+        "audioMode": "unknown",
+        "audioMood": "unknown",
+        "musicUsed": null,
+        "sfxTags": [],
+        "reviewStatus": "private_uploaded",
+        "decision": "none",
+        "publishStatus": "private_uploaded",
+        "audioReadiness": "blocked_for_public",
+        "publicSafe": false,
+        "audioWarnings": [
+          "audio_missing"
+        ],
+        "uploaded": true,
+        "dryRun": false,
+        "views": 0,
+        "likes": 0,
+        "comments": 0,
+        "url": "https://youtu.be/MsadFVnCvIs",
+        "generatedAt": "2026-06-20T21:37:13.145Z",
+        "learningScore": -70
+      },
+      {
+        "key": "apps/auto-the-government-calculator.html",
+        "videoId": "roo3gALgBDA",
+        "name": "The Government Calculator",
+        "appType": "unknown",
+        "storyMode": "unknown",
+        "audioMode": "unknown",
+        "audioMood": "unknown",
+        "musicUsed": null,
+        "sfxTags": [],
+        "reviewStatus": "private_uploaded",
+        "decision": "none",
+        "publishStatus": "private_uploaded",
+        "audioReadiness": "blocked_for_public",
+        "publicSafe": false,
+        "audioWarnings": [
+          "audio_missing"
+        ],
+        "uploaded": true,
+        "dryRun": false,
+        "views": 0,
+        "likes": 0,
+        "comments": 0,
+        "url": "https://youtu.be/roo3gALgBDA",
+        "generatedAt": "2026-06-20T22:04:14.787Z",
+        "learningScore": -70
+      },
+      {
+        "key": "apps/auto-emotionally-unhelpful-calculator.html",
+        "videoId": "gYpcgNaw5W0",
+        "name": "Emotionally Unhelpful Calculator",
+        "appType": "unknown",
+        "storyMode": "unknown",
+        "audioMode": "unknown",
+        "audioMood": "unknown",
+        "musicUsed": null,
+        "sfxTags": [],
+        "reviewStatus": "private_uploaded",
+        "decision": "none",
+        "publishStatus": "private_uploaded",
+        "audioReadiness": "blocked_for_public",
+        "publicSafe": false,
+        "audioWarnings": [
+          "audio_missing"
+        ],
+        "uploaded": true,
+        "dryRun": false,
+        "views": 0,
+        "likes": 0,
+        "comments": 0,
+        "url": "https://youtu.be/gYpcgNaw5W0",
+        "generatedAt": "2026-06-20T22:14:01.362Z",
+        "learningScore": -70
+      },
+      {
+        "key": "apps/auto-infinite-loading-ceremony.html",
+        "videoId": "-YoBkyPZlAE",
+        "name": "Infinite Loading Ceremony",
+        "appType": "unknown",
+        "storyMode": "unknown",
+        "audioMode": "unknown",
+        "audioMood": "unknown",
+        "musicUsed": null,
+        "sfxTags": [],
+        "reviewStatus": "private_uploaded",
+        "decision": "none",
+        "publishStatus": "private_uploaded",
+        "audioReadiness": "blocked_for_public",
+        "publicSafe": false,
+        "audioWarnings": [
+          "audio_missing"
+        ],
+        "uploaded": true,
+        "dryRun": false,
+        "views": 0,
+        "likes": 0,
+        "comments": 0,
+        "url": "https://youtu.be/-YoBkyPZlAE",
+        "generatedAt": "2026-06-21T08:05:47.914Z",
+        "learningScore": -70
+      },
+      {
+        "key": "apps/auto-emotionally-unavailable-button.html",
+        "videoId": "9wbRVRevKX0",
+        "name": "Emotionally Unavailable Button",
+        "appType": "button",
+        "storyMode": "fake_nature_documentary",
+        "audioMode": "unknown",
+        "audioMood": "unknown",
+        "musicUsed": null,
+        "sfxTags": [],
+        "reviewStatus": "private_uploaded",
+        "decision": "none",
+        "publishStatus": "private_uploaded",
+        "audioReadiness": "blocked_for_public",
+        "publicSafe": false,
+        "audioWarnings": [
+          "audio_missing"
+        ],
+        "uploaded": true,
+        "dryRun": false,
+        "views": 0,
+        "likes": 0,
+        "comments": 0,
+        "url": "https://youtu.be/9wbRVRevKX0",
+        "generatedAt": "2026-06-21T09:12:56.565Z",
+        "learningScore": -70
+      },
+      {
+        "key": "apps/auto-emotionally-distant-mineral.html",
+        "videoId": "q6p8OXa9DSs",
+        "name": "Emotionally Distant Mineral",
+        "appType": "object",
+        "storyMode": "fake_scientific_experiment",
+        "audioMode": "unknown",
+        "audioMood": "unknown",
+        "musicUsed": null,
+        "sfxTags": [],
+        "reviewStatus": "private_uploaded",
+        "decision": "none",
+        "publishStatus": "private_uploaded",
+        "audioReadiness": "blocked_for_public",
+        "publicSafe": false,
+        "audioWarnings": [
+          "audio_missing"
+        ],
+        "uploaded": true,
+        "dryRun": false,
+        "views": 0,
+        "likes": 0,
+        "comments": 0,
+        "url": "https://youtu.be/q6p8OXa9DSs",
+        "generatedAt": "2026-06-21T09:32:37.190Z",
+        "learningScore": -70
+      }
+    ]
+  }
+}
