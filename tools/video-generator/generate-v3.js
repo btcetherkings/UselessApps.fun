@@ -6,7 +6,7 @@ const fs = require('fs');
 const path = require('path');
 const https = require('https');
 const { chromium } = require('playwright');
-const { execFileSync } = require('child_process');
+const { execFileSync, spawnSync } = require('child_process');
 const { google } = require('googleapis');
 const { getAudioUrl } = require('google-tts-api');
 const uselessBrain = require('./useless-brain');
@@ -35,6 +35,7 @@ const { createAudioPlan } = require('../media/audio-engine');
 // -----------------------------------------------------------------------------
 
 const ROOT_DIR = path.join(__dirname, '..', '..');
+const GENERATED_DIR = path.join(ROOT_DIR, 'generated-videos');
 
 const BASE_URL = process.env.BASE_URL || 'https://btcetherkings.github.io/useless-apps-fun/';
 const RECORD_BASE_URL = process.env.RECORD_BASE_URL || BASE_URL;
@@ -1645,195 +1646,160 @@ function concatClips(clips, output, workDir) {
   return output;
 }
 
-function stitchFinalVideo({ rawVideoPath, narrationPath, slug, app, workDir }) {
-  const intro = createIntro(slug, app, workDir);
-  const sirens = createEmergencySirensCard(slug, app, workDir);
-  const investigation = createInvestigationCard(slug, app, workDir);
-  const evidence = path.join(workDir, `${slug}-04-evidence.mp4`);
-  const courtroom = createCourtroomCard(slug, app, workDir);
-  const sponsor = createFakeSponsorCard(slug, app, workDir);
-  const certificate = createCertificateCard(slug, app, workDir);
-  const outro = createOutro(slug, app, workDir);
 
-  makeEvidenceClip(rawVideoPath, evidence, app, workDir);
-
-  const silentCombined = path.join(workDir, `${slug}-silent-combined.mp4`);
-  const finalOutput = path.join(OUT_DIR, `${slug}-v3.mp4`);
-
-  concatClips([
-    intro,
-    sirens,
-    investigation,
-    evidence,
-    courtroom,
-    sponsor,
-    certificate,
-    outro
-  ], silentCombined, workDir);
-
-  const silentDuration = verifyMediaFile(silentCombined, 'silent combined video', {
-    requireVideo: true,
-    minDuration: 5
-  });
-
-  let musicPath = BACKGROUND_MUSIC;
-
-  if (!musicPath && USE_SYNTH_MUSIC) {
-    musicPath = path.join(workDir, `${slug}-music.m4a`);
-    createSynthMusic(musicPath, Math.ceil(silentDuration) + 2);
-  }
-
-  let sfxPath = '';
-
-  if (CHAOS_MODE) {
-    sfxPath = path.join(workDir, `${slug}-chaos-sfx.m4a`);
-    createChaosSfx(sfxPath, Math.ceil(silentDuration) + 1);
-  }
-
-  const args = [
-    '-y',
-    '-i', silentCombined,
-    '-i', narrationPath
-  ];
-
-  const filterParts = [
-    `[1:a]volume=${NARRATION_VOLUME},apad[narr]`
-  ];
-
-  const mixInputs = ['[narr]'];
-  let inputIndex = 2;
-
-  if (musicPath && fs.existsSync(musicPath)) {
-    verifyMediaFile(musicPath, 'background music', {
-      requireAudio: true,
-      minDuration: 1,
-      minSize: 500
-    });
-
-    args.push('-stream_loop', '-1', '-i', musicPath);
-    filterParts.push(`[${inputIndex}:a]volume=${MUSIC_VOLUME},apad[music]`);
-    mixInputs.push('[music]');
-    inputIndex++;
-  }
-
-  if (sfxPath && fs.existsSync(sfxPath)) {
-    verifyMediaFile(sfxPath, 'chaos sound effects', {
-      requireAudio: true,
-      minDuration: 1,
-      minSize: 500
-    });
-
-    args.push('-i', sfxPath);
-    filterParts.push(`[${inputIndex}:a]volume=${CHAOS_SFX_VOLUME},apad[sfx]`);
-    mixInputs.push('[sfx]');
-    inputIndex++;
-  }
-
-  if (mixInputs.length === 1) {
-    filterParts.push('[narr]anull[aud]');
-  } else {
-    filterParts.push(`${mixInputs.join('')}amix=inputs=${mixInputs.length}:duration=first:dropout_transition=2[aud]`);
-  }
-
-  args.push(
-    '-filter_complex', filterParts.join(';'),
-    '-map', '0:v:0',
-    '-map', '[aud]',
-    '-t', String(silentDuration),
-    '-c:v', 'libx264',
-    '-preset', 'ultrafast',
-    '-crf', '28',
-    '-c:a', 'aac',
-    '-ar', '44100',
-    '-ac', '2',
-    '-b:a', '128k',
-    '-movflags', '+faststart',
-    finalOutput
-  );
-
-  ffmpeg(args);
-
-  verifyMediaFile(finalOutput, 'final video', {
-    requireVideo: true,
-    requireAudio: true,
-    minDuration: 5,
-    minSize: 50_000
-  });
-
-  return finalOutput;
+function resolveRepoPath(relativeOrAbsolutePath) {
+  if (!relativeOrAbsolutePath) return null;
+  if (path.isAbsolute(relativeOrAbsolutePath)) return relativeOrAbsolutePath;
+  return path.join(ROOT_DIR, relativeOrAbsolutePath);
 }
 
-// -----------------------------------------------------------------------------
-// YOUTUBE
-// -----------------------------------------------------------------------------
-
-async function getYouTubeClient() {
-  const oauth2Client = new google.auth.OAuth2(
-    YOUTUBE_CLIENT_ID,
-    YOUTUBE_CLIENT_SECRET
-  );
-
-  oauth2Client.setCredentials({
-    refresh_token: YOUTUBE_REFRESH_TOKEN
-  });
-
-  return google.youtube({
-    version: 'v3',
-    auth: oauth2Client
-  });
+function fileExistsSafe(filePath) {
+  try {
+    return Boolean(filePath && fs.existsSync(filePath));
+  } catch {
+    return false;
+  }
 }
 
-async function uploadToYouTube({ videoPath, app, appUrl }) {
-  const youtube = await getYouTubeClient();
+function getAudioMixAssets(audioPlan) {
+  if (!audioPlan || !audioPlan.enabled) {
+    return {
+      musicPath: null,
+      sfxItems: []
+    };
+  }
 
-  const title = buildTitle(app);
-  const description = buildDescription(app, appUrl);
+  const musicPath = audioPlan.music?.file
+    ? resolveRepoPath(audioPlan.music.file)
+    : null;
 
-  const response = await youtube.videos.insert({
-    part: ['snippet', 'status'],
-    requestBody: {
-      snippet: {
-        title,
-        description,
-        tags: [
-          'useless apps',
-          'uselessapps',
-          'funny app',
-          'coding',
-          'web development',
-          'javascript',
-          'shorts',
-          'pointless app',
-          'useless website',
-          'fake documentary',
-          'tech comedy',
-          'meme app',
-          'bad software'
-        ],
-        categoryId: '28'
-      },
-      status: {
-        privacyStatus: VIDEO_PRIVACY,
-        selfDeclaredMadeForKids: false
-      }
-    },
-    media: {
-      body: fs.createReadStream(videoPath)
-    }
-  });
+  const sfxItems = Array.isArray(audioPlan.sfx)
+    ? audioPlan.sfx
+        .map(item => ({
+          ...item,
+          path: resolveRepoPath(item.file),
+          delayMs: Math.max(0, Math.round(Number(item.at || 0) * 1000)),
+          volume: Number(item.volume || 0.09)
+        }))
+        .filter(item => fileExistsSafe(item.path))
+    : [];
 
   return {
-    videoId: response.data.id,
-    title,
-    description,
-    privacyStatus: VIDEO_PRIVACY,
-    url: `https://youtu.be/${response.data.id}`
+    musicPath: fileExistsSafe(musicPath) ? musicPath : null,
+    sfxItems
   };
 }
 
-// -----------------------------------------------------------------------------
-// PIPELINE
-// -----------------------------------------------------------------------------
+function audioMixMode(audioPlan, musicPath, sfxItems) {
+  if (!audioPlan || !audioPlan.enabled) return 'disabled';
+  if (musicPath && sfxItems.length) return 'full_mix';
+  if (musicPath) return 'narration_music';
+  if (sfxItems.length) return 'narration_sfx';
+  return 'narration_only';
+}
+
+
+
+function runFfmpeg(args, label = 'ffmpeg') {
+  const result = spawnSync('ffmpeg', args, {
+    stdio: 'inherit'
+  });
+
+  if (result.error) {
+    throw new Error(`${label} failed to start: ${result.error.message}`);
+  }
+
+  if (result.status !== 0) {
+    throw new Error(`${label} failed with exit code ${result.status}`);
+  }
+}
+
+
+function stitchFinalVideo({ rawVideoPath, narrationPath, slug, app, workDir, audioPlan = null }) {
+  const output = path.join(GENERATED_DIR, `${slug}-v3.mp4`);
+  const title = app.name || 'Useless App';
+
+  const { musicPath, sfxItems } = getAudioMixAssets(audioPlan);
+  const mode = audioMixMode(audioPlan, musicPath, sfxItems);
+
+  const args = [
+    '-y',
+    '-i', rawVideoPath,
+    '-i', narrationPath
+  ];
+
+  const filterParts = [];
+  let audioInputCount = 1;
+
+  // Narration is always input 1.
+  const narrationVolume = Number(audioPlan?.narrationVolume || process.env.NARRATION_VOLUME || 1.25);
+  filterParts.push(`[1:a]volume=${narrationVolume}[nar]`);
+
+  const audioLabels = ['[nar]'];
+
+  if (musicPath) {
+    args.push('-stream_loop', '-1', '-i', musicPath);
+    const musicInputIndex = 2;
+    const musicVolume = Number(audioPlan?.music?.volume || process.env.MUSIC_VOLUME || 0.035);
+
+    filterParts.push(`[${musicInputIndex}:a]volume=${musicVolume},atrim=duration=9999[music]`);
+    audioLabels.push('[music]');
+    audioInputCount += 1;
+  }
+
+  for (const item of sfxItems) {
+    args.push('-i', item.path);
+    const inputIndex = args.filter(x => x === '-i').length - 1;
+    const label = `sfx${inputIndex}`;
+    const delay = Math.max(0, Number(item.delayMs || 0));
+    const volume = Number(item.volume || process.env.SFX_VOLUME || 0.09);
+
+    filterParts.push(`[${inputIndex}:a]volume=${volume},adelay=${delay}|${delay}[${label}]`);
+    audioLabels.push(`[${label}]`);
+    audioInputCount += 1;
+  }
+
+  if (audioLabels.length > 1) {
+    filterParts.push(`${audioLabels.join('')}amix=inputs=${audioLabels.length}:duration=first:dropout_transition=0[aout]`);
+  } else {
+    filterParts.push(`[nar]anull[aout]`);
+  }
+
+  const filterComplex = filterParts.join(';');
+
+  args.push(
+    '-filter_complex', filterComplex,
+    '-map', '0:v:0',
+    '-map', '[aout]',
+    '-c:v', 'libx264',
+    '-preset', process.env.FFMPEG_PRESET || 'veryfast',
+    '-crf', String(process.env.FFMPEG_CRF || 23),
+    '-c:a', 'aac',
+    '-b:a', process.env.FFMPEG_AUDIO_BITRATE || '192k',
+    '-shortest',
+    '-movflags', '+faststart',
+    output
+  );
+
+  runFfmpeg(args, `final stitch ${title}`);
+
+  return {
+    path: output,
+    audioMix: {
+      enabled: Boolean(audioPlan?.enabled),
+      mode,
+      musicUsed: musicPath ? path.relative(ROOT_DIR, musicPath) : null,
+      sfxUsed: sfxItems.map(item => ({
+        file: path.relative(ROOT_DIR, item.path),
+        at: item.at,
+        delayMs: item.delayMs,
+        volume: item.volume
+      })),
+      narrationVolume,
+      filterComplex
+    }
+  };
+}
 
 function validateApp(app) {
   if (!app) return false;
@@ -1883,13 +1849,22 @@ async function processOneApp(app) {
 
     const narration = await generateNarration(app, slug, workDir);
 
-    const finalVideo = stitchFinalVideo({
+    const finalVideoResult = stitchFinalVideo({
       rawVideoPath,
       narrationPath: narration.path,
       slug,
       app,
-      workDir
+      workDir,
+      audioPlan
     });
+
+    const finalVideo = typeof finalVideoResult === 'string'
+      ? finalVideoResult
+      : finalVideoResult.path;
+
+    const audioMix = typeof finalVideoResult === 'string'
+      ? { mode: 'legacy', enabled: false }
+      : finalVideoResult.audioMix;
 
     const finalDuration = verifyMediaFile(finalVideo, 'final video', {
       requireVideo: true,
@@ -1910,6 +1885,7 @@ async function processOneApp(app) {
     metadataPackage,
     qualityPlan,
       audioPlan,
+      audioMix,
       narration: narration.text,
       narrationMeta: {
         duration: narration.duration,
