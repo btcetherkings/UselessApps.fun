@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>UselessApps.fun Control Centre</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/dashboard.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>UselessApps.fun Control Centre</h1>
+      <p>Absurd app factory. Viral nonsense. Operational seriousness.</p>
+    </div>
+    <div class="status-pill" id="generatedAt">Loading...</div>
+  </header>
+
+  <main>
+    <section class="grid cards">
+      <article class="card big">
+        <h2>System Health</h2>
+        <div class="score" id="healthScore">--</div>
+        <div class="muted" id="healthLabel">loading</div>
+      </article>
+
+      <article class="card">
+        <h2>Content</h2>
+        <div id="contentStats"></div>
+      </article>
+
+      <article class="card">
+        <h2>Publishing</h2>
+        <div id="publishStats"></div>
+      </article>
+
+      <article class="card">
+        <h2>Advanced Analytics</h2>
+        <div id="advancedStats"></div>
+      </article>
+    </section>
+
+    <section class="grid two">
+      <article class="card">
+        <h2>Learning v2</h2>
+        <div id="learningStats"></div>
+      </article>
+
+      <article class="card">
+        <h2>Latest Autopilot Decision</h2>
+        <div id="latestDecision"></div>
+      </article>
+    </section>
+
+    <section class="card">
+      <h2>Next Actions</h2>
+      <div id="nextActions"></div>
+    </section>
+
+    <section class="grid two">
+      <article class="card">
+        <h2>Action Cards</h2>
+        <div class="table-wrap">
+          <table id="actionsTable"></table>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>Rerender Candidates</h2>
+        <div class="table-wrap">
+          <table id="rerenderTable"></table>
+        </div>
+      </article>
+    </section>
+
+    <section class="grid two">
+      <article class="card">
+        <h2>Top Videos</h2>
+        <div class="table-wrap">
+          <table id="topVideosTable"></table>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>Weak Videos</h2>
+        <div class="table-wrap">
+          <table id="weakVideosTable"></table>
+        </div>
+      </article>
+    </section>
+
+    <section class="card">
+      <h2>Operator Commands</h2>
+      <pre id="commands"></pre>
+    </section>
+  </main>
+
+  <script src="/dashboard.js"></script>
+</body>
+</html>

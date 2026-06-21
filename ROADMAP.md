@@ -10,447 +10,431 @@ It creates tiny useless apps, records them, turns them into ridiculous fake-TV v
 
 ---
 
-## Critical Realisation
+## Current Reality
 
-The system cannot learn properly unless it has real analytics data.
-
-Current learning is limited because it mostly sees:
+The dashboard/reporting now works as:
 
 ```text
-views
-likes
-comments
-review status
-audio status
-publish status
+console output
+markdown report
+JSON report
 ```
 
-That is not enough.
+It does not yet open as a proper browser dashboard unless we build a local dashboard server/static HTML viewer.
 
-For proper learning, the platform needs:
+Current files:
 
 ```text
-watch time
-average view duration
-average view percentage
-audience retention
-subscribers gained/lost
-impressions
-click-through rate
-shares
-playlist starts
-traffic source
-device type
-country
-new vs returning viewers
-channel subscriber totals
+reports/daily-autopilot-report.md
+reports/daily-autopilot-report.json
+tools/dashboard/report-v2.js
+scripts/dashboard.sh
 ```
 
-Important:
+Next build:
 
 ```text
-The bot is not learning this in the background unless we explicitly run an analytics collector or schedule one.
+reports/daily-autopilot-report.json
+→ browser dashboard HTML
+→ local server
+→ open in browser
+→ refresh from latest report
 ```
-
-This build creates that collector.
 
 ---
 
-# Active Build: YouTube Advanced Analytics Collector + Learning Data Warehouse
+# Active Build: Browser Dashboard UI
 
 Status: Next build
 
 Goal:
 
-Build a serious analytics data layer so the tool can actually learn.
+Create a proper browser dashboard for UselessApps.fun.
 
-This build should:
-
-- call YouTube Data API for channel-level statistics
-- call YouTube Analytics API for video-level metrics
-- collect retention/watch-time/subscriber metrics where available
-- collect impressions and CTR where available
-- collect traffic source/device/country breakdowns
-- store data in a structured warehouse JSON
-- create a detailed analytics report
-- feed advanced metrics into Learning v2
-- show data gaps clearly
-- prepare for scheduled collection later
-
-Files to create/update:
+The browser dashboard should show:
 
 ```text
-tools/analytics/youtube-advanced.js
-tools/analytics/advanced-warehouse.json
-tools/analytics/advanced-report.js
-tools/analytics/learning-v2.js
-tools/dashboard/report-v2.js
-scripts/youtube-advanced-pull.sh
-scripts/advanced-analytics-report.sh
-scripts/learning-v2.sh
+system health
+content totals
+upload/publish funnel
+audio safety
+advanced YouTube analytics
+learning recommendations
+latest autopilot decision
+action cards
+rerender candidates
+top/worst videos
+public-safe queue
+blocked videos
+commands to run next
+```
+
+---
+
+# Why This Build Matters
+
+The console report is useful but not enough for operating the content factory.
+
+We need:
+
+```text
+visual cards
+tables
+clear colours
+operator actions
+browser refresh
+links to YouTube videos
+links to local generated videos
+markdown/json report links
+```
+
+This becomes the control centre for the useless app machine.
+
+---
+
+# Files To Create / Update
+
+```text
+tools/dashboard/web-dashboard.js
+tools/dashboard/dashboard.html
+tools/dashboard/dashboard.css
+tools/dashboard/dashboard.js
+scripts/dashboard-web.sh
+scripts/open-dashboard.sh
+scripts/dashboard.sh
+reports/daily-autopilot-report.json
 ROADMAP.md
 ```
 
----
-
-# Why This Matters
-
-A viral content engine cannot learn only from views.
-
-Example:
+Optional later:
 
 ```text
-Video A: 100 views, 95% retention, +3 subscribers
-Video B: 500 views, 5% retention, 0 subscribers
-```
-
-Views alone says Video B is better.
-
-Real analytics says Video A is stronger.
-
-The learning engine needs to understand:
-
-```text
-Did viewers stay?
-Did they subscribe?
-Did they click?
-Did they share?
-Where did they come from?
-Which app type creates retention?
-Which story mode keeps attention?
-Which audio mood helps completion?
+tools/dashboard/server.js
 ```
 
 ---
 
-# Data Sources
-
-## YouTube Data API
-
-Used for:
-
-```text
-channel subscriber count
-channel video count
-channel view count
-video public stats
-video title/status metadata
-```
-
-## YouTube Analytics API
-
-Used for:
-
-```text
-views
-likes
-comments
-shares
-subscribersGained
-subscribersLost
-estimatedMinutesWatched
-averageViewDuration
-averageViewPercentage
-audienceWatchRatio
-relativeRetentionPerformance
-impressions
-impressionsCtr
-traffic source
-device type
-country
-```
-
----
-
-# Phase 1: Existing Platform
+# Phase 1: Existing Reporting
 
 Status: Working
 
-- [x] Generate apps
-- [x] Render videos
-- [x] Upload private videos
-- [x] Review queue
-- [x] Audio validation
-- [x] Publish preflight
-- [x] Learning v2
-- [x] Detailed operator report
-
----
-
-# Phase 2: Basic Analytics
-
-Status: Working but limited
-
-Current data:
-
-```text
-views
-likes
-comments
-possibly status/review/audio data
-```
+- [x] Console dashboard
+- [x] Markdown report
+- [x] JSON report
+- [x] Health score
+- [x] Action cards
+- [x] Rerender candidates
+- [x] Learning recommendations
+- [x] Advanced analytics hooks
 
 Limitation:
 
 ```text
-No retention, no watch-time, no subscriber conversion, no impressions, no CTR.
+No browser UI yet.
 ```
 
 ---
 
-# Phase 3: Advanced Analytics Collector
+# Phase 2: Browser Dashboard UI
 
 Status: Next active build
 
-## Required metrics
+## Dashboard sections
 
-Core video metrics:
-
-```text
-views
-likes
-comments
-shares
-estimatedMinutesWatched
-averageViewDuration
-averageViewPercentage
-subscribersGained
-subscribersLost
-```
-
-Discovery metrics where available:
+The page should include:
 
 ```text
-impressions
-impressionsCtr
+1. Header / status bar
+2. Health score
+3. Content totals
+4. Upload/publish funnel
+5. Audio safety
+6. YouTube advanced analytics
+7. Learning v2 recommendations
+8. Latest autopilot decision
+9. Action cards
+10. Rerender candidates
+11. Top videos
+12. Weak videos
+13. Commands panel
 ```
 
-Retention metrics where available:
+## Visual style
+
+The dashboard should feel like:
 
 ```text
-audienceWatchRatio
-relativeRetentionPerformance
+chaotic but professional
+dark mode
+neon highlights
+fun but usable
+operator/control-room style
 ```
 
-Breakdowns:
+Colours:
 
 ```text
-trafficSourceType
-deviceType
-country
+green = safe / ready
+orange = warning / needs review
+red = blocked
+blue = learning / analytics
+purple = autopilot
 ```
 
-Channel stats:
+## Data source
+
+Use:
 
 ```text
-subscriberCount
-hiddenSubscriberCount
-viewCount
-videoCount
+reports/daily-autopilot-report.json
 ```
 
-## Warehouse shape
+Dashboard flow:
 
-```json
-{
-  "version": 1,
-  "generatedAt": "...",
-  "channel": {
-    "id": "...",
-    "title": "...",
-    "subscriberCount": 0,
-    "viewCount": 0,
-    "videoCount": 0
-  },
-  "videos": {
-    "Nx2Ek9u165c": {
-      "videoId": "Nx2Ek9u165c",
-      "core": {
-        "views": 0,
-        "likes": 0,
-        "comments": 0,
-        "shares": 0,
-        "estimatedMinutesWatched": 0,
-        "averageViewDuration": 0,
-        "averageViewPercentage": 0,
-        "subscribersGained": 0,
-        "subscribersLost": 0,
-        "impressions": 0,
-        "impressionsCtr": 0
-      },
-      "retention": [],
-      "trafficSources": [],
-      "devices": [],
-      "countries": [],
-      "errors": []
-    }
-  },
-  "errors": []
-}
+```text
+./scripts/dashboard-web.sh
+→ sync-review
+→ learning-v2
+→ report-v2
+→ serve dashboard on localhost
 ```
 
 ---
 
-# Phase 4: Advanced Report
+# Phase 3: Local Browser Server
 
 Status: Planned in this build
 
-Report should show:
+Command:
+
+```bash
+./scripts/dashboard-web.sh
+```
+
+Expected output:
 
 ```text
-channel subscriber count
-subscriber gain/loss by video
-best retention videos
-worst retention videos
-best watch time videos
-best CTR videos
-traffic source breakdown
-country breakdown
-device breakdown
-videos with no analytics yet
-API errors / unavailable metrics
+Dashboard running at http://127.0.0.1:8787
+```
+
+Open manually:
+
+```bash
+xdg-open http://127.0.0.1:8787
+```
+
+or:
+
+```bash
+./scripts/open-dashboard.sh
+```
+
+Server should serve:
+
+```text
+/dashboard.html
+/dashboard.css
+/dashboard.js
+/report.json
+/report.md
 ```
 
 ---
 
-# Phase 5: Learning v2 Upgrade
+# Phase 4: Dashboard API
 
 Status: Planned in this build
 
-Learning score should include:
+Endpoints:
 
 ```text
-views
-likes
-comments
-shares
-subscribersGained
-subscribersLost
-estimatedMinutesWatched
-averageViewDuration
-averageViewPercentage
-impressionsCtr
-publicSafe
-review decision
-publish status
+GET /
+GET /dashboard.css
+GET /dashboard.js
+GET /api/report
+GET /api/report-md
+GET /api/health
 ```
 
-New formula direction:
+Optional command endpoint later:
 
 ```text
-views * 1
-likes * 8
-comments * 15
-shares * 20
-subscribersGained * 50
-subscribersLost * -40
-estimatedMinutesWatched * 1.5
-averageViewPercentage * 2
-impressionsCtr * 25
-approved +20
-published_unlisted +35
-published_public +75
-publicSafe +10
-audio blockers negative
+POST /api/run/sync-review
+POST /api/run/learning
+POST /api/run/autopilot-preview
 ```
+
+For now, keep it read-only for safety.
 
 ---
 
-# Phase 6: Dashboard Upgrade
+# Phase 5: Dashboard Cards
 
 Status: Planned in this build
 
-Detailed report should now include:
+## Health card
+
+Show:
 
 ```text
-Channel subscribers
-Channel total views
-Channel public video count
-Best subscriber-converting video
-Best retention video
-Best watch-time video
-Best CTR video
-Worst retention video
-Analytics data coverage percentage
+Health score
+Label
+Notes
+```
+
+## Content card
+
+Show:
+
+```text
+apps
+records
+uploaded
+dry-run
+failed
+with learning reason
+```
+
+## Publishing card
+
+Show:
+
+```text
+private
+unlisted
+public
+ready for approval
+ready for unlisted
+blocked
+```
+
+## Audio safety card
+
+Show:
+
+```text
+public-safe videos
+blocked videos
+test audio warnings
+audio missing
+production audio in use
+```
+
+## Learning card
+
+Show:
+
+```text
+confidence
+preferred app types
+preferred story modes
+preferred audio moods
+next ideas
+```
+
+## Analytics card
+
+Show:
+
+```text
+channel subscribers
+channel total views
+videos pulled
+CTR/watch-time/retention where available
+data gaps
 ```
 
 ---
 
-# Phase 7: Scheduling
+# Phase 6: Action Tables
 
-Status: Next build after this
+Status: Planned in this build
 
-Once the collector works manually, create:
-
-```text
-scripts/analytics-nightly.sh
-systemd timer or cron example
-```
-
-Important:
+Tables:
 
 ```text
-The system only learns in the background if scheduled.
+Action cards
+Rerender candidates
+Top videos
+Weak videos
+Latest audit/events
 ```
+
+Each row should include command suggestions.
+
+---
+
+# Phase 7: Safety
+
+Status: Planned
+
+For now the browser dashboard should be read-only.
+
+No publish buttons yet.
+
+Reason:
+
+```text
+Publishing needs explicit terminal command confirmation.
+```
+
+Later we can add buttons behind confirmation.
 
 ---
 
 # Immediate Next Build Tasks
 
-1. Create `tools/analytics/youtube-advanced.js`.
-2. Create `scripts/youtube-advanced-pull.sh`.
-3. Create `tools/analytics/advanced-report.js`.
-4. Create `scripts/advanced-analytics-report.sh`.
-5. Pull channel stats using YouTube Data API.
-6. Pull per-video analytics using YouTube Analytics API.
-7. Store results in `advanced-warehouse.json`.
-8. Patch `learning-v2.js` to read advanced warehouse.
-9. Patch dashboard report to show advanced analytics summary.
-10. Run collector.
-11. Run learning v2.
-12. Run dashboard.
-13. Commit.
+1. Create `tools/dashboard/web-dashboard.js`.
+2. Create `tools/dashboard/dashboard.html`.
+3. Create `tools/dashboard/dashboard.css`.
+4. Create `tools/dashboard/dashboard.js`.
+5. Create `scripts/dashboard-web.sh`.
+6. Create `scripts/open-dashboard.sh`.
+7. Patch `scripts/dashboard.sh` to show both console report and browser hint.
+8. Run dashboard web server.
+9. Open browser at `http://127.0.0.1:8787`.
+10. Commit.
 
 ---
 
 # Command Set
 
-Pull advanced analytics:
+Generate reports:
 
 ```bash
-./scripts/youtube-advanced-pull.sh
+./scripts/daily-report-v2.sh
 ```
 
-Show advanced report:
+Start browser dashboard:
 
 ```bash
-./scripts/advanced-analytics-report.sh
+./scripts/dashboard-web.sh
 ```
 
-Run learning after advanced analytics:
+Open browser dashboard:
 
 ```bash
-./scripts/learning-v2.sh
+./scripts/open-dashboard.sh
 ```
 
-Run dashboard:
+Manual browser open:
 
 ```bash
-./scripts/dashboard.sh
+xdg-open http://127.0.0.1:8787
 ```
 
-Future scheduled collector:
+If on a headless machine:
 
 ```bash
-./scripts/analytics-nightly.sh
+python3 -m webbrowser http://127.0.0.1:8787
 ```
 
 ---
 
 # Current Priority
 
-1. Stop relying on shallow stats only.
-2. Build a real analytics warehouse.
-3. Learn from retention/watch-time/subscriber conversion.
-4. Expose data gaps clearly.
-5. Then schedule the analytics collector.
+1. Make the dashboard visible in browser.
+2. Keep it read-only and safe.
+3. Use the existing JSON report as source of truth.
+4. Make the operator experience much clearer.
+5. Later add buttons/command runner only after safety gates.
