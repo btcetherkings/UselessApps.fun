@@ -12,99 +12,99 @@ It creates tiny useless apps, records them, turns them into ridiculous fake-TV v
 
 ## Current Working Milestone
 
-The automation engine, media intelligence layer, safe-zone foundation, private review workflow, FFmpeg audio mixing, audio validation gate, and production audio asset manifest are working or in progress.
+The automation engine, media intelligence layer, safe-zone foundation, YouTube private upload, private review workflow, FFmpeg audio mixing, production audio manifest, and public-safe audio upload test are working.
 
 Confirmed:
 
-- [x] Static app gallery exists
-- [x] `apps.json` exists
 - [x] Local video generation works
-- [x] YouTube OAuth upload works
 - [x] YouTube private upload works
-- [x] Private uploaded videos are tracked
-- [x] Autopilot creates apps when queue is empty
-- [x] Autopilot report works
-- [x] Story engine exists
-- [x] Metadata engine exists
-- [x] Quality engine exists
-- [x] Safe-zone report works
-- [x] Safe playback helper works
-- [x] Safe-mode text clutter reduction works
-- [x] YouTube stats pull script exists
-- [x] Analytics report script exists
-- [x] Recommendations generator exists or is being integrated
-- [x] Private review DB exists or is being integrated
-- [x] Approve/reject/needs-rerender commands exist or are being integrated
 - [x] Audio engine exists
-- [x] Audio report exists
-- [x] Audio manifest exists
-- [x] `audioPlan` can be generated and stored
 - [x] FFmpeg audio mix works
-- [x] `audioMix.mode = full_mix` confirmed
-- [x] Audio validation can flag test audio
-- [x] Publish safety can block public release when audio is not public-safe
-- [x] Production audio manifest tooling exists or is being integrated
+- [x] `audioMix.mode = full_mix` previously confirmed
+- [x] Production-safe demo audio assets exist
+- [x] `AUDIO_REQUIRE_PUBLIC_SAFE=true` can select production-safe assets
+- [x] Corporate Regret Board uploaded privately with production-safe music
+- [x] Review queue imports uploaded private videos
+- [x] Audio validation flags older pre-audio videos as blocked for public
+- [x] Unlisted publishing has worked for at least one approved video
 
 ---
 
-## Current State
+## Latest Observed State
 
-The audio system can mix music and SFX, and validation can block test audio from public release.
-
-Current problem:
+Corporate Regret Board was successfully rendered and privately uploaded:
 
 ```text
-We still need real production-safe assets and a repeatable way to test that a video using them becomes public-safe.
+Uploading to YouTube as private: Corporate Regret Board
+Uploaded: Corporate Regret Board
+https://youtu.be/Nx2Ek9u165c
+Done. Attempted 1, completed 1.
+```
+
+Audio validation then showed:
+
+```text
+Corporate Regret Board
+uploaded: true
+mode: narration_music
+readiness: needs_audio_review
+publicSafe: true
+music: assets/music/documentary-bed-01.wav
+warnings: sfx_missing
+```
+
+Review queue later showed Corporate Regret Board as:
+
+```text
+audio: not validated yet
+```
+
+Cause:
+
+```text
+audio-validate ran before review-private imported the new uploaded video into review-db.json.
 ```
 
 Next build:
 
 ```text
-production audio asset
-→ register metadata
-→ require public-safe audio
-→ generate private test
-→ validate public-safe audio
-→ review report shows ready_for_review
+review import → audio validation → review report
 ```
+
+must become one clean command.
 
 ---
 
-# Active Build: Production Audio Pack Import + Public-Safe Audio Test
+# Active Build: Review Sync + Audio Validation Automation
 
 Status: Next build
 
 Goal:
 
-Add a production-safe audio test workflow and prepare the project to accept real royalty-free music/SFX assets.
+Make review reports always show current audio validation after new private uploads.
 
 This build should:
 
-- create placeholder production asset folders and docs
-- create a production audio import checklist
-- add scripts to copy/import music and SFX safely
-- add a generated non-test placeholder option for private testing
-- force audio engine to prefer only public-safe assets
-- run a private preview using public-safe registered assets
-- validate audio as public-safe
-- show readiness in review reports
-- keep test tones blocked for public publishing
+- import private uploads before audio validation
+- validate every uploaded video after import
+- update review DB automatically
+- make `review-private.sh` auto-run validation
+- make `publish-report.sh` auto-run validation
+- treat `sfx_missing` as a warning, not a public blocker
+- show Corporate Regret Board as publicSafe=true in review queue
+- keep older pre-audio videos blocked for public
+- add a single review sync command
 
 Files to create/update:
 
 ```text
-tools/media/audio-assets.js
-tools/media/audio-engine.js
-tools/media/audio-report.js
+tools/publish/sync-review.js
 tools/media/audio-validate.js
-scripts/audio-assets-refresh.sh
-scripts/register-music.sh
-scripts/register-sfx.sh
-scripts/create-demo-production-audio.sh
-scripts/public-safe-audio-preview.sh
-assets/music/LICENSES.md
-assets/sfx/LICENSES.md
-assets/audio-import-checklist.md
+tools/publish/list-private.js
+tools/publish/report.js
+scripts/sync-review.sh
+scripts/review-private.sh
+scripts/publish-report.sh
 ROADMAP.md
 ```
 
@@ -135,13 +135,13 @@ Status: Completed
 - [x] processed tracking
 - [x] Retry failed apps
 - [x] `MAX_PER_RUN` support
-- [x] `FORCE` mode support
+- [x] `FORCE` support
 
 ---
 
 # Phase 3: YouTube Upload + Publish Workflow
 
-Status: Private upload working, publish approval in progress
+Status: Working with private uploads and unlisted publishing
 
 Working:
 
@@ -149,16 +149,13 @@ Working:
 - [x] Private upload works
 - [x] Review approval command works
 - [x] Publish script exists
-- [x] Audio validation can block unsafe public publishing
+- [x] One video reached `published_unlisted`
+- [x] Audio validation blocks unsafe public publishing
 
 Next:
 
-- [ ] Refresh OAuth token with `https://www.googleapis.com/auth/youtube`
-- [ ] Confirm `videos.update` can change privacy to unlisted
-- [ ] Confirm review DB status becomes `published_unlisted`
-- [ ] Public publishing only with `ALLOW_PUBLIC_PUBLISH=true`
-- [ ] Block public publish if test-tone audio is detected
-- [ ] Confirm public-safe production audio allows public publishing
+- [ ] Retest public publish only after production-safe audio validation is visible in review DB
+- [ ] Public publishing remains gated by `ALLOW_PUBLIC_PUBLISH=true`
 
 ---
 
@@ -168,25 +165,21 @@ Status: Working
 
 Working:
 
-- [x] Read `apps.json`
-- [x] Read `processed-v3.json`
 - [x] Select unpublished apps
 - [x] Skip uploaded apps
 - [x] Create new useless apps when queue is empty
-- [x] Upload privately or dry-run depending on env
+- [x] Upload privately or dry-run
 - [x] Autopilot report works
 - [x] Preview-only detection works
 
 Next:
 
-- [ ] Store audio asset IDs in content ledger
-- [ ] Track production audio use against performance
-- [ ] Preserve learning-aware selection
-- [ ] Preserve anti-repeat rules
+- [ ] After each successful private upload, run review sync
+- [ ] Store audio validation result in content ledger later
 
 ---
 
-# Phase 5: Generator Intelligence Integration
+# Phase 5: Generator Intelligence + Audio
 
 Status: Working
 
@@ -196,242 +189,135 @@ Working:
 - [x] Metadata engine exists
 - [x] Quality engine exists
 - [x] Audio engine exists
-- [x] Generator flags exist
-- [x] Safe-mode text clutter reduction works
 - [x] `audioPlan` exists
 - [x] `audioMix` exists
-- [x] Full mix confirmed
+- [x] Production-safe music can be used
+- [x] Private upload can complete after audio mix
 
 Next:
 
 - [ ] Store production audio asset IDs in `audioPlan`
-- [ ] Store license/public-safety status in processed records
-- [ ] Use public-safe assets for final/private review renders
+- [ ] Improve SFX selection so `sfx_missing` is less common
+- [ ] Later: add more production-safe SFX tags for every story mode
 
 ---
 
-# Phase 6: Audio Engine
+# Phase 6: Audio Validation
 
-Status: Full technical mix working
+Status: Working, needs workflow sync
 
 Working:
 
-- [x] `tools/media/audio-engine.js`
-- [x] `tools/media/audio-report.js`
-- [x] `tools/media/audio-manifest.json`
-- [x] `scripts/audio-report.sh`
-- [x] Audio file scan
-- [x] Story-mode mood mapping
-- [x] SFX tag mapping
-- [x] Graceful fallback when no audio assets exist
-- [x] `audioPlan` generation
-- [x] FFmpeg music mix
-- [x] FFmpeg SFX mix
-- [x] `audioMix.mode = full_mix` confirmed
-- [x] Production manifest system exists or is being integrated
+- [x] `audio_missing` blocks older pre-audio videos from public
+- [x] `test_audio_used` blocks public publishing
+- [x] production-safe music can pass public safety
+- [x] `sfx_missing` is detected
 
-Next:
-
-- [ ] Generate/import production-safe demo assets
-- [ ] Register assets with safeForPublic=true
-- [ ] Force `AUDIO_REQUIRE_PUBLIC_SAFE=true`
-- [ ] Confirm selected assets are public-safe
-- [ ] Confirm validation returns `publicSafe=true`
-
----
-
-# Phase 7: Audio Review + Asset Validation
-
-Status: In progress
-
-Working:
-
-- [x] Test audio can be detected
-- [x] Audio readiness can be reported
-- [x] Public-safe flag exists
-- [x] Publish flow can block public publishing if audio is unsafe
-
-Next:
-
-- [ ] Validate production manifest entries
-- [ ] Validate missing license fields
-- [ ] Validate assets not marked safe by accident
-- [ ] Show audio asset IDs in review report
-- [ ] Mark videos with test assets as not public-safe
-- [ ] Mark videos with registered production assets as public-safe
-
----
-
-# Phase 8: Production Audio Asset Pack
-
-Status: Active
-
-## Production asset rule
-
-A production asset must have:
+Change now:
 
 ```text
-file exists
-license is present
-source is present
-safeForPublic=true
-not detected as test audio
-inside assets/music or assets/sfx
+sfx_missing should mean needs_audio_review, but publicSafe can still be true.
 ```
 
-## Test asset rule
-
-Test assets are allowed for development but must remain public-blocked:
+Reason:
 
 ```text
-default-test-bed.wav
-intro-ding-test.wav
-fail-beep-test.wav
-test-tone
-sine
-beep-test
-```
-
-## Public-safe preview requirement
-
-Run generation with:
-
-```text
-AUDIO_REQUIRE_PUBLIC_SAFE=true
-USE_AUDIO_ENGINE=true
-USE_BACKGROUND_MUSIC=true
-USE_SFX=true
-```
-
-Expected result:
-
-```text
-audioMix.mode = full_mix
-publicSafe = true
-warnings = none or non-blocking only
+A video with production-safe music and no SFX can still be okay to publish.
+Missing SFX is a quality warning, not a rights/safety blocker.
 ```
 
 Tasks:
 
-- [ ] Add demo production audio generation script
-- [ ] Register demo production audio as public-safe
-- [ ] Run public-safe audio report
-- [ ] Run public-safe preview
-- [ ] Validate processed record
-- [ ] Upload one private public-safe audio video
-- [ ] Confirm review report shows publicSafe=true
+- [ ] Keep `audio_missing` as public-blocking
+- [ ] Keep `test_audio_used` as public-blocking
+- [ ] Keep `music_not_public_safe` as public-blocking
+- [ ] Keep `sfx_not_public_safe` as public-blocking
+- [ ] Treat `sfx_missing` as non-blocking warning
+- [ ] Show `needs_audio_review` but `publicSafe=true` where appropriate
 
 ---
 
-# Phase 9: Review + Publish Approval
+# Phase 7: Review Sync
 
-Status: In progress
+Status: Next active build
 
-Next:
-
-- [ ] Show audio asset IDs in review report
-- [ ] Show license/public-safety status
-- [ ] Reject public publish if production asset validation fails
-- [ ] Mark bad audio as `needs_rerender`
-- [ ] Publish unlisted first
-
----
-
-# Phase 10: YouTube Analytics + Learning Engine
-
-Status: In progress
-
-Next:
-
-- [ ] Track audio mood performance
-- [ ] Track SFX tag performance
-- [ ] Learn which music/SFX styles perform best
-- [ ] Recommend audio mood by story mode
-
----
-
-# Phase 11: Multi-Platform Render Engine
-
-Status: Planned
-
-Variants:
+Problem:
 
 ```text
-9:16 vertical short
-16:9 horizontal web video
-1:1 square social feed
-thumbnail frame
-preview GIF
+review-private imports new videos after audio-validate has already run.
 ```
+
+Fix:
+
+```text
+sync-review = import private uploads + validate audio + refresh review DB
+```
+
+Tasks:
+
+- [ ] Create `tools/publish/sync-review.js`
+- [ ] Add `scripts/sync-review.sh`
+- [ ] Patch `review-private.sh` to run sync first
+- [ ] Patch `publish-report.sh` to run sync first
+- [ ] Confirm Corporate Regret Board shows audio validation in review list
+- [ ] Confirm older videos remain blocked_for_public due audio_missing
+
+---
+
+# Phase 8: Review + Publish Approval
+
+Status: In progress
 
 Next:
 
-- [ ] Store render variants in ledger
-- [ ] Upload correct variant to each platform
-- [ ] Keep audio mix consistent across variants
-- [ ] Avoid duplicate same-platform uploads unless meaningfully different
+- [ ] Show audio mode/readiness/publicSafe consistently
+- [ ] Approve Corporate Regret Board if quality is acceptable
+- [ ] Publish Corporate Regret Board as unlisted first
+- [ ] Public publish only after final review and `ALLOW_PUBLIC_PUBLISH=true`
+
+---
+
+# Phase 9: Production Audio Pack
+
+Status: In progress
+
+Working:
+
+- [x] Production demo music assets generated
+- [x] Production demo SFX assets generated
+- [x] Manifest registration exists
+- [x] Public-safe selection exists
+
+Next:
+
+- [ ] Add more production-safe SFX so every story mode can find a match
+- [ ] Replace simple demo tones with better royalty-free audio later
+- [ ] Track audio style against performance
 
 ---
 
 # Immediate Next Build Tasks
 
-1. Add `assets/audio-import-checklist.md`.
-2. Expand `assets/music/LICENSES.md`.
-3. Expand `assets/sfx/LICENSES.md`.
-4. Create `scripts/create-demo-production-audio.sh`.
-5. Generate demo production-safe music/SFX files.
-6. Register them as `safeForPublic=true`.
-7. Run `AUDIO_REQUIRE_PUBLIC_SAFE=true ./scripts/audio-report.sh`.
-8. Run public-safe audio preview.
-9. Run audio validation.
-10. Confirm publicSafe=true.
-11. Upload one private production-audio test.
-12. Commit docs/scripts, decide whether to commit demo audio.
+1. Create `tools/publish/sync-review.js`.
+2. Patch `audio-validate.js` to export validation runner.
+3. Patch `review-private.sh` to run sync first.
+4. Patch `publish-report.sh` to run sync first.
+5. Treat `sfx_missing` as quality warning, not public blocker.
+6. Run `./scripts/sync-review.sh`.
+7. Run `./scripts/review-private.sh`.
+8. Confirm Corporate Regret Board shows audio validation.
+9. Approve Corporate Regret Board.
+10. Publish it unlisted first.
+11. Update roadmap and commit.
 
 ---
 
 # Current Command Set
 
-Create demo production audio:
+Sync review DB:
 
 ```bash
-./scripts/create-demo-production-audio.sh
-```
-
-Refresh audio asset manifest:
-
-```bash
-./scripts/audio-assets-refresh.sh
-```
-
-Register music:
-
-```bash
-./scripts/register-music.sh assets/music/fake-news-bed-01.wav fake-news "self-generated" "ffmpeg-generated-original" true "Generated original simple production demo bed."
-```
-
-Register SFX:
-
-```bash
-./scripts/register-sfx.sh assets/sfx/alert-beep-01.wav alert "self-generated" "ffmpeg-generated-original" true "Generated original simple production demo SFX."
-```
-
-Public-safe audio report:
-
-```bash
-AUDIO_REQUIRE_PUBLIC_SAFE=true ./scripts/audio-report.sh
-```
-
-Public-safe preview:
-
-```bash
-./scripts/public-safe-audio-preview.sh
-```
-
-Audio validation:
-
-```bash
-./scripts/audio-validate.sh
+./scripts/sync-review.sh
 ```
 
 Review private uploads:
@@ -440,11 +326,35 @@ Review private uploads:
 ./scripts/review-private.sh
 ```
 
+Publish report:
+
+```bash
+./scripts/publish-report.sh
+```
+
+Approve video:
+
+```bash
+./scripts/approve-video.sh VIDEO_ID "Looks good for unlisted test"
+```
+
+Publish approved as unlisted:
+
+```bash
+./scripts/publish-approved.sh VIDEO_ID unlisted
+```
+
+Public publish, only when safe and intentional:
+
+```bash
+ALLOW_PUBLIC_PUBLISH=true ./scripts/publish-approved.sh VIDEO_ID public
+```
+
 ---
 
 # Current Priority
 
-1. Add public-safe demo audio workflow.
-2. Prove validation can pass with production-safe registered audio.
-3. Upload one private public-safe audio test.
+1. Fix review sync order.
+2. Make audio validation always appear in review queue.
+3. Approve and publish Corporate Regret Board as unlisted.
 4. Then move to review report polish and public publish retest.

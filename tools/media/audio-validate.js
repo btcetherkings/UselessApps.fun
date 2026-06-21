@@ -145,7 +145,10 @@ function validateAudioRecord(record) {
   };
 }
 
-function main() {
+function validateAllAudioRecords(options = {}) {
+  const quiet = Boolean(options.quiet);
+  const updateReviewDb = options.updateReviewDb !== false;
+
   const processed = readJson(PROCESSED_FILE, {});
   const review = readJson(REVIEW_FILE, { version: 1, items: {}, audit: [] });
 
@@ -168,13 +171,13 @@ function main() {
 
     const videoId = record.youtube?.videoId;
 
-    if (videoId && review.items?.[videoId]) {
+    if (updateReviewDb && videoId && review.items?.[videoId]) {
       review.items[videoId].audioValidation = validation;
       review.items[videoId].updatedAt = new Date().toISOString();
     }
   }
 
-  if (review.items) {
+  if (updateReviewDb && review.items) {
     review.audit = review.audit || [];
     review.audit.push({
       at: new Date().toISOString(),
@@ -186,25 +189,36 @@ function main() {
     writeJson(REVIEW_FILE, review);
   }
 
-  console.log('');
-  console.log('UselessApps.fun Audio Validation');
-  console.log('================================');
-  console.log('');
-  console.log(`Validated records: ${results.length}`);
-  console.log('');
-
-  for (const item of results.slice(-20)) {
-    const v = item.validation;
-    console.log(`- ${item.name}`);
-    console.log(`  uploaded: ${item.uploaded} | dryRun: ${item.dryRun}`);
-    console.log(`  mode: ${v.mode}`);
-    console.log(`  readiness: ${v.readiness}`);
-    console.log(`  publicSafe: ${v.publicSafe}`);
-    console.log(`  music: ${v.musicUsed || 'none'}`);
-    console.log(`  sfxCount: ${v.sfxCount}`);
-    console.log(`  warnings: ${v.warnings.join(', ') || 'none'}`);
+  if (!quiet) {
     console.log('');
+    console.log('UselessApps.fun Audio Validation');
+    console.log('================================');
+    console.log('');
+    console.log(`Validated records: ${results.length}`);
+    console.log('');
+
+    for (const item of results.slice(-20)) {
+      const v = item.validation;
+      console.log(`- ${item.name}`);
+      console.log(`  uploaded: ${item.uploaded} | dryRun: ${item.dryRun}`);
+      console.log(`  mode: ${v.mode}`);
+      console.log(`  readiness: ${v.readiness}`);
+      console.log(`  publicSafe: ${v.publicSafe}`);
+      console.log(`  music: ${v.musicUsed || 'none'}`);
+      console.log(`  sfxCount: ${v.sfxCount}`);
+      console.log(`  warnings: ${v.warnings.join(', ') || 'none'}`);
+      console.log('');
+    }
   }
+
+  return { results };
+}
+
+function main() {
+  validateAllAudioRecords({
+    quiet: false,
+    updateReviewDb: true
+  });
 }
 
 if (require.main === module) {
@@ -213,5 +227,6 @@ if (require.main === module) {
 
 module.exports = {
   validateAudioRecord,
+  validateAllAudioRecords,
   isTestAudio
 };
