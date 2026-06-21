@@ -22,6 +22,8 @@ const { getConnectionSummary } = require('../connections/connection-summary');
 const { getJobSummary } = require('../jobs/job-summary');
 const { loadQueue } = require('../actions/action-lib');
 const { checkContentSafety } = require('../safety/content-policy');
+const { getPlatformSummary } = require('../platforms/platform-lib');
+const { getCalendarSummary } = require('../calendar/calendar-lib');
 
 
 
@@ -232,6 +234,8 @@ function buildReport() {
   const social = getSocialSummary();
   const connections = getConnectionSummary();
   const jobs = getJobSummary();
+  const platformSummary = getPlatformSummary();
+  const calendarSummary = getCalendarSummary();
   const actionQueue = loadQueue();
   const actionQueueCounts = (actionQueue.actions || []).reduce((acc, a) => {
     acc[a.status] = (acc[a.status] || 0) + 1;
@@ -244,6 +248,8 @@ function buildReport() {
     social,
     connections,
     jobs,
+    platforms: platformSummary,
+    calendar: calendarSummary,
     actionQueue: {
       total: (actionQueue.actions || []).length,
       counts: actionQueueCounts,
@@ -396,6 +402,28 @@ ${rerenderRows.length ? table(['Video', 'Video ID', 'Readiness', 'Warnings'], re
 - Profit: ${report.business.profit}
 - Revenue entries: ${report.business.revenueCount}
 - Cost entries: ${report.business.costCount}
+
+## Platform Connectors
+
+- Total: ${report.platforms.total}
+- Enabled: ${report.platforms.enabled}
+- Connected: ${report.platforms.connected}
+- API mode: ${report.platforms.api}
+- Manual mode: ${report.platforms.manual}
+- Future: ${report.platforms.future}
+
+${table(['Platform', 'Enabled', 'Connected', 'Mode', 'Status'], report.platforms.platforms.map(p => [p.key, p.enabled, p.connected, p.mode, p.status]))}
+
+## Publishing Calendar
+
+- Total: ${report.calendar.total}
+- Ideas: ${report.calendar.counts.idea || 0}
+- Ready: ${report.calendar.counts.ready || 0}
+- Scheduled: ${report.calendar.counts.scheduled || 0}
+- Published: ${report.calendar.counts.published || 0}
+- Blocked: ${report.calendar.counts.blocked || 0}
+
+${table(['ID', 'Platform', 'Status', 'Title'], report.calendar.items.slice(0, 20).map(i => [i.id, i.platform, i.status, i.title]))}
 
 ## Social Channels
 

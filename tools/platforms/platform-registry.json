@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "updatedAt": null,
+  "platforms": {
+    "youtube": {
+      "enabled": true,
+      "connected": true,
+      "mode": "api",
+      "status": "working",
+      "supportsUpload": true,
+      "supportsAnalytics": true,
+      "supportsScheduling": false,
+      "notes": "Primary active platform. Private upload and analytics are supported."
+    },
+    "tiktok": {
+      "enabled": false,
+      "connected": false,
+      "mode": "future",
+      "status": "not_connected",
+      "supportsUpload": false,
+      "supportsAnalytics": false,
+      "supportsScheduling": false,
+      "notes": "Future connector. Use manual export first."
+    },
+    "instagram": {
+      "enabled": false,
+      "connected": false,
+      "mode": "future",
+      "status": "not_connected",
+      "supportsUpload": false,
+      "supportsAnalytics": false,
+      "supportsScheduling": false,
+      "notes": "Future Instagram Reels connector."
+    },
+    "facebook": {
+      "enabled": false,
+      "connected": false,
+      "mode": "future",
+      "status": "not_connected",
+      "supportsUpload": false,
+      "supportsAnalytics": false,
+      "supportsScheduling": false,
+      "notes": "Future Facebook Reels connector."
+    },
+    "x": {
+      "enabled": false,
+      "connected": false,
+      "mode": "future",
+      "status": "not_connected",
+      "supportsUpload": false,
+      "supportsAnalytics": false,
+      "supportsScheduling": false,
+      "notes": "Future X/Twitter connector."
+    },
+    "rumble": {
+      "enabled": false,
+      "connected": false,
+      "mode": "manual",
+      "status": "manual_later",
+      "supportsUpload": false,
+      "supportsAnalytics": false,
+      "supportsScheduling": false,
+      "notes": "Manual export workflow first."
+    },
+    "website": {
+      "enabled": true,
+      "connected": true,
+      "mode": "static",
+      "status": "working",
+      "supportsUpload": false,
+      "supportsAnalytics": false,
+      "supportsScheduling": false,
+      "notes": "Website/static showcase channel."
+    },
+    "email": {
+      "enabled": false,
+      "connected": false,
+      "mode": "future",
+      "status": "not_connected",
+      "supportsUpload": false,
+      "supportsAnalytics": false,
+      "supportsScheduling": false,
+      "notes": "Future email list / newsletter channel."
+    }
+  }
+}

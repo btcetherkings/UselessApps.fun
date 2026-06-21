@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-21T16:19:47.631Z",
+  "generatedAt": "2026-06-21T16:52:42.865Z",
   "business": {
     "currency": "GBP",
     "revenueTotal": 0,
@@ -143,11 +143,11 @@
     ]
   },
   "jobs": {
-    "total": 8,
-    "enabled": 8,
-    "working": 7,
-    "testing": 1,
-    "failing": 0,
+    "total": 9,
+    "enabled": 9,
+    "working": 8,
+    "testing": 0,
+    "failing": 1,
     "jobs": [
       {
         "key": "generate_app",
@@ -177,9 +177,10 @@
         "key": "sync_review",
         "enabled": true,
         "status": "working",
-        "lastRun": null,
-        "lastSuccess": null,
-        "lastError": null
+        "lastRun": "2026-06-21T16:27:04.880Z",
+        "lastSuccess": "2026-06-21T16:27:04.921Z",
+        "lastError": null,
+        "durationMs": 40
       },
       {
         "key": "validate_audio",
@@ -192,10 +193,11 @@
       {
         "key": "pull_advanced_analytics",
         "enabled": true,
-        "status": "testing",
-        "lastRun": null,
-        "lastSuccess": null,
-        "lastError": null
+        "status": "working",
+        "lastRun": "2026-06-21T16:27:04.923Z",
+        "lastSuccess": "2026-06-21T16:27:07.896Z",
+        "lastError": null,
+        "durationMs": 2973
       },
       {
         "key": "run_learning",
@@ -209,26 +211,230 @@
         "key": "build_dashboard",
         "enabled": true,
         "status": "working",
-        "lastRun": "2026-06-21T15:24:09.770Z",
-        "lastSuccess": "2026-06-21T15:24:09.944Z",
+        "lastRun": "2026-06-21T16:31:33.680Z",
+        "lastSuccess": "2026-06-21T16:31:33.876Z",
         "lastError": null,
-        "durationMs": 174
+        "durationMs": 196
+      },
+      {
+        "key": "review_action",
+        "enabled": true,
+        "status": "error",
+        "lastRun": "2026-06-21T16:27:04.840Z",
+        "lastSuccess": null,
+        "lastError": "bash ./scripts/approve-video.sh TEST123 Test approval only failed with exit code 1",
+        "durationMs": 39
+      }
+    ]
+  },
+  "platforms": {
+    "total": 8,
+    "enabled": 2,
+    "connected": 2,
+    "api": 1,
+    "manual": 1,
+    "future": 5,
+    "uploadCapable": 1,
+    "analyticsCapable": 1,
+    "platforms": [
+      {
+        "key": "youtube",
+        "enabled": true,
+        "connected": true,
+        "mode": "api",
+        "status": "working",
+        "supportsUpload": true,
+        "supportsAnalytics": true,
+        "supportsScheduling": false,
+        "notes": "Primary active platform. Private upload and analytics are supported."
+      },
+      {
+        "key": "tiktok",
+        "enabled": false,
+        "connected": false,
+        "mode": "future",
+        "status": "not_connected",
+        "supportsUpload": false,
+        "supportsAnalytics": false,
+        "supportsScheduling": false,
+        "notes": "Future connector. Use manual export first."
+      },
+      {
+        "key": "instagram",
+        "enabled": false,
+        "connected": false,
+        "mode": "future",
+        "status": "not_connected",
+        "supportsUpload": false,
+        "supportsAnalytics": false,
+        "supportsScheduling": false,
+        "notes": "Future Instagram Reels connector."
+      },
+      {
+        "key": "facebook",
+        "enabled": false,
+        "connected": false,
+        "mode": "future",
+        "status": "not_connected",
+        "supportsUpload": false,
+        "supportsAnalytics": false,
+        "supportsScheduling": false,
+        "notes": "Future Facebook Reels connector."
+      },
+      {
+        "key": "x",
+        "enabled": false,
+        "connected": false,
+        "mode": "future",
+        "status": "not_connected",
+        "supportsUpload": false,
+        "supportsAnalytics": false,
+        "supportsScheduling": false,
+        "notes": "Future X/Twitter connector."
+      },
+      {
+        "key": "rumble",
+        "enabled": false,
+        "connected": false,
+        "mode": "manual",
+        "status": "manual_later",
+        "supportsUpload": false,
+        "supportsAnalytics": false,
+        "supportsScheduling": false,
+        "notes": "Manual export workflow first."
+      },
+      {
+        "key": "website",
+        "enabled": true,
+        "connected": true,
+        "mode": "static",
+        "status": "working",
+        "supportsUpload": false,
+        "supportsAnalytics": false,
+        "supportsScheduling": false,
+        "notes": "Website/static showcase channel."
+      },
+      {
+        "key": "email",
+        "enabled": false,
+        "connected": false,
+        "mode": "future",
+        "status": "not_connected",
+        "supportsUpload": false,
+        "supportsAnalytics": false,
+        "supportsScheduling": false,
+        "notes": "Future email list / newsletter channel."
+      }
+    ]
+  },
+  "calendar": {
+    "total": 1,
+    "counts": {
+      "idea": 1,
+      "platform_youtube": 1
+    },
+    "items": [
+      {
+        "id": "cal_1782060714354_9216812d",
+        "title": "Test calendar item",
+        "videoId": "",
+        "platform": "youtube",
+        "status": "idea",
+        "plannedAt": "",
+        "actualPublishedAt": "",
+        "notes": "Created during setup",
+        "createdAt": "2026-06-21T16:51:54.355Z",
+        "updatedAt": "2026-06-21T16:51:54.355Z"
       }
     ]
   },
   "actionQueue": {
-    "total": 9,
+    "total": 11,
     "counts": {
-      "pending": 8,
-      "completed": 1
+      "rejected": 2,
+      "completed": 9
     },
     "actions": [
       {
+        "id": "act_1782059483990_0fd9ad",
+        "type": "refresh_dashboard",
+        "status": "completed",
+        "createdAt": "2026-06-21T16:31:23.990Z",
+        "updatedAt": "2026-06-21T16:31:33.877Z",
+        "source": "cli",
+        "payload": {},
+        "safety": {
+          "level": "safe",
+          "requiresTerminal": false,
+          "publicPublishing": false
+        },
+        "terminalCommand": "./scripts/run-action.sh act_1782059483990_0fd9ad",
+        "history": [
+          {
+            "at": "2026-06-21T16:31:23.991Z",
+            "status": "pending",
+            "note": "Action queued"
+          },
+          {
+            "at": "2026-06-21T16:31:33.678Z",
+            "status": "running",
+            "note": "Action started"
+          },
+          {
+            "at": "2026-06-21T16:31:33.877Z",
+            "status": "completed",
+            "note": "Action completed"
+          }
+        ],
+        "result": {
+          "completedAt": "2026-06-21T16:31:33.877Z",
+          "command": "bash ./scripts/daily-report-v2.sh"
+        },
+        "error": null
+      },
+      {
+        "id": "act_1782059143672_2fc701",
+        "type": "refresh_dashboard",
+        "status": "completed",
+        "createdAt": "2026-06-21T16:25:43.672Z",
+        "updatedAt": "2026-06-21T16:31:33.532Z",
+        "source": "cli",
+        "payload": {},
+        "safety": {
+          "level": "safe",
+          "requiresTerminal": false,
+          "publicPublishing": false
+        },
+        "terminalCommand": "./scripts/run-action.sh act_1782059143672_2fc701",
+        "history": [
+          {
+            "at": "2026-06-21T16:25:43.672Z",
+            "status": "pending",
+            "note": "Action queued"
+          },
+          {
+            "at": "2026-06-21T16:31:33.262Z",
+            "status": "running",
+            "note": "Action started"
+          },
+          {
+            "at": "2026-06-21T16:31:33.532Z",
+            "status": "completed",
+            "note": "Action completed"
+          }
+        ],
+        "result": {
+          "completedAt": "2026-06-21T16:31:33.531Z",
+          "command": "bash ./scripts/daily-report-v2.sh"
+        },
+        "error": null
+      },
+      {
         "id": "act_1782058247991_a09d6b",
         "type": "refresh_dashboard",
-        "status": "pending",
+        "status": "completed",
         "createdAt": "2026-06-21T16:10:47.991Z",
-        "updatedAt": "2026-06-21T16:10:47.992Z",
+        "updatedAt": "2026-06-21T16:31:33.261Z",
         "source": "dashboard",
         "payload": {},
         "safety": {
@@ -242,17 +448,30 @@
             "at": "2026-06-21T16:10:47.992Z",
             "status": "pending",
             "note": "Action queued"
+          },
+          {
+            "at": "2026-06-21T16:31:32.302Z",
+            "status": "running",
+            "note": "Action started"
+          },
+          {
+            "at": "2026-06-21T16:31:33.261Z",
+            "status": "completed",
+            "note": "Action completed"
           }
         ],
-        "result": null,
+        "result": {
+          "completedAt": "2026-06-21T16:31:33.261Z",
+          "command": "bash ./scripts/daily-report-v2.sh"
+        },
         "error": null
       },
       {
         "id": "act_1782055352107_588480",
         "type": "pull_advanced_analytics",
-        "status": "pending",
+        "status": "completed",
         "createdAt": "2026-06-21T15:22:32.107Z",
-        "updatedAt": "2026-06-21T15:22:32.107Z",
+        "updatedAt": "2026-06-21T16:27:07.897Z",
         "source": "dashboard",
         "payload": {},
         "safety": {
@@ -266,17 +485,30 @@
             "at": "2026-06-21T15:22:32.107Z",
             "status": "pending",
             "note": "Action queued"
+          },
+          {
+            "at": "2026-06-21T16:27:04.922Z",
+            "status": "running",
+            "note": "Action started"
+          },
+          {
+            "at": "2026-06-21T16:27:07.897Z",
+            "status": "completed",
+            "note": "Action completed"
           }
         ],
-        "result": null,
+        "result": {
+          "completedAt": "2026-06-21T16:27:07.896Z",
+          "command": "bash ./scripts/youtube-advanced-pull.sh"
+        },
         "error": null
       },
       {
         "id": "act_1782055342686_b561aa",
         "type": "sync_review",
-        "status": "pending",
+        "status": "completed",
         "createdAt": "2026-06-21T15:22:22.686Z",
-        "updatedAt": "2026-06-21T15:22:22.686Z",
+        "updatedAt": "2026-06-21T16:27:04.922Z",
         "source": "dashboard",
         "payload": {},
         "safety": {
@@ -290,9 +522,22 @@
             "at": "2026-06-21T15:22:22.687Z",
             "status": "pending",
             "note": "Action queued"
+          },
+          {
+            "at": "2026-06-21T16:27:04.880Z",
+            "status": "running",
+            "note": "Action started"
+          },
+          {
+            "at": "2026-06-21T16:27:04.922Z",
+            "status": "completed",
+            "note": "Action completed"
           }
         ],
-        "result": null,
+        "result": {
+          "completedAt": "2026-06-21T16:27:04.922Z",
+          "command": "bash ./scripts/sync-review.sh"
+        },
         "error": null
       },
       {
@@ -335,9 +580,9 @@
       {
         "id": "act_1782055303885_c71abc",
         "type": "sync_review",
-        "status": "pending",
+        "status": "completed",
         "createdAt": "2026-06-21T15:21:43.885Z",
-        "updatedAt": "2026-06-21T15:21:43.885Z",
+        "updatedAt": "2026-06-21T16:26:56.194Z",
         "source": "cli",
         "payload": {},
         "safety": {
@@ -351,17 +596,30 @@
             "at": "2026-06-21T15:21:43.885Z",
             "status": "pending",
             "note": "Action queued"
+          },
+          {
+            "at": "2026-06-21T16:26:56.147Z",
+            "status": "running",
+            "note": "Action started"
+          },
+          {
+            "at": "2026-06-21T16:26:56.194Z",
+            "status": "completed",
+            "note": "Action completed"
           }
         ],
-        "result": null,
+        "result": {
+          "completedAt": "2026-06-21T16:26:56.194Z",
+          "command": "bash ./scripts/sync-review.sh"
+        },
         "error": null
       },
       {
         "id": "act_1782054196665_28d324",
         "type": "sync_review",
-        "status": "pending",
+        "status": "completed",
         "createdAt": "2026-06-21T15:03:16.665Z",
-        "updatedAt": "2026-06-21T15:03:16.665Z",
+        "updatedAt": "2026-06-21T16:26:56.146Z",
         "source": "cli",
         "payload": {},
         "safety": {
@@ -374,17 +632,31 @@
             "at": "2026-06-21T15:03:16.665Z",
             "status": "pending",
             "note": "Action queued"
+          },
+          {
+            "at": "2026-06-21T16:26:56.098Z",
+            "status": "running",
+            "note": "Action started"
+          },
+          {
+            "at": "2026-06-21T16:26:56.146Z",
+            "status": "completed",
+            "note": "Action completed"
           }
         ],
-        "result": null,
-        "error": null
+        "result": {
+          "completedAt": "2026-06-21T16:26:56.146Z",
+          "command": "bash ./scripts/sync-review.sh"
+        },
+        "error": null,
+        "terminalCommand": "./scripts/run-action.sh act_1782054196665_28d324"
       },
       {
         "id": "act_1782052477255_6618ff",
         "type": "sync_review",
-        "status": "pending",
+        "status": "completed",
         "createdAt": "2026-06-21T14:34:37.255Z",
-        "updatedAt": "2026-06-21T14:34:37.255Z",
+        "updatedAt": "2026-06-21T16:25:43.839Z",
         "source": "cli",
         "payload": {},
         "safety": {
@@ -397,17 +669,31 @@
             "at": "2026-06-21T14:34:37.255Z",
             "status": "pending",
             "note": "Action queued"
+          },
+          {
+            "at": "2026-06-21T16:25:43.798Z",
+            "status": "running",
+            "note": "Action started"
+          },
+          {
+            "at": "2026-06-21T16:25:43.839Z",
+            "status": "completed",
+            "note": "Action completed"
           }
         ],
-        "result": null,
-        "error": null
+        "result": {
+          "completedAt": "2026-06-21T16:25:43.839Z",
+          "command": "bash ./scripts/sync-review.sh"
+        },
+        "error": null,
+        "terminalCommand": "./scripts/run-action.sh act_1782052477255_6618ff"
       },
       {
         "id": "act_1782052034117_ecc40e",
         "type": "approve_video",
-        "status": "pending",
+        "status": "rejected",
         "createdAt": "2026-06-21T14:27:14.118Z",
-        "updatedAt": "2026-06-21T14:27:14.118Z",
+        "updatedAt": "2026-06-21T16:30:12.481722Z",
         "source": "cli",
         "payload": {
           "videoId": "TEST123",
@@ -423,17 +709,53 @@
             "at": "2026-06-21T14:27:14.118Z",
             "status": "pending",
             "note": "Action queued"
+          },
+          {
+            "at": "2026-06-21T16:25:43.757Z",
+            "status": "running",
+            "note": "Action started"
+          },
+          {
+            "at": "2026-06-21T16:25:43.797Z",
+            "status": "failed",
+            "note": "Action failed: bash ./scripts/approve-video.sh TEST123 Test approval only failed with exit code 1"
+          },
+          {
+            "at": "2026-06-21T16:26:56.059Z",
+            "status": "running",
+            "note": "Action started"
+          },
+          {
+            "at": "2026-06-21T16:26:56.097Z",
+            "status": "failed",
+            "note": "Action failed: bash ./scripts/approve-video.sh TEST123 Test approval only failed with exit code 1"
+          },
+          {
+            "at": "2026-06-21T16:27:04.840Z",
+            "status": "running",
+            "note": "Action started"
+          },
+          {
+            "at": "2026-06-21T16:27:04.879Z",
+            "status": "failed",
+            "note": "Action failed: bash ./scripts/approve-video.sh TEST123 Test approval only failed with exit code 1"
+          },
+          {
+            "at": "2026-06-21T16:30:12.481722Z",
+            "status": "rejected",
+            "note": "Rejected fake TEST123 test action"
           }
         ],
         "result": null,
-        "error": null
+        "error": null,
+        "terminalCommand": "./scripts/run-action.sh act_1782052034117_ecc40e"
       },
       {
         "id": "act_1782052027357_5ee23c",
         "type": "sync_review",
-        "status": "pending",
+        "status": "rejected",
         "createdAt": "2026-06-21T14:27:07.357Z",
-        "updatedAt": "2026-06-21T14:27:07.358Z",
+        "updatedAt": "2026-06-21T16:30:01.866Z",
         "source": "cli",
         "payload": {},
         "safety": {
@@ -446,10 +768,29 @@
             "at": "2026-06-21T14:27:07.358Z",
             "status": "pending",
             "note": "Action queued"
+          },
+          {
+            "at": "2026-06-21T16:25:43.712Z",
+            "status": "running",
+            "note": "Action started"
+          },
+          {
+            "at": "2026-06-21T16:25:43.756Z",
+            "status": "completed",
+            "note": "Action completed"
+          },
+          {
+            "at": "2026-06-21T16:30:01.866Z",
+            "status": "rejected",
+            "note": "Removing fake TEST123 test action"
           }
         ],
-        "result": null,
-        "error": null
+        "result": {
+          "completedAt": "2026-06-21T16:25:43.756Z",
+          "command": "bash ./scripts/sync-review.sh"
+        },
+        "error": null,
+        "terminalCommand": "./scripts/run-action.sh act_1782052027357_5ee23c"
       }
     ]
   },
@@ -466,6 +807,22 @@
       "+10 learning reason exists",
       "-10 many blocked videos"
     ]
+  },
+  "automation": {
+    "nightlyScriptExists": true,
+    "workerScriptExists": true,
+    "cronInstallerExists": true,
+    "latestNightlyLog": {
+      "file": "nightly-2026-06-21-172701.log",
+      "full": "/home/uadmin/useless-apps-fun/logs/nightly/nightly-2026-06-21-172701.log",
+      "mtime": 1782059228742.905
+    },
+    "latestWorkerLog": {
+      "file": "worker-2026-06-21T16-31-32-298Z.log",
+      "full": "/home/uadmin/useless-apps-fun/logs/worker/worker-2026-06-21T16-31-32-298Z.log",
+      "mtime": 1782059493873.96
+    },
+    "latestJobLog": null
   },
   "safety": {
     "total": 14,
@@ -486,7 +843,7 @@
             "blocked_term:government"
           ],
           "safeCategory": "harmless_absurd_useless_app",
-          "checkedAt": "2026-06-21T16:19:47.620Z"
+          "checkedAt": "2026-06-21T16:52:42.852Z"
         }
       }
     ]
@@ -2799,7 +3156,7 @@
   },
   "advancedAnalytics": {
     "exists": true,
-    "generatedAt": "2026-06-21T13:51:03.631Z",
+    "generatedAt": "2026-06-21T16:27:05.648Z",
     "channel": {
       "id": "UC2EPr6oMZCBEQSTmZmviPhQ",
       "title": "UselessApps",
@@ -2815,7 +3172,7 @@
   },
   "learning": {
     "exists": true,
-    "generatedAt": "2026-06-21T16:18:01.565Z",
+    "generatedAt": "2026-06-21T16:52:42.798Z",
     "confidence": {
       "level": "low",
       "withStats": 0
@@ -2897,12 +3254,6 @@
           "averageScore": -70
         },
         {
-          "key": "fake_scientific_experiment",
-          "count": 1,
-          "totalScore": -70,
-          "averageScore": -70
-        },
-        {
           "key": "fake_nature_documentary",
           "count": 1,
           "totalScore": -70,
@@ -2915,10 +3266,16 @@
           "averageScore": -70
         },
         {
-          "key": "fake_police_chase",
+          "key": "fake_scientific_experiment",
+          "count": 2,
+          "totalScore": -100,
+          "averageScore": -50
+        },
+        {
+          "key": "fake_documentary",
           "count": 1,
-          "totalScore": -30,
-          "averageScore": -30
+          "totalScore": -15,
+          "averageScore": -15
         }
       ],
       "audioMoods": [
@@ -2929,7 +3286,7 @@
           "averageScore": -65.41666666666667
         },
         {
-          "key": "chaotic",
+          "key": "scientific",
           "count": 1,
           "totalScore": -30,
           "averageScore": -30
@@ -2937,27 +3294,15 @@
       ],
       "sfxTags": [
         {
-          "key": "beep",
-          "count": 1,
-          "totalScore": -30,
-          "averageScore": -30
-        },
-        {
-          "key": "alert",
+          "key": "intro",
           "count": 1,
           "totalScore": -30,
           "averageScore": -30
         },
         {
           "key": "ding",
-          "count": 1,
-          "totalScore": -30,
-          "averageScore": -30
-        },
-        {
-          "key": "intro",
-          "count": 1,
-          "totalScore": -30,
+          "count": 2,
+          "totalScore": -60,
           "averageScore": -30
         }
       ]
@@ -3025,11 +3370,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "service": "youtubeanalytics.googleapis.com",
+                      "consumer": "projects/420820849386",
+                      "serviceTitle": "YouTube Analytics API",
                       "containerInfo": "420820849386",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "consumer": "projects/420820849386",
-                      "serviceTitle": "YouTube Analytics API"
+                      "service": "youtubeanalytics.googleapis.com"
                     }
                   },
                   {
@@ -3072,10 +3417,10 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "serviceTitle": "YouTube Analytics API",
-                      "service": "youtubeanalytics.googleapis.com",
                       "consumer": "projects/420820849386",
+                      "serviceTitle": "YouTube Analytics API",
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "service": "youtubeanalytics.googleapis.com",
                       "containerInfo": "420820849386"
                     }
                   },
@@ -3119,11 +3464,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "serviceTitle": "YouTube Analytics API",
+                      "service": "youtubeanalytics.googleapis.com",
                       "containerInfo": "420820849386",
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
                       "consumer": "projects/420820849386",
-                      "service": "youtubeanalytics.googleapis.com"
+                      "serviceTitle": "YouTube Analytics API",
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386"
                     }
                   },
                   {
@@ -3167,10 +3512,10 @@
                     "domain": "googleapis.com",
                     "metadata": {
                       "service": "youtubeanalytics.googleapis.com",
-                      "containerInfo": "420820849386",
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "serviceTitle": "YouTube Analytics API",
                       "consumer": "projects/420820849386",
-                      "serviceTitle": "YouTube Analytics API"
+                      "containerInfo": "420820849386",
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386"
                     }
                   },
                   {
@@ -3213,11 +3558,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "containerInfo": "420820849386",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "consumer": "projects/420820849386",
                       "service": "youtubeanalytics.googleapis.com",
-                      "serviceTitle": "YouTube Analytics API"
+                      "serviceTitle": "YouTube Analytics API",
+                      "containerInfo": "420820849386",
+                      "consumer": "projects/420820849386"
                     }
                   },
                   {
@@ -3297,11 +3642,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "service": "youtubeanalytics.googleapis.com",
                       "consumer": "projects/420820849386",
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
                       "serviceTitle": "YouTube Analytics API",
-                      "containerInfo": "420820849386"
+                      "containerInfo": "420820849386",
+                      "service": "youtubeanalytics.googleapis.com",
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386"
                     }
                   },
                   {
@@ -3344,8 +3689,8 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "consumer": "projects/420820849386",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "consumer": "projects/420820849386",
                       "serviceTitle": "YouTube Analytics API",
                       "service": "youtubeanalytics.googleapis.com",
                       "containerInfo": "420820849386"
@@ -3391,11 +3736,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "containerInfo": "420820849386",
+                      "consumer": "projects/420820849386",
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
                       "service": "youtubeanalytics.googleapis.com",
                       "serviceTitle": "YouTube Analytics API",
-                      "consumer": "projects/420820849386",
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386"
+                      "containerInfo": "420820849386"
                     }
                   },
                   {
@@ -3439,10 +3784,10 @@
                     "domain": "googleapis.com",
                     "metadata": {
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "service": "youtubeanalytics.googleapis.com",
-                      "containerInfo": "420820849386",
                       "consumer": "projects/420820849386",
-                      "serviceTitle": "YouTube Analytics API"
+                      "serviceTitle": "YouTube Analytics API",
+                      "service": "youtubeanalytics.googleapis.com",
+                      "containerInfo": "420820849386"
                     }
                   },
                   {
@@ -3485,11 +3830,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "service": "youtubeanalytics.googleapis.com",
+                      "serviceTitle": "YouTube Analytics API",
                       "containerInfo": "420820849386",
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
                       "consumer": "projects/420820849386",
-                      "serviceTitle": "YouTube Analytics API"
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "service": "youtubeanalytics.googleapis.com"
                     }
                   },
                   {
@@ -3520,15 +3865,14 @@
         "videoId": null,
         "name": "Staring Pebble Supreme",
         "appType": "object",
-        "storyMode": "fake_police_chase",
+        "storyMode": "fake_scientific_experiment",
         "audioMode": "full_mix",
-        "audioMood": "chaotic",
+        "audioMood": "scientific",
         "musicUsed": "assets/music/default-test-bed.wav",
         "sfxTags": [
           "intro",
           "ding",
-          "alert",
-          "beep"
+          "ding"
         ],
         "reviewStatus": "not_in_review",
         "decision": "none",
@@ -3551,7 +3895,7 @@
         "impressionsCtr": 0,
         "analyticsErrors": [],
         "url": null,
-        "generatedAt": "2026-06-21T13:21:01.036Z",
+        "generatedAt": "2026-06-21T16:19:43.236Z",
         "learningScore": -30
       },
       {
@@ -3608,11 +3952,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
                       "service": "youtubeanalytics.googleapis.com",
                       "containerInfo": "420820849386",
-                      "consumer": "projects/420820849386",
-                      "serviceTitle": "YouTube Analytics API"
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "serviceTitle": "YouTube Analytics API",
+                      "consumer": "projects/420820849386"
                     }
                   },
                   {
@@ -3655,11 +3999,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "consumer": "projects/420820849386",
                       "serviceTitle": "YouTube Analytics API",
                       "containerInfo": "420820849386",
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "service": "youtubeanalytics.googleapis.com",
-                      "consumer": "projects/420820849386"
+                      "service": "youtubeanalytics.googleapis.com"
                     }
                   },
                   {
@@ -3703,9 +4047,9 @@
                     "domain": "googleapis.com",
                     "metadata": {
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "service": "youtubeanalytics.googleapis.com",
                       "consumer": "projects/420820849386",
                       "serviceTitle": "YouTube Analytics API",
+                      "service": "youtubeanalytics.googleapis.com",
                       "containerInfo": "420820849386"
                     }
                   },
@@ -3749,11 +4093,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
+                      "containerInfo": "420820849386",
+                      "consumer": "projects/420820849386",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
                       "service": "youtubeanalytics.googleapis.com",
-                      "consumer": "projects/420820849386",
-                      "serviceTitle": "YouTube Analytics API",
-                      "containerInfo": "420820849386"
+                      "serviceTitle": "YouTube Analytics API"
                     }
                   },
                   {
@@ -3796,10 +4140,10 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "containerInfo": "420820849386",
-                      "service": "youtubeanalytics.googleapis.com",
-                      "consumer": "projects/420820849386",
                       "serviceTitle": "YouTube Analytics API",
+                      "containerInfo": "420820849386",
+                      "consumer": "projects/420820849386",
+                      "service": "youtubeanalytics.googleapis.com",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386"
                     }
                   },
@@ -3880,11 +4224,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "service": "youtubeanalytics.googleapis.com",
+                      "serviceTitle": "YouTube Analytics API",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "containerInfo": "420820849386",
+                      "service": "youtubeanalytics.googleapis.com",
                       "consumer": "projects/420820849386",
-                      "serviceTitle": "YouTube Analytics API"
+                      "containerInfo": "420820849386"
                     }
                   },
                   {
@@ -3927,11 +4271,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "service": "youtubeanalytics.googleapis.com",
                       "consumer": "projects/420820849386",
-                      "containerInfo": "420820849386",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "serviceTitle": "YouTube Analytics API"
+                      "serviceTitle": "YouTube Analytics API",
+                      "service": "youtubeanalytics.googleapis.com",
+                      "containerInfo": "420820849386"
                     }
                   },
                   {
@@ -3975,10 +4319,10 @@
                     "domain": "googleapis.com",
                     "metadata": {
                       "service": "youtubeanalytics.googleapis.com",
-                      "containerInfo": "420820849386",
-                      "serviceTitle": "YouTube Analytics API",
                       "consumer": "projects/420820849386",
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386"
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "containerInfo": "420820849386",
+                      "serviceTitle": "YouTube Analytics API"
                     }
                   },
                   {
@@ -4021,11 +4365,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "service": "youtubeanalytics.googleapis.com",
                       "consumer": "projects/420820849386",
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
                       "serviceTitle": "YouTube Analytics API",
-                      "containerInfo": "420820849386"
+                      "containerInfo": "420820849386",
+                      "service": "youtubeanalytics.googleapis.com",
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386"
                     }
                   },
                   {
@@ -4068,8 +4412,8 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "consumer": "projects/420820849386",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "consumer": "projects/420820849386",
                       "serviceTitle": "YouTube Analytics API",
                       "service": "youtubeanalytics.googleapis.com",
                       "containerInfo": "420820849386"
@@ -4152,11 +4496,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "containerInfo": "420820849386",
+                      "consumer": "projects/420820849386",
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
                       "service": "youtubeanalytics.googleapis.com",
                       "serviceTitle": "YouTube Analytics API",
-                      "consumer": "projects/420820849386",
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386"
+                      "containerInfo": "420820849386"
                     }
                   },
                   {
@@ -4200,10 +4544,10 @@
                     "domain": "googleapis.com",
                     "metadata": {
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "service": "youtubeanalytics.googleapis.com",
-                      "containerInfo": "420820849386",
                       "consumer": "projects/420820849386",
-                      "serviceTitle": "YouTube Analytics API"
+                      "serviceTitle": "YouTube Analytics API",
+                      "service": "youtubeanalytics.googleapis.com",
+                      "containerInfo": "420820849386"
                     }
                   },
                   {
@@ -4246,11 +4590,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "service": "youtubeanalytics.googleapis.com",
+                      "serviceTitle": "YouTube Analytics API",
                       "containerInfo": "420820849386",
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
                       "consumer": "projects/420820849386",
-                      "serviceTitle": "YouTube Analytics API"
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "service": "youtubeanalytics.googleapis.com"
                     }
                   },
                   {
@@ -4293,11 +4637,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "service": "youtubeanalytics.googleapis.com",
+                      "consumer": "projects/420820849386",
+                      "serviceTitle": "YouTube Analytics API",
                       "containerInfo": "420820849386",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "consumer": "projects/420820849386",
-                      "serviceTitle": "YouTube Analytics API"
+                      "service": "youtubeanalytics.googleapis.com"
                     }
                   },
                   {
@@ -4340,10 +4684,10 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "serviceTitle": "YouTube Analytics API",
-                      "service": "youtubeanalytics.googleapis.com",
                       "consumer": "projects/420820849386",
+                      "serviceTitle": "YouTube Analytics API",
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "service": "youtubeanalytics.googleapis.com",
                       "containerInfo": "420820849386"
                     }
                   },
@@ -4424,11 +4768,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "serviceTitle": "YouTube Analytics API",
+                      "service": "youtubeanalytics.googleapis.com",
                       "containerInfo": "420820849386",
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
                       "consumer": "projects/420820849386",
-                      "service": "youtubeanalytics.googleapis.com"
+                      "serviceTitle": "YouTube Analytics API",
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386"
                     }
                   },
                   {
@@ -4472,10 +4816,10 @@
                     "domain": "googleapis.com",
                     "metadata": {
                       "service": "youtubeanalytics.googleapis.com",
-                      "containerInfo": "420820849386",
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "serviceTitle": "YouTube Analytics API",
                       "consumer": "projects/420820849386",
-                      "serviceTitle": "YouTube Analytics API"
+                      "containerInfo": "420820849386",
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386"
                     }
                   },
                   {
@@ -4518,11 +4862,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "containerInfo": "420820849386",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "consumer": "projects/420820849386",
                       "service": "youtubeanalytics.googleapis.com",
-                      "serviceTitle": "YouTube Analytics API"
+                      "serviceTitle": "YouTube Analytics API",
+                      "containerInfo": "420820849386",
+                      "consumer": "projects/420820849386"
                     }
                   },
                   {
@@ -4565,11 +4909,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "service": "youtubeanalytics.googleapis.com",
-                      "containerInfo": "420820849386",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "serviceTitle": "YouTube Analytics API",
                       "consumer": "projects/420820849386",
-                      "serviceTitle": "YouTube Analytics API"
+                      "containerInfo": "420820849386",
+                      "service": "youtubeanalytics.googleapis.com"
                     }
                   },
                   {
@@ -4612,11 +4956,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "serviceTitle": "YouTube Analytics API",
                       "service": "youtubeanalytics.googleapis.com",
+                      "containerInfo": "420820849386",
+                      "serviceTitle": "YouTube Analytics API",
                       "consumer": "projects/420820849386",
-                      "containerInfo": "420820849386"
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386"
                     }
                   },
                   {
@@ -4696,10 +5040,10 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "containerInfo": "420820849386",
                       "service": "youtubeanalytics.googleapis.com",
-                      "consumer": "projects/420820849386",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "containerInfo": "420820849386",
+                      "consumer": "projects/420820849386",
                       "serviceTitle": "YouTube Analytics API"
                     }
                   },
@@ -4743,11 +5087,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "service": "youtubeanalytics.googleapis.com",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "service": "youtubeanalytics.googleapis.com",
                       "consumer": "projects/420820849386",
-                      "containerInfo": "420820849386",
-                      "serviceTitle": "YouTube Analytics API"
+                      "serviceTitle": "YouTube Analytics API",
+                      "containerInfo": "420820849386"
                     }
                   },
                   {
@@ -4790,11 +5134,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "containerInfo": "420820849386",
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
                       "service": "youtubeanalytics.googleapis.com",
                       "consumer": "projects/420820849386",
-                      "serviceTitle": "YouTube Analytics API"
+                      "containerInfo": "420820849386",
+                      "serviceTitle": "YouTube Analytics API",
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386"
                     }
                   },
                   {
@@ -4837,11 +5181,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "serviceTitle": "YouTube Analytics API",
+                      "service": "youtubeanalytics.googleapis.com",
                       "consumer": "projects/420820849386",
                       "containerInfo": "420820849386",
-                      "service": "youtubeanalytics.googleapis.com"
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "serviceTitle": "YouTube Analytics API"
                     }
                   },
                   {
@@ -4884,11 +5228,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "serviceTitle": "YouTube Analytics API",
+                      "consumer": "projects/420820849386",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "containerInfo": "420820849386",
                       "service": "youtubeanalytics.googleapis.com",
-                      "consumer": "projects/420820849386"
+                      "containerInfo": "420820849386",
+                      "serviceTitle": "YouTube Analytics API"
                     }
                   },
                   {
@@ -4968,11 +5312,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "serviceTitle": "YouTube Analytics API",
-                      "service": "youtubeanalytics.googleapis.com",
-                      "containerInfo": "420820849386",
                       "consumer": "projects/420820849386",
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386"
+                      "serviceTitle": "YouTube Analytics API",
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "service": "youtubeanalytics.googleapis.com",
+                      "containerInfo": "420820849386"
                     }
                   },
                   {
@@ -5015,11 +5359,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "consumer": "projects/420820849386",
-                      "service": "youtubeanalytics.googleapis.com",
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "containerInfo": "420820849386",
                       "serviceTitle": "YouTube Analytics API",
-                      "containerInfo": "420820849386"
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "service": "youtubeanalytics.googleapis.com",
+                      "consumer": "projects/420820849386"
                     }
                   },
                   {
@@ -5062,11 +5406,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "containerInfo": "420820849386",
+                      "service": "youtubeanalytics.googleapis.com",
+                      "consumer": "projects/420820849386",
                       "serviceTitle": "YouTube Analytics API",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "consumer": "projects/420820849386",
-                      "service": "youtubeanalytics.googleapis.com"
+                      "containerInfo": "420820849386"
                     }
                   },
                   {
@@ -5109,11 +5453,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
+                      "containerInfo": "420820849386",
+                      "serviceTitle": "YouTube Analytics API",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
                       "service": "youtubeanalytics.googleapis.com",
-                      "serviceTitle": "YouTube Analytics API",
-                      "consumer": "projects/420820849386",
-                      "containerInfo": "420820849386"
+                      "consumer": "projects/420820849386"
                     }
                   },
                   {
@@ -5156,11 +5500,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "serviceTitle": "YouTube Analytics API",
-                      "service": "youtubeanalytics.googleapis.com",
                       "consumer": "projects/420820849386",
-                      "containerInfo": "420820849386",
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386"
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "service": "youtubeanalytics.googleapis.com",
+                      "serviceTitle": "YouTube Analytics API",
+                      "containerInfo": "420820849386"
                     }
                   },
                   {
@@ -5287,11 +5631,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
                       "service": "youtubeanalytics.googleapis.com",
                       "serviceTitle": "YouTube Analytics API",
-                      "containerInfo": "420820849386",
                       "consumer": "projects/420820849386",
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386"
+                      "containerInfo": "420820849386"
                     }
                   },
                   {
@@ -5334,11 +5678,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "service": "youtubeanalytics.googleapis.com",
-                      "consumer": "projects/420820849386",
-                      "serviceTitle": "YouTube Analytics API",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "containerInfo": "420820849386"
+                      "service": "youtubeanalytics.googleapis.com",
+                      "containerInfo": "420820849386",
+                      "consumer": "projects/420820849386",
+                      "serviceTitle": "YouTube Analytics API"
                     }
                   },
                   {
@@ -5381,11 +5725,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "serviceTitle": "YouTube Analytics API",
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "containerInfo": "420820849386",
                       "service": "youtubeanalytics.googleapis.com",
+                      "serviceTitle": "YouTube Analytics API",
                       "consumer": "projects/420820849386",
-                      "containerInfo": "420820849386"
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386"
                     }
                   },
                   {
@@ -5428,10 +5772,10 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "service": "youtubeanalytics.googleapis.com",
-                      "consumer": "projects/420820849386",
-                      "containerInfo": "420820849386",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "service": "youtubeanalytics.googleapis.com",
+                      "containerInfo": "420820849386",
+                      "consumer": "projects/420820849386",
                       "serviceTitle": "YouTube Analytics API"
                     }
                   },
@@ -5514,11 +5858,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
                       "service": "youtubeanalytics.googleapis.com",
                       "containerInfo": "420820849386",
-                      "consumer": "projects/420820849386",
-                      "serviceTitle": "YouTube Analytics API"
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "serviceTitle": "YouTube Analytics API",
+                      "consumer": "projects/420820849386"
                     }
                   },
                   {
@@ -5561,11 +5905,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "consumer": "projects/420820849386",
                       "serviceTitle": "YouTube Analytics API",
                       "containerInfo": "420820849386",
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "service": "youtubeanalytics.googleapis.com",
-                      "consumer": "projects/420820849386"
+                      "service": "youtubeanalytics.googleapis.com"
                     }
                   },
                   {
@@ -5609,9 +5953,9 @@
                     "domain": "googleapis.com",
                     "metadata": {
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "service": "youtubeanalytics.googleapis.com",
                       "consumer": "projects/420820849386",
                       "serviceTitle": "YouTube Analytics API",
+                      "service": "youtubeanalytics.googleapis.com",
                       "containerInfo": "420820849386"
                     }
                   },
@@ -5655,11 +5999,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
+                      "containerInfo": "420820849386",
+                      "consumer": "projects/420820849386",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
                       "service": "youtubeanalytics.googleapis.com",
-                      "consumer": "projects/420820849386",
-                      "serviceTitle": "YouTube Analytics API",
-                      "containerInfo": "420820849386"
+                      "serviceTitle": "YouTube Analytics API"
                     }
                   },
                   {
@@ -5702,10 +6046,10 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "containerInfo": "420820849386",
-                      "service": "youtubeanalytics.googleapis.com",
-                      "consumer": "projects/420820849386",
                       "serviceTitle": "YouTube Analytics API",
+                      "containerInfo": "420820849386",
+                      "consumer": "projects/420820849386",
+                      "service": "youtubeanalytics.googleapis.com",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386"
                     }
                   },
@@ -5786,11 +6130,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "service": "youtubeanalytics.googleapis.com",
+                      "serviceTitle": "YouTube Analytics API",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "containerInfo": "420820849386",
+                      "service": "youtubeanalytics.googleapis.com",
                       "consumer": "projects/420820849386",
-                      "serviceTitle": "YouTube Analytics API"
+                      "containerInfo": "420820849386"
                     }
                   },
                   {
@@ -5833,11 +6177,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "service": "youtubeanalytics.googleapis.com",
                       "consumer": "projects/420820849386",
-                      "containerInfo": "420820849386",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "serviceTitle": "YouTube Analytics API"
+                      "serviceTitle": "YouTube Analytics API",
+                      "service": "youtubeanalytics.googleapis.com",
+                      "containerInfo": "420820849386"
                     }
                   },
                   {
@@ -5881,10 +6225,10 @@
                     "domain": "googleapis.com",
                     "metadata": {
                       "service": "youtubeanalytics.googleapis.com",
-                      "containerInfo": "420820849386",
-                      "serviceTitle": "YouTube Analytics API",
                       "consumer": "projects/420820849386",
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386"
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "containerInfo": "420820849386",
+                      "serviceTitle": "YouTube Analytics API"
                     }
                   },
                   {
@@ -5927,11 +6271,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "service": "youtubeanalytics.googleapis.com",
                       "consumer": "projects/420820849386",
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
                       "serviceTitle": "YouTube Analytics API",
-                      "containerInfo": "420820849386"
+                      "containerInfo": "420820849386",
+                      "service": "youtubeanalytics.googleapis.com",
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386"
                     }
                   },
                   {
@@ -5974,8 +6318,8 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "consumer": "projects/420820849386",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "consumer": "projects/420820849386",
                       "serviceTitle": "YouTube Analytics API",
                       "service": "youtubeanalytics.googleapis.com",
                       "containerInfo": "420820849386"
@@ -6058,11 +6402,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "containerInfo": "420820849386",
+                      "consumer": "projects/420820849386",
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
                       "service": "youtubeanalytics.googleapis.com",
                       "serviceTitle": "YouTube Analytics API",
-                      "consumer": "projects/420820849386",
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386"
+                      "containerInfo": "420820849386"
                     }
                   },
                   {
@@ -6106,10 +6450,10 @@
                     "domain": "googleapis.com",
                     "metadata": {
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "service": "youtubeanalytics.googleapis.com",
-                      "containerInfo": "420820849386",
                       "consumer": "projects/420820849386",
-                      "serviceTitle": "YouTube Analytics API"
+                      "serviceTitle": "YouTube Analytics API",
+                      "service": "youtubeanalytics.googleapis.com",
+                      "containerInfo": "420820849386"
                     }
                   },
                   {
@@ -6152,11 +6496,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "service": "youtubeanalytics.googleapis.com",
+                      "serviceTitle": "YouTube Analytics API",
                       "containerInfo": "420820849386",
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
                       "consumer": "projects/420820849386",
-                      "serviceTitle": "YouTube Analytics API"
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "service": "youtubeanalytics.googleapis.com"
                     }
                   },
                   {
@@ -6199,11 +6543,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "service": "youtubeanalytics.googleapis.com",
+                      "consumer": "projects/420820849386",
+                      "serviceTitle": "YouTube Analytics API",
                       "containerInfo": "420820849386",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "consumer": "projects/420820849386",
-                      "serviceTitle": "YouTube Analytics API"
+                      "service": "youtubeanalytics.googleapis.com"
                     }
                   },
                   {
@@ -6246,10 +6590,10 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "serviceTitle": "YouTube Analytics API",
-                      "service": "youtubeanalytics.googleapis.com",
                       "consumer": "projects/420820849386",
+                      "serviceTitle": "YouTube Analytics API",
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "service": "youtubeanalytics.googleapis.com",
                       "containerInfo": "420820849386"
                     }
                   },
@@ -6330,11 +6674,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "serviceTitle": "YouTube Analytics API",
+                      "service": "youtubeanalytics.googleapis.com",
                       "containerInfo": "420820849386",
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
                       "consumer": "projects/420820849386",
-                      "service": "youtubeanalytics.googleapis.com"
+                      "serviceTitle": "YouTube Analytics API",
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386"
                     }
                   },
                   {
@@ -6378,10 +6722,10 @@
                     "domain": "googleapis.com",
                     "metadata": {
                       "service": "youtubeanalytics.googleapis.com",
-                      "containerInfo": "420820849386",
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "serviceTitle": "YouTube Analytics API",
                       "consumer": "projects/420820849386",
-                      "serviceTitle": "YouTube Analytics API"
+                      "containerInfo": "420820849386",
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386"
                     }
                   },
                   {
@@ -6424,11 +6768,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "containerInfo": "420820849386",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "consumer": "projects/420820849386",
                       "service": "youtubeanalytics.googleapis.com",
-                      "serviceTitle": "YouTube Analytics API"
+                      "serviceTitle": "YouTube Analytics API",
+                      "containerInfo": "420820849386",
+                      "consumer": "projects/420820849386"
                     }
                   },
                   {
@@ -6471,11 +6815,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "service": "youtubeanalytics.googleapis.com",
-                      "containerInfo": "420820849386",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "serviceTitle": "YouTube Analytics API",
                       "consumer": "projects/420820849386",
-                      "serviceTitle": "YouTube Analytics API"
+                      "containerInfo": "420820849386",
+                      "service": "youtubeanalytics.googleapis.com"
                     }
                   },
                   {
@@ -6518,11 +6862,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "serviceTitle": "YouTube Analytics API",
                       "service": "youtubeanalytics.googleapis.com",
+                      "containerInfo": "420820849386",
+                      "serviceTitle": "YouTube Analytics API",
                       "consumer": "projects/420820849386",
-                      "containerInfo": "420820849386"
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386"
                     }
                   },
                   {
@@ -6602,10 +6946,10 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "containerInfo": "420820849386",
                       "service": "youtubeanalytics.googleapis.com",
-                      "consumer": "projects/420820849386",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "containerInfo": "420820849386",
+                      "consumer": "projects/420820849386",
                       "serviceTitle": "YouTube Analytics API"
                     }
                   },
@@ -6649,11 +6993,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "service": "youtubeanalytics.googleapis.com",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "service": "youtubeanalytics.googleapis.com",
                       "consumer": "projects/420820849386",
-                      "containerInfo": "420820849386",
-                      "serviceTitle": "YouTube Analytics API"
+                      "serviceTitle": "YouTube Analytics API",
+                      "containerInfo": "420820849386"
                     }
                   },
                   {
@@ -6696,11 +7040,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "containerInfo": "420820849386",
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
                       "service": "youtubeanalytics.googleapis.com",
                       "consumer": "projects/420820849386",
-                      "serviceTitle": "YouTube Analytics API"
+                      "containerInfo": "420820849386",
+                      "serviceTitle": "YouTube Analytics API",
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386"
                     }
                   },
                   {
@@ -6743,11 +7087,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "serviceTitle": "YouTube Analytics API",
+                      "service": "youtubeanalytics.googleapis.com",
                       "consumer": "projects/420820849386",
                       "containerInfo": "420820849386",
-                      "service": "youtubeanalytics.googleapis.com"
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "serviceTitle": "YouTube Analytics API"
                     }
                   },
                   {
@@ -6790,11 +7134,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "serviceTitle": "YouTube Analytics API",
+                      "consumer": "projects/420820849386",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "containerInfo": "420820849386",
                       "service": "youtubeanalytics.googleapis.com",
-                      "consumer": "projects/420820849386"
+                      "containerInfo": "420820849386",
+                      "serviceTitle": "YouTube Analytics API"
                     }
                   },
                   {
@@ -6874,11 +7218,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "serviceTitle": "YouTube Analytics API",
-                      "service": "youtubeanalytics.googleapis.com",
-                      "containerInfo": "420820849386",
                       "consumer": "projects/420820849386",
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386"
+                      "serviceTitle": "YouTube Analytics API",
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "service": "youtubeanalytics.googleapis.com",
+                      "containerInfo": "420820849386"
                     }
                   },
                   {
@@ -6921,11 +7265,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "consumer": "projects/420820849386",
-                      "service": "youtubeanalytics.googleapis.com",
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "containerInfo": "420820849386",
                       "serviceTitle": "YouTube Analytics API",
-                      "containerInfo": "420820849386"
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "service": "youtubeanalytics.googleapis.com",
+                      "consumer": "projects/420820849386"
                     }
                   },
                   {
@@ -6968,11 +7312,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "containerInfo": "420820849386",
+                      "service": "youtubeanalytics.googleapis.com",
+                      "consumer": "projects/420820849386",
                       "serviceTitle": "YouTube Analytics API",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "consumer": "projects/420820849386",
-                      "service": "youtubeanalytics.googleapis.com"
+                      "containerInfo": "420820849386"
                     }
                   },
                   {
@@ -7015,11 +7359,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
+                      "containerInfo": "420820849386",
+                      "serviceTitle": "YouTube Analytics API",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
                       "service": "youtubeanalytics.googleapis.com",
-                      "serviceTitle": "YouTube Analytics API",
-                      "consumer": "projects/420820849386",
-                      "containerInfo": "420820849386"
+                      "consumer": "projects/420820849386"
                     }
                   },
                   {
@@ -7062,11 +7406,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "serviceTitle": "YouTube Analytics API",
-                      "service": "youtubeanalytics.googleapis.com",
                       "consumer": "projects/420820849386",
-                      "containerInfo": "420820849386",
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386"
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "service": "youtubeanalytics.googleapis.com",
+                      "serviceTitle": "YouTube Analytics API",
+                      "containerInfo": "420820849386"
                     }
                   },
                   {
@@ -7193,11 +7537,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
                       "service": "youtubeanalytics.googleapis.com",
                       "serviceTitle": "YouTube Analytics API",
-                      "containerInfo": "420820849386",
                       "consumer": "projects/420820849386",
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386"
+                      "containerInfo": "420820849386"
                     }
                   },
                   {
@@ -7240,11 +7584,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "service": "youtubeanalytics.googleapis.com",
-                      "consumer": "projects/420820849386",
-                      "serviceTitle": "YouTube Analytics API",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "containerInfo": "420820849386"
+                      "service": "youtubeanalytics.googleapis.com",
+                      "containerInfo": "420820849386",
+                      "consumer": "projects/420820849386",
+                      "serviceTitle": "YouTube Analytics API"
                     }
                   },
                   {
@@ -7287,11 +7631,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "serviceTitle": "YouTube Analytics API",
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "containerInfo": "420820849386",
                       "service": "youtubeanalytics.googleapis.com",
+                      "serviceTitle": "YouTube Analytics API",
                       "consumer": "projects/420820849386",
-                      "containerInfo": "420820849386"
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386"
                     }
                   },
                   {
@@ -7334,10 +7678,10 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "service": "youtubeanalytics.googleapis.com",
-                      "consumer": "projects/420820849386",
-                      "containerInfo": "420820849386",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "service": "youtubeanalytics.googleapis.com",
+                      "containerInfo": "420820849386",
+                      "consumer": "projects/420820849386",
                       "serviceTitle": "YouTube Analytics API"
                     }
                   },
@@ -7418,11 +7762,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
                       "service": "youtubeanalytics.googleapis.com",
-                      "consumer": "projects/420820849386",
+                      "serviceTitle": "YouTube Analytics API",
                       "containerInfo": "420820849386",
-                      "serviceTitle": "YouTube Analytics API"
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "consumer": "projects/420820849386"
                     }
                   },
                   {
@@ -7465,11 +7809,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "consumer": "projects/420820849386",
+                      "containerInfo": "420820849386",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "service": "youtubeanalytics.googleapis.com",
+                      "consumer": "projects/420820849386",
                       "serviceTitle": "YouTube Analytics API",
-                      "containerInfo": "420820849386"
+                      "service": "youtubeanalytics.googleapis.com"
                     }
                   },
                   {
@@ -7512,11 +7856,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
+                      "containerInfo": "420820849386",
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
                       "service": "youtubeanalytics.googleapis.com",
                       "consumer": "projects/420820849386",
-                      "serviceTitle": "YouTube Analytics API",
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "containerInfo": "420820849386"
+                      "serviceTitle": "YouTube Analytics API"
                     }
                   },
                   {
@@ -7561,9 +7905,9 @@
                     "metadata": {
                       "consumer": "projects/420820849386",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "serviceTitle": "YouTube Analytics API",
+                      "containerInfo": "420820849386",
                       "service": "youtubeanalytics.googleapis.com",
-                      "containerInfo": "420820849386"
+                      "serviceTitle": "YouTube Analytics API"
                     }
                   },
                   {
@@ -7607,10 +7951,10 @@
                     "domain": "googleapis.com",
                     "metadata": {
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "service": "youtubeanalytics.googleapis.com",
-                      "containerInfo": "420820849386",
                       "consumer": "projects/420820849386",
-                      "serviceTitle": "YouTube Analytics API"
+                      "service": "youtubeanalytics.googleapis.com",
+                      "serviceTitle": "YouTube Analytics API",
+                      "containerInfo": "420820849386"
                     }
                   },
                   {
@@ -7690,10 +8034,10 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "service": "youtubeanalytics.googleapis.com",
                       "consumer": "projects/420820849386",
                       "containerInfo": "420820849386",
-                      "service": "youtubeanalytics.googleapis.com",
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
                       "serviceTitle": "YouTube Analytics API"
                     }
                   },
@@ -7738,10 +8082,10 @@
                     "domain": "googleapis.com",
                     "metadata": {
                       "consumer": "projects/420820849386",
-                      "service": "youtubeanalytics.googleapis.com",
+                      "serviceTitle": "YouTube Analytics API",
                       "containerInfo": "420820849386",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "serviceTitle": "YouTube Analytics API"
+                      "service": "youtubeanalytics.googleapis.com"
                     }
                   },
                   {
@@ -7784,11 +8128,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "serviceTitle": "YouTube Analytics API",
-                      "containerInfo": "420820849386",
+                      "consumer": "projects/420820849386",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
+                      "serviceTitle": "YouTube Analytics API",
                       "service": "youtubeanalytics.googleapis.com",
-                      "consumer": "projects/420820849386"
+                      "containerInfo": "420820849386"
                     }
                   },
                   {
@@ -7831,11 +8175,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "serviceTitle": "YouTube Analytics API",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
                       "service": "youtubeanalytics.googleapis.com",
+                      "consumer": "projects/420820849386",
                       "containerInfo": "420820849386",
-                      "consumer": "projects/420820849386"
+                      "serviceTitle": "YouTube Analytics API"
                     }
                   },
                   {
@@ -7878,11 +8222,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "serviceTitle": "YouTube Analytics API",
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
                       "service": "youtubeanalytics.googleapis.com",
+                      "consumer": "projects/420820849386",
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
                       "containerInfo": "420820849386",
-                      "consumer": "projects/420820849386"
+                      "serviceTitle": "YouTube Analytics API"
                     }
                   },
                   {
@@ -7962,11 +8306,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
                       "service": "youtubeanalytics.googleapis.com",
                       "consumer": "projects/420820849386",
+                      "containerInfo": "420820849386",
                       "serviceTitle": "YouTube Analytics API",
-                      "containerInfo": "420820849386"
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386"
                     }
                   },
                   {
@@ -8009,11 +8353,11 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "consumer": "projects/420820849386",
                       "service": "youtubeanalytics.googleapis.com",
                       "serviceTitle": "YouTube Analytics API",
-                      "containerInfo": "420820849386"
+                      "containerInfo": "420820849386",
+                      "consumer": "projects/420820849386",
+                      "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386"
                     }
                   },
                   {
@@ -8056,10 +8400,10 @@
                     "reason": "SERVICE_DISABLED",
                     "domain": "googleapis.com",
                     "metadata": {
-                      "serviceTitle": "YouTube Analytics API",
+                      "service": "youtubeanalytics.googleapis.com",
                       "containerInfo": "420820849386",
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "service": "youtubeanalytics.googleapis.com",
+                      "serviceTitle": "YouTube Analytics API",
                       "consumer": "projects/420820849386"
                     }
                   },
@@ -8104,10 +8448,10 @@
                     "domain": "googleapis.com",
                     "metadata": {
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "service": "youtubeanalytics.googleapis.com",
-                      "containerInfo": "420820849386",
                       "consumer": "projects/420820849386",
-                      "serviceTitle": "YouTube Analytics API"
+                      "serviceTitle": "YouTube Analytics API",
+                      "containerInfo": "420820849386",
+                      "service": "youtubeanalytics.googleapis.com"
                     }
                   },
                   {
@@ -8151,9 +8495,9 @@
                     "domain": "googleapis.com",
                     "metadata": {
                       "activationUrl": "https://console.developers.google.com/apis/api/youtubeanalytics.googleapis.com/overview?project=420820849386",
-                      "service": "youtubeanalytics.googleapis.com",
                       "consumer": "projects/420820849386",
                       "serviceTitle": "YouTube Analytics API",
+                      "service": "youtubeanalytics.googleapis.com",
                       "containerInfo": "420820849386"
                     }
                   },

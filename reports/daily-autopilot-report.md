@@ -1,6 +1,6 @@
 # UselessApps.fun Operator Report v2
 
-Generated: 2026-06-21T16:19:47.631Z
+Generated: 2026-06-21T16:52:42.865Z
 
 ## Executive Summary
 
@@ -102,7 +102,7 @@ Generated: 2026-06-21T16:19:47.631Z
 ## Advanced YouTube Analytics
 
 - Exists: true
-- Generated: 2026-06-21T13:51:03.631Z
+- Generated: 2026-06-21T16:27:05.648Z
 - Videos pulled: 13
 - Channel title: UselessApps
 - Subscribers: 1
@@ -117,6 +117,39 @@ Generated: 2026-06-21T16:19:47.631Z
 - Profit: 0
 - Revenue entries: 0
 - Cost entries: 0
+
+## Platform Connectors
+
+- Total: 8
+- Enabled: 2
+- Connected: 2
+- API mode: 1
+- Manual mode: 1
+- Future: 5
+
+| Platform  | Enabled | Connected | Mode   | Status        |
+| --------- | ------- | --------- | ------ | ------------- |
+| youtube   | true    | true      | api    | working       |
+| tiktok    | false   | false     | future | not_connected |
+| instagram | false   | false     | future | not_connected |
+| facebook  | false   | false     | future | not_connected |
+| x         | false   | false     | future | not_connected |
+| rumble    | false   | false     | manual | manual_later  |
+| website   | true    | true      | static | working       |
+| email     | false   | false     | future | not_connected |
+
+## Publishing Calendar
+
+- Total: 1
+- Ideas: 1
+- Ready: 0
+- Scheduled: 0
+- Published: 0
+- Blocked: 0
+
+| ID                         | Platform | Status | Title              |
+| -------------------------- | -------- | ------ | ------------------ |
+| cal_1782060714354_9216812d | youtube  | idea   | Test calendar item |
 
 ## Social Channels
 
@@ -151,51 +184,62 @@ Generated: 2026-06-21T16:19:47.631Z
 | facebook_graph_api    | false   | false     | future           |
 | x_api                 | false   | false     | future           |
 
+## Automation
+
+- Nightly script exists: true
+- Worker script exists: true
+- Cron installer exists: true
+- Latest nightly log: nightly-2026-06-21-172701.log
+- Latest worker log: worker-2026-06-21T16-31-32-298Z.log
+
 ## Action Queue
 
-- Total: 9
-- Pending: 8
+- Total: 11
+- Pending: 0
 - Approved: 0
 - Running: 0
-- Completed: 1
+- Completed: 9
 - Failed: 0
-- Rejected: 0
+- Rejected: 2
 
 | ID                       | Type                    | Status    | Safety |
 | ------------------------ | ----------------------- | --------- | ------ |
-| act_1782058247991_a09d6b | refresh_dashboard       | pending   | safe   |
-| act_1782055352107_588480 | pull_advanced_analytics | pending   | safe   |
-| act_1782055342686_b561aa | sync_review             | pending   | safe   |
+| act_1782059483990_0fd9ad | refresh_dashboard       | completed | safe   |
+| act_1782059143672_2fc701 | refresh_dashboard       | completed | safe   |
+| act_1782058247991_a09d6b | refresh_dashboard       | completed | safe   |
+| act_1782055352107_588480 | pull_advanced_analytics | completed | safe   |
+| act_1782055342686_b561aa | sync_review             | completed | safe   |
 | act_1782055303921_4df070 | refresh_dashboard       | completed | safe   |
-| act_1782055303885_c71abc | sync_review             | pending   | safe   |
-| act_1782054196665_28d324 | sync_review             | pending   | safe   |
-| act_1782052477255_6618ff | sync_review             | pending   | safe   |
-| act_1782052034117_ecc40e | approve_video           | pending   | safe   |
-| act_1782052027357_5ee23c | sync_review             | pending   | safe   |
+| act_1782055303885_c71abc | sync_review             | completed | safe   |
+| act_1782054196665_28d324 | sync_review             | completed | safe   |
+| act_1782052477255_6618ff | sync_review             | completed | safe   |
+| act_1782052034117_ecc40e | approve_video           | rejected  | safe   |
+| act_1782052027357_5ee23c | sync_review             | rejected  | safe   |
 
 ## Backend Jobs
 
-- Total: 8
-- Enabled: 8
-- Working: 7
-- Testing: 1
-- Failing: 0
+- Total: 9
+- Enabled: 9
+- Working: 8
+- Testing: 0
+- Failing: 1
 
-| Job                     | Enabled | Status  | Last Success             | Last Error |
-| ----------------------- | ------- | ------- | ------------------------ | ---------- |
-| generate_app            | true    | working |                          |            |
-| render_video            | true    | working |                          |            |
-| upload_private          | true    | working |                          |            |
-| sync_review             | true    | working |                          |            |
-| validate_audio          | true    | working |                          |            |
-| pull_advanced_analytics | true    | testing |                          |            |
-| run_learning            | true    | working |                          |            |
-| build_dashboard         | true    | working | 2026-06-21T15:24:09.944Z |            |
+| Job                     | Enabled | Status  | Last Success             | Last Error                                                                         |
+| ----------------------- | ------- | ------- | ------------------------ | ---------------------------------------------------------------------------------- |
+| generate_app            | true    | working |                          |                                                                                    |
+| render_video            | true    | working |                          |                                                                                    |
+| upload_private          | true    | working |                          |                                                                                    |
+| sync_review             | true    | working | 2026-06-21T16:27:04.921Z |                                                                                    |
+| validate_audio          | true    | working |                          |                                                                                    |
+| pull_advanced_analytics | true    | working | 2026-06-21T16:27:07.896Z |                                                                                    |
+| run_learning            | true    | working |                          |                                                                                    |
+| build_dashboard         | true    | working | 2026-06-21T16:31:33.876Z |                                                                                    |
+| review_action           | true    | error   |                          | bash ./scripts/approve-video.sh TEST123 Test approval only failed with exit code 1 |
 
 ## Learning v2
 
 - Exists: true
-- Generated: 2026-06-21T16:18:01.565Z
+- Generated: 2026-06-21T16:52:42.798Z
 - Confidence: low
 - Videos with meaningful stats: 0
 
@@ -208,8 +252,8 @@ Generated: 2026-06-21T16:19:47.631Z
 ### Avoid
 
 - App types: calculator (-70.0), button (-70.0), unknown (-70.0), object (-50.0), waiting (-15.0)
-- Story modes: fake_courtroom_trial (-70.0), fake_scientific_experiment (-70.0), fake_nature_documentary (-70.0), unknown (-70.0), fake_police_chase (-30.0)
-- Audio moods: unknown (-65.4), chaotic (-30.0)
+- Story modes: fake_courtroom_trial (-70.0), fake_nature_documentary (-70.0), unknown (-70.0), fake_scientific_experiment (-50.0), fake_documentary (-15.0)
+- Audio moods: unknown (-65.4), scientific (-30.0)
 
 ## Top Videos
 

@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "updatedAt": "2026-06-21T16:51:54.355Z",
+  "items": [
+    {
+      "id": "cal_1782060714354_9216812d",
+      "title": "Test calendar item",
+      "videoId": "",
+      "platform": "youtube",
+      "status": "idea",
+      "plannedAt": "",
+      "actualPublishedAt": "",
+      "notes": "Created during setup",
+      "createdAt": "2026-06-21T16:51:54.355Z",
+      "updatedAt": "2026-06-21T16:51:54.355Z"
+    }
+  ]
+}

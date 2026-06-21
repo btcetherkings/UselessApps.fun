@@ -221,6 +221,45 @@ function render(report) {
     'Cost entries': report.business?.costCount ?? 0
   });
 
+
+  el('platformStats').innerHTML = kv({
+    Total: report.platforms?.total ?? 0,
+    Enabled: report.platforms?.enabled ?? 0,
+    Connected: report.platforms?.connected ?? 0,
+    'API mode': report.platforms?.api ?? 0,
+    Manual: report.platforms?.manual ?? 0,
+    Future: report.platforms?.future ?? 0
+  });
+
+  table(el('platformTable'), ['Platform', 'Enabled', 'Connected', 'Mode', 'Status'],
+    (report.platforms?.platforms || []).map(p => [
+      p.key,
+      p.enabled ? badge('yes', 'green') : badge('no', 'red'),
+      p.connected ? badge('yes', 'green') : badge('no', 'orange'),
+      p.mode,
+      p.status
+    ])
+  );
+
+  el('calendarStats').innerHTML = kv({
+    Total: report.calendar?.total ?? 0,
+    Ideas: report.calendar?.counts?.idea ?? 0,
+    Ready: report.calendar?.counts?.ready ?? 0,
+    Scheduled: report.calendar?.counts?.scheduled ?? 0,
+    Published: report.calendar?.counts?.published ?? 0,
+    Blocked: report.calendar?.counts?.blocked ?? 0
+  });
+
+  table(el('calendarTable'), ['ID', 'Platform', 'Status', 'Title'],
+    (report.calendar?.items || []).slice(0, 20).map(i => [
+      i.id,
+      i.platform,
+      i.status,
+      i.title
+    ])
+  );
+
+
   el('socialStats').innerHTML = kv({
     Total: report.social?.total ?? 0,
     Enabled: report.social?.enabled ?? 0,
