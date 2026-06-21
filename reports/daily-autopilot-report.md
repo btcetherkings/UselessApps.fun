@@ -1,6 +1,6 @@
 # UselessApps.fun Operator Report v2
 
-Generated: 2026-06-21T13:42:55.030Z
+Generated: 2026-06-21T13:52:43.965Z
 
 ## Executive Summary
 
@@ -88,10 +88,20 @@ Generated: 2026-06-21T13:42:55.030Z
 | Emotionally Unhelpful Calculator WZZPKG | s-nlrJBNRiM | blocked_for_public | audio_missing |
 | Loading Screen With No Exit             | FpQOm5Qa82c | blocked_for_public | audio_missing |
 
+## Advanced YouTube Analytics
+
+- Exists: true
+- Generated: 2026-06-21T13:51:03.631Z
+- Videos pulled: 13
+- Channel title: UselessApps
+- Subscribers: 1
+- Channel total views: 0
+- Public videos: 0
+
 ## Learning v2
 
 - Exists: true
-- Generated: 2026-06-21T13:42:54.989Z
+- Generated: 2026-06-21T13:52:34.862Z
 - Confidence: low
 - Videos with meaningful stats: 0
 

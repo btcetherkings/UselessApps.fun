@@ -96,7 +96,7 @@ function buildRows() {
     };
   });
 
-  return { apps, rows, review, recs };
+  return { apps, rows, review, recs, advanced };
 }
 
 function calculateHealth({ rows, review, recs }) {
@@ -159,7 +159,7 @@ function learningConfidence(recs) {
 
 function buildReport() {
   const data = buildRows();
-  const { apps, rows, review, recs } = data;
+  const { apps, rows, review, recs, advanced } = data;
 
   const health = calculateHealth({ rows, review, recs });
   const actions = buildActionCards(rows);
