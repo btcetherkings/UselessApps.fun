@@ -340,43 +340,51 @@ function copyText(text) {
 }
 
 async function createExportPack(videoId) {
-  const res = await fetch('/api/export-pack', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ videoId })
-  });
+  try {
+    const res = await fetch('/api/export-pack', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ videoId })
+    });
 
-  const data = await res.json();
+    const data = await res.json().catch(() => ({}));
 
-  if (!res.ok) {
-    alert(`Export failed: ${data.error}`);
-    return;
+    if (!res.ok) {
+      alert(`Export failed: ${data.error || res.statusText}`);
+      return;
+    }
+
+    alert(data.output || 'Export pack created');
+  } catch (err) {
+    alert(`Export request failed. Is the dashboard server still running?\n\n${err.message}`);
   }
-
-  alert(data.output || 'Export pack created');
 }
 
 async function addReviewCalendarItem(card) {
-  const res = await fetch('/api/calendar-item', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      title: card.title,
-      videoId: card.videoId,
-      platform: 'youtube',
-      status: 'ready',
-      notes: `Added from review desk. Recommended: ${card.recommendedAction}`
-    })
-  });
+  try {
+    const res = await fetch('/api/calendar-item', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        title: card.title || card.name || 'Untitled UselessApps item',
+        videoId: card.videoId || '',
+        platform: 'youtube',
+        status: 'ready',
+        notes: `Added from review desk. Recommended: ${card.recommendedAction || 'review'}`
+      })
+    });
 
-  const data = await res.json();
+    const data = await res.json().catch(() => ({}));
 
-  if (!res.ok) {
-    alert(`Calendar failed: ${data.error}`);
-    return;
+    if (!res.ok) {
+      alert(`Calendar failed: ${data.error || res.statusText}`);
+      return;
+    }
+
+    alert(`Calendar item added: ${data.id}`);
+  } catch (err) {
+    alert(`Calendar request failed. Is the dashboard server still running?\n\n${err.message}`);
   }
-
-  alert(`Calendar item added: ${data.id}`);
 }
 
 async function loadReviewCards() {
@@ -418,4 +426,88 @@ async function loadReviewCards() {
       </div>
     </article>
   `).join('');
+}
+
+function setThemeMode(mode) {
+  const allowed = ['dark', 'light', 'gold', 'colourful'];
+  const selected = allowed.includes(mode) ? mode : 'dark';
+
+  document.body.classList.remove(
+    'theme-dark',
+    'theme-light',
+    'theme-gold',
+    'theme-colourful'
+  );
+
+  document.body.classList.add(`theme-${selected}`);
+  localStorage.setItem('uselessapps-theme', selected);
+}
+
+(function initThemeMode() {
+  const saved = localStorage.getItem('uselessapps-theme') || 'dark';
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => setThemeMode(saved));
+  } else {
+    setThemeMode(saved);
+  }
+})();
+
+async function loadManagementSuite() {
+  const apiTarget = el('apiConnectionManager');
+  const socialTarget = el('socialChannelManager');
+  const businessTarget = el('businessManager');
+  const lifecycleTarget = el('videoLifecycleManager');
+
+  try {
+    const [connections, channels, business, review] = await Promise.all([
+      fetch('/api/connections').then(r => r.json()),
+      fetch('/api/channels').then(r => r.json()),
+      fetch('/api/business').then(r => r.json()),
+      fetch('/api/review-cards').then(r => r.json())
+    ]);
+
+    if (apiTarget) {
+      const rows = Object.entries(connections.connections || {}).map(([k, v]) => `
+        <tr><td>${k}</td><td>${v.enabled}</td><td>${v.connected}</td><td>${v.status || ''}</td><td>${(v.requiredEnvVars || []).join(', ')}</td></tr>
+      `).join('');
+
+      apiTarget.innerHTML = `
+        <table><thead><tr><th>Provider</th><th>Enabled</th><th>Connected</th><th>Status</th><th>Env Vars</th></tr></thead><tbody>${rows}</tbody></table>
+        <p class="muted">Secrets stay in .env. Use ./scripts/connection-set.sh to edit.</p>
+      `;
+    }
+
+    if (socialTarget) {
+      const rows = Object.entries(channels.channels || {}).map(([k, v]) => `
+        <tr><td>${k}</td><td>${v.enabled}</td><td>${v.connected}</td><td>${v.mode || ''}</td><td>${v.status || ''}</td><td>${v.url || ''}</td></tr>
+      `).join('');
+
+      socialTarget.innerHTML = `
+        <table><thead><tr><th>Channel</th><th>Enabled</th><th>Connected</th><th>Mode</th><th>Status</th><th>URL</th></tr></thead><tbody>${rows}</tbody></table>
+        <p class="muted">Use ./scripts/channel-set.sh to edit social channel metadata.</p>
+      `;
+    }
+
+    if (businessTarget) {
+      businessTarget.innerHTML = kv(business.settings || {});
+    }
+
+    if (lifecycleTarget) {
+      lifecycleTarget.innerHTML = `
+        <p>Total review cards: ${review.total || 0}</p>
+        <p>Uploaded: ${review.uploaded || 0}</p>
+        <p>Unsafe/rerender: ${review.unsafe || 0}</p>
+        <div class="copy-command">./scripts/clean-start.sh</div>
+        <p class="muted">Clean start archives local state and resets review/action/video runtime state. It does not delete YouTube videos.</p>
+      `;
+    }
+  } catch (err) {
+    if (apiTarget) apiTarget.innerHTML = `<p class="danger">Management suite failed: ${err.message}</p>`;
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', loadManagementSuite);
+} else {
+  loadManagementSuite();
 }

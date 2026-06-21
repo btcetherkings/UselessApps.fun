@@ -8,7 +8,8 @@
       "lastSync": null,
       "subscribers": null,
       "views": null,
-      "notes": "YouTube upload and analytics are being integrated."
+      "notes": "YouTube upload and analytics are being integrated.",
+      "mode": "api"
     },
     "tiktok": {
       "enabled": false,
@@ -55,7 +56,8 @@
       "connected": true,
       "status": "static_site",
       "lastSync": null,
-      "url": "https://btcetherkings.github.io/useless-apps-fun/"
+      "url": "https://uselessapps.fun"
     }
-  }
+  },
+  "updatedAt": "2026-06-21T18:36:00.851Z"
 }

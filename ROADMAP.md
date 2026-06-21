@@ -1,155 +1,149 @@
 # UselessApps.fun MASTER ROADMAP
 
-## Current Reality Check
+## Current Reality
 
-The technical foundation is strong, but the product is not finished.
+The project has a strong automation/backend foundation, but the product is not finished as a real command centre.
 
-Current weaknesses:
-
-```text
-dashboard is still mostly read-only
-API connections cannot be managed properly from dashboard
-social channels cannot be managed properly from dashboard
-business management suite is too basic
-review desk is not enough as a business control centre
-old/generated videos need safe cleanup and reset workflow
-delete video workflow is missing
-```
-
-Decision:
+The missing pieces are:
 
 ```text
-Next build is not another small feature.
-Next build is a real management-suite build.
+repo should be private
+API/social connections need real management
+dashboard needs usable management screens
+dashboard needs multiple themes
+business suite needs editable controls
+video cleanup/delete/reset workflow must be safe and tested
+final production runbook still needs polish
 ```
 
 ---
 
-# Product Mission
+# Product Goal
 
-UselessApps.fun is a safe, absurd, viral AI media factory.
+UselessApps.fun should be:
 
 ```text
-Content = safely ridiculous
-Dashboard = real business command centre
-Backend = automated media factory
-Data layer = durable and testable
-Publishing = private-first and approval-gated
+a safe, absurd AI content factory
+a private-first video generation system
+a proper business command centre
+a dashboard-managed social/API platform
+a test-backed operator console
+```
+
+The content is stupid.
+
+The platform must be serious.
+
+---
+
+# Immediate Security Action
+
+## Make GitHub Repo Private
+
+Repository:
+
+```text
+github.com/btcetherkings/UselessApps.fun
+```
+
+Preferred:
+
+```bash
+gh repo edit btcetherkings/UselessApps.fun --visibility private --accept-visibility-change-consequences
+```
+
+Alternative via GitHub UI:
+
+```text
+Repo -> Settings -> General -> Danger Zone -> Change repository visibility -> Private
+```
+
+Reason:
+
+```text
+project contains business logic
+automation workflows
+YouTube/social integration code
+future monetisation/IP
 ```
 
 ---
 
-# New Finish Line
-
-MVP foundation is not enough.
-
-The real working product needs:
-
-```text
-1. Manage API connections
-2. Manage social channels
-3. Manage business metrics
-4. Manage video lifecycle
-5. Clean/reset videos safely
-6. Delete YouTube videos safely
-7. Start fresh with clean state
-8. Dashboard actions must actually do useful work
-```
-
----
-
-# Active Build: Management Suite + API/Social Manager + Clean Video Reset
+# Active Build: Real Control Centre Finish Build
 
 Status: NEXT BUILD
 
-Goal:
-
-Turn the dashboard from a basic monitor into an actual control centre.
-
-This build adds:
+This build combines:
 
 ```text
-API connection manager
-social channel manager
-business settings manager
-safe YouTube delete workflow
-local video archive/cleanup workflow
-dashboard management APIs
-dashboard management panels
+repo privacy
+API connection setup manager
+social channel setup manager
+business suite controls
+dashboard themes
+safe video lifecycle manager
 clean-start workflow
-full-system tests
+delete safety workflow
+dashboard API management endpoints
+full tests
 ```
 
 ---
 
-# Core Safety Rule
+# Dashboard Theme Modes
 
-Deleting videos is destructive.
-
-Therefore:
+Add:
 
 ```text
-No bulk delete without typed confirmation.
-No dashboard one-click public delete.
-No worker delete.
-No social/API credential display in dashboard.
-No secret values stored in JSON.
+dark mode
+light mode
+gold mode
+colourful mode
 ```
 
-Delete must require exact terminal confirmation:
+Theme switcher should:
 
 ```text
-DELETE VIDEO_ID FROM YOUTUBE
+save choice to localStorage
+apply instantly
+not require backend
+not affect functionality
 ```
 
-Bulk cleanup must archive local state first.
-
----
-
-# Files To Add
+CSS approach:
 
 ```text
-tools/connections/manage-connection.js
-tools/social/manage-channel.js
-tools/business/manage-business.js
-
-tools/publish/delete-youtube.js
-tools/publish/archive-video-state.js
-tools/publish/cleanup-videos.js
-
-scripts/connection-list.sh
-scripts/connection-set.sh
-scripts/channel-list.sh
-scripts/channel-set.sh
-scripts/business-report.sh
-scripts/business-set.sh
-
-scripts/delete-video.sh
-scripts/archive-video-state.sh
-scripts/cleanup-videos.sh
-scripts/clean-start.sh
-```
-
-Updated:
-
-```text
-ROADMAP.md
-tools/dashboard/web-dashboard.js
-tools/dashboard/dashboard.html
-tools/dashboard/dashboard.js
-tools/dashboard/dashboard.css
-tools/testing/full-system-test.js
-.gitignore
+body.theme-dark
+body.theme-light
+body.theme-gold
+body.theme-colourful
 ```
 
 ---
 
-# API Connection Manager
+# API Connection Management
 
-Store only non-secret metadata:
+Dashboard/API should manage metadata for:
 
 ```text
-provider
+youtube
+youtube_analytics
+tiktok
+instagram
+facebook
+x
+rumble
+website
+email
+stripe/future
+openai/future
+```
+
+Do not store secret values in JSON.
+
+Store only:
+
+```text
 enabled
 connected
 status
@@ -159,37 +153,28 @@ lastCheckedAt
 notes
 ```
 
-Secret values remain in `.env`.
-
-Examples:
-
-```bash
-./scripts/connection-list.sh
-./scripts/connection-set.sh youtube enabled true
-./scripts/connection-set.sh youtube status working
-./scripts/connection-set.sh tiktok status future
-```
-
-Dashboard should show:
-
-```text
-provider
-enabled
-connected
-status
-required env vars
-last checked
-notes
-```
+Secrets stay in `.env`.
 
 ---
 
-# Social Channel Manager
+# Social Channel Management
 
-Store:
+Manage:
 
 ```text
-platform
+youtube
+tiktok
+instagram
+facebook
+x
+rumble
+website
+email
+```
+
+Fields:
+
+```text
 enabled
 connected
 mode
@@ -201,22 +186,11 @@ supportsAnalytics
 notes
 ```
 
-Examples:
-
-```bash
-./scripts/channel-list.sh
-./scripts/channel-set.sh youtube enabled true
-./scripts/channel-set.sh youtube handle "@uselessapps"
-./scripts/channel-set.sh website url "https://uselessapps.fun"
-```
-
-Dashboard should show editable channel management.
-
 ---
 
-# Business Management Suite v1.5
+# Business Suite v1.5
 
-Add editable settings:
+Editable settings:
 
 ```text
 brandName
@@ -229,47 +203,23 @@ targetPublicPostsPerWeek
 notes
 ```
 
-Commands:
-
-```bash
-./scripts/business-report.sh
-./scripts/business-set.sh monthlyBudget 100
-./scripts/business-set.sh targetVideosPerDay 3
-```
-
 Dashboard should show:
 
 ```text
-business settings
 finance totals
-revenue
-cost
 profit
-production targets
+budget
+targets
+channel status
+API status
+workflow health
 ```
 
 ---
 
-# Video Lifecycle Manager
+# Video Cleanup / Delete / Reset
 
-Statuses:
-
-```text
-local_preview
-private_uploaded
-approved
-rejected
-needs_rerender
-published_unlisted
-published_public
-archived_local
-deleted_youtube
-cleanup_candidate
-```
-
----
-
-# Safe Delete Workflow
+## Safe Delete
 
 Command:
 
@@ -277,194 +227,139 @@ Command:
 ./scripts/delete-video.sh VIDEO_ID
 ```
 
-Requires exact typed confirmation:
+Requires exact phrase:
 
 ```text
 DELETE VIDEO_ID FROM YOUTUBE
 ```
 
-Then:
+No dashboard one-click delete.
 
-```text
-calls YouTube API videos.delete
-updates review DB
-updates processed DB
-writes audit event
-does not delete local files unless cleanup requested
-```
-
-Required OAuth scope:
-
-```text
-https://www.googleapis.com/auth/youtube
-```
-
----
-
-# Local Archive Workflow
-
-Command:
+## Archive Local State
 
 ```bash
 ./scripts/archive-video-state.sh VIDEO_ID
 ```
 
-Should:
-
-```text
-mark review status archived_local
-mark processed status archived_local
-write audit event
-not touch YouTube
-```
-
----
-
-# Clean Start Workflow
-
-Command:
+## Clean Start
 
 ```bash
 ./scripts/clean-start.sh
 ```
 
-Should:
-
-```text
-archive existing review state
-archive existing processed state
-archive existing generated local videos
-reset review DB to empty
-reset action queue optional
-keep apps/templates unless CLEAN_APPS=true
-keep audit logs
-keep finance
-keep platform/social/API settings
-```
-
-Requires typed confirmation:
+Requires:
 
 ```text
 CLEAN START USELESSAPPS
 ```
 
-No YouTube deletion in clean-start.
-
-YouTube deletion remains per-video typed command.
-
----
-
-# Dashboard Management APIs
-
-Add:
+It must:
 
 ```text
-GET  /api/connections
-POST /api/connections
-
-GET  /api/channels
-POST /api/channels
-
-GET  /api/business
-POST /api/business
-
-POST /api/archive-video
-```
-
-No dashboard YouTube delete endpoint in this build.
-
-Dashboard can show delete command only.
-
----
-
-# Dashboard Panels
-
-Add/strengthen:
-
-```text
-API Connection Manager
-Social Channel Manager
-Business Suite
-Video Lifecycle Manager
-Clean Start / Reset Panel
-```
-
-Each panel should show:
-
-```text
-current config
-copyable commands
-safe action buttons where allowed
-terminal-only commands where destructive
+archive local state
+reset review DB
+reset processed DB
+reset action queue
+keep audit logs
+keep finance
+keep API/social/business settings
+not delete YouTube videos
 ```
 
 ---
 
-# Tests
+# Final Completion Definition
 
-Full test must check:
-
-```text
-connection manager exists
-channel manager exists
-business manager exists
-delete-youtube exists
-archive-video-state exists
-cleanup-videos exists
-clean-start exists
-dashboard APIs exist
-delete command requires confirmation
-node --check passes
-scripts executable
-```
-
----
-
-# Completion Definition
-
-This build is complete when:
+The control-centre foundation is finished when:
 
 ```text
-connection-list works
-connection-set works
-channel-list works
-channel-set works
-business-report works
-business-set works
-archive-video-state works
-clean-start confirmation works
+repo is private
+dashboard theme switcher works
+/api/connections works
+/api/channels works
+/api/business works
+/api/archive-video works
+connection-list/set works
+channel-list/set works
+business-report/set works
 delete-video confirmation blocks wrong phrase
-dashboard shows API/social/business manager panels
+clean-start archives and resets local state
 full-test passes
+dashboard starts
+review API works
 commit and push succeeds
 ```
 
 ---
 
-# After This Build
+# True Remaining Work After This Build
 
-We will have a usable command centre.
-
-Next builds become:
+## Must-have before serious daily use
 
 ```text
-1. Dashboard auth + roles
-2. SQLite primary migration
-3. Export pack v2
-4. Finance ROI v2
-5. Production deployment
+dashboard auth/password
+secrets audit
+.env validation
+YouTube delete real test on disposable test video
+clean-start real test
+one clean fresh private upload after reset
+```
+
+## Should-have next
+
+```text
+SQLite primary migration
+dashboard forms instead of command copy blocks
+export pack zip
+finance ROI v2
+production deployment/systemd
+backup rotation
+```
+
+## Later
+
+```text
+real TikTok API
+real Instagram/Facebook API
+real X/Rumble integrations
+React rewrite if needed
+advanced analytics learning loop
+```
+
+---
+
+# Current Recommended Build Order
+
+```text
+1. Make repo private
+2. Fix full-test syntax
+3. Add management scripts if not already committed
+4. Add dashboard APIs for management
+5. Add themes
+6. Add dashboard management panels
+7. Test clean-start/delete safety
+8. Full test
+9. Commit/push
+10. Start fresh with clean videos
 ```
 
 ---
 
 # Operating Principle
 
-The system must never hide destructive actions.
+No destructive browser buttons.
 
-For destructive operations:
+For destructive actions:
 
 ```text
 show command
 require typed terminal confirmation
-audit everything
+audit result
+```
+
+For API/social management:
+
+```text
+dashboard can update metadata
+dashboard must not show or store secrets
 ```

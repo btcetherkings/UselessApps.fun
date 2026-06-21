@@ -42,6 +42,87 @@
       "enabled": false,
       "connected": false,
       "status": "future"
+    },
+    "youtube": {
+      "enabled": true,
+      "connected": true,
+      "status": "working",
+      "authType": "env",
+      "requiredEnvVars": [
+        "YOUTUBE_CLIENT_ID",
+        "YOUTUBE_CLIENT_SECRET",
+        "YOUTUBE_REFRESH_TOKEN"
+      ],
+      "lastCheckedAt": "2026-06-21T18:49:20.809Z",
+      "notes": ""
+    },
+    "youtube_analytics": {
+      "enabled": true,
+      "connected": true,
+      "status": "working_or_needs_scope",
+      "authType": "env",
+      "requiredEnvVars": [
+        "YOUTUBE_CLIENT_ID",
+        "YOUTUBE_CLIENT_SECRET",
+        "YOUTUBE_REFRESH_TOKEN"
+      ],
+      "lastCheckedAt": "2026-06-21T18:49:20.972Z",
+      "notes": ""
+    },
+    "tiktok": {
+      "enabled": false,
+      "connected": false,
+      "status": "future",
+      "authType": "env",
+      "requiredEnvVars": [],
+      "lastCheckedAt": "2026-06-21T18:49:21.037Z",
+      "notes": ""
+    },
+    "instagram": {
+      "enabled": false,
+      "connected": false,
+      "status": "future",
+      "authType": "env",
+      "requiredEnvVars": [],
+      "lastCheckedAt": "2026-06-21T18:49:21.100Z",
+      "notes": ""
+    },
+    "facebook": {
+      "enabled": false,
+      "connected": false,
+      "status": "future",
+      "authType": "env",
+      "requiredEnvVars": [],
+      "lastCheckedAt": "2026-06-21T18:49:21.164Z",
+      "notes": ""
+    },
+    "x": {
+      "enabled": false,
+      "connected": false,
+      "status": "future",
+      "authType": "env",
+      "requiredEnvVars": [],
+      "lastCheckedAt": "2026-06-21T18:49:21.228Z",
+      "notes": ""
+    },
+    "rumble": {
+      "enabled": false,
+      "connected": false,
+      "status": "manual_future",
+      "authType": "env",
+      "requiredEnvVars": [],
+      "lastCheckedAt": "2026-06-21T18:49:21.292Z",
+      "notes": ""
+    },
+    "website": {
+      "enabled": true,
+      "connected": false,
+      "status": "static_ready",
+      "authType": "env",
+      "requiredEnvVars": [],
+      "lastCheckedAt": "2026-06-21T18:49:21.355Z",
+      "notes": ""
     }
-  }
+  },
+  "updatedAt": "2026-06-21T18:49:21.355Z"
 }

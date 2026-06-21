@@ -10,5 +10,16 @@
     "averageToolingCostPerMonth": 0
   },
   "revenue": [],
-  "costs": []
+  "costs": [],
+  "settings": {
+    "brandName": "UselessApps.fun",
+    "siteUrl": "https://uselessapps.fun",
+    "currency": "GBP",
+    "monthlyBudget": 100,
+    "targetVideosPerDay": 3,
+    "targetPrivateUploadsPerDay": 1,
+    "targetPublicPostsPerWeek": 3,
+    "notes": "Safe absurd AI content factory. Private-first publishing."
+  },
+  "updatedAt": "2026-06-21T18:49:28.814Z"
 }

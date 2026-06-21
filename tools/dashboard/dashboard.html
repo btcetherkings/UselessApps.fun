@@ -7,6 +7,15 @@
   <link rel="stylesheet" href="/dashboard.css" />
 </head>
 <body>
+
+<div class="theme-switcher">
+  <button onclick="setThemeMode('dark')">Dark</button>
+  <button onclick="setThemeMode('light')">Light</button>
+  <button onclick="setThemeMode('gold')">Gold</button>
+  <button onclick="setThemeMode('colourful')">Colourful</button>
+</div>
+
+
   <div class="app-shell">
     <aside class="sidebar">
       <div class="brand">
@@ -235,7 +244,30 @@
         <div class="label">OPERATOR COMMANDS</div>
         <pre id="commands"></pre>
       </section>
-    </main>
+    
+<section id="management-suite" class="two-col">
+  <article class="panel">
+    <div class="label">API CONNECTION MANAGER</div>
+    <div id="apiConnectionManager"></div>
+  </article>
+
+  <article class="panel">
+    <div class="label">SOCIAL CHANNEL MANAGER</div>
+    <div id="socialChannelManager"></div>
+  </article>
+
+  <article class="panel">
+    <div class="label">BUSINESS MANAGEMENT SUITE</div>
+    <div id="businessManager"></div>
+  </article>
+
+  <article class="panel">
+    <div class="label">VIDEO LIFECYCLE / CLEAN RESET</div>
+    <div id="videoLifecycleManager"></div>
+  </article>
+</section>
+
+</main>
   </div>
 
   <script src="/dashboard.js"></script>
