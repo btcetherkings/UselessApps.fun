@@ -1932,6 +1932,48 @@ async function processOneApp(app) {
   }
 }
 
+
+function safeY(y1080x1920) {
+  return Math.round((Number(y1080x1920) / 1920) * SHORTS_HEIGHT);
+}
+
+function safeX(x1080x1920) {
+  return Math.round((Number(x1080x1920) / 1080) * SHORTS_WIDTH);
+}
+
+function safeLayout() {
+  return {
+    headlineY: safeY(220),
+    appFrameY: safeY(390),
+    punchlineY: safeY(1220),
+    ctaY: safeY(1400),
+    maxBottomTextY: safeY(1450),
+    mainTextX: safeX(80),
+    mainTextW: safeX(900) - safeX(80),
+    rightSafeMaxX: safeX(900),
+    bottomUnsafeY: safeY(1500)
+  };
+}
+
+function lowTextDensityEnabled() {
+  return SAFE_MODE || TEXT_DENSITY === 'low';
+}
+
+function shouldShowTicker() {
+  return !SAFE_MODE && TICKER_ENABLED;
+}
+
+function shouldShowFooter() {
+  return !SAFE_MODE && FOOTER_ENABLED;
+}
+
+function safeOneLine(text, maxLen = 58) {
+  const clean = String(text || '').replace(/\s+/g, ' ').trim();
+  if (clean.length <= maxLen) return clean;
+  return clean.slice(0, maxLen - 1).trim() + '…';
+}
+
+
 function printStartupInfo() {
   log('UselessApps.fun V3 RIDICULOUSNESS MACHINE starting...');
   log(`BASE_URL: ${BASE_URL}`);

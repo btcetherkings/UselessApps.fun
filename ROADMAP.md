@@ -4,146 +4,146 @@
 
 UselessApps.fun is an automated viral comedy machine.
 
-It creates tiny useless apps, records them, turns them into ridiculous fake-TV YouTube Shorts, uploads them to YouTube, tracks what has been published, and creates new content when the upload queue runs out.
+It creates tiny useless apps, records them, turns them into ridiculous fake-TV videos, uploads them privately, learns what performs, improves future content, and publishes only approved winners.
 
 > Tiny apps. Zero purpose. Maximum joy.
 
 ---
 
-## Current Major Milestone
+## Current Working Milestone
 
-The YouTube upload pipeline works.
+The automation engine, media intelligence layer, and safe-zone/audio foundation are working.
 
-Confirmed successful uploads include:
+Confirmed:
+
+- [x] Static app gallery exists
+- [x] `apps.json` exists
+- [x] First useless apps exist
+- [x] Local video generation works
+- [x] YouTube OAuth works
+- [x] YouTube private upload works
+- [x] YouTube Studio verification works
+- [x] `processed-v3.json` tracks uploaded/private videos
+- [x] Autopilot selects unpublished apps
+- [x] Autopilot creates new apps when the queue is empty
+- [x] Autopilot can generate and upload new generated apps
+- [x] Autopilot report works
+- [x] Story engine exists
+- [x] Metadata engine exists
+- [x] Quality engine exists
+- [x] Learning engine placeholder exists
+- [x] Media intelligence report works
+- [x] Safe-zone report works
+- [x] Music/SFX folders exist
+- [x] Final-preview script exists
+- [x] Quality/safe-zone/audio foundation committed
+
+Latest status:
 
 ```text
-Runaway Button
-https://youtu.be/zx5y4y-2CpY
+Total apps: 10
+Uploaded/private: 9
+Preview only: 1
+Failed: 0
+Pending: 0
+Autopilot runs: 16
 
-Staring Pet Rock
-https://youtu.be/nT6qA1pNWmU
+Recent types: rock, button, spinner
+Created by autopilot: 3
 
-Useless To-Do List
-https://youtu.be/LgOrHXpLt8E
-
-Unhelpful Calculator
-https://youtu.be/9ev-3qhQkSs
-
-Endless Loading Spinner
-https://youtu.be/MsadFVnCvIs
-
-The Government Calculator
-https://youtu.be/roo3gALgBDA
-
-Emotionally Unhelpful Calculator
-https://youtu.be/gYpcgNaw5W0
+Next likely action:
+There is a preview-only item. Upload it privately before generating another app.
 ```
 
-This proves:
+Important rule:
 
 ```text
-App creation / app selection
-→ local recording
-→ video generation
-→ YouTube OAuth
-→ YouTube upload
-→ YouTube Studio verification
-→ processed-v3.json tracking
+If preview-only exists, upload it privately or mark it skipped before creating the next app.
 ```
-
-The project has moved from prototype to an automated content pipeline.
 
 ---
 
 ## Current Problem
 
-The autopilot works, but the content generator is still too random and can produce similar apps, such as multiple calculator-style apps.
+The system now reads safe-zone flags and reports safe zones, but `generate-v3.js` still needs to actually enforce them in the scene layout.
 
-Current state from the latest report:
+Current safe-zone flags:
 
 ```text
-Total apps: 7
-Uploaded/private: 7
-Preview only: 0
-Failed: 0
-Pending: 0
-Autopilot runs: 8
+SAFE_MODE=true
+TEXT_DENSITY=low
+TICKER_ENABLED=false
+FOOTER_ENABLED=false
+QUALITY_MODE=preview/final
+RENDER_TARGET=shorts
 ```
 
-This means the queue is empty.
+Current safe-zone report for 720x1280:
 
-The next autopilot run should create a new useless app automatically. However, the current idea generator can still repeat the same type/theme because it has no strong anti-repeat memory.
+```text
+Avoid top: y 0-120
+Avoid bottom: y 1000-1280
+Avoid right UI area: x 613-720
+
+Main text zone:
+x 53-600
+y 147-967
+```
+
+Next build must make the video renderer obey those zones.
 
 ---
 
-## New Build Direction
+# Active Build: Safe-Mode Layout Enforcement
 
-The next build must turn the autopilot into a proper content engine.
+Status: Next build
 
-It needs:
+Goal:
 
-- a content ledger
-- anti-repeat logic
-- app type rotation
-- generated content history
-- upload queue awareness
-- daily run safety
-- clear reporting
-- public publishing gate
-- layout safe mode
+Make `generate-v3.js` obey safe-zone and low-text-density settings.
 
-The system should not just upload files. It should behave like a content producer.
+This build should:
 
----
+- disable ticker/footer when safe mode is enabled
+- reduce stacked text
+- keep important captions in safe areas
+- make each scene use one main joke/caption
+- improve readability on mobile
+- keep current upload flow working
+- keep dry-run and private upload working
 
-## Core Automation Principle
-
-The system must not rely on manual app picking.
-
-Correct behaviour:
+Files to update:
 
 ```text
-read apps.json
-→ read processed-v3.json
-→ read content-ledger.json
-→ find pending app
-→ if pending app exists, generate/upload it
-→ if no pending app exists, create a new app
-→ avoid repeating recent app types
-→ add new app to apps.json
-→ generate/upload video
-→ record output in processed-v3.json
-→ record content decision in content-ledger.json
-→ produce report
-→ wait for next scheduled run
+tools/video-generator/generate-v3.js
+tools/media/safe-zone-report.js
+scripts/final-preview-once.sh
+ROADMAP.md
 ```
 
-Manual `FORCE=true` is only for debugging.
-
-Production autopilot must use:
+New optional files:
 
 ```text
-FORCE=false
-AUTO_DRY_RUN=false
-AUTO_VIDEO_PRIVACY=private
+scripts/upload-preview-only-private.sh
+scripts/open-latest-video.sh
 ```
 
 ---
 
-## Phase 1: Core Site
+# Phase 1: Core Site
 
 Status: Completed
 
 - [x] Static gallery
 - [x] App pages
-- [x] apps.json data source
+- [x] `apps.json` data source
 - [x] GitHub Pages deployment
 - [x] Basic styling
 - [x] Uselessness scores
 
 ---
 
-## Phase 2: Basic Video Automation
+# Phase 2: Basic Video Automation
 
 Status: Completed
 
@@ -152,493 +152,374 @@ Status: Completed
 - [x] Intro/outro cards
 - [x] Google TTS narration
 - [x] Dry-run generation
-- [x] processed.json tracking
+- [x] processed tracking
 - [x] Retry failed apps
-- [x] MAX_PER_RUN support
-- [x] FORCE mode support
+- [x] `MAX_PER_RUN` support
+- [x] `FORCE` mode support
 
 ---
 
-## Phase 3: Ridiculous Brain
-
-Status: Completed
-
-File:
-
-```text
-tools/video-generator/useless-brain.js
-```
-
-Completed:
-
-- [x] Fake ML scoring: UselessNet
-- [x] Fake sentience measurement
-- [x] Fake expert panel
-- [x] Fake news ticker
-- [x] Fake certificate generator
-- [x] Viral titles
-- [x] Video descriptions
-- [x] Fake dashboard overlay
-- [x] App-specific action scripts
-
-Next:
-
-- [ ] Add stronger per-app narration templates
-- [ ] Add app-specific scene packs
-- [ ] Add different voice styles where possible
-- [ ] Add local audio effects by app type
-- [ ] Add title uniqueness scoring
-- [ ] Add joke duplication checks
-
----
-
-## Phase 4: V3 Ridiculousness Machine
-
-Status: Working, needs layout/content polish
-
-File:
-
-```text
-tools/video-generator/generate-v3.js
-```
-
-Scenes:
-
-- [x] Breaking useless news
-- [x] Emergency sirens card
-- [x] Official uselessness investigation
-- [x] Live app evidence clip
-- [x] Fake courtroom charge
-- [x] Fake sponsor break
-- [x] Certificate of absolute pointlessness
-- [x] Outro CTA
-
-Technical:
-
-- [x] Default 720x1280 local render
-- [x] Optional 1080x1920 final render
-- [x] No heavy blur by default
-- [x] Synthetic background music
-- [x] Chaos SFX
-- [x] FFmpeg percent warning fixed with drawtext expansion=none
-- [x] YouTube upload supported
-- [x] RECORD_BASE_URL support
-- [x] PUBLIC_BASE_URL support
-- [x] Local recording server support through autopilot
-
-Known issues:
-
-- [ ] Too much text on some scenes
-- [ ] Double text/overlap in evidence clip
-- [ ] Ticker competes with footer text
-- [ ] Need one main joke caption at a time
-- [ ] Need YouTube Shorts safe-zone redesign
-- [ ] Same Google TTS voice used for all videos
-
----
-
-## Phase 5: YouTube Upload System
+# Phase 3: YouTube Upload System
 
 Status: Completed for private testing
 
-Files:
-
-```text
-.env
-tools/youtube/get-refresh-token.js
-tools/youtube/test-youtube-auth.js
-tools/youtube/upload-existing-video.js
-```
-
-Completed:
-
 - [x] Google Cloud OAuth app created
-- [x] Test user issue solved
 - [x] Refresh token generated
-- [x] youtube.upload scope added
-- [x] youtube.readonly scope added
+- [x] YouTube upload scope works
 - [x] Channel auth confirmed
-- [x] Channel found: UselessApps
-- [x] Channel linked and eligible for long uploads
 - [x] Private upload from generator successful
 - [x] YouTube Studio verification complete
 
 Next:
 
-- [ ] Keep uploads private until layout is fixed
-- [ ] Add upload report
-- [ ] Add title/description review before public publishing
-- [ ] Add approval command to change private to public/unlisted later
+- [ ] Keep uploads private until layout and quality are fixed
+- [ ] Add metadata review
+- [ ] Add approval command to publish private videos later
+- [ ] Add YouTube Analytics integration
 
 ---
 
-## Phase 6: Autopilot Content Engine
+# Phase 4: Autopilot Content Engine
 
-Status: Working, now being upgraded
-
-File:
-
-```text
-tools/autopilot/useless-autopilot.js
-```
+Status: Working
 
 Working:
 
-- [x] Read apps.json
-- [x] Read processed-v3.json
+- [x] Read `apps.json`
+- [x] Read `processed-v3.json`
 - [x] Select next unpublished app
 - [x] Skip uploaded apps
 - [x] Create new useless app if queue is empty
-- [x] Add new app to apps.json
+- [x] Add new app to `apps.json`
 - [x] Start local recording server
-- [x] Run generate-v3.js
+- [x] Run `generate-v3.js`
 - [x] Upload privately or dry-run depending on env
-- [x] Write autopilot-state.json
-- [x] Verify local autogenerated app recording works
-- [x] Verify uploaded/private tracking works
+- [x] Write `autopilot-state.json`
+- [x] Autopilot report works
 
-Problem found:
+Current queue issue:
 
-- [x] Repetition risk identified
-- [ ] Content type rotation not yet strong enough
-- [ ] Calculator-type apps can repeat
-- [ ] No content-ledger.json yet
-- [ ] No recent-type avoidance yet
-- [ ] No daily production report yet
-
-Next build:
-
-- [ ] Add content-ledger.json
-- [ ] Add recent template/type avoidance
-- [ ] Add banned recent names check
-- [ ] Add queue-empty generation test command
-- [ ] Add autopilot report with next action
-- [ ] Add run limit safety
-- [ ] Add failed-run handling
-- [ ] Add automatic Git commit/push option for new apps
-- [ ] Add public publishing approval stage
+- [x] Preview-only detection works
+- [ ] Upload current preview-only item privately
+- [ ] Then resume queue-empty generation
 
 ---
 
-## Phase 7: Content Ledger
+# Phase 5: Generator Intelligence Integration
 
-Status: Next active build
+Status: Working
 
-New file:
+Working:
 
-```text
-tools/autopilot/content-ledger.json
-```
+- [x] Story engine exists
+- [x] Metadata engine exists
+- [x] Quality engine exists
+- [x] Generator flags exist:
+  - `USE_STORY_ENGINE`
+  - `USE_METADATA_ENGINE`
+  - `USE_QUALITY_ENGINE`
+- [x] `storyPackage is not defined` scope bug fixed
+- [x] Failed processed entry cleanup works
 
-Purpose:
+Next:
 
-Track generated content decisions, not just video uploads.
-
-It should record:
-
-- app name
-- slug
-- app type
-- source template
-- file path
-- generatedAt
-- previewedAt
-- uploadedAt
-- YouTube video ID
-- YouTube URL
-- privacy status
-- title used
-- recent type history
-- failure count
-- whether public approval is pending
-
-This prevents the system from making the same kind of app repeatedly.
-
-Required behaviour:
-
-```text
-If last 3 generated apps include calculator,
-do not generate calculator again.
-
-If all templates recently used,
-choose the least recently used type.
-
-If name already exists,
-generate a new name.
-
-If app was preview-only,
-do not create a new app until that app is uploaded or marked skipped.
-```
+- [ ] Confirm every new result stores `storyPackage`
+- [ ] Confirm every new result stores `metadataPackage`
+- [ ] Confirm every new result stores `qualityPlan`
+- [ ] Confirm YouTube title/description uses metadata package
+- [ ] Add script-hash repetition checks
 
 ---
 
-## Phase 8: Production Workflow
+# Phase 6: Quality Engine
 
-Status: In progress
+Status: Foundation complete, enforcement in progress
 
-Correct workflow:
+Working:
 
-```text
-Autopilot selects or creates app
-→ generates video
-→ uploads private
-→ records result
-→ human reviews
-→ public publish only after approval
-```
+- [x] Quality profiles exist
+- [x] Preview mode exists
+- [x] Final mode exists
+- [x] Web mode exists
+- [x] Square mode exists
+- [x] Music/SFX directory scan works
+- [x] Media intelligence report shows music/SFX counts
+- [x] Safe-zone report works
+- [x] Final preview script exists
 
-Important rule:
+Next:
 
-```text
-Private first. Public only after review.
-```
-
-Needed:
-
-- [ ] Review dashboard/report
-- [ ] Private upload list
-- [ ] Publish approval command
-- [ ] Metadata improvement command
-- [ ] Failed upload retry command
-- [ ] Public/unlisted update script
+- [ ] Use quality profile for actual output size/FPS/encoding
+- [ ] Add final render command that forces 1080x1920
+- [ ] Add optional 16:9 web render
+- [ ] Add optional square render
+- [ ] Add real music files
+- [ ] Add real SFX files
+- [ ] Add audio normalization
+- [ ] Add music ducking
 
 ---
 
-## Phase 9: YouTube Shorts Layout Fix
+# Phase 7: Safe-Zone Layout Enforcement
 
-Priority: Highest after autopilot content ledger
-
-Goal:
-
-Make videos readable on phones and avoid YouTube UI covering text.
-
-Tasks:
-
-- [ ] Add SAFE_MODE=true
-- [ ] Add TICKER_ENABLED=false
-- [ ] Add FOOTER_ENABLED=false
-- [ ] Add TEXT_DENSITY=low/medium/chaos
-- [ ] Remove duplicate lower caption stack
-- [ ] Use one big punchline caption at a time
-- [ ] Move CTA above YouTube UI
-- [ ] Keep important text between y=220 and y=1500 on 1080x1920
-- [ ] Keep app footage clear and central
-- [ ] Create safe-zone test render
-- [ ] Re-upload private test version
+Status: Next active technical fix
 
 Design rule:
 
 ```text
 One scene = one main joke.
-No scene should have five competing text boxes.
+No scene should have ticker + footer + lower caption + CTA competing.
 ```
 
----
-
-## Phase 10: Per-App Comedy Modes
-
-Priority: High
-
-Each app should feel like its own ridiculous mini-show.
-
-### Button Apps
-
-- [ ] Fake police chase
-- [ ] Cursor bodycam
-- [ ] Wanted poster
-- [ ] Failed arrest report
-- [ ] Do not approach the button warning
-
-### Rock / Object Apps
-
-- [ ] Fake wildlife documentary
-- [ ] Object refuses interview
-- [ ] Awkward silence counter
-- [ ] Expert loses staring contest
-- [ ] Emotional support certificate
-
-### To-Do / Productivity Apps
-
-- [ ] Productivity audit
-- [ ] Corporate meltdown
-- [ ] Efficiency destroyed report
-- [ ] CEO resignation joke
-- [ ] Task deletion emergency
-
-### Calculator / Maths Apps
-
-- [ ] Maths emergency
-- [ ] Numbers union strike
-- [ ] 2+2 under review
-- [ ] Calculator courtroom testimony
-- [ ] Government-classified answer
-
-### Spinner / Waiting Apps
-
-- [ ] Existential horror documentary
-- [ ] Time dilation warning
-- [ ] Still loading since 2023
-- [ ] Fake spiritual awakening
-- [ ] Loading support group
-
----
-
-## Phase 11: Content Scale
-
-Priority: Medium
-
 Tasks:
 
-- [ ] Generate all current apps privately
-- [ ] Select best video
-- [ ] Publish first public Short
-- [ ] Track views/retention
-- [ ] Improve hook based on retention
-- [ ] Publish 1 Short per day
-- [ ] Add 10 more useless apps
-- [ ] Build weekly compilation
+- [ ] Add layout helper functions inside `generate-v3.js`
+- [ ] Add `safeY()` helper
+- [ ] Add `safeX()` helper
+- [ ] Add safe headline zone
+- [ ] Add safe punchline zone
+- [ ] Add safe CTA zone
+- [ ] Disable ticker if `TICKER_ENABLED=false`
+- [ ] Disable footer if `FOOTER_ENABLED=false`
+- [ ] Disable lowerLine2/lowerLine3 if `TEXT_DENSITY=low`
+- [ ] Keep evidence clip app footage clear
+- [ ] Keep CTA above YouTube bottom UI
+- [ ] Test with 720x1280 preview
+- [ ] Test with 1080x1920 final preview
+- [ ] Upload one private safe-mode final test
 
-Current uploaded/private queue:
-
-- [x] Runaway Button
-- [x] Staring Pet Rock
-- [x] Useless To-Do List
-- [x] Unhelpful Calculator
-- [x] Endless Loading Spinner
-- [x] The Government Calculator
-- [x] Emotionally Unhelpful Calculator
-
----
-
-## Phase 12: Viral Loop
-
-Priority: Medium
-
-Goal:
-
-Turn viewers into idea submitters.
-
-Tasks:
-
-- [ ] Submit your worst app idea form
-- [ ] Store submissions
-- [ ] Credit submitter
-- [ ] Generate app from idea
-- [ ] Generate video from app
-- [ ] Publish as Short
-- [ ] Add leaderboard
-- [ ] Add voting
-
-Loop:
+Safe placements for 720x1280:
 
 ```text
-Viewer watches stupid video
-→ submits worse idea
-→ app/video gets made
-→ viewer gets credited
-→ viewer shares
-→ more submissions
+Headline y: 147
+App frame y: 260
+Punchline y: 813
+CTA y: 933
+Max bottom text y: 967
+```
+
+Safe placements for 1080x1920:
+
+```text
+Headline y: 220
+App frame y: 390
+Punchline y: 1220
+CTA y: 1400
+Max bottom text y: 1450
 ```
 
 ---
 
-## Phase 13: Scheduled Operation
+# Phase 8: Audio and Music Foundation
+
+Status: Folder foundation complete
+
+Folders:
+
+```text
+assets/music/
+assets/sfx/
+```
+
+Working:
+
+- [x] `assets/music/README.md`
+- [x] `assets/sfx/README.md`
+
+Next:
+
+- [ ] Add real background music
+- [ ] Add real SFX
+- [ ] Add music manifest
+- [ ] Add SFX manifest
+- [ ] Add music rotation
+- [ ] Add SFX by scene type
+- [ ] Add music ducking
+- [ ] Add audio normalization
+- [ ] Add final loudness target
+
+Suggested env defaults:
+
+```text
+USE_SYNTH_MUSIC=true
+MUSIC_VOLUME=0.035
+CHAOS_SFX_VOLUME=0.09
+NARRATION_VOLUME=1.25
+```
+
+---
+
+# Phase 9: SEO / GEO / Algorithm Packaging Engine
+
+Status: Created, partially integrated
+
+Working:
+
+- [x] YouTube metadata package exists
+- [x] TikTok caption package exists
+- [x] Instagram/Facebook Reels caption package exists
+- [x] Rumble package exists
+- [x] X/Twitter post exists
+- [x] AI-readable summary exists
+- [x] Pinned comment exists
+
+Next:
+
+- [ ] Confirm metadata package is used in real YouTube upload
+- [ ] Store metadata package in `processed-v3.json`
+- [ ] Add metadata ledger
+- [ ] Add title repetition detection
+- [ ] Add hashtag rotation
+- [ ] Add platform metadata export files
+
+---
+
+# Phase 10: Analytics and Learning Engine
+
+Status: Placeholder created
+
+Working:
+
+- [x] Performance DB exists
+- [x] Learning report reads uploaded videos
+- [x] Scoring function exists
+- [x] Media intelligence report shows uploaded count
+
+Next:
+
+- [ ] Add YouTube Analytics API pull
+- [ ] Import YouTube video stats
+- [ ] Store stats by video ID
+- [ ] Score videos
+- [ ] Recommend best app types
+- [ ] Recommend best story modes
+- [ ] Recommend best title patterns
+- [ ] Feed recommendations into autopilot
+
+---
+
+# Phase 11: Multi-Platform Render Engine
 
 Status: Planned
 
-Goal:
+Do not upload the exact same video twice to the same platform as mobile/web.
 
-Run the machine automatically.
+Instead generate proper platform variants:
 
-Cron target:
-
-```cron
-0 10 * * * cd /home/uadmin/useless-apps-fun && /home/uadmin/useless-apps-fun/scripts/autopilot-upload-once-private.sh >> /home/uadmin/useless-apps-fun/tools/autopilot/cron.log 2>&1
+```text
+9:16 vertical short
+16:9 horizontal web/standard video
+1:1 square social feed
+thumbnail frame
+preview GIF
 ```
-
-Before enabling cron:
-
-- [ ] Content ledger works
-- [ ] Repetition protection works
-- [ ] Queue-empty generation works
-- [ ] Private upload works reliably
-- [ ] Safe-zone layout acceptable
-- [ ] Logs are readable
-- [ ] Failures do not create infinite loops
-
----
-
-## Immediate Next Build
-
-Build content-ledger and anti-repeat autopilot.
 
 Tasks:
 
-1. Create `tools/autopilot/content-ledger.json`.
-2. Update `tools/autopilot/useless-autopilot.js`.
-3. Add app type rotation.
-4. Avoid last 3 generated types.
-5. Improve report to show next action.
-6. Run autopilot with empty queue.
-7. Confirm it creates a new non-calculator app.
-8. Upload that new app privately.
-9. Confirm report shows no pending apps.
-10. Then move to Shorts safe-zone layout fix.
+- [ ] Add `RENDER_TARGET=shorts/web/square/all`
+- [ ] Add `platform-renders/`
+- [ ] Store render variants in ledger
+- [ ] Upload correct variant to each platform
+- [ ] Avoid duplicate same-platform uploads unless meaningfully different
 
 ---
 
-## Current Command Set
+# Phase 12: Publish Approval System
 
-Report:
+Status: Required before public publishing
+
+Files to add:
+
+```text
+tools/publish/list-private.js
+tools/publish/approve.js
+tools/publish/publish-youtube.js
+```
+
+Workflow:
+
+```text
+autopilot uploads private
+→ review quality/story/metadata
+→ approve
+→ publish script changes privacy to public/unlisted
+→ ledger records publishedAt
+```
+
+Tasks:
+
+- [ ] List private uploaded videos
+- [ ] Show metadata
+- [ ] Show local file
+- [ ] Show YouTube URL
+- [ ] Mark approved
+- [ ] Publish to public
+- [ ] Mark rejected
+- [ ] Mark needs re-render
+- [ ] Keep audit log
+
+---
+
+# Immediate Next Build Tasks
+
+1. Upload current preview-only item privately.
+2. Add helper script for uploading preview-only queue item.
+3. Patch safe-mode layout flags in `generate-v3.js`.
+4. Add low-density text rules.
+5. Disable ticker/footer in scene generation when env says false.
+6. Add latest-video opener script.
+7. Run fast safe preview.
+8. Run final safe preview.
+9. Upload one final safe private test.
+10. Update report and commit.
+
+---
+
+# Current Command Set
+
+Upload preview-only item privately:
+
+```bash
+AUTO_DRY_RUN=false ./scripts/autopilot-upload-once-private.sh
+```
+
+Autopilot report:
 
 ```bash
 ./scripts/autopilot-report.sh
 ```
 
-Preview next app or create one if queue is empty:
+Media intelligence report:
 
 ```bash
-./scripts/autopilot-preview-once.sh
+./scripts/media-intelligence-report.sh
 ```
 
-Upload next app privately or create one if queue is empty:
+Safe-zone report:
 
 ```bash
-./scripts/autopilot-upload-once-private.sh
+./scripts/safe-zone-report.sh
 ```
 
-Check generated videos:
+Fast safe preview:
 
 ```bash
-ls -lh generated-videos/*-v3.mp4
+USE_STORY_ENGINE=true USE_METADATA_ENGINE=true USE_QUALITY_ENGINE=true SAFE_MODE=true TEXT_DENSITY=low TICKER_ENABLED=false FOOTER_ENABLED=false ./scripts/autopilot-preview-once.sh
 ```
 
-Check processed status:
+Final safe preview:
 
 ```bash
-cat tools/video-generator/processed-v3.json
-```
-
-Check autopilot state:
-
-```bash
-cat tools/autopilot/autopilot-state.json
-```
-
-Check future content ledger:
-
-```bash
-cat tools/autopilot/content-ledger.json
+./scripts/final-preview-once.sh
 ```
 
 ---
 
-## Current Priority
+# Current Priority
 
-1. Add content-ledger anti-repeat engine.
-2. Confirm next queue-empty run creates a fresh non-repeated app type.
-3. Upload it privately.
-4. Fix Shorts visual safe-zone.
-5. Create public publishing approval script.
-
-
+1. Upload preview-only item privately.
+2. Enforce safe-mode layout in generator.
+3. Verify readable 720x1280 preview.
+4. Verify readable 1080x1920 final preview.
+5. Upload one private final-quality test.
+6. Then start YouTube analytics pull.
