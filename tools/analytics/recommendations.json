@@ -1,0 +1,34 @@
+{
+  "generatedAt": "2026-06-21T10:50:28.001Z",
+  "source": {
+    "performanceDb": "/home/uadmin/useless-apps-fun/tools/analytics/performance-db.json",
+    "lastPulledAt": null
+  },
+  "summary": {
+    "trackedVideos": 0,
+    "videosWithPositiveScore": 0,
+    "bestVideo": null,
+    "weakestVideo": null
+  },
+  "prefer": {
+    "appTypes": [],
+    "storyModes": [],
+    "hooks": [],
+    "titlePatterns": []
+  },
+  "avoid": {
+    "appTypes": [],
+    "storyModes": [],
+    "hooks": []
+  },
+  "rankings": {
+    "appTypes": [],
+    "storyModes": [],
+    "hooks": []
+  },
+  "sequelIdeas": [],
+  "notes": [
+    "No videos tracked yet. Run youtube-stats-pull first.",
+    "All scores are zero or missing. Use variety and anti-repeat rules only. Do not overfit yet."
+  ]
+}

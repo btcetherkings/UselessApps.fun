@@ -108,3 +108,34 @@ if (!ranked.length) {
 }
 
 console.log('');
+
+// Learning recommendations summary
+try {
+  const recFile = path.join(ROOT_DIR, 'tools', 'analytics', 'recommendations.json');
+  const rec = readJson(recFile, null);
+
+  console.log('Learning Recommendations File');
+  console.log('-----------------------------');
+
+  if (!rec) {
+    console.log('No recommendations.json yet. Run ./scripts/learning-recommendations.sh');
+  } else {
+    console.log(`Generated: ${rec.generatedAt}`);
+    console.log(`Prefer app types: ${(rec.prefer?.appTypes || []).join(', ') || 'none'}`);
+    console.log(`Prefer story modes: ${(rec.prefer?.storyModes || []).join(', ') || 'none'}`);
+    console.log(`Avoid app types: ${(rec.avoid?.appTypes || []).join(', ') || 'none'}`);
+    console.log(`Avoid story modes: ${(rec.avoid?.storyModes || []).join(', ') || 'none'}`);
+
+    if (rec.sequelIdeas?.length) {
+      console.log('');
+      console.log('Sequel ideas:');
+      rec.sequelIdeas.slice(0, 5).forEach((idea, i) => {
+        console.log(`${i + 1}. ${idea.idea}`);
+      });
+    }
+  }
+
+  console.log('');
+} catch (err) {
+  console.log(`Could not read recommendations: ${err.message}`);
+}
