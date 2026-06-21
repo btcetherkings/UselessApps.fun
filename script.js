@@ -1,10 +1,52 @@
-const apps = [
-    { name: "Runaway Button", author: "You", description: "A button that literally runs away from your cursor.", file: "apps/runaway-button.html", uselessness: 98 },
-    { name: "Staring Pet Rock", author: "Nature", description: "A pet that does nothing but stare at you.", file: "apps/pet-rock.html", uselessness: 93 },
-    { name: "Useless To-Do List", author: "You", description: "A to-do list that deletes your tasks before you can do them.", file: "apps/useless-todo.html", uselessness: 99 },
-    { name: "Unhelpful Calculator", author: "You", description: "A calculator that refuses to give a straightforward result.", file: "apps/unhelpful-calculator.html", uselessness: 95 },
-    { name: "Endless Loading Spinner", author: "You", description: "A loading bar that never finishes.", file: "apps/endless-spinner.html", uselessness: 97 }
-];
+[
+  {
+    "name": "Runaway Button",
+    "author": "You",
+    "description": "A button that literally runs away from your cursor.",
+    "file": "apps/runaway-button.html",
+    "uselessness": 98,
+    "vibe": "panic",
+    "fakeCategory": "Button Avoidance Technology"
+  },
+  {
+    "name": "Staring Pet Rock",
+    "author": "Nature",
+    "description": "A pet that does nothing but stare at you.",
+    "file": "apps/pet-rock.html",
+    "uselessness": 93,
+    "vibe": "awkward",
+    "fakeCategory": "Emotional Support Mineral"
+  },
+  {
+    "name": "Useless To-Do List",
+    "author": "You",
+    "description": "A to-do list that deletes your tasks before you can do them.",
+    "file": "apps/useless-todo.html",
+    "uselessness": 99,
+    "vibe": "productivity-destruction",
+    "fakeCategory": "Anti-Productivity Software"
+  },
+  {
+    "name": "Unhelpful Calculator",
+    "author": "You",
+    "description": "A calculator that refuses to give a straightforward result.",
+    "file": "apps/unhelpful-calculator.html",
+    "uselessness": 95,
+    "vibe": "confusion",
+    "fakeCategory": "Mathematical Sabotage"
+  },
+  {
+    "name": "Endless Loading Spinner",
+    "author": "You",
+    "description": "A loading bar that never finishes.",
+    "file": "apps/endless-spinner.html",
+    "uselessness": 97,
+    "vibe": "existential",
+    "fakeCategory": "Infinite Waiting Technology"
+  }
+]
+
+
 const container = document.getElementById('apps-container');
 apps.forEach(app => {
     const card = document.createElement('div');

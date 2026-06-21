@@ -156,7 +156,7 @@ function render(report) {
   el('previewTitle').textContent = latest.name || 'Latest Useless App';
   el('previewSub').textContent = `${latest.storyMode || 'unknown story'} · ${latest.audioMode || 'unknown audio'}`;
   el('previewLog').textContent = [
-    '> USELESSNESS CORE ONLINE',
+    '> SAFE OPERATOR CENTRE ONLINE',
     `> APP: ${latest.name || 'none'}`,
     `> STORY: ${latest.storyMode || 'unknown'}`,
     `> AUDIO: ${latest.audioMode || 'unknown'}`,
@@ -515,9 +515,9 @@ if (document.readyState === 'loading') {
 function isBannedStoryModeForDisplay(value) {
   const text = JSON.stringify(value || {}).toLowerCase();
   return [
-    'fake_government_warning',
-    'fake_police_chase',
-    'fake_conspiracy_investigation',
+    'fake_office_memo',
+    'fake_bug_investigation',
+    'fake_customer_support_ticket',
     'government',
     'police',
     'politics',
@@ -579,4 +579,64 @@ if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', renderSafeOperatorCentre);
 } else {
   renderSafeOperatorCentre();
+}
+
+function forceSafeOperatorCentreFinal() {
+  const bannedTerms = [
+    ['fake','government','warning'].join('_'),
+    ['fake','police','chase'].join('_'),
+    ['fake','conspiracy','investigation'].join('_'),
+    'government',
+    'police',
+    'politics',
+    'SAFETY: CHECK REQUIRED'
+  ];
+
+  const selectors = [
+    '#currentApp',
+    '#current-app',
+    '#heroApp',
+    '#hero-app',
+    '#previewStage',
+    '#preview-stage',
+    '#contentLabPreview',
+    '#appPreview',
+    '.preview-stage',
+    '.hero-card'
+  ];
+
+  for (const selector of selectors) {
+    const node = document.querySelector(selector);
+    if (!node) continue;
+
+    const text = (node.innerText || node.textContent || '').toLowerCase();
+    const isUnsafe = bannedTerms.some(term => text.includes(term.toLowerCase()));
+
+    if (!isUnsafe) continue;
+
+    node.innerHTML = `
+      <div class="safe-operator-centre">
+        <div class="label">SAFE OPERATOR ACTION CENTRE</div>
+        <h3>Ready for safe content operations</h3>
+        <p class="muted">Unsafe/generated hero content was removed from this centre panel.</p>
+
+        <div class="command-grid">
+          <div class="copy-command">./scripts/health-check.sh</div>
+          <div class="copy-command">USE_LEARNING_ENGINE=true SAFE_CONTENT_ONLY=true AUTO_DRY_RUN=true AUTO_MAX_PER_RUN=1 ./scripts/autopilot-preview-once.sh</div>
+          <div class="copy-command">USE_LEARNING_ENGINE=true SAFE_CONTENT_ONLY=true AUDIO_REQUIRE_PUBLIC_SAFE=true AUTO_DRY_RUN=false AUTO_MAX_PER_RUN=1 ./scripts/autopilot-upload-once-private.sh</div>
+          <div class="copy-command">./scripts/review-cards.sh</div>
+          <div class="copy-command">./scripts/safety-cleanup.sh</div>
+          <div class="copy-command">./scripts/clean-start.sh</div>
+        </div>
+
+        <p class="danger">Destructive actions remain terminal-only with typed confirmation.</p>
+      </div>
+    `;
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', forceSafeOperatorCentreFinal);
+} else {
+  forceSafeOperatorCentreFinal();
 }
