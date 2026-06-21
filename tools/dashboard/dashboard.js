@@ -1,3 +1,37 @@
+
+function safeText(value, fallback = '') {
+  if (value === undefined || value === null) return fallback;
+  return String(value);
+}
+
+function safeArray(value) {
+  return Array.isArray(value) ? value : [];
+}
+
+function safeObject(value) {
+  return value && typeof value === 'object' && !Array.isArray(value) ? value : {};
+}
+
+function safeSetHtml(id, html) {
+  const node = document.getElementById(id);
+  if (!node) return false;
+  node.innerHTML = html;
+  return true;
+}
+
+function renderErrorPanel(err) {
+  const main = document.querySelector('main') || document.body;
+  const panel = document.createElement('section');
+  panel.className = 'panel';
+  panel.innerHTML = `
+    <div class="label">DASHBOARD RENDER ERROR</div>
+    <h3>One dashboard section failed to render</h3>
+    <p class="danger">${safeText(err.message || err)}</p>
+    <p class="muted">Backend APIs may still be working. Run ./scripts/dashboard.sh and refresh.</p>
+  `;
+  main.prepend(panel);
+}
+
 'use strict';
 
 function el(id) {
@@ -79,6 +113,20 @@ function renderPreviousGenerations(report) {
 }
 
 function render(report) {
+  // render-safe-normalise
+  report = safeObject(report);
+  report.kpis = safeObject(report.kpis);
+  report.health = safeObject(report.health);
+  report.actions = safeArray(report.actions);
+  report.rows = safeArray(report.rows);
+  report.cards = safeArray(report.cards);
+  report.review = safeObject(report.review);
+  report.business = safeObject(report.business);
+  report.social = safeObject(report.social);
+  report.connections = safeObject(report.connections);
+  report.jobs = safeObject(report.jobs);
+
+  try {
   el('generatedAt').textContent = `AI STATUS: ACTIVE · ${report.generatedAt || 'unknown'}`;
 
   el('healthScore').textContent = `${report.health?.score ?? '--'}/100`;
@@ -318,13 +366,26 @@ function render(report) {
     'USE_LEARNING_ENGINE=true SAFE_CONTENT_ONLY=true AUTO_DRY_RUN=true ./scripts/autopilot-preview-once.sh',
     'USE_LEARNING_ENGINE=true SAFE_CONTENT_ONLY=true AUDIO_REQUIRE_PUBLIC_SAFE=true AUTO_DRY_RUN=false ./scripts/autopilot-upload-once-private.sh'
   ].join('\\n');
+
+  } catch (err) {
+    console.error('render() failed:', err);
+    renderErrorPanel(err);
+  }
 }
 
 async function main() {
+  // main-render-safe-wrapper
+  try {
+
   const res = await fetch('/api/report', { cache: 'no-store' });
   const report = await res.json();
   render(report);
   loadReviewCards();
+
+  } catch (err) {
+    console.error('Dashboard main failed:', err);
+    renderErrorPanel(err);
+  }
 }
 
 main().catch(err => {
@@ -639,4 +700,84 @@ if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', forceSafeOperatorCentreFinal);
 } else {
   forceSafeOperatorCentreFinal();
+}
+
+
+function renderFinalSafeOperatorCentre() {
+  const html = `
+    <div class="safe-operator-centre">
+      <div class="label">SAFE OPERATOR ACTION CENTRE</div>
+      <h3>Ready for safe content operations</h3>
+      <p class="muted">No safe active preview is selected. Use these operator actions to generate, review, publish, or clean content safely.</p>
+
+      <div class="command-grid">
+        <div class="copy-command" onclick="copyText('./scripts/health-check.sh')">./scripts/health-check.sh</div>
+        <div class="copy-command" onclick="copyText('USE_LEARNING_ENGINE=true SAFE_CONTENT_ONLY=true AUTO_DRY_RUN=true AUTO_MAX_PER_RUN=1 ./scripts/autopilot-preview-once.sh')">USE_LEARNING_ENGINE=true SAFE_CONTENT_ONLY=true AUTO_DRY_RUN=true AUTO_MAX_PER_RUN=1 ./scripts/autopilot-preview-once.sh</div>
+        <div class="copy-command" onclick="copyText('USE_LEARNING_ENGINE=true SAFE_CONTENT_ONLY=true AUDIO_REQUIRE_PUBLIC_SAFE=true AUTO_DRY_RUN=false AUTO_MAX_PER_RUN=1 ./scripts/autopilot-upload-once-private.sh')">USE_LEARNING_ENGINE=true SAFE_CONTENT_ONLY=true AUDIO_REQUIRE_PUBLIC_SAFE=true AUTO_DRY_RUN=false AUTO_MAX_PER_RUN=1 ./scripts/autopilot-upload-once-private.sh</div>
+        <div class="copy-command" onclick="copyText('./scripts/review-cards.sh')">./scripts/review-cards.sh</div>
+        <div class="copy-command" onclick="copyText('./scripts/safety-cleanup.sh')">./scripts/safety-cleanup.sh</div>
+        <div class="copy-command" onclick="copyText('./scripts/clean-start.sh')">./scripts/clean-start.sh</div>
+      </div>
+
+      <p class="danger">Destructive actions stay terminal-only with typed confirmation.</p>
+    </div>
+  `;
+
+  const selectors = [
+    '#previewStage',
+    '#preview-stage',
+    '#contentLabPreview',
+    '#appPreview',
+    '#currentApp',
+    '#current-app',
+    '#heroApp',
+    '#hero-app',
+    '.preview-stage',
+    '.hero-card'
+  ];
+
+  for (const selector of selectors) {
+    const node = document.querySelector(selector);
+    if (!node) continue;
+
+    const text = (node.innerText || node.textContent || '').toLowerCase();
+
+    const looksLikeEmptySpinner =
+      text.trim() === '' ||
+      text.includes('loading') ||
+      text.includes('spinner') ||
+      node.querySelector('.spinner') ||
+      node.querySelector('spinner');
+
+    const unsafe =
+      text.includes(['fake','government','warning'].join('_')) ||
+      text.includes(['fake','police','chase'].join('_')) ||
+      text.includes(['fake','conspiracy','investigation'].join('_')) ||
+      text.includes('safety: check required') ||
+      text.includes('government') ||
+      text.includes('police') ||
+      text.includes('politics');
+
+    if (looksLikeEmptySpinner || unsafe) {
+      node.innerHTML = html;
+      node.dataset.safeOperatorCentre = 'true';
+      return;
+    }
+  }
+
+  // If no known preview area exists, add one near top of main.
+  const main = document.querySelector('main') || document.body;
+  if (main && !document.querySelector('[data-safe-operator-centre="true"]')) {
+    const section = document.createElement('section');
+    section.className = 'panel';
+    section.dataset.safeOperatorCentre = 'true';
+    section.innerHTML = html;
+    main.prepend(section);
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', renderFinalSafeOperatorCentre);
+} else {
+  renderFinalSafeOperatorCentre();
 }
