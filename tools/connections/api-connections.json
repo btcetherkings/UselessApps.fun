@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "connections": {
+    "youtube_data_api": {
+      "enabled": true,
+      "connected": true,
+      "status": "working",
+      "lastSuccess": null,
+      "lastError": null,
+      "requiredScopes": [
+        "https://www.googleapis.com/auth/youtube",
+        "https://www.googleapis.com/auth/youtube.upload",
+        "https://www.googleapis.com/auth/youtube.readonly"
+      ]
+    },
+    "youtube_analytics_api": {
+      "enabled": true,
+      "connected": false,
+      "status": "needs_scope_test",
+      "lastSuccess": null,
+      "lastError": null,
+      "requiredScopes": [
+        "https://www.googleapis.com/auth/yt-analytics.readonly"
+      ]
+    },
+    "tiktok_api": {
+      "enabled": false,
+      "connected": false,
+      "status": "future"
+    },
+    "instagram_graph_api": {
+      "enabled": false,
+      "connected": false,
+      "status": "future"
+    },
+    "facebook_graph_api": {
+      "enabled": false,
+      "connected": false,
+      "status": "future"
+    },
+    "x_api": {
+      "enabled": false,
+      "connected": false,
+      "status": "future"
+    }
+  }
+}

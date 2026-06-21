@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "currency": "GBP",
+  "generatedAt": null,
+  "assumptions": {
+    "estimatedRevenuePerThousandViews": 0,
+    "subscriberValue": 0,
+    "averageApiCostPerVideo": 0,
+    "averageHostingCostPerMonth": 0,
+    "averageToolingCostPerMonth": 0
+  },
+  "revenue": [],
+  "costs": []
+}
