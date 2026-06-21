@@ -12,7 +12,7 @@ It creates tiny useless apps, records them, turns them into ridiculous fake-TV v
 
 ## Current Working Milestone
 
-The automation engine, media intelligence layer, safe-zone foundation, YouTube private upload, private review workflow, FFmpeg audio mixing, production audio manifest, and public-safe audio upload test are working.
+The generation, private upload, audio mix, production audio validation, review sync, and unlisted publish flow are now working or ready for retest.
 
 Confirmed:
 
@@ -20,89 +20,73 @@ Confirmed:
 - [x] YouTube private upload works
 - [x] Audio engine exists
 - [x] FFmpeg audio mix works
-- [x] `audioMix.mode = full_mix` previously confirmed
+- [x] `audioMix.mode = full_mix` has been confirmed
 - [x] Production-safe demo audio assets exist
 - [x] `AUDIO_REQUIRE_PUBLIC_SAFE=true` can select production-safe assets
 - [x] Corporate Regret Board uploaded privately with production-safe music
-- [x] Review queue imports uploaded private videos
+- [x] Review queue imports private uploaded videos
 - [x] Audio validation flags older pre-audio videos as blocked for public
+- [x] Review sync order fixed or in progress
 - [x] Unlisted publishing has worked for at least one approved video
 
 ---
 
-## Latest Observed State
+## Latest State
 
-Corporate Regret Board was successfully rendered and privately uploaded:
-
-```text
-Uploading to YouTube as private: Corporate Regret Board
-Uploaded: Corporate Regret Board
-https://youtu.be/Nx2Ek9u165c
-Done. Attempted 1, completed 1.
-```
-
-Audio validation then showed:
+Review sync has been built so the correct flow is now:
 
 ```text
-Corporate Regret Board
-uploaded: true
-mode: narration_music
-readiness: needs_audio_review
-publicSafe: true
-music: assets/music/documentary-bed-01.wav
-warnings: sfx_missing
-```
-
-Review queue later showed Corporate Regret Board as:
-
-```text
-audio: not validated yet
-```
-
-Cause:
-
-```text
-audio-validate ran before review-private imported the new uploaded video into review-db.json.
+private upload
+→ import private uploads into review DB
+→ validate audio
+→ update review DB
+→ review report
+→ approve
+→ publish unlisted
+→ optional public publish only after explicit gate
 ```
 
 Next build:
 
 ```text
-review import → audio validation → review report
+review report polish
+→ approval readiness summary
+→ public publish preflight
+→ unlisted retest
+→ public publish dry/precheck
 ```
-
-must become one clean command.
 
 ---
 
-# Active Build: Review Sync + Audio Validation Automation
+# Active Build: Review Report Polish + Public Publish Retest
 
 Status: Next build
 
 Goal:
 
-Make review reports always show current audio validation after new private uploads.
+Make the review and publish workflow feel like a proper production control panel.
 
 This build should:
 
-- import private uploads before audio validation
-- validate every uploaded video after import
-- update review DB automatically
-- make `review-private.sh` auto-run validation
-- make `publish-report.sh` auto-run validation
-- treat `sfx_missing` as a warning, not a public blocker
-- show Corporate Regret Board as publicSafe=true in review queue
-- keep older pre-audio videos blocked for public
-- add a single review sync command
+- make review reports easier to read
+- group videos by readiness
+- show publish eligibility clearly
+- show audio safety clearly
+- show approved/unpublished queue clearly
+- add a publish preflight command
+- prevent accidental public release
+- verify unlisted publishing still works
+- prepare a safe public-publish retest command
+- update roadmap after successful unlisted/public tests
 
 Files to create/update:
 
 ```text
-tools/publish/sync-review.js
-tools/media/audio-validate.js
+tools/publish/preflight.js
 tools/publish/list-private.js
 tools/publish/report.js
-scripts/sync-review.sh
+tools/publish/publish-youtube.js
+scripts/publish-preflight.sh
 scripts/review-private.sh
 scripts/publish-report.sh
 ROADMAP.md
@@ -141,143 +125,174 @@ Status: Completed
 
 # Phase 3: YouTube Upload + Publish Workflow
 
-Status: Working with private uploads and unlisted publishing
+Status: Working, public retest pending
 
 Working:
 
-- [x] OAuth upload works
-- [x] Private upload works
-- [x] Review approval command works
-- [x] Publish script exists
-- [x] One video reached `published_unlisted`
-- [x] Audio validation blocks unsafe public publishing
+- [x] OAuth private upload works
+- [x] Private video upload works
+- [x] Approval command works
+- [x] Unlisted publish worked for one approved video
+- [x] Public publishing gated by env var
+- [x] Audio validation can block unsafe public publishing
 
 Next:
 
-- [ ] Retest public publish only after production-safe audio validation is visible in review DB
-- [ ] Public publishing remains gated by `ALLOW_PUBLIC_PUBLISH=true`
+- [ ] Add publish preflight command
+- [ ] Retest unlisted publishing with Corporate Regret Board
+- [ ] Retest public publish only if explicitly intended
+- [ ] Confirm `processed-v3.json` and `review-db.json` stay in sync after publishing
+- [ ] Fix processed file writeback if publish status is not persisted
 
 ---
 
-# Phase 4: Autopilot Content Engine
+# Phase 4: Review Sync
+
+Status: Working or being finalized
+
+Working:
+
+- [x] Review sync imports private uploads
+- [x] Audio validation updates review DB
+- [x] Review reports show audio validation for imported items
+
+Next:
+
+- [ ] Make review-private output grouped and easier to read
+- [ ] Highlight only action-needed items by default
+- [ ] Add full mode for all items
+
+---
+
+# Phase 5: Audio Validation + Public Safety
 
 Status: Working
 
 Working:
 
-- [x] Select unpublished apps
-- [x] Skip uploaded apps
-- [x] Create new useless apps when queue is empty
-- [x] Upload privately or dry-run
-- [x] Autopilot report works
-- [x] Preview-only detection works
+- [x] `audio_missing` blocks older videos from public
+- [x] `test_audio_used` blocks public
+- [x] `music_not_public_safe` blocks public
+- [x] `sfx_not_public_safe` blocks public
+- [x] `sfx_missing` can be non-blocking if music is production-safe
 
 Next:
 
-- [ ] After each successful private upload, run review sync
-- [ ] Store audio validation result in content ledger later
+- [ ] Display `publicSafe=true/false` prominently
+- [ ] Display production readiness summary
+- [ ] Add preflight rules for video publish
 
 ---
 
-# Phase 5: Generator Intelligence + Audio
-
-Status: Working
-
-Working:
-
-- [x] Story engine exists
-- [x] Metadata engine exists
-- [x] Quality engine exists
-- [x] Audio engine exists
-- [x] `audioPlan` exists
-- [x] `audioMix` exists
-- [x] Production-safe music can be used
-- [x] Private upload can complete after audio mix
-
-Next:
-
-- [ ] Store production audio asset IDs in `audioPlan`
-- [ ] Improve SFX selection so `sfx_missing` is less common
-- [ ] Later: add more production-safe SFX tags for every story mode
-
----
-
-# Phase 6: Audio Validation
-
-Status: Working, needs workflow sync
-
-Working:
-
-- [x] `audio_missing` blocks older pre-audio videos from public
-- [x] `test_audio_used` blocks public publishing
-- [x] production-safe music can pass public safety
-- [x] `sfx_missing` is detected
-
-Change now:
-
-```text
-sfx_missing should mean needs_audio_review, but publicSafe can still be true.
-```
-
-Reason:
-
-```text
-A video with production-safe music and no SFX can still be okay to publish.
-Missing SFX is a quality warning, not a rights/safety blocker.
-```
-
-Tasks:
-
-- [ ] Keep `audio_missing` as public-blocking
-- [ ] Keep `test_audio_used` as public-blocking
-- [ ] Keep `music_not_public_safe` as public-blocking
-- [ ] Keep `sfx_not_public_safe` as public-blocking
-- [ ] Treat `sfx_missing` as non-blocking warning
-- [ ] Show `needs_audio_review` but `publicSafe=true` where appropriate
-
----
-
-# Phase 7: Review Sync
+# Phase 6: Review Report Polish
 
 Status: Next active build
 
-Problem:
+## New review sections
+
+Review should be grouped as:
 
 ```text
-review-private imports new videos after audio-validate has already run.
+1. Ready for approval
+2. Needs audio review
+3. Blocked for public
+4. Already approved
+5. Published unlisted
+6. Published public
 ```
 
-Fix:
+Each video card should show:
 
 ```text
-sync-review = import private uploads + validate audio + refresh review DB
+name
+videoId
+status
+decision
+url
+audio mode
+audio readiness
+publicSafe
+warnings
+recommended action
+```
+
+## Recommended actions
+
+Examples:
+
+```text
+READY_FOR_UNLISTED_TEST
+APPROVE_IF_CONTENT_OK
+RERENDER_WITH_AUDIO
+DO_NOT_PUBLIC_PUBLISH
+ALREADY_UNLISTED
 ```
 
 Tasks:
 
-- [ ] Create `tools/publish/sync-review.js`
-- [ ] Add `scripts/sync-review.sh`
-- [ ] Patch `review-private.sh` to run sync first
-- [ ] Patch `publish-report.sh` to run sync first
-- [ ] Confirm Corporate Regret Board shows audio validation in review list
-- [ ] Confirm older videos remain blocked_for_public due audio_missing
+- [ ] Patch `tools/publish/list-private.js`
+- [ ] Add grouping helpers
+- [ ] Add recommended actions
+- [ ] Add compact/full display mode
+- [ ] Confirm Corporate Regret Board appears in right group
 
 ---
 
-# Phase 8: Review + Publish Approval
+# Phase 7: Publish Preflight
 
-Status: In progress
+Status: Next active build
 
-Next:
+## Command
 
-- [ ] Show audio mode/readiness/publicSafe consistently
-- [ ] Approve Corporate Regret Board if quality is acceptable
-- [ ] Publish Corporate Regret Board as unlisted first
-- [ ] Public publish only after final review and `ALLOW_PUBLIC_PUBLISH=true`
+```bash
+./scripts/publish-preflight.sh VIDEO_ID unlisted
+./scripts/publish-preflight.sh VIDEO_ID public
+```
+
+## Preflight checks
+
+For unlisted:
+
+```text
+video exists in review DB
+status is private_uploaded or approved
+audio validation exists
+no hard blockers
+warn if needs_audio_review
+```
+
+For public:
+
+```text
+video exists in review DB
+video is approved
+ALLOW_PUBLIC_PUBLISH=true required at actual publish time
+audio publicSafe must be true
+no test audio
+no audio_missing
+no not_public_safe warnings
+prefer status published_unlisted first
+```
+
+Output should say:
+
+```text
+PASS
+WARN
+BLOCKED
+```
+
+Tasks:
+
+- [ ] Create `tools/publish/preflight.js`
+- [ ] Create `scripts/publish-preflight.sh`
+- [ ] Integrate preflight into publish-youtube.js
+- [ ] Run preflight before unlisted publish
+- [ ] Run preflight before public publish
 
 ---
 
-# Phase 9: Production Audio Pack
+# Phase 8: Production Audio Pack
 
 Status: In progress
 
@@ -296,19 +311,33 @@ Next:
 
 ---
 
+# Phase 9: YouTube Analytics + Learning Engine
+
+Status: In progress
+
+Next:
+
+- [ ] Pull stats for all private/unlisted videos
+- [ ] Track public-safe audio performance
+- [ ] Learn which story modes and audio moods perform best
+- [ ] Generate next-video recommendations
+
+---
+
 # Immediate Next Build Tasks
 
-1. Create `tools/publish/sync-review.js`.
-2. Patch `audio-validate.js` to export validation runner.
-3. Patch `review-private.sh` to run sync first.
-4. Patch `publish-report.sh` to run sync first.
-5. Treat `sfx_missing` as quality warning, not public blocker.
+1. Create `tools/publish/preflight.js`.
+2. Create `scripts/publish-preflight.sh`.
+3. Patch `tools/publish/publish-youtube.js` to call preflight logic.
+4. Patch `tools/publish/list-private.js` to group review items.
+5. Patch `tools/publish/report.js` to show publish readiness counts.
 6. Run `./scripts/sync-review.sh`.
 7. Run `./scripts/review-private.sh`.
-8. Confirm Corporate Regret Board shows audio validation.
-9. Approve Corporate Regret Board.
-10. Publish it unlisted first.
-11. Update roadmap and commit.
+8. Run preflight for Corporate Regret Board.
+9. Approve Corporate Regret Board if content is okay.
+10. Publish Corporate Regret Board as unlisted.
+11. Retest public preflight without actually publishing publicly first.
+12. Update roadmap and commit.
 
 ---
 
@@ -330,6 +359,18 @@ Publish report:
 
 ```bash
 ./scripts/publish-report.sh
+```
+
+Preflight unlisted publish:
+
+```bash
+./scripts/publish-preflight.sh VIDEO_ID unlisted
+```
+
+Preflight public publish:
+
+```bash
+./scripts/publish-preflight.sh VIDEO_ID public
 ```
 
 Approve video:
@@ -354,7 +395,8 @@ ALLOW_PUBLIC_PUBLISH=true ./scripts/publish-approved.sh VIDEO_ID public
 
 # Current Priority
 
-1. Fix review sync order.
-2. Make audio validation always appear in review queue.
-3. Approve and publish Corporate Regret Board as unlisted.
-4. Then move to review report polish and public publish retest.
+1. Add publish preflight.
+2. Polish review grouping.
+3. Retest Corporate Regret Board unlisted publish.
+4. Verify public publish gate.
+5. Then build analytics/recommendations for choosing what to create next.

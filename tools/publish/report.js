@@ -81,3 +81,26 @@ for (const item of items) {
 }
 
 console.log('');
+
+const publishReadinessCounts = items.reduce((acc, item) => {
+  const av = item.audioValidation;
+  let state = 'not_validated';
+
+  if (item.status === 'published_public') state = 'published_public';
+  else if (item.status === 'published_unlisted') state = 'published_unlisted';
+  else if (item.decision === 'approved' && av?.publicSafe === true) state = 'approved_public_safe';
+  else if (av?.publicSafe === true) state = 'public_safe_needs_approval';
+  else if (av?.readiness === 'blocked_for_public') state = 'blocked_for_public';
+
+  acc[state] = (acc[state] || 0) + 1;
+  return acc;
+}, {});
+
+console.log('Publish readiness counts');
+console.log('------------------------');
+
+for (const [state, count] of Object.entries(publishReadinessCounts)) {
+  console.log(`${state}: ${count}`);
+}
+
+console.log('');
