@@ -211,7 +211,8 @@ function main() {
     'tools/dashboard/report-v2.js',
     'tools/dashboard/web-dashboard.js',
     'tools/dashboard/dashboard.js',
-    'tools/testing/full-system-test.js'
+    'tools/testing/full-system-test.js',
+    'tools/worker/safe-worker.js'
   ].forEach(f => nodeCheck(f));
 
   [
@@ -221,7 +222,11 @@ function main() {
     'scripts/dashboard-web.sh',
     'scripts/queue-action.sh',
     'scripts/list-actions.sh',
-    'scripts/run-action.sh'
+    'scripts/run-action.sh',
+    'scripts/show-schedule.sh',
+    'scripts/install-nightly-cron.sh',
+    'scripts/safe-worker.sh',
+    'scripts/nightly-run.sh'
   ].forEach(checkExecutable);
 
   testSafetyEngine();

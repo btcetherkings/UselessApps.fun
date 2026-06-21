@@ -1,13 +1,13 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-21T15:24:09.944Z",
+  "updatedAt": "2026-06-21T16:31:33.877Z",
   "actions": [
     {
       "id": "act_1782052027357_5ee23c",
       "type": "sync_review",
-      "status": "pending",
+      "status": "rejected",
       "createdAt": "2026-06-21T14:27:07.357Z",
-      "updatedAt": "2026-06-21T14:27:07.358Z",
+      "updatedAt": "2026-06-21T16:30:01.866Z",
       "source": "cli",
       "payload": {},
       "safety": {
@@ -20,17 +20,36 @@
           "at": "2026-06-21T14:27:07.358Z",
           "status": "pending",
           "note": "Action queued"
+        },
+        {
+          "at": "2026-06-21T16:25:43.712Z",
+          "status": "running",
+          "note": "Action started"
+        },
+        {
+          "at": "2026-06-21T16:25:43.756Z",
+          "status": "completed",
+          "note": "Action completed"
+        },
+        {
+          "at": "2026-06-21T16:30:01.866Z",
+          "status": "rejected",
+          "note": "Removing fake TEST123 test action"
         }
       ],
-      "result": null,
-      "error": null
+      "result": {
+        "completedAt": "2026-06-21T16:25:43.756Z",
+        "command": "bash ./scripts/sync-review.sh"
+      },
+      "error": null,
+      "terminalCommand": "./scripts/run-action.sh act_1782052027357_5ee23c"
     },
     {
       "id": "act_1782052034117_ecc40e",
       "type": "approve_video",
-      "status": "pending",
+      "status": "rejected",
       "createdAt": "2026-06-21T14:27:14.118Z",
-      "updatedAt": "2026-06-21T14:27:14.118Z",
+      "updatedAt": "2026-06-21T16:30:12.481722Z",
       "source": "cli",
       "payload": {
         "videoId": "TEST123",
@@ -46,17 +65,53 @@
           "at": "2026-06-21T14:27:14.118Z",
           "status": "pending",
           "note": "Action queued"
+        },
+        {
+          "at": "2026-06-21T16:25:43.757Z",
+          "status": "running",
+          "note": "Action started"
+        },
+        {
+          "at": "2026-06-21T16:25:43.797Z",
+          "status": "failed",
+          "note": "Action failed: bash ./scripts/approve-video.sh TEST123 Test approval only failed with exit code 1"
+        },
+        {
+          "at": "2026-06-21T16:26:56.059Z",
+          "status": "running",
+          "note": "Action started"
+        },
+        {
+          "at": "2026-06-21T16:26:56.097Z",
+          "status": "failed",
+          "note": "Action failed: bash ./scripts/approve-video.sh TEST123 Test approval only failed with exit code 1"
+        },
+        {
+          "at": "2026-06-21T16:27:04.840Z",
+          "status": "running",
+          "note": "Action started"
+        },
+        {
+          "at": "2026-06-21T16:27:04.879Z",
+          "status": "failed",
+          "note": "Action failed: bash ./scripts/approve-video.sh TEST123 Test approval only failed with exit code 1"
+        },
+        {
+          "at": "2026-06-21T16:30:12.481722Z",
+          "status": "rejected",
+          "note": "Rejected fake TEST123 test action"
         }
       ],
       "result": null,
-      "error": null
+      "error": null,
+      "terminalCommand": "./scripts/run-action.sh act_1782052034117_ecc40e"
     },
     {
       "id": "act_1782052477255_6618ff",
       "type": "sync_review",
-      "status": "pending",
+      "status": "completed",
       "createdAt": "2026-06-21T14:34:37.255Z",
-      "updatedAt": "2026-06-21T14:34:37.255Z",
+      "updatedAt": "2026-06-21T16:25:43.839Z",
       "source": "cli",
       "payload": {},
       "safety": {
@@ -69,17 +124,31 @@
           "at": "2026-06-21T14:34:37.255Z",
           "status": "pending",
           "note": "Action queued"
+        },
+        {
+          "at": "2026-06-21T16:25:43.798Z",
+          "status": "running",
+          "note": "Action started"
+        },
+        {
+          "at": "2026-06-21T16:25:43.839Z",
+          "status": "completed",
+          "note": "Action completed"
         }
       ],
-      "result": null,
-      "error": null
+      "result": {
+        "completedAt": "2026-06-21T16:25:43.839Z",
+        "command": "bash ./scripts/sync-review.sh"
+      },
+      "error": null,
+      "terminalCommand": "./scripts/run-action.sh act_1782052477255_6618ff"
     },
     {
       "id": "act_1782054196665_28d324",
       "type": "sync_review",
-      "status": "pending",
+      "status": "completed",
       "createdAt": "2026-06-21T15:03:16.665Z",
-      "updatedAt": "2026-06-21T15:03:16.665Z",
+      "updatedAt": "2026-06-21T16:26:56.146Z",
       "source": "cli",
       "payload": {},
       "safety": {
@@ -92,17 +161,31 @@
           "at": "2026-06-21T15:03:16.665Z",
           "status": "pending",
           "note": "Action queued"
+        },
+        {
+          "at": "2026-06-21T16:26:56.098Z",
+          "status": "running",
+          "note": "Action started"
+        },
+        {
+          "at": "2026-06-21T16:26:56.146Z",
+          "status": "completed",
+          "note": "Action completed"
         }
       ],
-      "result": null,
-      "error": null
+      "result": {
+        "completedAt": "2026-06-21T16:26:56.146Z",
+        "command": "bash ./scripts/sync-review.sh"
+      },
+      "error": null,
+      "terminalCommand": "./scripts/run-action.sh act_1782054196665_28d324"
     },
     {
       "id": "act_1782055303885_c71abc",
       "type": "sync_review",
-      "status": "pending",
+      "status": "completed",
       "createdAt": "2026-06-21T15:21:43.885Z",
-      "updatedAt": "2026-06-21T15:21:43.885Z",
+      "updatedAt": "2026-06-21T16:26:56.194Z",
       "source": "cli",
       "payload": {},
       "safety": {
@@ -116,9 +199,22 @@
           "at": "2026-06-21T15:21:43.885Z",
           "status": "pending",
           "note": "Action queued"
+        },
+        {
+          "at": "2026-06-21T16:26:56.147Z",
+          "status": "running",
+          "note": "Action started"
+        },
+        {
+          "at": "2026-06-21T16:26:56.194Z",
+          "status": "completed",
+          "note": "Action completed"
         }
       ],
-      "result": null,
+      "result": {
+        "completedAt": "2026-06-21T16:26:56.194Z",
+        "command": "bash ./scripts/sync-review.sh"
+      },
       "error": null
     },
     {
@@ -161,9 +257,9 @@
     {
       "id": "act_1782055342686_b561aa",
       "type": "sync_review",
-      "status": "pending",
+      "status": "completed",
       "createdAt": "2026-06-21T15:22:22.686Z",
-      "updatedAt": "2026-06-21T15:22:22.686Z",
+      "updatedAt": "2026-06-21T16:27:04.922Z",
       "source": "dashboard",
       "payload": {},
       "safety": {
@@ -177,17 +273,30 @@
           "at": "2026-06-21T15:22:22.687Z",
           "status": "pending",
           "note": "Action queued"
+        },
+        {
+          "at": "2026-06-21T16:27:04.880Z",
+          "status": "running",
+          "note": "Action started"
+        },
+        {
+          "at": "2026-06-21T16:27:04.922Z",
+          "status": "completed",
+          "note": "Action completed"
         }
       ],
-      "result": null,
+      "result": {
+        "completedAt": "2026-06-21T16:27:04.922Z",
+        "command": "bash ./scripts/sync-review.sh"
+      },
       "error": null
     },
     {
       "id": "act_1782055352107_588480",
       "type": "pull_advanced_analytics",
-      "status": "pending",
+      "status": "completed",
       "createdAt": "2026-06-21T15:22:32.107Z",
-      "updatedAt": "2026-06-21T15:22:32.107Z",
+      "updatedAt": "2026-06-21T16:27:07.897Z",
       "source": "dashboard",
       "payload": {},
       "safety": {
@@ -201,9 +310,133 @@
           "at": "2026-06-21T15:22:32.107Z",
           "status": "pending",
           "note": "Action queued"
+        },
+        {
+          "at": "2026-06-21T16:27:04.922Z",
+          "status": "running",
+          "note": "Action started"
+        },
+        {
+          "at": "2026-06-21T16:27:07.897Z",
+          "status": "completed",
+          "note": "Action completed"
         }
       ],
-      "result": null,
+      "result": {
+        "completedAt": "2026-06-21T16:27:07.896Z",
+        "command": "bash ./scripts/youtube-advanced-pull.sh"
+      },
+      "error": null
+    },
+    {
+      "id": "act_1782058247991_a09d6b",
+      "type": "refresh_dashboard",
+      "status": "completed",
+      "createdAt": "2026-06-21T16:10:47.991Z",
+      "updatedAt": "2026-06-21T16:31:33.261Z",
+      "source": "dashboard",
+      "payload": {},
+      "safety": {
+        "level": "safe",
+        "requiresTerminal": false,
+        "publicPublishing": false
+      },
+      "terminalCommand": "./scripts/run-action.sh act_1782058247991_a09d6b",
+      "history": [
+        {
+          "at": "2026-06-21T16:10:47.992Z",
+          "status": "pending",
+          "note": "Action queued"
+        },
+        {
+          "at": "2026-06-21T16:31:32.302Z",
+          "status": "running",
+          "note": "Action started"
+        },
+        {
+          "at": "2026-06-21T16:31:33.261Z",
+          "status": "completed",
+          "note": "Action completed"
+        }
+      ],
+      "result": {
+        "completedAt": "2026-06-21T16:31:33.261Z",
+        "command": "bash ./scripts/daily-report-v2.sh"
+      },
+      "error": null
+    },
+    {
+      "id": "act_1782059143672_2fc701",
+      "type": "refresh_dashboard",
+      "status": "completed",
+      "createdAt": "2026-06-21T16:25:43.672Z",
+      "updatedAt": "2026-06-21T16:31:33.532Z",
+      "source": "cli",
+      "payload": {},
+      "safety": {
+        "level": "safe",
+        "requiresTerminal": false,
+        "publicPublishing": false
+      },
+      "terminalCommand": "./scripts/run-action.sh act_1782059143672_2fc701",
+      "history": [
+        {
+          "at": "2026-06-21T16:25:43.672Z",
+          "status": "pending",
+          "note": "Action queued"
+        },
+        {
+          "at": "2026-06-21T16:31:33.262Z",
+          "status": "running",
+          "note": "Action started"
+        },
+        {
+          "at": "2026-06-21T16:31:33.532Z",
+          "status": "completed",
+          "note": "Action completed"
+        }
+      ],
+      "result": {
+        "completedAt": "2026-06-21T16:31:33.531Z",
+        "command": "bash ./scripts/daily-report-v2.sh"
+      },
+      "error": null
+    },
+    {
+      "id": "act_1782059483990_0fd9ad",
+      "type": "refresh_dashboard",
+      "status": "completed",
+      "createdAt": "2026-06-21T16:31:23.990Z",
+      "updatedAt": "2026-06-21T16:31:33.877Z",
+      "source": "cli",
+      "payload": {},
+      "safety": {
+        "level": "safe",
+        "requiresTerminal": false,
+        "publicPublishing": false
+      },
+      "terminalCommand": "./scripts/run-action.sh act_1782059483990_0fd9ad",
+      "history": [
+        {
+          "at": "2026-06-21T16:31:23.991Z",
+          "status": "pending",
+          "note": "Action queued"
+        },
+        {
+          "at": "2026-06-21T16:31:33.678Z",
+          "status": "running",
+          "note": "Action started"
+        },
+        {
+          "at": "2026-06-21T16:31:33.877Z",
+          "status": "completed",
+          "note": "Action completed"
+        }
+      ],
+      "result": {
+        "completedAt": "2026-06-21T16:31:33.877Z",
+        "command": "bash ./scripts/daily-report-v2.sh"
+      },
       "error": null
     }
   ]
