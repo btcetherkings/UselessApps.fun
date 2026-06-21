@@ -2,147 +2,208 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>UselessApps.fun Control Centre</title>
+  <title>UselessApps.fun Command Centre</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="/dashboard.css" />
 </head>
 <body>
-  <header class="topbar">
-    <div>
-      <h1>UselessApps.fun Control Centre</h1>
-      <p>Absurd app factory. Viral nonsense. Operational seriousness.</p>
-    </div>
-    <div class="status-pill" id="generatedAt">Loading...</div>
-  </header>
-
-  <main>
-    <section class="grid cards">
-      <article class="card big">
-        <h2>System Health</h2>
-        <div class="score" id="healthScore">--</div>
-        <div class="muted" id="healthLabel">loading</div>
-      </article>
-
-      <article class="card">
-        <h2>Content</h2>
-        <div id="contentStats"></div>
-      </article>
-
-      <article class="card">
-        <h2>Publishing</h2>
-        <div id="publishStats"></div>
-      </article>
-
-      <article class="card">
-        <h2>Advanced Analytics</h2>
-        <div id="advancedStats"></div>
-      </article>
-    </section>
-
-    <section class="grid two">
-      <article class="card">
-        <h2>Learning v2</h2>
-        <div id="learningStats"></div>
-      </article>
-
-      <article class="card">
-        <h2>Latest Autopilot Decision</h2>
-        <div id="latestDecision"></div>
-      </article>
-    </section>
-
-    <section class="card">
-      <h2>Next Actions</h2>
-      <div id="nextActions"></div>
-    </section>
-
-    <section class="grid two">
-      <article class="card">
-        <h2>Action Cards</h2>
-        <div class="table-wrap">
-          <table id="actionsTable"></table>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">✦</div>
+        <div>
+          <h1>UselessOps</h1>
+          <p>v0.1 Live</p>
         </div>
-      </article>
-
-      <article class="card">
-        <h2>Rerender Candidates</h2>
-        <div class="table-wrap">
-          <table id="rerenderTable"></table>
-        </div>
-      </article>
-    </section>
-
-    <section class="grid two">
-      <article class="card">
-        <h2>Top Videos</h2>
-        <div class="table-wrap">
-          <table id="topVideosTable"></table>
-        </div>
-      </article>
-
-      <article class="card">
-        <h2>Weak Videos</h2>
-        <div class="table-wrap">
-          <table id="weakVideosTable"></table>
-        </div>
-      </article>
-    </section>
-
-
-    <section class="grid two">
-      <article class="card">
-        <h2>Business Metrics</h2>
-        <div id="businessStats"></div>
-      </article>
-
-      <article class="card">
-        <h2>Social Channels</h2>
-        <div id="socialStats"></div>
-        <div class="table-wrap">
-          <table id="socialTable"></table>
-        </div>
-      </article>
-    </section>
-
-    <section class="grid two">
-      <article class="card">
-        <h2>API Connections</h2>
-        <div id="connectionStats"></div>
-        <div class="table-wrap">
-          <table id="connectionTable"></table>
-        </div>
-      </article>
-
-      <article class="card">
-        <h2>Backend Jobs</h2>
-        <div id="jobStats"></div>
-        <div class="table-wrap">
-          <table id="jobTable"></table>
-        </div>
-      </article>
-    </section>
-
-
-    <section class="card">
-      <h2>Action Queue</h2>
-      <div class="button-row">
-        <button onclick="queueDashboardAction('sync_review')">Queue Sync Review</button>
-        <button onclick="queueDashboardAction('run_learning')">Queue Learning</button>
-        <button onclick="queueDashboardAction('pull_basic_stats')">Queue Basic Stats</button>
-        <button onclick="queueDashboardAction('pull_advanced_analytics')">Queue Advanced Analytics</button>
-        <button onclick="queueDashboardAction('refresh_dashboard')">Queue Refresh Dashboard</button>
       </div>
-      <p class="muted">Dashboard queues actions only. Execute safely from terminal using ./scripts/run-action.sh ACTION_ID.</p>
-      <div class="table-wrap">
-        <table id="actionQueueTable"></table>
-      </div>
-    </section>
 
-    <section class="card">
-      <h2>Operator Commands</h2>
-      <pre id="commands"></pre>
-    </section>
-  </main>
+      <nav>
+        <a class="nav-item active" href="#command">⌘ Command Center</a>
+        <a class="nav-item" href="#content-lab">▣ Content Lab</a>
+        <a class="nav-item" href="#review">✓ Review Queue</a>
+        <a class="nav-item" href="#analytics">▤ Analytics</a>
+        <a class="nav-item" href="#learning">◈ Learning Brain</a>
+        <a class="nav-item" href="#channels">◎ Channels</a>
+        <a class="nav-item" href="#finance">£ Finance</a>
+        <a class="nav-item" href="#safety">⚠ Safety</a>
+        <a class="nav-item" href="#actions">⚡ Action Queue</a>
+        <a class="nav-item" href="#jobs">▧ Backend Jobs</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button onclick="queueDashboardAction('refresh_dashboard')">Refresh Report</button>
+        <button onclick="queueDashboardAction('run_learning')" class="ghost">Queue Learning</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h2>Command Centre</h2>
+          <p>Safe useless-app media factory control room</p>
+        </div>
+        <div class="ai-status">
+          <span class="pip"></span>
+          <span id="generatedAt">Loading report...</span>
+        </div>
+      </header>
+
+      <section id="command" class="kpi-grid">
+        <article class="panel hero">
+          <div class="label">SYSTEM HEALTH</div>
+          <div class="mega" id="healthScore">--</div>
+          <p id="healthLabel">loading</p>
+        </article>
+
+        <article class="panel">
+          <div class="label">CONTENT PIPELINE</div>
+          <div id="contentStats"></div>
+        </article>
+
+        <article class="panel">
+          <div class="label">PUBLISHING</div>
+          <div id="publishStats"></div>
+        </article>
+
+        <article class="panel">
+          <div class="label">BRAND SAFETY</div>
+          <div id="brandSafetyStats"></div>
+        </article>
+      </section>
+
+      <section id="content-lab" class="workspace-grid">
+        <div class="left-stack">
+          <article class="panel">
+            <div class="panel-head">
+              <div class="label">CONTENT LAB</div>
+              <button onclick="queueDashboardAction('refresh_dashboard')">Refresh</button>
+            </div>
+            <div id="latestDecision"></div>
+          </article>
+
+          <article class="panel">
+            <div class="label">WORKSPACE CONFIG</div>
+            <div class="option-grid">
+              <button>Shorts 9:16</button>
+              <button class="ghost">Web 16:9</button>
+              <button class="ghost">Square 1:1</button>
+            </div>
+            <div class="option-grid">
+              <button>Preview</button>
+              <button class="ghost">Final</button>
+              <button class="ghost">Private Upload</button>
+            </div>
+          </article>
+        </div>
+
+        <article class="panel preview-panel">
+          <div class="preview-stage">
+            <div class="preview-loader">
+              <div class="spinner">◌</div>
+              <h3 id="previewTitle">Latest Useless App</h3>
+              <p id="previewSub">Waiting for report data...</p>
+              <div class="progress">
+                <span style="width:42%"></span>
+              </div>
+              <pre id="previewLog">&gt; INITIALISING USELESSNESS CORE...</pre>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <div class="label">PREVIOUS GENERATIONS</div>
+            <h3>Latest processed videos</h3>
+          </div>
+        </div>
+        <div id="previousGenerations" class="generation-strip"></div>
+      </section>
+
+      <section id="actions" class="panel">
+        <div class="panel-head">
+          <div>
+            <div class="label">ACTION QUEUE</div>
+            <h3>Safe dashboard controls</h3>
+          </div>
+          <div class="button-row">
+            <button onclick="queueDashboardAction('sync_review')">Queue Sync Review</button>
+            <button onclick="queueDashboardAction('run_learning')">Queue Learning</button>
+            <button onclick="queueDashboardAction('pull_basic_stats')">Queue Basic Stats</button>
+            <button onclick="queueDashboardAction('pull_advanced_analytics')">Queue Advanced Analytics</button>
+          </div>
+        </div>
+        <p class="muted">Dashboard queues actions only. Execute safely from terminal using ./scripts/run-action.sh ACTION_ID.</p>
+        <div class="table-wrap">
+          <table id="actionQueueTable"></table>
+        </div>
+      </section>
+
+      <section id="review" class="two-col">
+        <article class="panel">
+          <div class="label">ACTION CARDS</div>
+          <div class="table-wrap"><table id="actionsTable"></table></div>
+        </article>
+        <article class="panel">
+          <div class="label">RERENDER CANDIDATES</div>
+          <div class="table-wrap"><table id="rerenderTable"></table></div>
+        </article>
+      </section>
+
+      <section id="analytics" class="two-col">
+        <article class="panel">
+          <div class="label">ADVANCED ANALYTICS</div>
+          <div id="advancedStats"></div>
+        </article>
+        <article class="panel">
+          <div class="label">TOP VIDEOS</div>
+          <div class="table-wrap"><table id="topVideosTable"></table></div>
+        </article>
+      </section>
+
+      <section id="learning" class="two-col">
+        <article class="panel">
+          <div class="label">LEARNING BRAIN</div>
+          <div id="learningStats"></div>
+        </article>
+        <article class="panel">
+          <div class="label">WEAK VIDEOS</div>
+          <div class="table-wrap"><table id="weakVideosTable"></table></div>
+        </article>
+      </section>
+
+      <section id="channels" class="two-col">
+        <article class="panel">
+          <div class="label">SOCIAL CHANNELS</div>
+          <div id="socialStats"></div>
+          <div class="table-wrap"><table id="socialTable"></table></div>
+        </article>
+        <article class="panel">
+          <div class="label">API CONNECTIONS</div>
+          <div id="connectionStats"></div>
+          <div class="table-wrap"><table id="connectionTable"></table></div>
+        </article>
+      </section>
+
+      <section id="finance" class="two-col">
+        <article class="panel">
+          <div class="label">BUSINESS METRICS</div>
+          <div id="businessStats"></div>
+        </article>
+        <article id="jobs" class="panel">
+          <div class="label">BACKEND JOBS</div>
+          <div id="jobStats"></div>
+          <div class="table-wrap"><table id="jobTable"></table></div>
+        </article>
+      </section>
+
+      <section class="panel">
+        <div class="label">OPERATOR COMMANDS</div>
+        <pre id="commands"></pre>
+      </section>
+    </main>
+  </div>
 
   <script src="/dashboard.js"></script>
 </body>

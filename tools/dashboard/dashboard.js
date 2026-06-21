@@ -20,6 +20,7 @@ function link(url, text = 'open') {
 }
 
 function table(target, headers, rows) {
+  if (!target) return;
   const head = `<thead><tr>${headers.map(h => `<th>${h}</th>`).join('')}</tr></thead>`;
   const body = `<tbody>${rows.map(row => `<tr>${row.map(cell => `<td>${cell ?? ''}</td>`).join('')}</tr>`).join('')}</tbody>`;
   target.innerHTML = head + body;
@@ -30,8 +31,55 @@ function listBadges(items, color) {
   return items.map(x => badge(typeof x === 'string' ? x : x.key, color)).join(' ');
 }
 
+async function queueDashboardAction(type, payload = {}) {
+  const res = await fetch('/api/actions', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ type, payload })
+  });
+
+  if (!res.ok) {
+    const text = await res.text();
+    alert(`Failed to queue action: ${text}`);
+    return;
+  }
+
+  const action = await res.json();
+  alert(`Queued ${action.type}: ${action.id}`);
+  location.reload();
+}
+
+function renderPreviousGenerations(report) {
+  const container = el('previousGenerations');
+  if (!container) return;
+
+  const items = [
+    ...(report.learning?.topVideos || []),
+    ...(report.learning?.weakVideos || [])
+  ];
+
+  const unique = [];
+  const seen = new Set();
+
+  for (const item of items) {
+    const key = item.videoId || item.name;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    unique.push(item);
+  }
+
+  container.innerHTML = unique.slice(0, 12).map(item => `
+    <div class="gen-card">
+      <div class="gen-thumb">▣</div>
+      <strong>${item.name || 'Unknown'}</strong>
+      <p class="muted">${item.storyMode || item.publishStatus || 'unknown'}</p>
+      <p>${badge(`score ${item.learningScore ?? 0}`, 'blue')} ${item.publicSafe ? badge('safe', 'green') : badge('check', 'orange')}</p>
+    </div>
+  `).join('') || '<p class="muted">No previous generations yet.</p>';
+}
+
 function render(report) {
-  el('generatedAt').textContent = `Generated ${report.generatedAt || 'unknown'}`;
+  el('generatedAt').textContent = `AI STATUS: ACTIVE · ${report.generatedAt || 'unknown'}`;
 
   el('healthScore').textContent = `${report.health?.score ?? '--'}/100`;
   el('healthLabel').textContent = report.health?.label || 'unknown';
@@ -47,10 +95,18 @@ function render(report) {
 
   el('publishStats').innerHTML = kv({
     'Public-safe': report.totals?.publicSafe ?? 0,
-    'Blocked': report.totals?.blockedForPublic ?? 0,
-    'Private': report.statusCounts?.private_uploaded ?? 0,
-    'Unlisted': report.statusCounts?.published_unlisted ?? 0,
-    'Public': report.statusCounts?.published_public ?? 0
+    Blocked: report.totals?.blockedForPublic ?? 0,
+    Private: report.statusCounts?.private_uploaded ?? 0,
+    Unlisted: report.statusCounts?.published_unlisted ?? 0,
+    Public: report.statusCounts?.published_public ?? 0
+  });
+
+  el('brandSafetyStats').innerHTML = kv({
+    Checked: report.safety?.total ?? 0,
+    Passed: report.safety?.passed ?? 0,
+    Warnings: report.safety?.warned ?? 0,
+    Blocked: report.safety?.blocked ?? 0,
+    Policy: 'No govt / police / politics / adult'
   });
 
   el('advancedStats').innerHTML = kv({
@@ -87,18 +143,27 @@ function render(report) {
     <pre>${JSON.stringify(latest.learningReason || null, null, 2)}</pre>
   `;
 
-  const nextActions = report.actions?.slice(0, 8) || [];
-  el('nextActions').innerHTML = `<div class="action-list">${
-    nextActions.length ? nextActions.map(item => `
-      <div class="action-item">
-        ${badge(item.action, item.action.includes('RERENDER') ? 'orange' : item.action.includes('PUBLISH') ? 'green' : 'blue')}
-        <strong>${item.name}</strong><br>
-        <span class="muted">${item.videoId || ''}</span>
-        ${item.url ? `<br>${link(item.url, 'YouTube')}` : ''}
-        <br>Warnings: ${(item.audioWarnings || []).join(', ') || 'none'}
-      </div>
-    `).join('') : '<p class="muted">No immediate action cards.</p>'
-  }</div>`;
+  el('previewTitle').textContent = latest.name || 'Latest Useless App';
+  el('previewSub').textContent = `${latest.storyMode || 'unknown story'} · ${latest.audioMode || 'unknown audio'}`;
+  el('previewLog').textContent = [
+    '> USELESSNESS CORE ONLINE',
+    `> APP: ${latest.name || 'none'}`,
+    `> STORY: ${latest.storyMode || 'unknown'}`,
+    `> AUDIO: ${latest.audioMode || 'unknown'}`,
+    `> SAFETY: ${(report.safety?.blocked || 0) ? 'CHECK REQUIRED' : 'CLEAR'}`
+  ].join('\\n');
+
+  renderPreviousGenerations(report);
+
+  table(el('actionQueueTable'), ['ID', 'Type', 'Status', 'Safety', 'Command'],
+    (report.actionQueue?.actions || []).slice(0, 25).map(a => [
+      a.id,
+      a.type,
+      a.status,
+      a.safety?.level || 'unknown',
+      a.terminalCommand || ''
+    ])
+  );
 
   table(el('actionsTable'), ['Action', 'Video', 'Public Safe', 'Warnings', 'Link'],
     (report.actions || []).slice(0, 20).map(item => [
@@ -136,7 +201,6 @@ function render(report) {
       (item.audioWarnings || []).join(', ') || 'none'
     ])
   );
-
 
   el('businessStats').innerHTML = kv({
     Currency: report.business?.currency || 'GBP',
@@ -196,14 +260,14 @@ function render(report) {
     ])
   );
 
-
   el('commands').textContent = [
+    './scripts/safety-report.sh',
     './scripts/sync-review.sh',
     './scripts/youtube-advanced-pull.sh',
     './scripts/learning-v2.sh',
     './scripts/dashboard.sh',
-    'USE_LEARNING_ENGINE=true AUTO_DRY_RUN=true ./scripts/autopilot-preview-once.sh',
-    'USE_LEARNING_ENGINE=true AUDIO_REQUIRE_PUBLIC_SAFE=true AUTO_DRY_RUN=false ./scripts/autopilot-upload-once-private.sh'
+    'USE_LEARNING_ENGINE=true SAFE_CONTENT_ONLY=true AUTO_DRY_RUN=true ./scripts/autopilot-preview-once.sh',
+    'USE_LEARNING_ENGINE=true SAFE_CONTENT_ONLY=true AUDIO_REQUIRE_PUBLIC_SAFE=true AUTO_DRY_RUN=false ./scripts/autopilot-upload-once-private.sh'
   ].join('\\n');
 }
 
@@ -216,23 +280,3 @@ async function main() {
 main().catch(err => {
   document.body.innerHTML = `<pre>${err.stack || err.message}</pre>`;
 });
-
-async function queueDashboardAction(type, payload = {}) {
-  const res = await fetch('/api/actions', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ type, payload })
-  });
-
-  if (!res.ok) {
-    const text = await res.text();
-    alert(`Failed to queue action: ${text}`);
-    return;
-  }
-
-  const action = await res.json();
-  alert(`Queued ${action.type}: ${action.id}`);
-  location.reload();
-}

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-21T15:24:29.240Z",
+  "generatedAt": "2026-06-21T16:09:33.977Z",
   "business": {
     "currency": "GBP",
     "revenueTotal": 0,
@@ -2769,7 +2769,7 @@
   },
   "learning": {
     "exists": true,
-    "generatedAt": "2026-06-21T15:24:29.185Z",
+    "generatedAt": "2026-06-21T16:09:33.920Z",
     "confidence": {
       "level": "low",
       "withStats": 0
