@@ -212,6 +212,13 @@ function main() {
     'tools/dashboard/web-dashboard.js',
     'tools/dashboard/dashboard.js',
     'tools/testing/full-system-test.js',
+    'tools/business/finance-report.js',
+    'tools/business/add-finance-entry.js',
+    'tools/audit/audit-report.js',
+    'tools/audit/audit-log.js',
+    'tools/db/sync-json-to-db.js',
+    'tools/db/init-db.js',
+    'tools/db/db.js',
     'tools/worker/safe-worker.js'
   ].forEach(f => nodeCheck(f));
 
@@ -223,6 +230,14 @@ function main() {
     'scripts/queue-action.sh',
     'scripts/list-actions.sh',
     'scripts/run-action.sh',
+    'scripts/export-state.sh',
+    'scripts/backup-state.sh',
+    'scripts/finance-report.sh',
+    'scripts/add-cost.sh',
+    'scripts/add-revenue.sh',
+    'scripts/audit-report.sh',
+    'scripts/db-sync.sh',
+    'scripts/db-init.sh',
     'scripts/show-schedule.sh',
     'scripts/install-nightly-cron.sh',
     'scripts/safe-worker.sh',

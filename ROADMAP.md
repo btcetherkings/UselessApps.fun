@@ -1,336 +1,595 @@
-# UselessApps.fun Roadmap
+# UselessApps.fun MASTER ROADMAP
 
-## Current Priority
+## Product Mission
 
-We need to finish the foundation quickly without drifting.
+UselessApps.fun is a safe, absurd, viral AI media factory.
 
-The dashboard design is good enough for now. The next priority is wiring the backend properly and adding a full test system.
+It creates harmless useless apps, turns them into funny short videos, uploads privately first, learns from performance, and lets the operator approve what becomes public.
 
-This build combines smaller roadmap items into one go:
+The product should feel stupid.
+
+The platform should be serious.
 
 ```text
-Backend Safety Integration
-Publish Preflight Safety
-Dashboard Safety Wiring
-Action Queue Hardening
-Full System Test Runner
-Bug Finder / Self Check
+Content = safely ridiculous
+Dashboard = powerful command centre
+Backend = automated media factory
+Data layer = durable and testable
+Publishing = private-first and approval-gated
 ```
 
 ---
 
-# Active Build: Foundation Lockdown + Full System Test Suite
+## Core Product Focus
 
-Status: Next build
-
-Goal:
-
-Make the system safer, testable, and wired end-to-end.
-
-This build is about functionality, not dashboard design.
-
----
-
-# Product Focus
-
-UselessApps.fun must stay focused on:
+Allowed content:
 
 ```text
-safe absurd useless apps
-harmless viral comedy
-fake product/corporate/startup nonsense
-platform-friendly content
-private-first publishing
-approval-before-public workflow
+useless calculators
+pointless buttons
+loading screens
+fake startup demos
+fake corporate nonsense
+fake product launches
+fake internal audits
+fake scientific experiments about harmless software
+fake nature documentaries about objects
+fake therapy sessions for silly apps
+office absurdity
+pet rock / pebble / toast / button humour
 ```
 
-It must avoid:
+Blocked content:
 
 ```text
 government
 police
 politics
-porn/adult
+politicians
+elections
+porn/adult content
+sexual content
+nudity
 hate/extremism
+terrorism
 weapons
 drugs
 self-harm
 medical/legal/financial advice/scams
-real emergency or public authority impersonation
+real emergency alerts
+public authority impersonation
 ```
 
 ---
 
-# Combined Build Scope
+## Current Stable Foundation
 
-## 1. Backend safety enforcement
-
-Add safety checks to:
+Completed / mostly completed:
 
 ```text
-autopilot
-story selection
-video generator
-metadata/reporting
+app generation
+video generation
+audio engine
+production-safe audio asset foundation
+YouTube private upload
+private review workflow
 publish preflight
+action queue
+safe backend worker
+nightly runner
+job status registry
+brand safety policy
+safety report
+full-system test runner
+browser command centre dashboard
+business metrics foundation
+social channel registry
+API connection registry
+SQLite persistence foundation
+audit trail foundation
+finance engine v1
+backup/export scripts
 ```
 
-Minimum for this build:
+Recent validation:
 
 ```text
-safety engine exists
-unsafe content blocks generation
-unsafe content appears in reports
-publish preflight blocks unsafe videos
-dashboard shows safety count
+All tests passed apart from Git staging/path issues.
 ```
 
-## 2. Full system test runner
+---
 
-Create:
+## Immediate Repo Hygiene Fix
+
+Problem:
 
 ```text
-tools/testing/full-system-test.js
-scripts/full-test.sh
+git add package.json package-lock.json failed because root package.json does not exist.
 ```
 
-The test should check:
+Decision:
 
 ```text
-required files exist
-JSON files parse correctly
-JS files pass node --check
-safety engine blocks banned content
-safety engine allows safe useless-app content
-action queue can queue/update safely
-dashboard report can generate
-browser dashboard files exist
-scripts are executable
-publish preflight module exists
-audio validation module exists
-learning output exists or warns
+Do not blindly add package.json at repo root unless we intentionally create root package metadata.
+Keep node_modules out of Git.
+Ignore backups, exports, logs, DB runtime files, and .before backup files.
 ```
 
-## 3. Dashboard wiring
+---
 
-Do not redesign UI now.
+# PHASE 1 — Foundation Lockdown
 
-Just make sure it receives:
+Status: Complete
+
+Includes:
 
 ```text
+brand safety policy
+safety-report.sh
+full-test.sh
+dashboard report validation
+action queue validation
+JSON validation
+JS syntax validation
+safe worker validation
+nightly runner validation
+SQLite/audit/finance validation
+```
+
+Completion criteria:
+
+```text
+./scripts/full-test.sh passes
+./scripts/safety-report.sh runs
+./scripts/dashboard.sh runs
+```
+
+---
+
+# PHASE 2 — Command Centre Dashboard
+
+Status: Good enough visually for now
+
+Current dashboard sections:
+
+```text
+Command Center
+Content Lab
+Review Queue
+Analytics
+Learning Brain
+Channels
+Finance
+Safety
+Action Queue
+Backend Jobs
+Automation
+Operator Commands
+```
+
+No major redesign needed right now.
+
+Future dashboard improvements:
+
+```text
+video preview cards
+approve/reject/rerender cards
+publishing calendar
+multi-platform status
+finance charts
+database-backed views
+```
+
+---
+
+# PHASE 3 — Safe Automation
+
+Status: Active / mostly built
+
+Components:
+
+```text
+action queue
+safe worker
+nightly runner
+job logs
+worker logs
+cron installer
+dashboard automation summary
+```
+
+Rules:
+
+```text
+No public publishing via worker.
+No unlisted/public publish without explicit operator command.
+Restricted actions are skipped.
+Failed actions are not retried unless explicitly enabled.
+```
+
+---
+
+# PHASE 4 — SQLite + Audit + Finance
+
+Status: Active / foundation built
+
+Current DB goal:
+
+```text
+SQLite runs alongside JSON.
+JSON remains source of operational truth for now.
+DB becomes durable reporting/query layer.
+```
+
+Tables:
+
+```text
+audit_events
+content_items
+video_records
+action_snapshots
+job_snapshots
+finance_entries
+platform_accounts
+system_snapshots
+```
+
+Scripts:
+
+```text
+db-init.sh
+db-sync.sh
+audit-report.sh
+add-revenue.sh
+add-cost.sh
+finance-report.sh
+backup-state.sh
+export-state.sh
+```
+
+Next for DB later:
+
+```text
+make SQLite primary source
+migrate JSON to export/backup
+add audit events to every action/worker/nightly process
+```
+
+---
+
+# PHASE 5 — Active Next Build
+
+## Multi-Platform Connector Framework + Publishing Calendar + Repo Hygiene
+
+Status: NEXT BUILD
+
+Goal:
+
+Finish another large chunk by adding:
+
+```text
+repo cleanup
+master roadmap consolidation
+platform connector framework
+publishing calendar foundation
+content distribution matrix
+platform-specific metadata placeholders
+dashboard platform/calendar summary
+test expansion
+```
+
+This moves the product toward managing multiple social channels without actually connecting risky APIs yet.
+
+---
+
+## Why This Build Matters
+
+We already have:
+
+```text
+YouTube private upload
+dashboard
+analytics
 safety
-actionQueue
-business
-social
-connections
-jobs
-advancedAnalytics
-learning
+worker
+database
+finance
 ```
 
-## 4. Safety report
+Now we need the structure for:
 
-Command:
-
-```bash
-./scripts/safety-report.sh
+```text
+YouTube
+TikTok
+Instagram Reels
+Facebook Reels
+X
+Rumble
+Website
+Email list
 ```
 
-## 5. Full test command
+But only YouTube should be active now.
 
-Command:
+Other platforms should be placeholders/manual/future so we stay safe and do not overbuild.
+
+---
+
+## New Files
+
+```text
+tools/platforms/platform-registry.json
+tools/platforms/platform-lib.js
+tools/platforms/platform-report.js
+tools/calendar/publishing-calendar.json
+tools/calendar/calendar-lib.js
+tools/calendar/calendar-report.js
+
+scripts/platform-report.sh
+scripts/calendar-report.sh
+scripts/add-calendar-item.sh
+```
+
+Updated files:
+
+```text
+ROADMAP.md
+.gitignore
+tools/dashboard/report-v2.js
+tools/dashboard/dashboard.html
+tools/dashboard/dashboard.js
+tools/testing/full-system-test.js
+```
+
+---
+
+## Platform Registry
+
+Track:
+
+```text
+youtube
+tiktok
+instagram
+facebook
+x
+rumble
+website
+email
+```
+
+Fields:
+
+```text
+enabled
+connected
+mode: api | manual | future
+status
+supportsUpload
+supportsAnalytics
+supportsScheduling
+notes
+```
+
+---
+
+## Publishing Calendar
+
+Calendar item fields:
+
+```text
+id
+title
+videoId
+platform
+status: idea | ready | scheduled | published | skipped
+plannedAt
+actualPublishedAt
+notes
+createdAt
+updatedAt
+```
+
+Allowed statuses:
+
+```text
+idea
+ready
+scheduled
+published
+skipped
+blocked
+```
+
+No actual publishing automation in this build.
+
+This is planning only.
+
+---
+
+## Content Distribution Matrix
+
+Dashboard/report should show:
+
+```text
+platform readiness
+which channels are connected
+which are manual
+which are future
+how many calendar items exist
+how many scheduled
+how many published
+how many blocked
+```
+
+---
+
+## Safety Rules For This Build
+
+No automatic public publishing.
+
+No TikTok/Instagram/Facebook API upload yet.
+
+No public publish button.
+
+Only planning, tracking, reporting, and placeholders.
+
+---
+
+# PHASE 6 — Multi-Platform Publishing Later
+
+Status: Future
+
+Build later:
+
+```text
+YouTube public/unlisted confirmation
+TikTok manual export helper
+Instagram/Facebook metadata export
+X post template
+Rumble manual export
+website publishing integration
+```
+
+---
+
+# PHASE 7 — Dashboard Approval Panels
+
+Status: Future
+
+Add:
+
+```text
+video approval cards
+queue approve/reject/rerender
+typed confirmation for publish
+preflight result per video
+audio/safety badge per video
+```
+
+---
+
+# PHASE 8 — Finance Engine v2
+
+Status: Future
+
+Add:
+
+```text
+ROI by video
+ROI by platform
+cost per video
+revenue per 1,000 views
+subscriber value
+monthly profit/loss
+forecasting
+```
+
+---
+
+# PHASE 9 — Database Primary Migration
+
+Status: Future
+
+Move from:
+
+```text
+JSON primary + SQLite reporting
+```
+
+To:
+
+```text
+SQLite primary + JSON export/backup
+```
+
+---
+
+# PHASE 10 — Production Hardening
+
+Status: Future
+
+Add:
+
+```text
+role-based dashboard controls
+typed confirmations
+better secrets handling
+rate-limit handling
+API retry/backoff
+error dashboard
+test coverage expansion
+packaging/deployment docs
+```
+
+---
+
+## Current Commands
+
+Core tests:
 
 ```bash
 ./scripts/full-test.sh
+./scripts/safety-report.sh
+./scripts/dashboard.sh
 ```
 
-Output should show:
+Automation:
 
-```text
-PASS / WARN / FAIL
-summary
-bug list
-next fixes
+```bash
+./scripts/safe-worker.sh
+./scripts/nightly-run.sh
+./scripts/install-nightly-cron.sh
+./scripts/show-schedule.sh
 ```
 
----
+Database:
 
-# New / Updated Files
-
-```text
-tools/safety/content-policy.js
-tools/safety/safety-report.js
-scripts/safety-report.sh
-
-tools/testing/full-system-test.js
-scripts/full-test.sh
-
-tools/dashboard/report-v2.js
-tools/dashboard/dashboard.js
-tools/dashboard/web-dashboard.js
-
-tools/video-generator/generate-v3.js
-tools/autopilot/useless-autopilot.js
-tools/publish/preflight.js
-
-ROADMAP.md
+```bash
+./scripts/db-init.sh
+./scripts/db-sync.sh
+./scripts/audit-report.sh
 ```
 
----
+Finance:
 
-# Full Test Categories
-
-## Static checks
-
-```text
-node --check key JS files
-JSON parse key data files
-required scripts executable
-required directories exist
+```bash
+./scripts/add-revenue.sh 12.50 youtube "Revenue note"
+./scripts/add-cost.sh 5.00 api "Cost note"
+./scripts/finance-report.sh
 ```
 
-## Safety checks
+State:
 
-```text
-government content must block
-police content must block
-politics content must block
-porn/adult content must block
-safe useless calculator must pass
-fake corporate nonsense must pass
-blocked story modes must block
+```bash
+./scripts/backup-state.sh
+./scripts/export-state.sh
 ```
 
-## Queue checks
+Dashboard:
 
-```text
-queue action created
-queue action has terminal command
-queue action can be updated
-queue snapshot restored after test
-```
-
-## Dashboard checks
-
-```text
-report-v2 generates JSON
-dashboard HTML/CSS/JS exist
-web-dashboard has /api/report
-web-dashboard has /api/actions
-```
-
-## Backend checks
-
-```text
-generator file exists
-autopilot file exists
-processed-v3.json parseable
-review-db.json parseable
-recommendations-v2.json parseable if present
-advanced-warehouse.json parseable if present
-```
-
-## Publish safety
-
-```text
-preflight file exists
-public publishing remains protected
-unsafe content should not pass preflight once wired
+```bash
+./scripts/stop-dashboard.sh || true
+./scripts/dashboard-web.sh
+./scripts/open-dashboard.sh
 ```
 
 ---
 
-# Completion Definition
+## Final Direction
 
-This build is done when:
+We should now maintain this single `ROADMAP.md`.
 
-```text
-./scripts/full-test.sh runs
-tests show pass/warn/fail summary
-safety-report runs
-dashboard report runs
-unsafe categories are blocked by policy
-dashboard receives safety/action/job/business data
-```
+No more fragmented roadmap files unless exporting a copy for download.
 
-Warnings are acceptable for missing optional APIs or analytics data.
-
-Fails are not acceptable for syntax, JSON parse, missing core files, or safety blocking.
-
----
-
-# Immediate Build Commands
-
-1. Copy roadmap.
-2. Create safety engine if missing.
-3. Create safety report if missing.
-4. Create full system tester.
-5. Patch dashboard report safely.
-6. Patch publish preflight safety check.
-7. Run tests.
-8. Fix failures.
-9. Commit.
-
----
-
-# Next Build After This
-
-## Nightly Scheduler + Safe Backend Worker
-
-After the foundation passes tests:
+The platform direction is:
 
 ```text
-nightly analytics
-nightly learning
-daily report refresh
-safe action worker
-systemd/cron setup
+serious business/control platform
+safe absurd media content
+multi-channel eventually
+database-backed gradually
+test everything
+private-first publishing
+approval-gated public release
 ```
-
-This will make the system start operating like a real media factory.
-
----
-
-# Later Builds
-
-## Database migration
-
-```text
-SQLite for content/jobs/actions/analytics/finance/audit
-```
-
-## Multi-platform connectors
-
-```text
-TikTok
-Instagram
-Facebook
-X
-Rumble
-```
-
-## Finance engine v2
-
-```text
-real cost/revenue entries
-ROI per video/platform
-profit forecasts
-```
-
-## Dashboard approval panels
-
-```text
-preview cards
-approve/reject/rerender actions
-public publish typed confirmation
-```
-
----
-
-# Important Reminder
-
-The dashboard can become powerful.
-
-The backend can become clever.
-
-The content must remain safely stupid.

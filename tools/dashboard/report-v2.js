@@ -24,6 +24,28 @@ const { loadQueue } = require('../actions/action-lib');
 const { checkContentSafety } = require('../safety/content-policy');
 
 
+
+function latestFile(dir) {
+  const fs = require('fs');
+  const path = require('path');
+
+  try {
+    if (!fs.existsSync(dir)) return null;
+    const files = fs.readdirSync(dir)
+      .filter(f => !f.startsWith('.'))
+      .map(f => ({
+        file: f,
+        full: path.join(dir, f),
+        mtime: fs.statSync(path.join(dir, f)).mtimeMs
+      }))
+      .sort((a, b) => b.mtime - a.mtime);
+
+    return files[0] || null;
+  } catch {
+    return null;
+  }
+}
+
 function readJson(file, fallback) {
   try {
     if (!fs.existsSync(file)) return fallback;
@@ -184,6 +206,15 @@ function buildReport() {
     blockedItems: safetyRows.filter(x => x.result.status === 'block').slice(0, 25)
   };
 
+  const automationSummary = {
+    nightlyScriptExists: fs.existsSync(path.join(ROOT_DIR, 'scripts', 'nightly-run.sh')),
+    workerScriptExists: fs.existsSync(path.join(ROOT_DIR, 'scripts', 'safe-worker.sh')),
+    cronInstallerExists: fs.existsSync(path.join(ROOT_DIR, 'scripts', 'install-nightly-cron.sh')),
+    latestNightlyLog: latestFile(path.join(ROOT_DIR, 'logs', 'nightly')),
+    latestWorkerLog: latestFile(path.join(ROOT_DIR, 'logs', 'worker')),
+    latestJobLog: latestFile(path.join(ROOT_DIR, 'logs', 'jobs'))
+  };
+
   const health = calculateHealth({ rows, review, recs });
   const actions = buildActionCards(rows);
   const rerenderCandidates = buildRerenderCandidates(rows);
@@ -219,6 +250,7 @@ function buildReport() {
       actions: (actionQueue.actions || []).slice(-25).reverse()
     },
     health,
+    automation: automationSummary,
     safety: safetySummary,
     totals: {
       apps: Array.isArray(apps) ? apps.length : 0,
@@ -382,6 +414,14 @@ ${table(['Channel', 'Enabled', 'Connected', 'Status'], report.social.channels.ma
 - Failing: ${report.connections.failing}
 
 ${table(['Connection', 'Enabled', 'Connected', 'Status'], report.connections.connections.map(c => [c.key, c.enabled, c.connected, c.status]))}
+
+## Automation
+
+- Nightly script exists: ${report.automation.nightlyScriptExists}
+- Worker script exists: ${report.automation.workerScriptExists}
+- Cron installer exists: ${report.automation.cronInstallerExists}
+- Latest nightly log: ${report.automation.latestNightlyLog ? report.automation.latestNightlyLog.file : 'none'}
+- Latest worker log: ${report.automation.latestWorkerLog ? report.automation.latestWorkerLog.file : 'none'}
 
 ## Action Queue
 

@@ -101,6 +101,16 @@ function render(report) {
     Public: report.statusCounts?.published_public ?? 0
   });
 
+
+  el('automationStats').innerHTML = kv({
+    'Nightly script': report.automation?.nightlyScriptExists ? 'ready' : 'missing',
+    'Worker script': report.automation?.workerScriptExists ? 'ready' : 'missing',
+    'Cron installer': report.automation?.cronInstallerExists ? 'ready' : 'missing',
+    'Latest nightly': report.automation?.latestNightlyLog?.file || 'none',
+    'Latest worker': report.automation?.latestWorkerLog?.file || 'none'
+  });
+
+
   el('brandSafetyStats').innerHTML = kv({
     Checked: report.safety?.total ?? 0,
     Passed: report.safety?.passed ?? 0,

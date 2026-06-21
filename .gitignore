@@ -1,0 +1,47 @@
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Node
+node_modules/
+**/node_modules/
+
+# Logs / runtime
+logs/
+*.log
+
+# Backups / exports
+backups/
+exports/
+
+# SQLite runtime DB
+data/*.sqlite
+data/*.sqlite-*
+data/*.db
+data/*.db-*
+
+# Temporary patch backups
+*.before-*
+*.broken-backup
+*.bak
+*.tmp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Generated bulky media
+generated-videos/
+*.mp4
+*.mov
+*.webm
+
+# Keep folder placeholders
+!logs/.gitkeep
+!logs/jobs/.gitkeep
+!logs/worker/.gitkeep
+!logs/nightly/.gitkeep
+!data/.gitkeep
+!exports/.gitkeep
+!backups/.gitkeep
