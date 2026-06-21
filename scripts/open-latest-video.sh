@@ -12,11 +12,13 @@ fi
 
 echo "Latest video: $LATEST"
 
-if command -v vlc >/dev/null 2>&1; then
-  vlc "$LATEST"
-elif command -v ffplay >/dev/null 2>&1; then
-  ffplay -autoexit -vf "scale=360:-1" "$LATEST"
+if command -v ffplay >/dev/null 2>&1; then
+  ffplay -autoexit -loglevel warning -vf "scale=360:-1" "$LATEST"
+elif command -v cvlc >/dev/null 2>&1; then
+  cvlc --no-video-title-show --avcodec-hw=none "$LATEST"
+elif command -v vlc >/dev/null 2>&1; then
+  vlc --avcodec-hw=none --no-video-title-show "$LATEST"
 else
-  echo "No VLC or ffplay found. Open manually:"
+  echo "No ffplay/VLC found. Open manually:"
   echo "$LATEST"
 fi

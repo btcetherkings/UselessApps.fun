@@ -1405,10 +1405,20 @@ function makeEvidenceClip(input, output, app, workDir) {
   const p = getProfile(app);
 
   const titleFile = writeDrawTextFile(workDir, `${path.basename(output)}-title.txt`, lines.topTitle || p.name, 180);
-  const tickerFile = writeDrawTextFile(workDir, `${path.basename(output)}-ticker.txt`, lines.ticker || 'BREAKING: NOTHING CONTINUES TO HAPPEN', 1000);
-  const lower1File = writeDrawTextFile(workDir, `${path.basename(output)}-lower1.txt`, lines.lowerLine1, 180);
-  const lower2File = writeDrawTextFile(workDir, `${path.basename(output)}-lower2.txt`, lines.lowerLine2, 180);
-  const lower3File = writeDrawTextFile(workDir, `${path.basename(output)}-lower3.txt`, lines.lowerLine3, 180);
+  const safeLines = { ...lines };
+
+  if (lowTextDensityEnabled()) {
+    safeLines.lowerLine1 = safeOneLine(safeLines.lowerLine1 || '', 54);
+    safeLines.lowerLine2 = '';
+    safeLines.lowerLine3 = '';
+    safeLines.ticker = '';
+    safeLines.outroLine2 = '';
+  }
+
+  const tickerFile = writeDrawTextFile(workDir, `${path.basename(output)}-ticker.txt`, shouldShowTicker() ? (safeLines.ticker || '') : '', 1000);
+  const lower1File = writeDrawTextFile(workDir, `${path.basename(output)}-lower1.txt`, safeLines.lowerLine1 || '', 180);
+  const lower2File = writeDrawTextFile(workDir, `${path.basename(output)}-lower2.txt`, safeLines.lowerLine2 || '', 180);
+  const lower3File = writeDrawTextFile(workDir, `${path.basename(output)}-lower3.txt`, safeLines.lowerLine3 || '', 180);
 
   const captions = getChaosCaptions(app);
   const captionFiles = captions.slice(0, 6).map((caption, index) => {
