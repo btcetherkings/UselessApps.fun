@@ -324,8 +324,98 @@ async function main() {
   const res = await fetch('/api/report', { cache: 'no-store' });
   const report = await res.json();
   render(report);
+  loadReviewCards();
 }
 
 main().catch(err => {
   document.body.innerHTML = `<pre>${err.stack || err.message}</pre>`;
 });
+
+function copyText(text) {
+  navigator.clipboard?.writeText(text).then(() => {
+    alert('Command copied');
+  }).catch(() => {
+    prompt('Copy command:', text);
+  });
+}
+
+async function createExportPack(videoId) {
+  const res = await fetch('/api/export-pack', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ videoId })
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    alert(`Export failed: ${data.error}`);
+    return;
+  }
+
+  alert(data.output || 'Export pack created');
+}
+
+async function addReviewCalendarItem(card) {
+  const res = await fetch('/api/calendar-item', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      title: card.title,
+      videoId: card.videoId,
+      platform: 'youtube',
+      status: 'ready',
+      notes: `Added from review desk. Recommended: ${card.recommendedAction}`
+    })
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    alert(`Calendar failed: ${data.error}`);
+    return;
+  }
+
+  alert(`Calendar item added: ${data.id}`);
+}
+
+async function loadReviewCards() {
+  const res = await fetch('/api/review-cards', { cache: 'no-store' });
+  const summary = await res.json();
+  const target = el('reviewDeskCards');
+
+  if (!target) return;
+
+  if (!summary.cards || !summary.cards.length) {
+    target.innerHTML = '<p class="muted">No review cards found.</p>';
+    return;
+  }
+
+  target.innerHTML = summary.cards.map((card, idx) => `
+    <article class="review-card">
+      <h4>${card.title}</h4>
+      <p class="muted">${card.videoId}</p>
+      <p>
+        ${badge(card.status || 'unknown', 'blue')}
+        ${card.publicSafe ? badge('public safe', 'green') : badge('not public safe', 'red')}
+        ${badge(card.audioReadiness || 'audio unknown', 'purple')}
+        ${card.safetyStatus === 'block' ? badge('safety block', 'red') : badge(card.safetyStatus || 'safety unknown', 'green')}
+      </p>
+      <p><strong>Recommended:</strong> ${card.recommendedAction}</p>
+      <p>${card.url ? `<a href="${card.url}" target="_blank" rel="noopener">Open YouTube</a>` : ''}</p>
+
+      <div class="button-row">
+        <button onclick="queueDashboardAction('approve_video', { videoId: '${card.videoId}', note: 'Approved from Review Desk V2' })">Queue Approve</button>
+        <button onclick="queueDashboardAction('reject_video', { videoId: '${card.videoId}', note: 'Rejected from Review Desk V2' })" class="ghost">Queue Reject</button>
+        <button onclick="queueDashboardAction('needs_rerender', { videoId: '${card.videoId}', note: 'Needs rerender from Review Desk V2' })" class="ghost">Queue Rerender</button>
+        <button onclick="createExportPack('${card.videoId}')">Export Pack</button>
+        <button onclick='addReviewCalendarItem(${JSON.stringify(card).replace(/'/g, '&apos;')})' class="ghost">Add Calendar</button>
+      </div>
+
+      <div class="commands">
+        <div class="copy-command" onclick="copyText('${card.commands.publishUnlisted.replace(/'/g, "\\'")}')">${card.commands.publishUnlisted}</div>
+        <div class="copy-command" onclick="copyText('${card.commands.publishPublic.replace(/'/g, "\\'")}')">${card.commands.publishPublic}</div>
+      </div>
+    </article>
+  `).join('');
+}

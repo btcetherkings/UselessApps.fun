@@ -74,6 +74,9 @@ production-safe audio asset foundation
 YouTube private upload
 private review workflow
 publish preflight
+typed publish confirmation
+manual export packs
+review cards CLI
 action queue
 safe backend worker
 nightly runner
@@ -96,11 +99,10 @@ generated runtime ignores
 GitHub push fixed
 ```
 
-Recent validation:
+Latest pushed commit:
 
 ```text
-Tests passing.
-Latest pushed commit: 0962b3e Ignore generated runtime state and media assets
+27514a6 Add review cards export packs and typed publish confirmation
 ```
 
 ---
@@ -123,6 +125,7 @@ safe worker validation
 nightly runner validation
 SQLite/audit/finance validation
 platform/calendar validation
+review/export/publish confirmation validation
 ```
 
 Completion criteria:
@@ -164,12 +167,10 @@ No major redesign needed right now.
 Focus now:
 
 ```text
-wire more features into the existing dashboard
-approval cards
-typed confirmation
-manual export packs
-publish safety
-operator workflows
+wire more operational tools into the dashboard
+make review/export/publish actions visible
+add dashboard API endpoints
+turn command-line workflow into dashboard workflow
 ```
 
 ---
@@ -276,19 +277,55 @@ No automatic multi-platform public publishing yet.
 
 ---
 
-# ACTIVE NEXT BUILD — Approval Cards + Typed Publish Confirmation + Manual Export Packs
+# PHASE 6 — Review / Export / Typed Publish Workflow
+
+Status: CLI built
+
+Completed:
+
+```text
+review-cards.sh
+export-pack.sh
+export-report.sh
+confirm-publish.sh
+typed confirmation gate
+manual platform export packs
+```
+
+Next step:
+
+```text
+wire review/export/publish status into dashboard and local API
+```
+
+---
+
+# ACTIVE NEXT BUILD — Dashboard Approval Cards v2 + Review API + Preflight Panel
 
 Status: NEXT BUILD
 
 Goal:
 
-Finish the operator workflow from:
+Turn the existing review/export/publish CLI tools into a proper dashboard operator workflow.
+
+This build should create:
 
 ```text
-private upload → review card → approve/reject/rerender → publish preflight → typed confirmation → public/unlisted publish OR manual export pack
+dashboard review cards
+dashboard action buttons
+review API endpoints
+preflight preview panel
+export pack button
+calendar add button
+command copy buttons
+publish confirmation instructions
 ```
 
-This is the next serious product feature.
+No public publish should happen directly from a dashboard click.
+
+The dashboard can queue safe actions and show terminal commands.
+
+Typed publish remains terminal-only for now.
 
 ---
 
@@ -297,224 +334,193 @@ This is the next serious product feature.
 This build combines:
 
 ```text
-dashboard approval cards
-review queue wiring
-typed publish confirmation
-manual export packs
-platform metadata packs
-publish command hardening
-audit logging for review/publish
-calendar item helper
+review card API
+dashboard review cards
+preflight result reader
+export pack API endpoint
+calendar item helper endpoint
+copyable terminal commands
+dashboard table improvements
 full-test expansion
+audit events for review/export/dashboard actions
 ```
 
 ---
 
 ## Why This Build Matters
 
-We already have a powerful foundation, but the operator workflow still needs to feel complete.
+We now have the tools, but they still feel separate.
 
-The operator should be able to:
+The operator should not need to remember commands.
+
+The dashboard should show:
 
 ```text
-see latest private videos
-see safety/audio/public-safe badges
-queue approve/reject/rerender
-run publish preflight
-generate manual export pack
-publish only with typed confirmation
-add content to publishing calendar
+video needing review
+safety status
+audio status
+public-safe status
+YouTube link
+recommended action
+approve command
+reject command
+rerender command
+export pack command
+confirm publish command
+calendar command
 ```
 
-This is where the product starts behaving like a real content operations platform.
+This gives the control centre a real review desk.
 
 ---
 
 ## New Files
 
 ```text
-tools/export/export-pack.js
-tools/export/export-report.js
-scripts/export-pack.sh
-scripts/export-report.sh
+tools/review/review-summary.js
+tools/review/review-api-data.js
+```
 
-tools/publish/confirm-publish.js
-scripts/confirm-publish.sh
+Possible new scripts:
 
-tools/review/review-cards.js
-scripts/review-cards.sh
+```text
+scripts/review-summary.sh
 ```
 
 Updated files:
 
 ```text
 ROADMAP.md
-tools/dashboard/report-v2.js
+tools/dashboard/web-dashboard.js
 tools/dashboard/dashboard.html
 tools/dashboard/dashboard.js
-tools/publish/publish-youtube.js
-tools/publish/preflight.js
-tools/audit/audit-log.js
-tools/calendar/calendar-lib.js
+tools/dashboard/dashboard.css
+tools/dashboard/report-v2.js
 tools/testing/full-system-test.js
+tools/audit/audit-log.js
 ```
 
 ---
 
-## Export Pack
+## Dashboard API Endpoints
 
-Purpose:
-
-Create a manual platform export folder for a video.
-
-Command:
-
-```bash
-./scripts/export-pack.sh VIDEO_ID
-```
-
-Output:
+Add:
 
 ```text
-exports/manual-pack-VIDEO_ID-YYYY-MM-DD-HHMMSS/
-├── metadata.json
-├── youtube.txt
-├── tiktok.txt
-├── instagram.txt
-├── facebook.txt
-├── x.txt
-├── rumble.txt
-├── checklist.md
-└── source-video.txt
+GET /api/review-cards
+POST /api/export-pack
+POST /api/calendar-item
 ```
 
-No automatic upload.
+Safety:
 
-This lets us manually post safely to other platforms later.
+```text
+/api/export-pack only creates local export folder
+/api/calendar-item only creates planning item
+no public publish endpoint
+no direct YouTube public publish from dashboard
+```
 
 ---
 
-## Review Cards
+## Review Card Data Shape
 
-Purpose:
+Each dashboard card:
 
-Summarise videos that need operator review.
+```json
+{
+  "videoId": "abc123",
+  "title": "Emotionally Unhelpful Calculator",
+  "url": "https://youtu.be/abc123",
+  "status": "private_uploaded",
+  "publicSafe": true,
+  "audioReadiness": "ready",
+  "safetyStatus": "pass",
+  "learningScore": 42,
+  "recommendedAction": "approve or reject",
+  "commands": {
+    "approve": "./scripts/approve-video.sh abc123 ...",
+    "reject": "./scripts/reject-video.sh abc123 ...",
+    "rerender": "./scripts/needs-rerender.sh abc123 ...",
+    "exportPack": "./scripts/export-pack.sh abc123",
+    "publishUnlisted": "ALLOW_PUBLIC_PUBLISH=true ./scripts/confirm-publish.sh abc123 unlisted",
+    "publishPublic": "ALLOW_PUBLIC_PUBLISH=true ./scripts/confirm-publish.sh abc123 public"
+  }
+}
+```
 
-Command:
+---
 
-```bash
-./scripts/review-cards.sh
+## Dashboard Review UI
+
+Add a section:
+
+```text
+Review Desk
 ```
 
 Each card should show:
 
 ```text
-video ID
 title
-YouTube URL
-status
-audio readiness
-public safe
-safety status
-learning score
+video id
+status badge
+public-safe badge
+audio badge
+safety badge
+YouTube link
 recommended action
-commands
+buttons:
+  queue approve
+  queue reject
+  queue rerender
+  create export pack
+  add to calendar
+copyable commands:
+  confirm unlisted
+  confirm public
+```
+
+For this build, buttons can use simple API calls or copy commands.
+
+Public publish must remain typed terminal confirmation.
+
+---
+
+## Preflight Panel
+
+Add to each review card:
+
+```text
+preflight status if known
+public-safe check
+audio check
+safety check
+ALLOW_PUBLIC_PUBLISH reminder
+```
+
+If not available, show:
+
+```text
+Run confirm-publish command to execute preflight.
 ```
 
 ---
 
-## Typed Publish Confirmation
+## Test Expansion
 
-Purpose:
-
-Prevent accidental public publishing.
-
-Command:
-
-```bash
-./scripts/confirm-publish.sh VIDEO_ID unlisted
-./scripts/confirm-publish.sh VIDEO_ID public
-```
-
-The tool must require exact typed confirmation:
+Full test should check:
 
 ```text
-PUBLISH VIDEO_ID AS public
+review-summary JS exists
+review API data module exists
+web-dashboard has /api/review-cards
+web-dashboard has /api/export-pack
+web-dashboard has /api/calendar-item
+dashboard JS references reviewCards
+export-pack still passes node --check
+confirm-publish still passes node --check
 ```
-
-or:
-
-```text
-PUBLISH VIDEO_ID AS unlisted
-```
-
-Rules:
-
-```text
-public publish requires ALLOW_PUBLIC_PUBLISH=true
-preflight must pass
-brand safety must pass
-audio public-safe must pass
-operator must type exact phrase
-```
-
----
-
-## Dashboard Additions
-
-Add/strengthen:
-
-```text
-review cards table
-publish preflight hints
-export pack command per video
-confirm publish command per video
-calendar add command per video
-```
-
-No redesign.
-
-Just wire more operational commands into the existing UI.
-
----
-
-## Calendar Integration
-
-When export pack is created, optionally add a publishing calendar item:
-
-```text
-platform: manual_export
-status: ready
-title: video title
-notes: export folder path
-```
-
----
-
-## Audit Integration
-
-Audit events should log:
-
-```text
-review_card_generated
-export_pack_created
-confirm_publish_started
-publish_confirmed
-publish_blocked
-calendar_item_created
-```
-
----
-
-## Safety Rules
-
-Still no automatic public publishing.
-
-No worker/public publish.
-
-Public publish must be manual typed confirmation only.
-
-Manual export pack is safe because it does not upload anywhere.
 
 ---
 
@@ -523,85 +529,42 @@ Manual export pack is safe because it does not upload anywhere.
 This build is complete when:
 
 ```text
-./scripts/review-cards.sh works
-./scripts/export-pack.sh VIDEO_ID works for existing video
-./scripts/export-report.sh works
-./scripts/confirm-publish.sh VIDEO_ID unlisted requires exact typed phrase
-publish command refuses without correct confirmation
-dashboard report shows review/export commands
+dashboard shows review cards
+/api/review-cards returns JSON
+export pack can be created from dashboard API
+calendar item can be added from dashboard API
 full-test passes
+review cards still work from CLI
+public publish remains terminal typed confirmation only
 ```
 
 ---
 
 ## Commands After Build
 
-Review:
-
 ```bash
 ./scripts/review-cards.sh
-```
-
-Export pack:
-
-```bash
-./scripts/export-pack.sh VIDEO_ID
 ./scripts/export-report.sh
-```
-
-Safe publish confirmation:
-
-```bash
-ALLOW_PUBLIC_PUBLISH=true ./scripts/confirm-publish.sh VIDEO_ID unlisted
-ALLOW_PUBLIC_PUBLISH=true ./scripts/confirm-publish.sh VIDEO_ID public
-```
-
-Calendar:
-
-```bash
-./scripts/add-calendar-item.sh "Video title" youtube "2026-06-22T10:00:00+01:00" "Ready for manual post"
 ./scripts/calendar-report.sh
-```
-
-Tests:
-
-```bash
+./scripts/dashboard.sh
 ./scripts/full-test.sh
+./scripts/dashboard-web.sh
 ```
 
 ---
 
-# PHASE 6 — Multi-Platform Publishing Later
+# PHASE 7 — Manual Multi-Platform Export v2
 
 Status: Future
 
 Build later:
 
 ```text
-YouTube public/unlisted confirmation polishing
-TikTok manual export helper refinement
-Instagram/Facebook metadata export
-X post template
-Rumble manual export
-website publishing integration
-```
-
-No automatic multi-platform publishing until safety, API terms, and account readiness are confirmed.
-
----
-
-# PHASE 7 — Dashboard Approval Panels v2
-
-Status: Future
-
-Add:
-
-```text
-visual video cards
-queue approve/reject/rerender from dashboard
-typed confirmation modal
-preflight result panel
-audio/safety badge per video
+platform-specific title length checks
+TikTok/Instagram/Reels hashtag variants
+thumbnail/export images
+manual posting checklist per platform
+export pack zip
 ```
 
 ---
@@ -678,6 +641,15 @@ Automation:
 ./scripts/nightly-run.sh
 ./scripts/install-nightly-cron.sh
 ./scripts/show-schedule.sh
+```
+
+Review/export/publish:
+
+```bash
+./scripts/review-cards.sh
+./scripts/export-pack.sh VIDEO_ID
+./scripts/export-report.sh
+ALLOW_PUBLIC_PUBLISH=true ./scripts/confirm-publish.sh VIDEO_ID unlisted
 ```
 
 Database:

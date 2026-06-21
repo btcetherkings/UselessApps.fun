@@ -160,6 +160,15 @@ function testDashboardServerStatic() {
 
   if (text.includes('/api/actions')) add('PASS', 'web dashboard has /api/actions');
   else add('WARN', 'web dashboard missing /api/actions');
+
+  if (text.includes('/api/review-cards')) add('PASS', 'web dashboard has /api/review-cards');
+  else add('FAIL', 'web dashboard missing /api/review-cards');
+
+  if (text.includes('/api/export-pack')) add('PASS', 'web dashboard has /api/export-pack');
+  else add('FAIL', 'web dashboard missing /api/export-pack');
+
+  if (text.includes('/api/calendar-item')) add('PASS', 'web dashboard has /api/calendar-item');
+  else add('FAIL', 'web dashboard missing /api/calendar-item');
 }
 
 function main() {
@@ -214,6 +223,7 @@ function main() {
     'tools/dashboard/web-dashboard.js',
     'tools/dashboard/dashboard.js',
     'tools/testing/full-system-test.js',
+    'tools/review/review-summary.js',
     'tools/review/review-cards.js',
     'tools/publish/confirm-publish.js',
     'tools/export/export-report.js',
@@ -266,6 +276,21 @@ function main() {
   testActionQueueSnapshot();
   testDashboardReport();
   testDashboardServerStatic();
+
+  const dashboardJs = fs.existsSync(path.join(ROOT_DIR, 'tools/dashboard/dashboard.js'))
+    ? fs.readFileSync(path.join(ROOT_DIR, 'tools/dashboard/dashboard.js'), 'utf8')
+    : '';
+
+  if (dashboardJs.includes('loadReviewCards')) add('PASS', 'dashboard JS has review card loader');
+  else add('FAIL', 'dashboard JS missing review card loader');
+
+  const dashboardHtml = fs.existsSync(path.join(ROOT_DIR, 'tools/dashboard/dashboard.html'))
+    ? fs.readFileSync(path.join(ROOT_DIR, 'tools/dashboard/dashboard.html'), 'utf8')
+    : '';
+
+  if (dashboardHtml.includes('reviewDeskCards')) add('PASS', 'dashboard HTML has review desk cards');
+  else add('FAIL', 'dashboard HTML missing review desk cards');
+
 
   console.log('');
   console.log('Summary');

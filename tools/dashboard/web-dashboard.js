@@ -4,6 +4,8 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const { queueAction, loadQueue } = require('../actions/action-lib');
+const { getReviewCards } = require('../review/review-summary');
+const { addCalendarItem } = require('../calendar/calendar-lib');
 
 const ROOT_DIR = path.join(__dirname, '..', '..');
 const PORT = Number(process.env.DASHBOARD_PORT || 8787);
@@ -27,6 +29,85 @@ function contentType(url) {
 
 const server = http.createServer((req, res) => {
   const cleanUrl = (req.url || '/').split('?')[0];
+
+  if (cleanUrl === '/api/review-cards' && req.method === 'GET') {
+    res.writeHead(200, {
+      'Content-Type': 'application/json',
+      'Cache-Control': 'no-store'
+    });
+    res.end(JSON.stringify(getReviewCards(), null, 2));
+    return;
+  }
+
+  if (cleanUrl === '/api/export-pack' && req.method === 'POST') {
+    let body = '';
+
+    req.on('data', chunk => {
+      body += chunk;
+      if (body.length > 100000) req.destroy();
+    });
+
+    req.on('end', () => {
+      try {
+        const parsed = body ? JSON.parse(body) : {};
+        const videoId = parsed.videoId;
+
+        if (!videoId) throw new Error('videoId is required');
+
+        const child = require('child_process').spawnSync('node', ['tools/export/export-pack.js', videoId], {
+          cwd: ROOT_DIR,
+          encoding: 'utf8',
+          shell: false
+        });
+
+        if (child.status !== 0) {
+          throw new Error(child.stderr || child.stdout || 'export pack failed');
+        }
+
+        res.writeHead(201, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({
+          ok: true,
+          output: child.stdout.trim()
+        }, null, 2));
+      } catch (err) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: err.message }, null, 2));
+      }
+    });
+
+    return;
+  }
+
+  if (cleanUrl === '/api/calendar-item' && req.method === 'POST') {
+    let body = '';
+
+    req.on('data', chunk => {
+      body += chunk;
+      if (body.length > 100000) req.destroy();
+    });
+
+    req.on('end', () => {
+      try {
+        const parsed = body ? JSON.parse(body) : {};
+        const item = addCalendarItem({
+          title: parsed.title,
+          videoId: parsed.videoId || '',
+          platform: parsed.platform || 'youtube',
+          status: parsed.status || 'ready',
+          plannedAt: parsed.plannedAt || '',
+          notes: parsed.notes || 'Added from dashboard review card'
+        });
+
+        res.writeHead(201, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify(item, null, 2));
+      } catch (err) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: err.message }, null, 2));
+      }
+    });
+
+    return;
+  }
 
   if (cleanUrl === '/api/actions' && req.method === 'GET') {
     res.writeHead(200, {
