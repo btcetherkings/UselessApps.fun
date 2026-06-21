@@ -139,3 +139,48 @@ try {
 } catch (err) {
   console.log(`Could not read recommendations: ${err.message}`);
 }
+
+const fs2 = require('fs');
+const path2 = require('path');
+
+const recsV2File = path2.join(__dirname, 'recommendations-v2.json');
+
+if (fs2.existsSync(recsV2File)) {
+  const recsV2 = JSON.parse(fs2.readFileSync(recsV2File, 'utf8'));
+
+  console.log('');
+  console.log('Learning Recommendations v2');
+  console.log('===========================');
+  console.log('');
+
+  console.log('Summary');
+  console.log('-------');
+  for (const [key, value] of Object.entries(recsV2.summary || {})) {
+    console.log(`${key}: ${value}`);
+  }
+
+  console.log('');
+
+  console.log('Prefer');
+  console.log('------');
+  console.log(`App types: ${(recsV2.prefer?.appTypes || []).map(x => x.key).join(', ') || 'none'}`);
+  console.log(`Story modes: ${(recsV2.prefer?.storyModes || []).map(x => x.key).join(', ') || 'none'}`);
+  console.log(`Audio moods: ${(recsV2.prefer?.audioMoods || []).map(x => x.key).join(', ') || 'none'}`);
+
+  console.log('');
+
+  console.log('Avoid');
+  console.log('-----');
+  console.log(`App types: ${(recsV2.avoid?.appTypes || []).map(x => x.key).join(', ') || 'none'}`);
+  console.log(`Story modes: ${(recsV2.avoid?.storyModes || []).map(x => x.key).join(', ') || 'none'}`);
+  console.log(`Audio moods: ${(recsV2.avoid?.audioMoods || []).map(x => x.key).join(', ') || 'none'}`);
+
+  console.log('');
+
+  console.log('Next ideas');
+  console.log('----------');
+  for (const idea of recsV2.nextIdeas || []) {
+    console.log(`- ${idea.appType} + ${idea.storyMode} + ${idea.audioMood}`);
+    console.log(`  ${idea.reason}`);
+  }
+}

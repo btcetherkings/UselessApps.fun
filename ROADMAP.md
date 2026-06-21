@@ -12,12 +12,13 @@ It creates tiny useless apps, records them, turns them into ridiculous fake-TV v
 
 ## Current Working Milestone
 
-The generation, private upload, audio mix, production audio validation, review sync, and unlisted publish flow are now working or ready for retest.
+The generation, audio, private upload, review, sync, approval, preflight, and publish workflow are now working.
 
 Confirmed:
 
 - [x] Local video generation works
 - [x] YouTube private upload works
+- [x] YouTube unlisted publish flow works or is ready for controlled retest
 - [x] Audio engine exists
 - [x] FFmpeg audio mix works
 - [x] `audioMix.mode = full_mix` has been confirmed
@@ -25,70 +26,72 @@ Confirmed:
 - [x] `AUDIO_REQUIRE_PUBLIC_SAFE=true` can select production-safe assets
 - [x] Corporate Regret Board uploaded privately with production-safe music
 - [x] Review queue imports private uploaded videos
-- [x] Audio validation flags older pre-audio videos as blocked for public
-- [x] Review sync order fixed or in progress
-- [x] Unlisted publishing has worked for at least one approved video
+- [x] Audio validation blocks older pre-audio videos from public
+- [x] Review sync order is fixed
+- [x] Publish preflight exists or is being finalized
 
 ---
 
-## Latest State
+## Current State
 
-Review sync has been built so the correct flow is now:
+The platform can now create and safely review videos, but the autopilot still needs stronger learning logic.
+
+Current problem:
 
 ```text
-private upload
-→ import private uploads into review DB
-→ validate audio
-→ update review DB
-→ review report
-→ approve
-→ publish unlisted
-→ optional public publish only after explicit gate
+The bot does not yet properly learn from YouTube stats, review decisions, audio safety, story modes, or publish outcomes.
 ```
 
 Next build:
 
 ```text
-review report polish
-→ approval readiness summary
-→ public publish preflight
-→ unlisted retest
-→ public publish dry/precheck
+YouTube stats + review DB + processed metadata
+→ learning dataset
+→ scoring engine
+→ recommendations v2
+→ autopilot idea bias
 ```
 
 ---
 
-# Active Build: Review Report Polish + Public Publish Retest
+# Active Build: YouTube Analytics + Learning Recommendations v2
 
 Status: Next build
 
 Goal:
 
-Make the review and publish workflow feel like a proper production control panel.
+Make the bot learn what to generate next based on real signals.
 
 This build should:
 
-- make review reports easier to read
-- group videos by readiness
-- show publish eligibility clearly
-- show audio safety clearly
-- show approved/unpublished queue clearly
-- add a publish preflight command
-- prevent accidental public release
-- verify unlisted publishing still works
-- prepare a safe public-publish retest command
-- update roadmap after successful unlisted/public tests
+- pull YouTube stats for uploaded videos
+- combine stats with processed metadata
+- combine review decisions and publish status
+- score videos using views/likes/comments/status/review/audio
+- rank app types
+- rank story modes
+- rank hooks/titles
+- rank audio moods
+- rank SFX tags
+- detect weak categories
+- create recommendations v2 JSON
+- make autopilot prefer better-performing patterns
+- avoid repeating recent types too much
+- output a readable learning report
 
 Files to create/update:
 
 ```text
-tools/publish/preflight.js
-tools/publish/list-private.js
-tools/publish/report.js
-tools/publish/publish-youtube.js
-scripts/publish-preflight.sh
-scripts/review-private.sh
-scripts/publish-report.sh
+tools/analytics/youtube-stats.js
+tools/analytics/learning-v2.js
+tools/analytics/recommendations.js
+tools/analytics/report.js
+tools/analytics/recommendations-v2.json
+tools/autopilot/useless-autopilot.js
+scripts/youtube-stats-pull.sh
+scripts/learning-v2.sh
+scripts/analytics-report.sh
+scripts/autopilot-preview-once.sh
 ROADMAP.md
 ```
 
@@ -125,278 +128,313 @@ Status: Completed
 
 # Phase 3: YouTube Upload + Publish Workflow
 
-Status: Working, public retest pending
+Status: Working
 
 Working:
 
 - [x] OAuth private upload works
 - [x] Private video upload works
 - [x] Approval command works
-- [x] Unlisted publish worked for one approved video
-- [x] Public publishing gated by env var
+- [x] Publish preflight exists or is being finalized
 - [x] Audio validation can block unsafe public publishing
 
 Next:
 
-- [ ] Add publish preflight command
-- [ ] Retest unlisted publishing with Corporate Regret Board
-- [ ] Retest public publish only if explicitly intended
-- [ ] Confirm `processed-v3.json` and `review-db.json` stay in sync after publishing
-- [ ] Fix processed file writeback if publish status is not persisted
+- [ ] Add publish status as learning signal
+- [ ] Boost approved/unlisted/public videos
+- [ ] Penalize rejected/needs-rerender videos
 
 ---
 
-# Phase 4: Review Sync
-
-Status: Working or being finalized
-
-Working:
-
-- [x] Review sync imports private uploads
-- [x] Audio validation updates review DB
-- [x] Review reports show audio validation for imported items
-
-Next:
-
-- [ ] Make review-private output grouped and easier to read
-- [ ] Highlight only action-needed items by default
-- [ ] Add full mode for all items
-
----
-
-# Phase 5: Audio Validation + Public Safety
+# Phase 4: Audio + Production Safety
 
 Status: Working
 
 Working:
 
-- [x] `audio_missing` blocks older videos from public
-- [x] `test_audio_used` blocks public
-- [x] `music_not_public_safe` blocks public
-- [x] `sfx_not_public_safe` blocks public
-- [x] `sfx_missing` can be non-blocking if music is production-safe
+- [x] Audio plan exists
+- [x] Audio mix exists
+- [x] Full mix confirmed
+- [x] Production-safe asset manifest exists
+- [x] Audio validation exists
+- [x] Test audio blocked from public
 
 Next:
 
-- [ ] Display `publicSafe=true/false` prominently
-- [ ] Display production readiness summary
-- [ ] Add preflight rules for video publish
+- [ ] Learn which audio moods work
+- [ ] Learn which SFX tags work
+- [ ] Penalize videos with audio blockers
+- [ ] Record audio score in learning dataset
 
 ---
 
-# Phase 6: Review Report Polish
+# Phase 5: Review Sync + Approval
 
-Status: Next active build
-
-## New review sections
-
-Review should be grouped as:
-
-```text
-1. Ready for approval
-2. Needs audio review
-3. Blocked for public
-4. Already approved
-5. Published unlisted
-6. Published public
-```
-
-Each video card should show:
-
-```text
-name
-videoId
-status
-decision
-url
-audio mode
-audio readiness
-publicSafe
-warnings
-recommended action
-```
-
-## Recommended actions
-
-Examples:
-
-```text
-READY_FOR_UNLISTED_TEST
-APPROVE_IF_CONTENT_OK
-RERENDER_WITH_AUDIO
-DO_NOT_PUBLIC_PUBLISH
-ALREADY_UNLISTED
-```
-
-Tasks:
-
-- [ ] Patch `tools/publish/list-private.js`
-- [ ] Add grouping helpers
-- [ ] Add recommended actions
-- [ ] Add compact/full display mode
-- [ ] Confirm Corporate Regret Board appears in right group
-
----
-
-# Phase 7: Publish Preflight
-
-Status: Next active build
-
-## Command
-
-```bash
-./scripts/publish-preflight.sh VIDEO_ID unlisted
-./scripts/publish-preflight.sh VIDEO_ID public
-```
-
-## Preflight checks
-
-For unlisted:
-
-```text
-video exists in review DB
-status is private_uploaded or approved
-audio validation exists
-no hard blockers
-warn if needs_audio_review
-```
-
-For public:
-
-```text
-video exists in review DB
-video is approved
-ALLOW_PUBLIC_PUBLISH=true required at actual publish time
-audio publicSafe must be true
-no test audio
-no audio_missing
-no not_public_safe warnings
-prefer status published_unlisted first
-```
-
-Output should say:
-
-```text
-PASS
-WARN
-BLOCKED
-```
-
-Tasks:
-
-- [ ] Create `tools/publish/preflight.js`
-- [ ] Create `scripts/publish-preflight.sh`
-- [ ] Integrate preflight into publish-youtube.js
-- [ ] Run preflight before unlisted publish
-- [ ] Run preflight before public publish
-
----
-
-# Phase 8: Production Audio Pack
-
-Status: In progress
+Status: Working
 
 Working:
 
-- [x] Production demo music assets generated
-- [x] Production demo SFX assets generated
-- [x] Manifest registration exists
-- [x] Public-safe selection exists
+- [x] Review DB imports private uploads
+- [x] Audio validation updates review DB
+- [x] Review report groups/polishes workflow
+- [x] Preflight can block unsafe publish
 
 Next:
 
-- [ ] Add more production-safe SFX so every story mode can find a match
-- [ ] Replace simple demo tones with better royalty-free audio later
-- [ ] Track audio style against performance
+- [ ] Add review decision to learning score
+- [ ] Treat approved as positive signal
+- [ ] Treat needs-rerender/rejected as negative signal
+- [ ] Treat unlisted/public as stronger positive signal
 
 ---
 
-# Phase 9: YouTube Analytics + Learning Engine
+# Phase 6: YouTube Analytics v1
 
-Status: In progress
+Status: Foundation exists
+
+Working:
+
+- [x] YouTube stats pull script exists
+- [x] Performance DB exists
+- [x] Analytics report script exists
+- [x] Basic recommendations exist or are being integrated
 
 Next:
 
-- [ ] Pull stats for all private/unlisted videos
-- [ ] Track public-safe audio performance
-- [ ] Learn which story modes and audio moods perform best
-- [ ] Generate next-video recommendations
+- [ ] Normalize stats across old/new videos
+- [ ] Combine stats with review DB
+- [ ] Combine stats with audio/story metadata
+- [ ] Generate recommendations v2
+
+---
+
+# Phase 7: Learning Recommendations v2
+
+Status: Next active build
+
+## Dataset fields
+
+Each video learning row should include:
+
+```json
+{
+  "videoId": "Nx2Ek9u165c",
+  "name": "Corporate Regret Board",
+  "appType": "productivity",
+  "storyMode": "fake_corporate_audit",
+  "audioMode": "narration_music",
+  "audioMood": "documentary",
+  "musicUsed": "assets/music/documentary-bed-01.wav",
+  "sfxTags": [],
+  "reviewStatus": "private_uploaded",
+  "decision": "none",
+  "publishStatus": "private_uploaded",
+  "views": 0,
+  "likes": 0,
+  "comments": 0,
+  "score": 0,
+  "learningScore": 0
+}
+```
+
+## Score formula v2
+
+Base public engagement:
+
+```text
+views * 1
+likes * 8
+comments * 15
+```
+
+Status boost:
+
+```text
+approved +20
+published_unlisted +35
+published_public +75
+```
+
+Review penalty:
+
+```text
+rejected -100
+needs_rerender -60
+blocked_for_public -30
+audio_missing -20
+test_audio_used -25
+```
+
+Freshness:
+
+```text
+recent uploads get small boost
+very old zero-performance videos get small penalty
+```
+
+Safety:
+
+```text
+publicSafe=true +10
+publicSafe=false -25
+```
+
+## Recommendation output
+
+`tools/analytics/recommendations-v2.json` should include:
+
+```json
+{
+  "version": 2,
+  "generatedAt": "...",
+  "summary": {
+    "videos": 13,
+    "uploaded": 13,
+    "approved": 1,
+    "publishedUnlisted": 1,
+    "publicSafe": 1
+  },
+  "prefer": {
+    "appTypes": [],
+    "storyModes": [],
+    "audioMoods": [],
+    "sfxTags": []
+  },
+  "avoid": {
+    "appTypes": [],
+    "storyModes": [],
+    "audioMoods": [],
+    "sfxTags": []
+  },
+  "nextIdeas": []
+}
+```
+
+Tasks:
+
+- [ ] Create `tools/analytics/learning-v2.js`
+- [ ] Create `scripts/learning-v2.sh`
+- [ ] Read `processed-v3.json`
+- [ ] Read `review-db.json`
+- [ ] Read `performance-db.json`
+- [ ] Build joined dataset
+- [ ] Score every video
+- [ ] Rank app types
+- [ ] Rank story modes
+- [ ] Rank audio moods
+- [ ] Rank SFX tags
+- [ ] Output recommendations v2
+- [ ] Print readable report
+
+---
+
+# Phase 8: Autopilot Learning Integration
+
+Status: Planned in this build
+
+Goal:
+
+Use `recommendations-v2.json` to gently bias idea generation.
+
+Autopilot should:
+
+```text
+prefer high-scoring app types
+prefer high-scoring story modes
+prefer good audio moods
+avoid blocked/rejected patterns
+still maintain anti-repeat variety
+```
+
+Tasks:
+
+- [ ] Load `recommendations-v2.json`
+- [ ] Prefer v2 over v1 recommendations
+- [ ] Keep existing anti-repeat logic
+- [ ] Add score explanation to created app
+- [ ] Add learning reason to ledger
+
+---
+
+# Phase 9: Analytics Report v2
+
+Status: Planned in this build
+
+Report should show:
+
+```text
+top videos
+worst videos
+best app types
+best story modes
+best audio moods
+best review outcomes
+blocked videos
+next recommendations
+```
+
+Tasks:
+
+- [ ] Patch `tools/analytics/report.js`
+- [ ] Show v2 recommendations if present
+- [ ] Show next ideas
+- [ ] Show confidence level
+- [ ] Show what data is missing
 
 ---
 
 # Immediate Next Build Tasks
 
-1. Create `tools/publish/preflight.js`.
-2. Create `scripts/publish-preflight.sh`.
-3. Patch `tools/publish/publish-youtube.js` to call preflight logic.
-4. Patch `tools/publish/list-private.js` to group review items.
-5. Patch `tools/publish/report.js` to show publish readiness counts.
-6. Run `./scripts/sync-review.sh`.
-7. Run `./scripts/review-private.sh`.
-8. Run preflight for Corporate Regret Board.
-9. Approve Corporate Regret Board if content is okay.
-10. Publish Corporate Regret Board as unlisted.
-11. Retest public preflight without actually publishing publicly first.
-12. Update roadmap and commit.
+1. Create `tools/analytics/learning-v2.js`.
+2. Create `scripts/learning-v2.sh`.
+3. Run YouTube stats pull.
+4. Run learning v2.
+5. Inspect `recommendations-v2.json`.
+6. Patch autopilot to load v2 recommendations.
+7. Run dry-run autopilot preview.
+8. Confirm generated app includes learning reason.
+9. Commit.
 
 ---
 
 # Current Command Set
 
-Sync review DB:
+Pull YouTube stats:
 
 ```bash
-./scripts/sync-review.sh
+./scripts/youtube-stats-pull.sh
 ```
 
-Review private uploads:
+Run learning v2:
 
 ```bash
-./scripts/review-private.sh
+./scripts/learning-v2.sh
 ```
 
-Publish report:
+Analytics report:
 
 ```bash
-./scripts/publish-report.sh
+./scripts/analytics-report.sh
 ```
 
-Preflight unlisted publish:
+Autopilot preview with learning:
 
 ```bash
-./scripts/publish-preflight.sh VIDEO_ID unlisted
+USE_LEARNING_ENGINE=true AUTO_DRY_RUN=true ./scripts/autopilot-preview-once.sh
 ```
 
-Preflight public publish:
+Private upload with learning:
 
 ```bash
-./scripts/publish-preflight.sh VIDEO_ID public
-```
-
-Approve video:
-
-```bash
-./scripts/approve-video.sh VIDEO_ID "Looks good for unlisted test"
-```
-
-Publish approved as unlisted:
-
-```bash
-./scripts/publish-approved.sh VIDEO_ID unlisted
-```
-
-Public publish, only when safe and intentional:
-
-```bash
-ALLOW_PUBLIC_PUBLISH=true ./scripts/publish-approved.sh VIDEO_ID public
+USE_LEARNING_ENGINE=true AUDIO_REQUIRE_PUBLIC_SAFE=true AUTO_DRY_RUN=false ./scripts/autopilot-upload-once-private.sh
 ```
 
 ---
 
 # Current Priority
 
-1. Add publish preflight.
-2. Polish review grouping.
-3. Retest Corporate Regret Board unlisted publish.
-4. Verify public publish gate.
-5. Then build analytics/recommendations for choosing what to create next.
+1. Generate recommendations v2.
+2. Use review/audio/publish status as learning signals.
+3. Bias autopilot toward stronger content patterns.
+4. Keep variety and anti-repeat.
+5. Then build dashboard/reporting for learning decisions.

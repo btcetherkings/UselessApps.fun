@@ -13,6 +13,7 @@ const PROCESSED_FILE = path.join(ROOT_DIR, 'tools', 'video-generator', 'processe
 const STATE_FILE = path.join(ROOT_DIR, 'tools', 'autopilot', 'autopilot-state.json');
 const LEDGER_FILE = path.join(ROOT_DIR, 'tools', 'autopilot', 'content-ledger.json');
 const RECOMMENDATIONS_FILE = path.join(ROOT_DIR, 'tools', 'analytics', 'recommendations.json');
+const RECOMMENDATIONS_V2_FILE = path.join(ROOT_DIR, 'tools', 'analytics', 'recommendations-v2.json');
 
 const AUTO_DRY_RUN = String(process.env.AUTO_DRY_RUN || 'true').toLowerCase() === 'true';
 const AUTO_VIDEO_PRIVACY = process.env.AUTO_VIDEO_PRIVACY || 'private';
