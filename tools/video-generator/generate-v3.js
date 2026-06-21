@@ -51,6 +51,10 @@ const FORCE = String(process.env.FORCE || '').toLowerCase() === 'true';
 const USE_STORY_ENGINE = String(process.env.USE_STORY_ENGINE || 'true').toLowerCase() !== 'false';
 const USE_METADATA_ENGINE = String(process.env.USE_METADATA_ENGINE || 'true').toLowerCase() !== 'false';
 const USE_QUALITY_ENGINE = String(process.env.USE_QUALITY_ENGINE || 'true').toLowerCase() !== 'false';
+const SAFE_MODE = String(process.env.SAFE_MODE || 'true').toLowerCase() !== 'false';
+const TEXT_DENSITY = String(process.env.TEXT_DENSITY || 'low').toLowerCase();
+const TICKER_ENABLED = String(process.env.TICKER_ENABLED || 'false').toLowerCase() === 'true';
+const FOOTER_ENABLED = String(process.env.FOOTER_ENABLED || 'false').toLowerCase() === 'true';
 const VERBOSE = String(process.env.VERBOSE || '').toLowerCase() === 'true';
 const KEEP_TMP = String(process.env.KEEP_TMP || '').toLowerCase() === 'true';
 
@@ -1941,6 +1945,10 @@ function printStartupInfo() {
   log(`USE_STORY_ENGINE: ${USE_STORY_ENGINE}`);
   log(`USE_METADATA_ENGINE: ${USE_METADATA_ENGINE}`);
   log(`USE_QUALITY_ENGINE: ${USE_QUALITY_ENGINE}`);
+  log(`SAFE_MODE: ${SAFE_MODE}`);
+  log(`TEXT_DENSITY: ${TEXT_DENSITY}`);
+  log(`TICKER_ENABLED: ${TICKER_ENABLED}`);
+  log(`FOOTER_ENABLED: ${FOOTER_ENABLED}`);
   log(`KEEP_TMP: ${KEEP_TMP}`);
   log(`CHAOS_MODE: ${CHAOS_MODE}`);
   log(`USE_SYNTH_MUSIC: ${USE_SYNTH_MUSIC}`);
