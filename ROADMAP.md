@@ -12,7 +12,7 @@ It creates tiny useless apps, records them, turns them into ridiculous fake-TV v
 
 ## Current Working Milestone
 
-The generation, audio, private upload, review, sync, approval, preflight, and publish workflow are now working.
+The generation, audio, private upload, review, sync, approval, preflight, publish workflow, learning recommendations v2, and learning reason persistence are now working.
 
 Confirmed:
 
@@ -21,78 +21,78 @@ Confirmed:
 - [x] YouTube unlisted publish flow works or is ready for controlled retest
 - [x] Audio engine exists
 - [x] FFmpeg audio mix works
-- [x] `audioMix.mode = full_mix` has been confirmed
 - [x] Production-safe demo audio assets exist
 - [x] `AUDIO_REQUIRE_PUBLIC_SAFE=true` can select production-safe assets
-- [x] Corporate Regret Board uploaded privately with production-safe music
 - [x] Review queue imports private uploaded videos
-- [x] Audio validation blocks older pre-audio videos from public
+- [x] Audio validation blocks unsafe public publishing
 - [x] Review sync order is fixed
-- [x] Publish preflight exists or is being finalized
+- [x] Publish preflight exists
+- [x] Learning v2 recommendations exist
+- [x] Autopilot can use v2 recommendations
+- [x] `learningReason` is now persisted in generated app records
 
 ---
 
 ## Current State
 
-The platform can now create and safely review videos, but the autopilot still needs stronger learning logic.
+The system can now create, upload, review, preflight, and learn.
 
 Current problem:
 
 ```text
-The bot does not yet properly learn from YouTube stats, review decisions, audio safety, story modes, or publish outcomes.
+The learning output is still spread across multiple commands and JSON files.
+We need a single daily command that tells us:
+what happened, what learned, what is blocked, what should be made next, and why.
 ```
 
 Next build:
 
 ```text
-YouTube stats + review DB + processed metadata
-→ learning dataset
-→ scoring engine
-→ recommendations v2
-→ autopilot idea bias
+stats + review + validation + recommendations + latest app
+→ daily autopilot report
+→ human-readable dashboard output
+→ optional markdown report file
 ```
 
 ---
 
-# Active Build: YouTube Analytics + Learning Recommendations v2
+# Active Build: Learning Dashboard + Daily Autopilot Report
 
 Status: Next build
 
 Goal:
 
-Make the bot learn what to generate next based on real signals.
+Create a single reporting layer that summarises the whole machine.
 
-This build should:
+This build should answer:
 
-- pull YouTube stats for uploaded videos
-- combine stats with processed metadata
-- combine review decisions and publish status
-- score videos using views/likes/comments/status/review/audio
-- rank app types
-- rank story modes
-- rank hooks/titles
-- rank audio moods
-- rank SFX tags
-- detect weak categories
-- create recommendations v2 JSON
-- make autopilot prefer better-performing patterns
-- avoid repeating recent types too much
-- output a readable learning report
+```text
+How many apps exist?
+How many videos uploaded?
+How many are private/unlisted/public?
+Which videos are blocked?
+Which videos are public-safe?
+What did learning v2 recommend?
+What did the autopilot pick and why?
+What should we approve, rerender, or publish next?
+```
 
 Files to create/update:
 
 ```text
-tools/analytics/youtube-stats.js
-tools/analytics/learning-v2.js
-tools/analytics/recommendations.js
-tools/analytics/report.js
-tools/analytics/recommendations-v2.json
-tools/autopilot/useless-autopilot.js
-scripts/youtube-stats-pull.sh
-scripts/learning-v2.sh
-scripts/analytics-report.sh
-scripts/autopilot-preview-once.sh
+tools/dashboard/daily-report.js
+tools/dashboard/learning-summary.js
+tools/dashboard/review-summary.js
+tools/dashboard/content-summary.js
+scripts/daily-report.sh
+scripts/dashboard.sh
 ROADMAP.md
+```
+
+Optional output file:
+
+```text
+reports/daily-autopilot-report.md
 ```
 
 ---
@@ -126,27 +126,7 @@ Status: Completed
 
 ---
 
-# Phase 3: YouTube Upload + Publish Workflow
-
-Status: Working
-
-Working:
-
-- [x] OAuth private upload works
-- [x] Private video upload works
-- [x] Approval command works
-- [x] Publish preflight exists or is being finalized
-- [x] Audio validation can block unsafe public publishing
-
-Next:
-
-- [ ] Add publish status as learning signal
-- [ ] Boost approved/unlisted/public videos
-- [ ] Penalize rejected/needs-rerender videos
-
----
-
-# Phase 4: Audio + Production Safety
+# Phase 3: Audio + Production Safety
 
 Status: Working
 
@@ -154,21 +134,22 @@ Working:
 
 - [x] Audio plan exists
 - [x] Audio mix exists
-- [x] Full mix confirmed
 - [x] Production-safe asset manifest exists
-- [x] Audio validation exists
 - [x] Test audio blocked from public
+- [x] Public-safe production music works
+- [x] Full audio mix works
 
 Next:
 
-- [ ] Learn which audio moods work
-- [ ] Learn which SFX tags work
-- [ ] Penalize videos with audio blockers
-- [ ] Record audio score in learning dataset
+- [ ] Dashboard summary of audio health
+- [ ] Count test-audio videos
+- [ ] Count public-safe videos
+- [ ] Count blocked videos
+- [ ] Show recommended audio improvements
 
 ---
 
-# Phase 5: Review Sync + Approval
+# Phase 4: Review + Publish Workflow
 
 Status: Working
 
@@ -176,245 +157,180 @@ Working:
 
 - [x] Review DB imports private uploads
 - [x] Audio validation updates review DB
-- [x] Review report groups/polishes workflow
-- [x] Preflight can block unsafe publish
+- [x] Review reports are synced
+- [x] Publish preflight exists
+- [x] Public publishing is gated
 
 Next:
 
-- [ ] Add review decision to learning score
-- [ ] Treat approved as positive signal
-- [ ] Treat needs-rerender/rejected as negative signal
-- [ ] Treat unlisted/public as stronger positive signal
+- [ ] Dashboard summary of review status
+- [ ] Show videos needing approval
+- [ ] Show videos ready for unlisted
+- [ ] Show blocked videos
+- [ ] Show recommended action per video
 
 ---
 
-# Phase 6: YouTube Analytics v1
+# Phase 5: YouTube Analytics + Learning v2
 
-Status: Foundation exists
+Status: Working
 
 Working:
 
 - [x] YouTube stats pull script exists
 - [x] Performance DB exists
-- [x] Analytics report script exists
-- [x] Basic recommendations exist or are being integrated
+- [x] Learning v2 exists
+- [x] Recommendations v2 file exists
+- [x] Autopilot can prefer v2
+- [x] `learningReason` persists
 
 Next:
 
-- [ ] Normalize stats across old/new videos
-- [ ] Combine stats with review DB
-- [ ] Combine stats with audio/story metadata
-- [ ] Generate recommendations v2
+- [ ] Dashboard summary of learning v2
+- [ ] Show top/worst videos
+- [ ] Show preferred app types
+- [ ] Show preferred story modes
+- [ ] Show preferred audio moods
+- [ ] Show next ideas
+- [ ] Show latest learning reason
 
 ---
 
-# Phase 7: Learning Recommendations v2
+# Phase 6: Daily Autopilot Report
 
 Status: Next active build
 
-## Dataset fields
+## Report sections
 
-Each video learning row should include:
-
-```json
-{
-  "videoId": "Nx2Ek9u165c",
-  "name": "Corporate Regret Board",
-  "appType": "productivity",
-  "storyMode": "fake_corporate_audit",
-  "audioMode": "narration_music",
-  "audioMood": "documentary",
-  "musicUsed": "assets/music/documentary-bed-01.wav",
-  "sfxTags": [],
-  "reviewStatus": "private_uploaded",
-  "decision": "none",
-  "publishStatus": "private_uploaded",
-  "views": 0,
-  "likes": 0,
-  "comments": 0,
-  "score": 0,
-  "learningScore": 0
-}
-```
-
-## Score formula v2
-
-Base public engagement:
+The report should include:
 
 ```text
-views * 1
-likes * 8
-comments * 15
+1. System status
+2. Content totals
+3. Upload/publish status
+4. Review queue status
+5. Audio safety status
+6. Learning recommendations v2
+7. Latest generated app and learning reason
+8. Next recommended actions
 ```
 
-Status boost:
+## Console report example
 
 ```text
-approved +20
-published_unlisted +35
-published_public +75
+UselessApps.fun Daily Autopilot Report
+=====================================
+
+Content:
+- Apps: 15
+- Uploaded: 13
+- Preview only: 2
+- Failed: 0
+
+Publishing:
+- Private: 12
+- Unlisted: 1
+- Public: 0
+
+Audio:
+- Public-safe: 2
+- Blocked: 11
+- Needs audio review: 1
+
+Learning:
+- Prefer app types: productivity, object
+- Prefer story modes: fake_corporate_audit, fake_nature_documentary
+- Prefer audio moods: documentary, fake-news
+
+Latest autopilot decision:
+- App: Staring Pebble Supreme
+- Type: object
+- Learning reason: selected by recommendations v2
 ```
 
-Review penalty:
+## Markdown output
+
+The dashboard should optionally write:
 
 ```text
-rejected -100
-needs_rerender -60
-blocked_for_public -30
-audio_missing -20
-test_audio_used -25
-```
-
-Freshness:
-
-```text
-recent uploads get small boost
-very old zero-performance videos get small penalty
-```
-
-Safety:
-
-```text
-publicSafe=true +10
-publicSafe=false -25
-```
-
-## Recommendation output
-
-`tools/analytics/recommendations-v2.json` should include:
-
-```json
-{
-  "version": 2,
-  "generatedAt": "...",
-  "summary": {
-    "videos": 13,
-    "uploaded": 13,
-    "approved": 1,
-    "publishedUnlisted": 1,
-    "publicSafe": 1
-  },
-  "prefer": {
-    "appTypes": [],
-    "storyModes": [],
-    "audioMoods": [],
-    "sfxTags": []
-  },
-  "avoid": {
-    "appTypes": [],
-    "storyModes": [],
-    "audioMoods": [],
-    "sfxTags": []
-  },
-  "nextIdeas": []
-}
+reports/daily-autopilot-report.md
 ```
 
 Tasks:
 
-- [ ] Create `tools/analytics/learning-v2.js`
-- [ ] Create `scripts/learning-v2.sh`
-- [ ] Read `processed-v3.json`
-- [ ] Read `review-db.json`
-- [ ] Read `performance-db.json`
-- [ ] Build joined dataset
-- [ ] Score every video
-- [ ] Rank app types
-- [ ] Rank story modes
-- [ ] Rank audio moods
-- [ ] Rank SFX tags
-- [ ] Output recommendations v2
-- [ ] Print readable report
+- [ ] Create dashboard folder
+- [ ] Create content summary helper
+- [ ] Create review summary helper
+- [ ] Create learning summary helper
+- [ ] Create daily report command
+- [ ] Add script aliases
+- [ ] Run report after learning v2
+- [ ] Commit
 
 ---
 
-# Phase 8: Autopilot Learning Integration
+# Phase 7: Autopilot Decision Logging
 
-Status: Planned in this build
+Status: Planned after dashboard
 
-Goal:
+Next:
 
-Use `recommendations-v2.json` to gently bias idea generation.
-
-Autopilot should:
-
-```text
-prefer high-scoring app types
-prefer high-scoring story modes
-prefer good audio moods
-avoid blocked/rejected patterns
-still maintain anti-repeat variety
-```
-
-Tasks:
-
-- [ ] Load `recommendations-v2.json`
-- [ ] Prefer v2 over v1 recommendations
-- [ ] Keep existing anti-repeat logic
-- [ ] Add score explanation to created app
-- [ ] Add learning reason to ledger
+- [ ] Log every autopilot decision to a decision ledger
+- [ ] Store why a type/story mode was selected
+- [ ] Store rejected candidate templates
+- [ ] Store anti-repeat decisions
+- [ ] Store learning score used
 
 ---
 
-# Phase 9: Analytics Report v2
+# Phase 8: Real Production Audio Pack
 
-Status: Planned in this build
+Status: Planned
 
-Report should show:
+Next:
 
-```text
-top videos
-worst videos
-best app types
-best story modes
-best audio moods
-best review outcomes
-blocked videos
-next recommendations
-```
-
-Tasks:
-
-- [ ] Patch `tools/analytics/report.js`
-- [ ] Show v2 recommendations if present
-- [ ] Show next ideas
-- [ ] Show confidence level
-- [ ] Show what data is missing
+- [ ] Replace generated sine tones with better royalty-free music/SFX
+- [ ] Register license/source/public safety
+- [ ] Add more story-mode-specific stings
+- [ ] Rerender promising old videos with production audio
 
 ---
 
 # Immediate Next Build Tasks
 
-1. Create `tools/analytics/learning-v2.js`.
-2. Create `scripts/learning-v2.sh`.
-3. Run YouTube stats pull.
-4. Run learning v2.
-5. Inspect `recommendations-v2.json`.
-6. Patch autopilot to load v2 recommendations.
-7. Run dry-run autopilot preview.
-8. Confirm generated app includes learning reason.
-9. Commit.
+1. Create `tools/dashboard/content-summary.js`.
+2. Create `tools/dashboard/review-summary.js`.
+3. Create `tools/dashboard/learning-summary.js`.
+4. Create `tools/dashboard/daily-report.js`.
+5. Create `scripts/daily-report.sh`.
+6. Create `scripts/dashboard.sh`.
+7. Run sync-review and learning-v2 before reporting.
+8. Output console report.
+9. Output `reports/daily-autopilot-report.md`.
+10. Commit.
 
 ---
 
 # Current Command Set
 
-Pull YouTube stats:
+Run daily dashboard:
 
 ```bash
-./scripts/youtube-stats-pull.sh
+./scripts/daily-report.sh
 ```
 
-Run learning v2:
+Alias:
 
 ```bash
+./scripts/dashboard.sh
+```
+
+Run full learning refresh first:
+
+```bash
+./scripts/youtube-stats-pull.sh || true
 ./scripts/learning-v2.sh
-```
-
-Analytics report:
-
-```bash
-./scripts/analytics-report.sh
+./scripts/daily-report.sh
 ```
 
 Autopilot preview with learning:
@@ -423,7 +339,7 @@ Autopilot preview with learning:
 USE_LEARNING_ENGINE=true AUTO_DRY_RUN=true ./scripts/autopilot-preview-once.sh
 ```
 
-Private upload with learning:
+Private upload with learning and public-safe audio:
 
 ```bash
 USE_LEARNING_ENGINE=true AUDIO_REQUIRE_PUBLIC_SAFE=true AUTO_DRY_RUN=false ./scripts/autopilot-upload-once-private.sh
@@ -433,8 +349,7 @@ USE_LEARNING_ENGINE=true AUDIO_REQUIRE_PUBLIC_SAFE=true AUTO_DRY_RUN=false ./scr
 
 # Current Priority
 
-1. Generate recommendations v2.
-2. Use review/audio/publish status as learning signals.
-3. Bias autopilot toward stronger content patterns.
-4. Keep variety and anti-repeat.
-5. Then build dashboard/reporting for learning decisions.
+1. Create a single daily report.
+2. Make learning/review/audio status easy to understand.
+3. Show the latest autopilot decision and learning reason.
+4. Then build a decision ledger and richer dashboard.

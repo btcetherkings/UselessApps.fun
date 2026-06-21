@@ -1986,6 +1986,7 @@ async function processOneApp(app) {
     qualityPlan,
       audioPlan,
       audioMix,
+      learningReason: app.learningReason || null,
       narration: narration.text,
       narrationMeta: {
         duration: narration.duration,

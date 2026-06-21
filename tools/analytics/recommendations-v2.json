@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "generatedAt": "2026-06-21T13:12:50.795Z",
+  "generatedAt": "2026-06-21T13:20:25.252Z",
   "summary": {
-    "videos": 13,
+    "videos": 14,
     "uploaded": 13,
     "approved": 2,
     "publishedUnlisted": 2,
@@ -46,12 +46,6 @@
         "averageScore": -70
       },
       {
-        "key": "object",
-        "count": 1,
-        "totalScore": -70,
-        "averageScore": -70
-      },
-      {
         "key": "button",
         "count": 1,
         "totalScore": -70,
@@ -62,6 +56,12 @@
         "count": 8,
         "totalScore": -560,
         "averageScore": -70
+      },
+      {
+        "key": "object",
+        "count": 2,
+        "totalScore": -100,
+        "averageScore": -50
       },
       {
         "key": "waiting",
@@ -84,16 +84,16 @@
         "averageScore": -70
       },
       {
-        "key": "fake_nature_documentary",
-        "count": 1,
-        "totalScore": -70,
-        "averageScore": -70
-      },
-      {
         "key": "unknown",
         "count": 8,
         "totalScore": -560,
         "averageScore": -70
+      },
+      {
+        "key": "fake_nature_documentary",
+        "count": 2,
+        "totalScore": -100,
+        "averageScore": -50
       },
       {
         "key": "fake_documentary",
@@ -108,9 +108,28 @@
         "count": 12,
         "totalScore": -785,
         "averageScore": -65.41666666666667
+      },
+      {
+        "key": "documentary",
+        "count": 1,
+        "totalScore": -30,
+        "averageScore": -30
       }
     ],
-    "sfxTags": []
+    "sfxTags": [
+      {
+        "key": "intro",
+        "count": 1,
+        "totalScore": -30,
+        "averageScore": -30
+      },
+      {
+        "key": "ding",
+        "count": 2,
+        "totalScore": -60,
+        "averageScore": -30
+      }
+    ]
   },
   "topVideos": [
     {
@@ -166,6 +185,35 @@
       "url": "https://youtu.be/FpQOm5Qa82c",
       "generatedAt": "2026-06-21T10:41:10.573Z",
       "learningScore": -15
+    },
+    {
+      "key": "apps/auto-staring-pebble-supreme.html",
+      "videoId": null,
+      "name": "Staring Pebble Supreme",
+      "appType": "object",
+      "storyMode": "fake_nature_documentary",
+      "audioMode": "full_mix",
+      "audioMood": "documentary",
+      "musicUsed": "assets/music/documentary-bed-01.wav",
+      "sfxTags": [
+        "intro",
+        "ding",
+        "ding"
+      ],
+      "reviewStatus": "not_in_review",
+      "decision": "none",
+      "publishStatus": "local",
+      "audioReadiness": "not_validated",
+      "publicSafe": false,
+      "audioWarnings": [],
+      "uploaded": false,
+      "dryRun": true,
+      "views": 0,
+      "likes": 0,
+      "comments": 0,
+      "url": null,
+      "generatedAt": "2026-06-21T13:13:40.033Z",
+      "learningScore": -30
     },
     {
       "key": "apps/runaway-button.html",
@@ -354,33 +402,6 @@
       "comments": 0,
       "url": "https://youtu.be/gYpcgNaw5W0",
       "generatedAt": "2026-06-20T22:14:01.362Z",
-      "learningScore": -70
-    },
-    {
-      "key": "apps/auto-infinite-loading-ceremony.html",
-      "videoId": "-YoBkyPZlAE",
-      "name": "Infinite Loading Ceremony",
-      "appType": "unknown",
-      "storyMode": "unknown",
-      "audioMode": "unknown",
-      "audioMood": "unknown",
-      "musicUsed": null,
-      "sfxTags": [],
-      "reviewStatus": "private_uploaded",
-      "decision": "none",
-      "publishStatus": "private_uploaded",
-      "audioReadiness": "blocked_for_public",
-      "publicSafe": false,
-      "audioWarnings": [
-        "audio_missing"
-      ],
-      "uploaded": true,
-      "dryRun": false,
-      "views": 0,
-      "likes": 0,
-      "comments": 0,
-      "url": "https://youtu.be/-YoBkyPZlAE",
-      "generatedAt": "2026-06-21T08:05:47.914Z",
       "learningScore": -70
     }
   ],
@@ -1015,6 +1036,35 @@
       "url": "https://youtu.be/Nx2Ek9u165c",
       "generatedAt": "2026-06-21T12:54:46.382Z",
       "learningScore": 70
+    },
+    {
+      "key": "apps/auto-staring-pebble-supreme.html",
+      "videoId": null,
+      "name": "Staring Pebble Supreme",
+      "appType": "object",
+      "storyMode": "fake_nature_documentary",
+      "audioMode": "full_mix",
+      "audioMood": "documentary",
+      "musicUsed": "assets/music/documentary-bed-01.wav",
+      "sfxTags": [
+        "intro",
+        "ding",
+        "ding"
+      ],
+      "reviewStatus": "not_in_review",
+      "decision": "none",
+      "publishStatus": "local",
+      "audioReadiness": "not_validated",
+      "publicSafe": false,
+      "audioWarnings": [],
+      "uploaded": false,
+      "dryRun": true,
+      "views": 0,
+      "likes": 0,
+      "comments": 0,
+      "url": null,
+      "generatedAt": "2026-06-21T13:13:40.033Z",
+      "learningScore": -30
     }
   ]
 }
