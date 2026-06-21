@@ -85,34 +85,22 @@ browser command centre dashboard
 business metrics foundation
 social channel registry
 API connection registry
+platform connector framework
+publishing calendar foundation
 SQLite persistence foundation
 audit trail foundation
 finance engine v1
 backup/export scripts
+repo hygiene
+generated runtime ignores
+GitHub push fixed
 ```
 
 Recent validation:
 
 ```text
-All tests passed apart from Git staging/path issues.
-```
-
----
-
-## Immediate Repo Hygiene Fix
-
-Problem:
-
-```text
-git add package.json package-lock.json failed because root package.json does not exist.
-```
-
-Decision:
-
-```text
-Do not blindly add package.json at repo root unless we intentionally create root package metadata.
-Keep node_modules out of Git.
-Ignore backups, exports, logs, DB runtime files, and .before backup files.
+Tests passing.
+Latest pushed commit: 0962b3e Ignore generated runtime state and media assets
 ```
 
 ---
@@ -134,6 +122,7 @@ JS syntax validation
 safe worker validation
 nightly runner validation
 SQLite/audit/finance validation
+platform/calendar validation
 ```
 
 Completion criteria:
@@ -142,6 +131,7 @@ Completion criteria:
 ./scripts/full-test.sh passes
 ./scripts/safety-report.sh runs
 ./scripts/dashboard.sh runs
+git push works
 ```
 
 ---
@@ -159,6 +149,8 @@ Review Queue
 Analytics
 Learning Brain
 Channels
+Platform Matrix
+Publishing Calendar
 Finance
 Safety
 Action Queue
@@ -169,22 +161,22 @@ Operator Commands
 
 No major redesign needed right now.
 
-Future dashboard improvements:
+Focus now:
 
 ```text
-video preview cards
-approve/reject/rerender cards
-publishing calendar
-multi-platform status
-finance charts
-database-backed views
+wire more features into the existing dashboard
+approval cards
+typed confirmation
+manual export packs
+publish safety
+operator workflows
 ```
 
 ---
 
 # PHASE 3 — Safe Automation
 
-Status: Active / mostly built
+Status: Built / active
 
 Components:
 
@@ -211,14 +203,14 @@ Failed actions are not retried unless explicitly enabled.
 
 # PHASE 4 — SQLite + Audit + Finance
 
-Status: Active / foundation built
+Status: Foundation built
 
-Current DB goal:
+Current DB strategy:
 
 ```text
 SQLite runs alongside JSON.
-JSON remains source of operational truth for now.
-DB becomes durable reporting/query layer.
+JSON remains operational truth for now.
+DB is durable reporting/query/audit layer.
 ```
 
 Tables:
@@ -247,7 +239,7 @@ backup-state.sh
 export-state.sh
 ```
 
-Next for DB later:
+Later:
 
 ```text
 make SQLite primary source
@@ -257,182 +249,325 @@ add audit events to every action/worker/nightly process
 
 ---
 
-# PHASE 5 — Active Next Build
+# PHASE 5 — Multi-Platform Connector Framework
 
-## Multi-Platform Connector Framework + Publishing Calendar + Repo Hygiene
+Status: Foundation built
+
+Current platforms:
+
+```text
+youtube: active/API
+website: active/static
+rumble: manual/future
+tiktok: future
+instagram: future
+facebook: future
+x: future
+email: future
+```
+
+Current rule:
+
+```text
+Only YouTube is active.
+Other platforms are planning/manual placeholders.
+No automatic multi-platform public publishing yet.
+```
+
+---
+
+# ACTIVE NEXT BUILD — Approval Cards + Typed Publish Confirmation + Manual Export Packs
 
 Status: NEXT BUILD
 
 Goal:
 
-Finish another large chunk by adding:
+Finish the operator workflow from:
 
 ```text
-repo cleanup
-master roadmap consolidation
-platform connector framework
-publishing calendar foundation
-content distribution matrix
-platform-specific metadata placeholders
-dashboard platform/calendar summary
-test expansion
+private upload → review card → approve/reject/rerender → publish preflight → typed confirmation → public/unlisted publish OR manual export pack
 ```
 
-This moves the product toward managing multiple social channels without actually connecting risky APIs yet.
+This is the next serious product feature.
+
+---
+
+## Combined Scope
+
+This build combines:
+
+```text
+dashboard approval cards
+review queue wiring
+typed publish confirmation
+manual export packs
+platform metadata packs
+publish command hardening
+audit logging for review/publish
+calendar item helper
+full-test expansion
+```
 
 ---
 
 ## Why This Build Matters
 
-We already have:
+We already have a powerful foundation, but the operator workflow still needs to feel complete.
+
+The operator should be able to:
 
 ```text
-YouTube private upload
-dashboard
-analytics
-safety
-worker
-database
-finance
+see latest private videos
+see safety/audio/public-safe badges
+queue approve/reject/rerender
+run publish preflight
+generate manual export pack
+publish only with typed confirmation
+add content to publishing calendar
 ```
 
-Now we need the structure for:
-
-```text
-YouTube
-TikTok
-Instagram Reels
-Facebook Reels
-X
-Rumble
-Website
-Email list
-```
-
-But only YouTube should be active now.
-
-Other platforms should be placeholders/manual/future so we stay safe and do not overbuild.
+This is where the product starts behaving like a real content operations platform.
 
 ---
 
 ## New Files
 
 ```text
-tools/platforms/platform-registry.json
-tools/platforms/platform-lib.js
-tools/platforms/platform-report.js
-tools/calendar/publishing-calendar.json
-tools/calendar/calendar-lib.js
-tools/calendar/calendar-report.js
+tools/export/export-pack.js
+tools/export/export-report.js
+scripts/export-pack.sh
+scripts/export-report.sh
 
-scripts/platform-report.sh
-scripts/calendar-report.sh
-scripts/add-calendar-item.sh
+tools/publish/confirm-publish.js
+scripts/confirm-publish.sh
+
+tools/review/review-cards.js
+scripts/review-cards.sh
 ```
 
 Updated files:
 
 ```text
 ROADMAP.md
-.gitignore
 tools/dashboard/report-v2.js
 tools/dashboard/dashboard.html
 tools/dashboard/dashboard.js
+tools/publish/publish-youtube.js
+tools/publish/preflight.js
+tools/audit/audit-log.js
+tools/calendar/calendar-lib.js
 tools/testing/full-system-test.js
 ```
 
 ---
 
-## Platform Registry
+## Export Pack
 
-Track:
+Purpose:
 
-```text
-youtube
-tiktok
-instagram
-facebook
-x
-rumble
-website
-email
+Create a manual platform export folder for a video.
+
+Command:
+
+```bash
+./scripts/export-pack.sh VIDEO_ID
 ```
 
-Fields:
+Output:
 
 ```text
-enabled
-connected
-mode: api | manual | future
-status
-supportsUpload
-supportsAnalytics
-supportsScheduling
-notes
+exports/manual-pack-VIDEO_ID-YYYY-MM-DD-HHMMSS/
+├── metadata.json
+├── youtube.txt
+├── tiktok.txt
+├── instagram.txt
+├── facebook.txt
+├── x.txt
+├── rumble.txt
+├── checklist.md
+└── source-video.txt
 ```
+
+No automatic upload.
+
+This lets us manually post safely to other platforms later.
 
 ---
 
-## Publishing Calendar
+## Review Cards
 
-Calendar item fields:
+Purpose:
+
+Summarise videos that need operator review.
+
+Command:
+
+```bash
+./scripts/review-cards.sh
+```
+
+Each card should show:
 
 ```text
-id
+video ID
 title
-videoId
-platform
-status: idea | ready | scheduled | published | skipped
-plannedAt
-actualPublishedAt
-notes
-createdAt
-updatedAt
-```
-
-Allowed statuses:
-
-```text
-idea
-ready
-scheduled
-published
-skipped
-blocked
-```
-
-No actual publishing automation in this build.
-
-This is planning only.
-
----
-
-## Content Distribution Matrix
-
-Dashboard/report should show:
-
-```text
-platform readiness
-which channels are connected
-which are manual
-which are future
-how many calendar items exist
-how many scheduled
-how many published
-how many blocked
+YouTube URL
+status
+audio readiness
+public safe
+safety status
+learning score
+recommended action
+commands
 ```
 
 ---
 
-## Safety Rules For This Build
+## Typed Publish Confirmation
 
-No automatic public publishing.
+Purpose:
 
-No TikTok/Instagram/Facebook API upload yet.
+Prevent accidental public publishing.
 
-No public publish button.
+Command:
 
-Only planning, tracking, reporting, and placeholders.
+```bash
+./scripts/confirm-publish.sh VIDEO_ID unlisted
+./scripts/confirm-publish.sh VIDEO_ID public
+```
+
+The tool must require exact typed confirmation:
+
+```text
+PUBLISH VIDEO_ID AS public
+```
+
+or:
+
+```text
+PUBLISH VIDEO_ID AS unlisted
+```
+
+Rules:
+
+```text
+public publish requires ALLOW_PUBLIC_PUBLISH=true
+preflight must pass
+brand safety must pass
+audio public-safe must pass
+operator must type exact phrase
+```
+
+---
+
+## Dashboard Additions
+
+Add/strengthen:
+
+```text
+review cards table
+publish preflight hints
+export pack command per video
+confirm publish command per video
+calendar add command per video
+```
+
+No redesign.
+
+Just wire more operational commands into the existing UI.
+
+---
+
+## Calendar Integration
+
+When export pack is created, optionally add a publishing calendar item:
+
+```text
+platform: manual_export
+status: ready
+title: video title
+notes: export folder path
+```
+
+---
+
+## Audit Integration
+
+Audit events should log:
+
+```text
+review_card_generated
+export_pack_created
+confirm_publish_started
+publish_confirmed
+publish_blocked
+calendar_item_created
+```
+
+---
+
+## Safety Rules
+
+Still no automatic public publishing.
+
+No worker/public publish.
+
+Public publish must be manual typed confirmation only.
+
+Manual export pack is safe because it does not upload anywhere.
+
+---
+
+## Completion Definition
+
+This build is complete when:
+
+```text
+./scripts/review-cards.sh works
+./scripts/export-pack.sh VIDEO_ID works for existing video
+./scripts/export-report.sh works
+./scripts/confirm-publish.sh VIDEO_ID unlisted requires exact typed phrase
+publish command refuses without correct confirmation
+dashboard report shows review/export commands
+full-test passes
+```
+
+---
+
+## Commands After Build
+
+Review:
+
+```bash
+./scripts/review-cards.sh
+```
+
+Export pack:
+
+```bash
+./scripts/export-pack.sh VIDEO_ID
+./scripts/export-report.sh
+```
+
+Safe publish confirmation:
+
+```bash
+ALLOW_PUBLIC_PUBLISH=true ./scripts/confirm-publish.sh VIDEO_ID unlisted
+ALLOW_PUBLIC_PUBLISH=true ./scripts/confirm-publish.sh VIDEO_ID public
+```
+
+Calendar:
+
+```bash
+./scripts/add-calendar-item.sh "Video title" youtube "2026-06-22T10:00:00+01:00" "Ready for manual post"
+./scripts/calendar-report.sh
+```
+
+Tests:
+
+```bash
+./scripts/full-test.sh
+```
 
 ---
 
@@ -443,27 +578,29 @@ Status: Future
 Build later:
 
 ```text
-YouTube public/unlisted confirmation
-TikTok manual export helper
+YouTube public/unlisted confirmation polishing
+TikTok manual export helper refinement
 Instagram/Facebook metadata export
 X post template
 Rumble manual export
 website publishing integration
 ```
 
+No automatic multi-platform publishing until safety, API terms, and account readiness are confirmed.
+
 ---
 
-# PHASE 7 — Dashboard Approval Panels
+# PHASE 7 — Dashboard Approval Panels v2
 
 Status: Future
 
 Add:
 
 ```text
-video approval cards
-queue approve/reject/rerender
-typed confirmation for publish
-preflight result per video
+visual video cards
+queue approve/reject/rerender from dashboard
+typed confirmation modal
+preflight result panel
 audio/safety badge per video
 ```
 
@@ -559,6 +696,14 @@ Finance:
 ./scripts/finance-report.sh
 ```
 
+Platforms/calendar:
+
+```bash
+./scripts/platform-report.sh
+./scripts/calendar-report.sh
+./scripts/add-calendar-item.sh "Title" youtube "" "Notes"
+```
+
 State:
 
 ```bash
@@ -578,9 +723,7 @@ Dashboard:
 
 ## Final Direction
 
-We should now maintain this single `ROADMAP.md`.
-
-No more fragmented roadmap files unless exporting a copy for download.
+Maintain this single `ROADMAP.md`.
 
 The platform direction is:
 
