@@ -3,6 +3,7 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const { queueAction, loadQueue } = require('../actions/action-lib');
 
 const ROOT_DIR = path.join(__dirname, '..', '..');
 const PORT = Number(process.env.DASHBOARD_PORT || 8787);
@@ -26,6 +27,43 @@ function contentType(url) {
 
 const server = http.createServer((req, res) => {
   const cleanUrl = (req.url || '/').split('?')[0];
+
+  if (cleanUrl === '/api/actions' && req.method === 'GET') {
+    res.writeHead(200, {
+      'Content-Type': 'application/json',
+      'Cache-Control': 'no-store'
+    });
+    res.end(JSON.stringify(loadQueue(), null, 2));
+    return;
+  }
+
+  if (cleanUrl === '/api/actions' && req.method === 'POST') {
+    let body = '';
+
+    req.on('data', chunk => {
+      body += chunk;
+      if (body.length > 100000) req.destroy();
+    });
+
+    req.on('end', () => {
+      try {
+        const parsed = body ? JSON.parse(body) : {};
+        const action = queueAction(parsed.type, parsed.payload || {}, 'dashboard');
+
+        res.writeHead(201, {
+          'Content-Type': 'application/json',
+          'Cache-Control': 'no-store'
+        });
+        res.end(JSON.stringify(action, null, 2));
+      } catch (err) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: err.message }, null, 2));
+      }
+    });
+
+    return;
+  }
+
   const file = FILES[cleanUrl];
 
   if (!file) {

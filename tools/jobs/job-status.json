@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "jobs": {
+    "generate_app": {
+      "enabled": true,
+      "status": "working",
+      "lastRun": null,
+      "lastSuccess": null,
+      "lastError": null
+    },
+    "render_video": {
+      "enabled": true,
+      "status": "working",
+      "lastRun": null,
+      "lastSuccess": null,
+      "lastError": null
+    },
+    "upload_private": {
+      "enabled": true,
+      "status": "working",
+      "lastRun": null,
+      "lastSuccess": null,
+      "lastError": null
+    },
+    "sync_review": {
+      "enabled": true,
+      "status": "working",
+      "lastRun": null,
+      "lastSuccess": null,
+      "lastError": null
+    },
+    "validate_audio": {
+      "enabled": true,
+      "status": "working",
+      "lastRun": null,
+      "lastSuccess": null,
+      "lastError": null
+    },
+    "pull_advanced_analytics": {
+      "enabled": true,
+      "status": "testing",
+      "lastRun": null,
+      "lastSuccess": null,
+      "lastError": null
+    },
+    "run_learning": {
+      "enabled": true,
+      "status": "working",
+      "lastRun": null,
+      "lastSuccess": null,
+      "lastError": null
+    },
+    "build_dashboard": {
+      "enabled": true,
+      "status": "working",
+      "lastRun": "2026-06-21T15:24:09.770Z",
+      "lastSuccess": "2026-06-21T15:24:09.944Z",
+      "lastError": null,
+      "durationMs": 174
+    }
+  }
+}

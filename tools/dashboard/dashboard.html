@@ -88,6 +88,56 @@
       </article>
     </section>
 
+
+    <section class="grid two">
+      <article class="card">
+        <h2>Business Metrics</h2>
+        <div id="businessStats"></div>
+      </article>
+
+      <article class="card">
+        <h2>Social Channels</h2>
+        <div id="socialStats"></div>
+        <div class="table-wrap">
+          <table id="socialTable"></table>
+        </div>
+      </article>
+    </section>
+
+    <section class="grid two">
+      <article class="card">
+        <h2>API Connections</h2>
+        <div id="connectionStats"></div>
+        <div class="table-wrap">
+          <table id="connectionTable"></table>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>Backend Jobs</h2>
+        <div id="jobStats"></div>
+        <div class="table-wrap">
+          <table id="jobTable"></table>
+        </div>
+      </article>
+    </section>
+
+
+    <section class="card">
+      <h2>Action Queue</h2>
+      <div class="button-row">
+        <button onclick="queueDashboardAction('sync_review')">Queue Sync Review</button>
+        <button onclick="queueDashboardAction('run_learning')">Queue Learning</button>
+        <button onclick="queueDashboardAction('pull_basic_stats')">Queue Basic Stats</button>
+        <button onclick="queueDashboardAction('pull_advanced_analytics')">Queue Advanced Analytics</button>
+        <button onclick="queueDashboardAction('refresh_dashboard')">Queue Refresh Dashboard</button>
+      </div>
+      <p class="muted">Dashboard queues actions only. Execute safely from terminal using ./scripts/run-action.sh ACTION_ID.</p>
+      <div class="table-wrap">
+        <table id="actionQueueTable"></table>
+      </div>
+    </section>
+
     <section class="card">
       <h2>Operator Commands</h2>
       <pre id="commands"></pre>

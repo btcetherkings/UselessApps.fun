@@ -1,0 +1,210 @@
+{
+  "version": 1,
+  "updatedAt": "2026-06-21T15:24:09.944Z",
+  "actions": [
+    {
+      "id": "act_1782052027357_5ee23c",
+      "type": "sync_review",
+      "status": "pending",
+      "createdAt": "2026-06-21T14:27:07.357Z",
+      "updatedAt": "2026-06-21T14:27:07.358Z",
+      "source": "cli",
+      "payload": {},
+      "safety": {
+        "level": "safe",
+        "requiresTerminal": false,
+        "publicPublishing": false
+      },
+      "history": [
+        {
+          "at": "2026-06-21T14:27:07.358Z",
+          "status": "pending",
+          "note": "Action queued"
+        }
+      ],
+      "result": null,
+      "error": null
+    },
+    {
+      "id": "act_1782052034117_ecc40e",
+      "type": "approve_video",
+      "status": "pending",
+      "createdAt": "2026-06-21T14:27:14.118Z",
+      "updatedAt": "2026-06-21T14:27:14.118Z",
+      "source": "cli",
+      "payload": {
+        "videoId": "TEST123",
+        "note": "Test approval only"
+      },
+      "safety": {
+        "level": "safe",
+        "requiresTerminal": false,
+        "publicPublishing": false
+      },
+      "history": [
+        {
+          "at": "2026-06-21T14:27:14.118Z",
+          "status": "pending",
+          "note": "Action queued"
+        }
+      ],
+      "result": null,
+      "error": null
+    },
+    {
+      "id": "act_1782052477255_6618ff",
+      "type": "sync_review",
+      "status": "pending",
+      "createdAt": "2026-06-21T14:34:37.255Z",
+      "updatedAt": "2026-06-21T14:34:37.255Z",
+      "source": "cli",
+      "payload": {},
+      "safety": {
+        "level": "safe",
+        "requiresTerminal": false,
+        "publicPublishing": false
+      },
+      "history": [
+        {
+          "at": "2026-06-21T14:34:37.255Z",
+          "status": "pending",
+          "note": "Action queued"
+        }
+      ],
+      "result": null,
+      "error": null
+    },
+    {
+      "id": "act_1782054196665_28d324",
+      "type": "sync_review",
+      "status": "pending",
+      "createdAt": "2026-06-21T15:03:16.665Z",
+      "updatedAt": "2026-06-21T15:03:16.665Z",
+      "source": "cli",
+      "payload": {},
+      "safety": {
+        "level": "safe",
+        "requiresTerminal": false,
+        "publicPublishing": false
+      },
+      "history": [
+        {
+          "at": "2026-06-21T15:03:16.665Z",
+          "status": "pending",
+          "note": "Action queued"
+        }
+      ],
+      "result": null,
+      "error": null
+    },
+    {
+      "id": "act_1782055303885_c71abc",
+      "type": "sync_review",
+      "status": "pending",
+      "createdAt": "2026-06-21T15:21:43.885Z",
+      "updatedAt": "2026-06-21T15:21:43.885Z",
+      "source": "cli",
+      "payload": {},
+      "safety": {
+        "level": "safe",
+        "requiresTerminal": false,
+        "publicPublishing": false
+      },
+      "terminalCommand": "./scripts/run-action.sh act_1782055303885_c71abc",
+      "history": [
+        {
+          "at": "2026-06-21T15:21:43.885Z",
+          "status": "pending",
+          "note": "Action queued"
+        }
+      ],
+      "result": null,
+      "error": null
+    },
+    {
+      "id": "act_1782055303921_4df070",
+      "type": "refresh_dashboard",
+      "status": "completed",
+      "createdAt": "2026-06-21T15:21:43.921Z",
+      "updatedAt": "2026-06-21T15:24:09.944Z",
+      "source": "cli",
+      "payload": {},
+      "safety": {
+        "level": "safe",
+        "requiresTerminal": false,
+        "publicPublishing": false
+      },
+      "terminalCommand": "./scripts/run-action.sh act_1782055303921_4df070",
+      "history": [
+        {
+          "at": "2026-06-21T15:21:43.922Z",
+          "status": "pending",
+          "note": "Action queued"
+        },
+        {
+          "at": "2026-06-21T15:24:09.770Z",
+          "status": "running",
+          "note": "Action started"
+        },
+        {
+          "at": "2026-06-21T15:24:09.944Z",
+          "status": "completed",
+          "note": "Action completed"
+        }
+      ],
+      "result": {
+        "completedAt": "2026-06-21T15:24:09.944Z",
+        "command": "bash ./scripts/daily-report-v2.sh"
+      },
+      "error": null
+    },
+    {
+      "id": "act_1782055342686_b561aa",
+      "type": "sync_review",
+      "status": "pending",
+      "createdAt": "2026-06-21T15:22:22.686Z",
+      "updatedAt": "2026-06-21T15:22:22.686Z",
+      "source": "dashboard",
+      "payload": {},
+      "safety": {
+        "level": "safe",
+        "requiresTerminal": false,
+        "publicPublishing": false
+      },
+      "terminalCommand": "./scripts/run-action.sh act_1782055342686_b561aa",
+      "history": [
+        {
+          "at": "2026-06-21T15:22:22.687Z",
+          "status": "pending",
+          "note": "Action queued"
+        }
+      ],
+      "result": null,
+      "error": null
+    },
+    {
+      "id": "act_1782055352107_588480",
+      "type": "pull_advanced_analytics",
+      "status": "pending",
+      "createdAt": "2026-06-21T15:22:32.107Z",
+      "updatedAt": "2026-06-21T15:22:32.107Z",
+      "source": "dashboard",
+      "payload": {},
+      "safety": {
+        "level": "safe",
+        "requiresTerminal": false,
+        "publicPublishing": false
+      },
+      "terminalCommand": "./scripts/run-action.sh act_1782055352107_588480",
+      "history": [
+        {
+          "at": "2026-06-21T15:22:32.107Z",
+          "status": "pending",
+          "note": "Action queued"
+        }
+      ],
+      "result": null,
+      "error": null
+    }
+  ]
+}

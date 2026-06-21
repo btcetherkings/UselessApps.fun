@@ -1,5 +1,434 @@
 {
-  "generatedAt": "2026-06-21T13:52:43.965Z",
+  "generatedAt": "2026-06-21T15:24:29.240Z",
+  "business": {
+    "currency": "GBP",
+    "revenueTotal": 0,
+    "costTotal": 0,
+    "profit": 0,
+    "assumptions": {
+      "estimatedRevenuePerThousandViews": 0,
+      "subscriberValue": 0,
+      "averageApiCostPerVideo": 0,
+      "averageHostingCostPerMonth": 0,
+      "averageToolingCostPerMonth": 0
+    },
+    "revenueCount": 0,
+    "costCount": 0
+  },
+  "social": {
+    "total": 7,
+    "enabled": 2,
+    "connected": 2,
+    "notConnected": 5,
+    "channels": [
+      {
+        "key": "youtube",
+        "enabled": true,
+        "connected": true,
+        "status": "working",
+        "lastSync": null,
+        "subscribers": null,
+        "views": null,
+        "notes": "YouTube upload and analytics are being integrated."
+      },
+      {
+        "key": "tiktok",
+        "enabled": false,
+        "connected": false,
+        "status": "not_connected",
+        "lastSync": null,
+        "followers": null,
+        "views": null
+      },
+      {
+        "key": "instagram",
+        "enabled": false,
+        "connected": false,
+        "status": "not_connected",
+        "lastSync": null,
+        "followers": null,
+        "views": null
+      },
+      {
+        "key": "facebook",
+        "enabled": false,
+        "connected": false,
+        "status": "not_connected",
+        "lastSync": null,
+        "followers": null,
+        "views": null
+      },
+      {
+        "key": "x",
+        "enabled": false,
+        "connected": false,
+        "status": "not_connected",
+        "lastSync": null,
+        "followers": null,
+        "views": null
+      },
+      {
+        "key": "rumble",
+        "enabled": false,
+        "connected": false,
+        "status": "manual_later",
+        "lastSync": null,
+        "followers": null,
+        "views": null
+      },
+      {
+        "key": "website",
+        "enabled": true,
+        "connected": true,
+        "status": "static_site",
+        "lastSync": null,
+        "url": "https://btcetherkings.github.io/useless-apps-fun/"
+      }
+    ]
+  },
+  "connections": {
+    "total": 6,
+    "enabled": 2,
+    "connected": 1,
+    "failing": 0,
+    "connections": [
+      {
+        "key": "youtube_data_api",
+        "enabled": true,
+        "connected": true,
+        "status": "working",
+        "lastSuccess": null,
+        "lastError": null,
+        "requiredScopes": [
+          "https://www.googleapis.com/auth/youtube",
+          "https://www.googleapis.com/auth/youtube.upload",
+          "https://www.googleapis.com/auth/youtube.readonly"
+        ]
+      },
+      {
+        "key": "youtube_analytics_api",
+        "enabled": true,
+        "connected": false,
+        "status": "needs_scope_test",
+        "lastSuccess": null,
+        "lastError": null,
+        "requiredScopes": [
+          "https://www.googleapis.com/auth/yt-analytics.readonly"
+        ]
+      },
+      {
+        "key": "tiktok_api",
+        "enabled": false,
+        "connected": false,
+        "status": "future"
+      },
+      {
+        "key": "instagram_graph_api",
+        "enabled": false,
+        "connected": false,
+        "status": "future"
+      },
+      {
+        "key": "facebook_graph_api",
+        "enabled": false,
+        "connected": false,
+        "status": "future"
+      },
+      {
+        "key": "x_api",
+        "enabled": false,
+        "connected": false,
+        "status": "future"
+      }
+    ]
+  },
+  "jobs": {
+    "total": 8,
+    "enabled": 8,
+    "working": 7,
+    "testing": 1,
+    "failing": 0,
+    "jobs": [
+      {
+        "key": "generate_app",
+        "enabled": true,
+        "status": "working",
+        "lastRun": null,
+        "lastSuccess": null,
+        "lastError": null
+      },
+      {
+        "key": "render_video",
+        "enabled": true,
+        "status": "working",
+        "lastRun": null,
+        "lastSuccess": null,
+        "lastError": null
+      },
+      {
+        "key": "upload_private",
+        "enabled": true,
+        "status": "working",
+        "lastRun": null,
+        "lastSuccess": null,
+        "lastError": null
+      },
+      {
+        "key": "sync_review",
+        "enabled": true,
+        "status": "working",
+        "lastRun": null,
+        "lastSuccess": null,
+        "lastError": null
+      },
+      {
+        "key": "validate_audio",
+        "enabled": true,
+        "status": "working",
+        "lastRun": null,
+        "lastSuccess": null,
+        "lastError": null
+      },
+      {
+        "key": "pull_advanced_analytics",
+        "enabled": true,
+        "status": "testing",
+        "lastRun": null,
+        "lastSuccess": null,
+        "lastError": null
+      },
+      {
+        "key": "run_learning",
+        "enabled": true,
+        "status": "working",
+        "lastRun": null,
+        "lastSuccess": null,
+        "lastError": null
+      },
+      {
+        "key": "build_dashboard",
+        "enabled": true,
+        "status": "working",
+        "lastRun": "2026-06-21T15:24:09.770Z",
+        "lastSuccess": "2026-06-21T15:24:09.944Z",
+        "lastError": null,
+        "durationMs": 174
+      }
+    ]
+  },
+  "actionQueue": {
+    "total": 8,
+    "counts": {
+      "pending": 7,
+      "completed": 1
+    },
+    "actions": [
+      {
+        "id": "act_1782055352107_588480",
+        "type": "pull_advanced_analytics",
+        "status": "pending",
+        "createdAt": "2026-06-21T15:22:32.107Z",
+        "updatedAt": "2026-06-21T15:22:32.107Z",
+        "source": "dashboard",
+        "payload": {},
+        "safety": {
+          "level": "safe",
+          "requiresTerminal": false,
+          "publicPublishing": false
+        },
+        "terminalCommand": "./scripts/run-action.sh act_1782055352107_588480",
+        "history": [
+          {
+            "at": "2026-06-21T15:22:32.107Z",
+            "status": "pending",
+            "note": "Action queued"
+          }
+        ],
+        "result": null,
+        "error": null
+      },
+      {
+        "id": "act_1782055342686_b561aa",
+        "type": "sync_review",
+        "status": "pending",
+        "createdAt": "2026-06-21T15:22:22.686Z",
+        "updatedAt": "2026-06-21T15:22:22.686Z",
+        "source": "dashboard",
+        "payload": {},
+        "safety": {
+          "level": "safe",
+          "requiresTerminal": false,
+          "publicPublishing": false
+        },
+        "terminalCommand": "./scripts/run-action.sh act_1782055342686_b561aa",
+        "history": [
+          {
+            "at": "2026-06-21T15:22:22.687Z",
+            "status": "pending",
+            "note": "Action queued"
+          }
+        ],
+        "result": null,
+        "error": null
+      },
+      {
+        "id": "act_1782055303921_4df070",
+        "type": "refresh_dashboard",
+        "status": "completed",
+        "createdAt": "2026-06-21T15:21:43.921Z",
+        "updatedAt": "2026-06-21T15:24:09.944Z",
+        "source": "cli",
+        "payload": {},
+        "safety": {
+          "level": "safe",
+          "requiresTerminal": false,
+          "publicPublishing": false
+        },
+        "terminalCommand": "./scripts/run-action.sh act_1782055303921_4df070",
+        "history": [
+          {
+            "at": "2026-06-21T15:21:43.922Z",
+            "status": "pending",
+            "note": "Action queued"
+          },
+          {
+            "at": "2026-06-21T15:24:09.770Z",
+            "status": "running",
+            "note": "Action started"
+          },
+          {
+            "at": "2026-06-21T15:24:09.944Z",
+            "status": "completed",
+            "note": "Action completed"
+          }
+        ],
+        "result": {
+          "completedAt": "2026-06-21T15:24:09.944Z",
+          "command": "bash ./scripts/daily-report-v2.sh"
+        },
+        "error": null
+      },
+      {
+        "id": "act_1782055303885_c71abc",
+        "type": "sync_review",
+        "status": "pending",
+        "createdAt": "2026-06-21T15:21:43.885Z",
+        "updatedAt": "2026-06-21T15:21:43.885Z",
+        "source": "cli",
+        "payload": {},
+        "safety": {
+          "level": "safe",
+          "requiresTerminal": false,
+          "publicPublishing": false
+        },
+        "terminalCommand": "./scripts/run-action.sh act_1782055303885_c71abc",
+        "history": [
+          {
+            "at": "2026-06-21T15:21:43.885Z",
+            "status": "pending",
+            "note": "Action queued"
+          }
+        ],
+        "result": null,
+        "error": null
+      },
+      {
+        "id": "act_1782054196665_28d324",
+        "type": "sync_review",
+        "status": "pending",
+        "createdAt": "2026-06-21T15:03:16.665Z",
+        "updatedAt": "2026-06-21T15:03:16.665Z",
+        "source": "cli",
+        "payload": {},
+        "safety": {
+          "level": "safe",
+          "requiresTerminal": false,
+          "publicPublishing": false
+        },
+        "history": [
+          {
+            "at": "2026-06-21T15:03:16.665Z",
+            "status": "pending",
+            "note": "Action queued"
+          }
+        ],
+        "result": null,
+        "error": null
+      },
+      {
+        "id": "act_1782052477255_6618ff",
+        "type": "sync_review",
+        "status": "pending",
+        "createdAt": "2026-06-21T14:34:37.255Z",
+        "updatedAt": "2026-06-21T14:34:37.255Z",
+        "source": "cli",
+        "payload": {},
+        "safety": {
+          "level": "safe",
+          "requiresTerminal": false,
+          "publicPublishing": false
+        },
+        "history": [
+          {
+            "at": "2026-06-21T14:34:37.255Z",
+            "status": "pending",
+            "note": "Action queued"
+          }
+        ],
+        "result": null,
+        "error": null
+      },
+      {
+        "id": "act_1782052034117_ecc40e",
+        "type": "approve_video",
+        "status": "pending",
+        "createdAt": "2026-06-21T14:27:14.118Z",
+        "updatedAt": "2026-06-21T14:27:14.118Z",
+        "source": "cli",
+        "payload": {
+          "videoId": "TEST123",
+          "note": "Test approval only"
+        },
+        "safety": {
+          "level": "safe",
+          "requiresTerminal": false,
+          "publicPublishing": false
+        },
+        "history": [
+          {
+            "at": "2026-06-21T14:27:14.118Z",
+            "status": "pending",
+            "note": "Action queued"
+          }
+        ],
+        "result": null,
+        "error": null
+      },
+      {
+        "id": "act_1782052027357_5ee23c",
+        "type": "sync_review",
+        "status": "pending",
+        "createdAt": "2026-06-21T14:27:07.357Z",
+        "updatedAt": "2026-06-21T14:27:07.358Z",
+        "source": "cli",
+        "payload": {},
+        "safety": {
+          "level": "safe",
+          "requiresTerminal": false,
+          "publicPublishing": false
+        },
+        "history": [
+          {
+            "at": "2026-06-21T14:27:07.358Z",
+            "status": "pending",
+            "note": "Action queued"
+          }
+        ],
+        "result": null,
+        "error": null
+      }
+    ]
+  },
   "health": {
     "score": 90,
     "label": "excellent",
@@ -2340,7 +2769,7 @@
   },
   "learning": {
     "exists": true,
-    "generatedAt": "2026-06-21T13:52:34.862Z",
+    "generatedAt": "2026-06-21T15:24:29.185Z",
     "confidence": {
       "level": "low",
       "withStats": 0

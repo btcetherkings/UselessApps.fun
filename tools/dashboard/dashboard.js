@@ -137,6 +137,66 @@ function render(report) {
     ])
   );
 
+
+  el('businessStats').innerHTML = kv({
+    Currency: report.business?.currency || 'GBP',
+    Revenue: report.business?.revenueTotal ?? 0,
+    Costs: report.business?.costTotal ?? 0,
+    Profit: report.business?.profit ?? 0,
+    'Revenue entries': report.business?.revenueCount ?? 0,
+    'Cost entries': report.business?.costCount ?? 0
+  });
+
+  el('socialStats').innerHTML = kv({
+    Total: report.social?.total ?? 0,
+    Enabled: report.social?.enabled ?? 0,
+    Connected: report.social?.connected ?? 0,
+    'Not connected': report.social?.notConnected ?? 0
+  });
+
+  table(el('socialTable'), ['Channel', 'Enabled', 'Connected', 'Status'],
+    (report.social?.channels || []).map(c => [
+      c.key,
+      c.enabled ? badge('yes', 'green') : badge('no', 'red'),
+      c.connected ? badge('yes', 'green') : badge('no', 'orange'),
+      c.status || 'unknown'
+    ])
+  );
+
+  el('connectionStats').innerHTML = kv({
+    Total: report.connections?.total ?? 0,
+    Enabled: report.connections?.enabled ?? 0,
+    Connected: report.connections?.connected ?? 0,
+    Failing: report.connections?.failing ?? 0
+  });
+
+  table(el('connectionTable'), ['Connection', 'Enabled', 'Connected', 'Status'],
+    (report.connections?.connections || []).map(c => [
+      c.key,
+      c.enabled ? badge('yes', 'green') : badge('no', 'red'),
+      c.connected ? badge('yes', 'green') : badge('no', 'orange'),
+      c.status || 'unknown'
+    ])
+  );
+
+  el('jobStats').innerHTML = kv({
+    Total: report.jobs?.total ?? 0,
+    Enabled: report.jobs?.enabled ?? 0,
+    Working: report.jobs?.working ?? 0,
+    Testing: report.jobs?.testing ?? 0,
+    Failing: report.jobs?.failing ?? 0
+  });
+
+  table(el('jobTable'), ['Job', 'Enabled', 'Status', 'Last error'],
+    (report.jobs?.jobs || []).map(j => [
+      j.key,
+      j.enabled ? badge('yes', 'green') : badge('no', 'red'),
+      j.status || 'unknown',
+      j.lastError || ''
+    ])
+  );
+
+
   el('commands').textContent = [
     './scripts/sync-review.sh',
     './scripts/youtube-advanced-pull.sh',
@@ -156,3 +216,23 @@ async function main() {
 main().catch(err => {
   document.body.innerHTML = `<pre>${err.stack || err.message}</pre>`;
 });
+
+async function queueDashboardAction(type, payload = {}) {
+  const res = await fetch('/api/actions', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ type, payload })
+  });
+
+  if (!res.ok) {
+    const text = await res.text();
+    alert(`Failed to queue action: ${text}`);
+    return;
+  }
+
+  const action = await res.json();
+  alert(`Queued ${action.type}: ${action.id}`);
+  location.reload();
+}

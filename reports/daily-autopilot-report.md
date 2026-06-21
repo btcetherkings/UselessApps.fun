@@ -1,6 +1,6 @@
 # UselessApps.fun Operator Report v2
 
-Generated: 2026-06-21T13:52:43.965Z
+Generated: 2026-06-21T15:24:29.240Z
 
 ## Executive Summary
 
@@ -98,10 +98,92 @@ Generated: 2026-06-21T13:52:43.965Z
 - Channel total views: 0
 - Public videos: 0
 
+## Business Metrics
+
+- Currency: GBP
+- Revenue total: 0
+- Cost total: 0
+- Profit: 0
+- Revenue entries: 0
+- Cost entries: 0
+
+## Social Channels
+
+- Total: 7
+- Enabled: 2
+- Connected: 2
+- Not connected: 5
+
+| Channel   | Enabled | Connected | Status        |
+| --------- | ------- | --------- | ------------- |
+| youtube   | true    | true      | working       |
+| tiktok    | false   | false     | not_connected |
+| instagram | false   | false     | not_connected |
+| facebook  | false   | false     | not_connected |
+| x         | false   | false     | not_connected |
+| rumble    | false   | false     | manual_later  |
+| website   | true    | true      | static_site   |
+
+## API Connections
+
+- Total: 6
+- Enabled: 2
+- Connected: 1
+- Failing: 0
+
+| Connection            | Enabled | Connected | Status           |
+| --------------------- | ------- | --------- | ---------------- |
+| youtube_data_api      | true    | true      | working          |
+| youtube_analytics_api | true    | false     | needs_scope_test |
+| tiktok_api            | false   | false     | future           |
+| instagram_graph_api   | false   | false     | future           |
+| facebook_graph_api    | false   | false     | future           |
+| x_api                 | false   | false     | future           |
+
+## Action Queue
+
+- Total: 8
+- Pending: 7
+- Approved: 0
+- Running: 0
+- Completed: 1
+- Failed: 0
+- Rejected: 0
+
+| ID                       | Type                    | Status    | Safety |
+| ------------------------ | ----------------------- | --------- | ------ |
+| act_1782055352107_588480 | pull_advanced_analytics | pending   | safe   |
+| act_1782055342686_b561aa | sync_review             | pending   | safe   |
+| act_1782055303921_4df070 | refresh_dashboard       | completed | safe   |
+| act_1782055303885_c71abc | sync_review             | pending   | safe   |
+| act_1782054196665_28d324 | sync_review             | pending   | safe   |
+| act_1782052477255_6618ff | sync_review             | pending   | safe   |
+| act_1782052034117_ecc40e | approve_video           | pending   | safe   |
+| act_1782052027357_5ee23c | sync_review             | pending   | safe   |
+
+## Backend Jobs
+
+- Total: 8
+- Enabled: 8
+- Working: 7
+- Testing: 1
+- Failing: 0
+
+| Job                     | Enabled | Status  | Last Success             | Last Error |
+| ----------------------- | ------- | ------- | ------------------------ | ---------- |
+| generate_app            | true    | working |                          |            |
+| render_video            | true    | working |                          |            |
+| upload_private          | true    | working |                          |            |
+| sync_review             | true    | working |                          |            |
+| validate_audio          | true    | working |                          |            |
+| pull_advanced_analytics | true    | testing |                          |            |
+| run_learning            | true    | working |                          |            |
+| build_dashboard         | true    | working | 2026-06-21T15:24:09.944Z |            |
+
 ## Learning v2
 
 - Exists: true
-- Generated: 2026-06-21T13:52:34.862Z
+- Generated: 2026-06-21T15:24:29.185Z
 - Confidence: low
 - Videos with meaningful stats: 0
 

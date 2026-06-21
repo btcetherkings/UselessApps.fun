@@ -185,3 +185,24 @@ pre {
     flex-direction: column;
   }
 }
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+button {
+  background: rgba(56,189,248,0.14);
+  color: var(--blue);
+  border: 1px solid rgba(56,189,248,0.35);
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:hover {
+  background: rgba(56,189,248,0.22);
+}

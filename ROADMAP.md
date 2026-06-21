@@ -2,439 +2,385 @@
 
 ## Mission
 
-UselessApps.fun is an automated viral comedy machine.
+UselessApps.fun is becoming a full AI media operating system.
 
-It creates tiny useless apps, records them, turns them into ridiculous fake-TV videos, uploads them privately, learns what performs, improves future content, and publishes only approved winners.
+```text
+Dashboard = control centre / business OS / approval layer
+Backend = automation factory / engines / workers / analytics / learning
+Action Queue = safe bridge between dashboard and backend
+Job Registry = operational truth for backend health
+```
 
-> Tiny apps. Zero purpose. Maximum joy.
+The goal is not just to create useless videos.
+
+The goal is to run a complete content business from one control centre.
 
 ---
 
-## Current Reality
+# Current State
 
-The dashboard/reporting now works as:
+Working / mostly working:
 
-```text
-console output
-markdown report
-JSON report
-```
+- [x] Browser dashboard
+- [x] Console/markdown/JSON reports
+- [x] Business metrics foundation
+- [x] Social channel registry
+- [x] API connection registry
+- [x] Backend job registry
+- [x] Action queue foundation
+- [x] CLI action queue commands
+- [x] Dashboard report action queue integration in progress
 
-It does not yet open as a proper browser dashboard unless we build a local dashboard server/static HTML viewer.
-
-Current files:
-
-```text
-reports/daily-autopilot-report.md
-reports/daily-autopilot-report.json
-tools/dashboard/report-v2.js
-scripts/dashboard.sh
-```
-
-Next build:
+Current issue:
 
 ```text
-reports/daily-autopilot-report.json
-→ browser dashboard HTML
-→ local server
-→ open in browser
-→ refresh from latest report
+The action queue exists, but it is not yet fully operational from the browser dashboard.
+We need robust endpoints, dashboard rendering, safe queue buttons, action execution tracking, and job-status updates.
 ```
 
 ---
 
-# Active Build: Browser Dashboard UI
+# Active Build: Fully Functional Action Queue + Backend Job Tracking
 
 Status: Next build
 
 Goal:
 
-Create a proper browser dashboard for UselessApps.fun.
+Make the action queue usable as the first proper dashboard control layer.
 
-The browser dashboard should show:
+The dashboard should be able to:
 
 ```text
-system health
-content totals
-upload/publish funnel
-audio safety
-advanced YouTube analytics
-learning recommendations
-latest autopilot decision
-action cards
-rerender candidates
-top/worst videos
-public-safe queue
-blocked videos
-commands to run next
+show action queue
+queue safe actions
+show pending/completed/failed actions
+show exact command to run an action
+show backend job health
+refresh after actions
+```
+
+The terminal should be able to:
+
+```text
+queue action
+list actions
+approve/reject action
+run action
+show action report
+update job-status.json
+```
+
+The backend should:
+
+```text
+run safe scripts
+record action result
+record action failure
+update job-status.json
+keep public publishing restricted
 ```
 
 ---
 
-# Why This Build Matters
+# Safety Rules
 
-The console report is useful but not enough for operating the content factory.
-
-We need:
+## Allowed via action queue
 
 ```text
-visual cards
-tables
-clear colours
-operator actions
-browser refresh
-links to YouTube videos
-links to local generated videos
-markdown/json report links
+sync_review
+run_learning
+pull_basic_stats
+pull_advanced_analytics
+refresh_dashboard
+approve_video
+reject_video
+needs_rerender
 ```
 
-This becomes the control centre for the useless app machine.
+## Not allowed via generic runner yet
+
+```text
+publish_public
+publish_unlisted
+delete_video
+post_to_social
+change_credentials
+```
+
+Public/unlisted publishing stays terminal-only until we build explicit confirmation controls.
 
 ---
 
-# Files To Create / Update
+# Files To Update
 
 ```text
+tools/actions/action-lib.js
+tools/actions/queue-action.js
+tools/actions/list-actions.js
+tools/actions/run-action.js
+tools/actions/action-report.js
+
+tools/jobs/job-summary.js
+tools/jobs/job-status.json
+tools/jobs/job-lib.js
+
+tools/dashboard/report-v2.js
 tools/dashboard/web-dashboard.js
 tools/dashboard/dashboard.html
 tools/dashboard/dashboard.css
 tools/dashboard/dashboard.js
+
+scripts/queue-action.sh
+scripts/list-actions.sh
+scripts/run-action.sh
+scripts/action-report.sh
 scripts/dashboard-web.sh
-scripts/open-dashboard.sh
 scripts/dashboard.sh
+
+reports/daily-autopilot-report.md
 reports/daily-autopilot-report.json
 ROADMAP.md
 ```
 
-Optional later:
-
-```text
-tools/dashboard/server.js
-```
-
 ---
 
-# Phase 1: Existing Reporting
-
-Status: Working
-
-- [x] Console dashboard
-- [x] Markdown report
-- [x] JSON report
-- [x] Health score
-- [x] Action cards
-- [x] Rerender candidates
-- [x] Learning recommendations
-- [x] Advanced analytics hooks
-
-Limitation:
-
-```text
-No browser UI yet.
-```
-
----
-
-# Phase 2: Browser Dashboard UI
+# Phase 1: Robust Action Queue
 
 Status: Next active build
 
-## Dashboard sections
+Tasks:
 
-The page should include:
-
-```text
-1. Header / status bar
-2. Health score
-3. Content totals
-4. Upload/publish funnel
-5. Audio safety
-6. YouTube advanced analytics
-7. Learning v2 recommendations
-8. Latest autopilot decision
-9. Action cards
-10. Rerender candidates
-11. Top videos
-12. Weak videos
-13. Commands panel
-```
-
-## Visual style
-
-The dashboard should feel like:
-
-```text
-chaotic but professional
-dark mode
-neon highlights
-fun but usable
-operator/control-room style
-```
-
-Colours:
-
-```text
-green = safe / ready
-orange = warning / needs review
-red = blocked
-blue = learning / analytics
-purple = autopilot
-```
-
-## Data source
-
-Use:
-
-```text
-reports/daily-autopilot-report.json
-```
-
-Dashboard flow:
-
-```text
-./scripts/dashboard-web.sh
-→ sync-review
-→ learning-v2
-→ report-v2
-→ serve dashboard on localhost
-```
+- [ ] Make queue payload optional
+- [ ] Make JSON payload parsing robust
+- [ ] Prevent duplicate variable collisions in report-v2
+- [ ] Add action queue counts to report JSON
+- [ ] Add recent action list to report JSON
+- [ ] Add safe terminal command per action
+- [ ] Add action history/audit trail
 
 ---
 
-# Phase 3: Local Browser Server
+# Phase 2: Job Status Updates
 
-Status: Planned in this build
+Status: Next active build
 
-Command:
-
-```bash
-./scripts/dashboard-web.sh
-```
-
-Expected output:
+Create:
 
 ```text
-Dashboard running at http://127.0.0.1:8787
+tools/jobs/job-lib.js
 ```
 
-Open manually:
-
-```bash
-xdg-open http://127.0.0.1:8787
-```
-
-or:
-
-```bash
-./scripts/open-dashboard.sh
-```
-
-Server should serve:
+Functions:
 
 ```text
-/dashboard.html
-/dashboard.css
-/dashboard.js
-/report.json
-/report.md
+loadJobs()
+saveJobs()
+markJobRunning(jobKey)
+markJobSuccess(jobKey)
+markJobFailure(jobKey, error)
 ```
+
+Each action type maps to a job:
+
+```text
+sync_review -> sync_review
+run_learning -> run_learning
+pull_basic_stats -> pull_youtube_stats
+pull_advanced_analytics -> pull_advanced_analytics
+refresh_dashboard -> build_dashboard
+approve_video -> review_action
+reject_video -> review_action
+needs_rerender -> review_action
+```
+
+This gives the dashboard backend health visibility.
 
 ---
 
-# Phase 4: Dashboard API
+# Phase 3: Dashboard Action API
 
-Status: Planned in this build
+Status: Next active build
 
 Endpoints:
 
 ```text
-GET /
-GET /dashboard.css
-GET /dashboard.js
-GET /api/report
-GET /api/report-md
-GET /api/health
+GET /api/actions
+POST /api/actions
 ```
 
-Optional command endpoint later:
+For safety:
 
 ```text
-POST /api/run/sync-review
-POST /api/run/learning
-POST /api/run/autopilot-preview
+POST creates queued actions only
+No direct execution endpoint yet
 ```
 
-For now, keep it read-only for safety.
+Future:
+
+```text
+POST /api/actions/:id/run
+```
+
+but only after confirmation/roles.
 
 ---
 
-# Phase 5: Dashboard Cards
+# Phase 4: Browser Dashboard Controls
 
-Status: Planned in this build
+Status: Next active build
 
-## Health card
-
-Show:
+Add safe buttons:
 
 ```text
-Health score
-Label
-Notes
+Queue Sync Review
+Queue Learning
+Queue Basic Stats
+Queue Advanced Analytics
+Queue Refresh Dashboard
 ```
 
-## Content card
-
-Show:
+Add action queue table:
 
 ```text
-apps
-records
-uploaded
-dry-run
-failed
-with learning reason
+ID
+Type
+Status
+Safety
+Created
+Command
 ```
 
-## Publishing card
+Add per-action command:
 
-Show:
-
-```text
-private
-unlisted
-public
-ready for approval
-ready for unlisted
-blocked
-```
-
-## Audio safety card
-
-Show:
-
-```text
-public-safe videos
-blocked videos
-test audio warnings
-audio missing
-production audio in use
-```
-
-## Learning card
-
-Show:
-
-```text
-confidence
-preferred app types
-preferred story modes
-preferred audio moods
-next ideas
-```
-
-## Analytics card
-
-Show:
-
-```text
-channel subscribers
-channel total views
-videos pulled
-CTR/watch-time/retention where available
-data gaps
+```bash
+./scripts/run-action.sh act_...
 ```
 
 ---
 
-# Phase 6: Action Tables
+# Phase 5: Video-Level Queue Buttons
 
-Status: Planned in this build
+Status: Planned inside this build if safe
 
-Tables:
+For action cards:
 
 ```text
-Action cards
-Rerender candidates
-Top videos
-Weak videos
-Latest audit/events
+Queue Approve
+Queue Reject
+Queue Needs Rerender
 ```
 
-Each row should include command suggestions.
-
----
-
-# Phase 7: Safety
-
-Status: Planned
-
-For now the browser dashboard should be read-only.
+These should require a videoId and create queue items only.
 
 No publish buttons yet.
 
-Reason:
+---
+
+# Phase 6: Dashboard Refresh
+
+Status: Planned
+
+Add action:
 
 ```text
-Publishing needs explicit terminal command confirmation.
+refresh_dashboard
 ```
 
-Later we can add buttons behind confirmation.
-
----
-
-# Immediate Next Build Tasks
-
-1. Create `tools/dashboard/web-dashboard.js`.
-2. Create `tools/dashboard/dashboard.html`.
-3. Create `tools/dashboard/dashboard.css`.
-4. Create `tools/dashboard/dashboard.js`.
-5. Create `scripts/dashboard-web.sh`.
-6. Create `scripts/open-dashboard.sh`.
-7. Patch `scripts/dashboard.sh` to show both console report and browser hint.
-8. Run dashboard web server.
-9. Open browser at `http://127.0.0.1:8787`.
-10. Commit.
-
----
-
-# Command Set
-
-Generate reports:
+Runs:
 
 ```bash
 ./scripts/daily-report-v2.sh
 ```
 
-Start browser dashboard:
+This lets the action queue update its own dashboard data through terminal execution.
+
+---
+
+# Phase 7: Operator Workflow
+
+Final workflow:
+
+```text
+open dashboard
+review action cards
+click queue action
+terminal: ./scripts/list-actions.sh
+terminal: ./scripts/run-action.sh ACTION_ID
+dashboard refresh
+action moves to completed/failed
+job status updates
+```
+
+---
+
+# Immediate Next Build Tasks
+
+1. Fix action queue JSON parsing.
+2. Add job status update library.
+3. Patch action runner to update job status.
+4. Patch report-v2 action queue integration safely.
+5. Patch web-dashboard with `/api/actions`.
+6. Patch dashboard UI with action queue cards/buttons.
+7. Add `refresh_dashboard` action.
+8. Test queue from CLI.
+9. Test queue from browser.
+10. Run queued safe action.
+11. Confirm report updates.
+12. Commit.
+
+---
+
+# Command Set
+
+Queue actions:
+
+```bash
+./scripts/queue-action.sh sync_review
+./scripts/queue-action.sh run_learning
+./scripts/queue-action.sh pull_basic_stats
+./scripts/queue-action.sh pull_advanced_analytics
+./scripts/queue-action.sh refresh_dashboard
+./scripts/queue-action.sh approve_video '{"videoId":"VIDEO_ID","note":"Approved from dashboard queue"}'
+```
+
+List:
+
+```bash
+./scripts/list-actions.sh
+```
+
+Run:
+
+```bash
+./scripts/run-action.sh ACTION_ID
+```
+
+Report:
+
+```bash
+./scripts/action-report.sh
+```
+
+Dashboard:
 
 ```bash
 ./scripts/dashboard-web.sh
 ```
 
-Open browser dashboard:
-
-```bash
-./scripts/open-dashboard.sh
-```
-
-Manual browser open:
-
-```bash
-xdg-open http://127.0.0.1:8787
-```
-
-If on a headless machine:
-
-```bash
-python3 -m webbrowser http://127.0.0.1:8787
-```
-
 ---
 
-# Current Priority
+# Next Build After This
 
-1. Make the dashboard visible in browser.
-2. Keep it read-only and safe.
-3. Use the existing JSON report as source of truth.
-4. Make the operator experience much clearer.
-5. Later add buttons/command runner only after safety gates.
+## Nightly Scheduler + Backend Worker
+
+Once the queue is working, add:
+
+```text
+nightly analytics pull
+nightly learning run
+daily report refresh
+optional safe action worker
+systemd/cron setup
+```
+
+That is when the system starts learning automatically instead of only when manually triggered.

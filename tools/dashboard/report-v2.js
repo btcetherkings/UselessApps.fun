@@ -16,6 +16,13 @@ const REPORT_JSON = path.join(ROOT_DIR, 'reports', 'daily-autopilot-report.json'
 
 const { table, asList, scoreLabel } = require('./report-utils');
 
+const { getBusinessSummary } = require('../business/business-summary');
+const { getSocialSummary } = require('../social/social-summary');
+const { getConnectionSummary } = require('../connections/connection-summary');
+const { getJobSummary } = require('../jobs/job-summary');
+const { loadQueue } = require('../actions/action-lib');
+
+
 function readJson(file, fallback) {
   try {
     if (!fs.existsSync(file)) return fallback;
@@ -174,8 +181,27 @@ function buildReport() {
     .filter(r => r.generatedAt)
     .sort((a, b) => String(b.generatedAt).localeCompare(String(a.generatedAt)))[0] || null;
 
+  const business = getBusinessSummary();
+  const social = getSocialSummary();
+  const connections = getConnectionSummary();
+  const jobs = getJobSummary();
+  const actionQueue = loadQueue();
+  const actionQueueCounts = (actionQueue.actions || []).reduce((acc, a) => {
+    acc[a.status] = (acc[a.status] || 0) + 1;
+    return acc;
+  }, {});
+
   const report = {
     generatedAt: new Date().toISOString(),
+    business,
+    social,
+    connections,
+    jobs,
+    actionQueue: {
+      total: (actionQueue.actions || []).length,
+      counts: actionQueueCounts,
+      actions: (actionQueue.actions || []).slice(-25).reverse()
+    },
     health,
     totals: {
       apps: Array.isArray(apps) ? apps.length : 0,
@@ -304,6 +330,55 @@ ${rerenderRows.length ? table(['Video', 'Video ID', 'Readiness', 'Warnings'], re
 - Channel total views: ${report.advancedAnalytics.channel?.viewCount ?? 'unknown'}
 - Public videos: ${report.advancedAnalytics.channel?.videoCount ?? 'unknown'}
 
+## Business Metrics
+
+- Currency: ${report.business.currency}
+- Revenue total: ${report.business.revenueTotal}
+- Cost total: ${report.business.costTotal}
+- Profit: ${report.business.profit}
+- Revenue entries: ${report.business.revenueCount}
+- Cost entries: ${report.business.costCount}
+
+## Social Channels
+
+- Total: ${report.social.total}
+- Enabled: ${report.social.enabled}
+- Connected: ${report.social.connected}
+- Not connected: ${report.social.notConnected}
+
+${table(['Channel', 'Enabled', 'Connected', 'Status'], report.social.channels.map(c => [c.key, c.enabled, c.connected, c.status]))}
+
+## API Connections
+
+- Total: ${report.connections.total}
+- Enabled: ${report.connections.enabled}
+- Connected: ${report.connections.connected}
+- Failing: ${report.connections.failing}
+
+${table(['Connection', 'Enabled', 'Connected', 'Status'], report.connections.connections.map(c => [c.key, c.enabled, c.connected, c.status]))}
+
+## Action Queue
+
+- Total: ${report.actionQueue.total}
+- Pending: ${report.actionQueue.counts.pending || 0}
+- Approved: ${report.actionQueue.counts.approved || 0}
+- Running: ${report.actionQueue.counts.running || 0}
+- Completed: ${report.actionQueue.counts.completed || 0}
+- Failed: ${report.actionQueue.counts.failed || 0}
+- Rejected: ${report.actionQueue.counts.rejected || 0}
+
+${table(['ID', 'Type', 'Status', 'Safety'], report.actionQueue.actions.map(a => [a.id, a.type, a.status, a.safety?.level || 'unknown']))}
+
+## Backend Jobs
+
+- Total: ${report.jobs.total}
+- Enabled: ${report.jobs.enabled}
+- Working: ${report.jobs.working}
+- Testing: ${report.jobs.testing}
+- Failing: ${report.jobs.failing}
+
+${table(['Job', 'Enabled', 'Status', 'Last Success', 'Last Error'], report.jobs.jobs.map(j => [j.key, j.enabled, j.status, j.lastSuccess || '', j.lastError || '']))}
+
 ## Learning v2
 
 - Exists: ${report.learning.exists}
@@ -398,6 +473,11 @@ function printConsole(report) {
   console.log(`Public-safe: ${report.totals.publicSafe} | Blocked: ${report.totals.blockedForPublic}`);
   console.log(`Learning reason records: ${report.totals.withLearningReason}`);
   console.log(`Advanced analytics videos: ${report.advancedAnalytics.videosPulled}`);
+  console.log(`Business profit: ${report.business.currency} ${report.business.profit}`);
+  console.log(`Social connected: ${report.social.connected}/${report.social.total}`);
+  console.log(`API connected: ${report.connections.connected}/${report.connections.total}`);
+  console.log(`Backend jobs working: ${report.jobs.working}/${report.jobs.total}`);
+  console.log(`Action queue pending: ${report.actionQueue.counts.pending || 0}`);
   if (report.advancedAnalytics.channel) {
     console.log(`Subscribers: ${report.advancedAnalytics.channel.subscriberCount ?? 'unknown'}`);
   }
